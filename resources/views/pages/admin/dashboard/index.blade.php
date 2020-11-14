@@ -4,35 +4,35 @@
         <div class="my-3 p-3 bg-white rounded shadow-sm">
                 <h6 class="border-bottom border-gray pb-2 mb-0">Recent added Product</h6>
                 {{-- start table --}}
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                            <table class="min-w-full divide-y divide-gray-200">
-                                <thead>
-                                    <tr>
-                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                <div class=" table-responsive-sm">
+                            <table class="table">
+                                <thead >
+                                    <tr >
+                                    <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         Name
                                     </th>
-                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         Title
                                     </th>
-                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         Status
                                     </th>
-                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         category
                                     </th>
-                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         price
                                     </th>
-                                     <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                     <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         date created
                                     </th>
-                                     <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                        specification
-                                    </th>
-                                     <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                     <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         action
                                     </th>
-                                     <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                     <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                        action
+                                    </th>
+                                     <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         action
                                     </th>
                                     </tr>
@@ -41,29 +41,29 @@
                                
                                 @foreach($products as $key => $value)
                                     <tr>
-                                        <td class="px-6 py-4 whitespace-no-wrap">
+                                        <td class="px-6 py-4 whitespace-no-wrap ">
                                             <div class="flex-shrink-0 h-20 w-20">
                                                 <img class="h-full w-full " src="{{asset('storage/' . $value->products_photo_path) }}" alt="">
                                             </div>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-no-wrap">
+                                        <td class="px-6 py-4 whitespace-no-wrap text-center">
                                             <div class="text-sm leading-5 text-gray-900">{{$value->products_title}}</div>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-no-wrap">
+                                        <td class="px-6 py-4 whitespace-no-wrap text-center">
                                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                             {{$value->products_status}}
                                             </span>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500 text-center">
                                             {{$value->categoryTitle }}
                                         </td>
-                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500 text-center">
                                              {{$value->products_price }}
                                         </td>
-                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500 text-center">
                                              {{ $value->products_created_at }}
                                         </td>
-                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-center">
+                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-center ">
                                             <a href="#" class="text-indigo-600 hover:text-indigo-900">view</a>
                                         </td>
                                         <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
