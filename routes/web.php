@@ -29,6 +29,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/product',  [ProductController::class, 'productIndex'])->name('product index');
     Route::get('/product/create',  [ProductController::class, 'index'])->name('product');
+    Route::get('/product/all',  [ProductController::class, 'viewAll'])->name('view all product');
 
     Route::get('/product/createCategory',  [ProductCategoryController::class, 'index'])->name('product category');
 

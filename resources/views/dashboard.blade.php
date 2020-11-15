@@ -25,7 +25,7 @@
                 <a class="dropdown-item capitalize" href="/product/create">create product</a>
                 <a class="dropdown-item capitalize" href="#">pending product</a>
                 <a class="dropdown-item capitalize" href="#">publish product</a>
-                <a class="dropdown-item capitalize" href="#">view all product</a>
+                <a class="dropdown-item capitalize" href="/product/all">view all product</a>
             </div>
         </div>
     </x-slot>
