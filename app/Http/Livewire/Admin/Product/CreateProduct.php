@@ -22,16 +22,12 @@ class CreateProduct extends Component
         'description' => 'required',
         'status' => 'required',
         'price' => 'required|numeric',
-        'product_category_id' => 'required',
-        'specification_id' => 'required',
-        'colors_type_id' => 'required'
+        'product_category_id' => 'required'
     ];
 
     public function render()
     {
         $data['productCategory'] = ProductCategory::where('status', 'publish')->get();
-        $data['colorCategory'] = ColorType::where('status', 'publish')->get();
-        $data['specification'] = Specification::where('status', 'publish')->get();
 
         return view('livewire.admin.product.create-product', $data);
     }
@@ -46,14 +42,14 @@ class CreateProduct extends Component
             'description' => $this->description,
             'status' => $this->status,
             'price' => $this->price,
-            'product_category_id' => $this->product_category_id,
-            'specification_id' => $this->specification_id,
-            'colors_type_id' => $this->colors_type_id
+            'product_category_id' => $this->product_category_id
         ];
 
         Product::create($formData);
 
         session()->flash('message', 'product created successfully');
         return redirect()->to('/product/create');
-    }
+    }// end function
+
+
 }

@@ -12,10 +12,5 @@ class Specification extends Controller
         return view('pages.admin.products.create-specification-category.index');
 
     }
-
-    public function specificationForm(){
-
-        return view('pages.admin.products.specification.index');
-
-    }
+    
 }

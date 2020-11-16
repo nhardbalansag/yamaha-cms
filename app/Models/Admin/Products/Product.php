@@ -16,9 +16,7 @@ class Product extends Model
         'status',
         'update_count',
         'price',
-        'product_category_id',
-        'specification_id',
-        'colors_type_id'
+        'product_category_id'
     ];
 
 }

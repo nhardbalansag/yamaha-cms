@@ -94,7 +94,7 @@
                                     </select>
                                     @error('specification_id') <span class="error text-red-600 italic">{{ $message }}</span> @enderror
                                 </div> --}}
-                                <div class="w-1/2  mr-2">
+                                {{-- <div class="w-1/2  mr-2">
                                     <label for="country" class="block text-sm font-medium leading-5 text-gray-700 capitalize">product color</label>
                                     <select wire:model.prevent ="colors_type_id" id="country" class="capitalize mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out text-xl ">
                                         @forelse($colorCategory as $category)
@@ -103,7 +103,7 @@
                                         @endforelse
                                     </select>
                                     @error('colors_type_id') <span class="error text-red-600 italic">{{ $message }}</span> @enderror
-                                </div>
+                                </div> --}}
                                 <div class="my-4">
                                     <div class="">
                                         <label for="company_website" class="block text-sm font-medium leading-5 text-gray-700 capitalize">

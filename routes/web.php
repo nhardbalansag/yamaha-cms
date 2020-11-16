@@ -7,7 +7,6 @@ use App\Http\Controllers\Admin\Product\ProductCategoryController;
 use App\Http\Controllers\Admin\Product\Specification;
 use App\Http\Controllers\Admin\Product\Color;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,13 +29,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/product',  [ProductController::class, 'productIndex'])->name('product index');
     Route::get('/product/create',  [ProductController::class, 'index'])->name('product');
     Route::get('/product/all',  [ProductController::class, 'viewAll'])->name('view all product');
+    Route::get('/product/view/{id}', [ProductController::class, 'viewOne'])->name('view one product');
 
     Route::get('/product/createCategory',  [ProductCategoryController::class, 'index'])->name('product category');
 
     Route::get('/product/specificationCategory/create',  [Specification::class, 'index'])->name('specification category');
-    Route::get('/product/specification/create',  [Specification::class, 'specificationForm'])->name('product specification');
-
-    Route::get('/product/color/create',  [Color::class, 'index'])->name('colors category');
 
 });
+
 

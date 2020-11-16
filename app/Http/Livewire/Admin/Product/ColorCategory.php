@@ -3,18 +3,19 @@
 namespace App\Http\Livewire\Admin\Product;
 
 use Livewire\Component;
-use App\Models\Admin\Products\ColorType;
+use App\Models\Admin\Products\Color;
 
 
 class ColorCategory extends Component
 {
 
-    public $title, $description, $status;
+    public $title, $description, $status, $product_id;
 
     public $data = [
         'title'  => 'required|min:5|max:50',
         'description'  => 'required|max:200',
-        'status'  => 'required'
+        'status'  => 'required',
+        'product_id'  => 'required'
     ];
 
     public function render()
@@ -26,10 +27,10 @@ class ColorCategory extends Component
 
         $validatedData = $this->validate($this->data);
 
-        ColorType::create($validatedData);
+        Color::create($validatedData);
 
         session()->flash('message', 'color category created successfully');
-        return redirect()->to('/product/color/create');
+
     }
 
 

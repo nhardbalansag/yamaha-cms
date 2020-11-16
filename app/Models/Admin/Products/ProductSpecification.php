@@ -5,7 +5,7 @@ namespace App\Models\Admin\Products;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ColorType extends Model
+class ProductSpecification extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,9 @@ class ColorType extends Model
         'title', 
         'description',
         'status',
-        'update_count'
-    ];
-    
+        'update_count',
+        'specification_category_id',
+        'product_id'
+    ];  
+
 }

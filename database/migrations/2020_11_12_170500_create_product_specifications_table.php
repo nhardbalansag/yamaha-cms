@@ -15,8 +15,20 @@ class CreateProductSpecificationsTable extends Migration
     {
         Schema::create('product_specifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('specification_id')->unsigned();
+            $table->char('title', 100);
+            $table->string('description');
+            $table->char('status', 50);
+            $table->integer('update_count')->nullable();
+            $table->integer('specification_category_id')->unsigned();
             $table->integer('product_id')->unsigned();
+            $table->foreign('specification_category_id')
+                ->references('id')->on('specification_categories')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('product_id')
+            ->references('id')->on('products')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->timestamps();
         });
     }
