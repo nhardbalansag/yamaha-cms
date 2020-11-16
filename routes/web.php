@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Product\ProductCategoryController;
 use App\Http\Controllers\Admin\Product\Specification;
 use App\Http\Controllers\Admin\Product\Color;
+use App\Http\Controllers\WebApp\HomeController;
+use App\Http\Controllers\WebApp\InquiryController;
+use App\Http\Controllers\WebApp\HomeProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +21,13 @@ use App\Http\Controllers\Admin\Product\Color;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });  
+
+Route::get('/', [HomeController::class, 'index'])->name('home page');
+Route::get('/product/{id}', [HomeProductController::class, 'viewOne'])->name('view product');
+Route::get('/product/{search}/inquiry', [InquiryController::class, 'index'])->name('inquiry');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
