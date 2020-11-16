@@ -10,12 +10,6 @@
             <li class="mr-6">
                 <a class="text-blue-500 hover:text-blue-800 capitalize" href="/product/specificationCategory/create">specification category</a>
             </li>
-            <li class="mr-6">
-                <a class="text-blue-500 hover:text-blue-800 capitalize" href="/product/specification/create">specification</a>
-            </li>
-            <li class="mr-6">
-                <a class="text-blue-500 hover:text-blue-800 capitalize" href="/product/color/create">colors category</a>
-            </li>
         </ul>
          <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,7 +23,6 @@
             </div>
         </div>
     </x-slot>
-    sdfsfsfsfsdsf
 
     <div class="py-12">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">

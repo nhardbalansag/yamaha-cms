@@ -13,7 +13,7 @@
                                 <div class="mt-2 text-center">
                                     <h5 class="truncate">{{$value->title}}</h5>
                                     <p>SRP: <span>{{$value->price}}</span></p>
-                                    <a href="/product/{{$value->id}}" class="btn btn-primary btn-lg w-full active" role="button" aria-pressed="true">View Details</a>
+                                    <a href="/home/product/{{$value->id}}" class="btn btn-primary btn-lg w-full active" role="button" aria-pressed="true">View Details</a>
                                 </div>
                             </div>
                         </div>

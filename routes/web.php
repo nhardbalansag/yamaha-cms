@@ -26,8 +26,8 @@ use App\Http\Controllers\WebApp\HomeProductController;
 // });  
 
 Route::get('/', [HomeController::class, 'index'])->name('home page');
-Route::get('/product/{id}', [HomeProductController::class, 'viewOne'])->name('view product');
-Route::get('/product/{search}/inquiry', [InquiryController::class, 'index'])->name('inquiry');
+Route::get('/home/product/{id}', [HomeProductController::class, 'viewOne'])->name('view product');
+Route::get('/home/product/{search}/inquiry', [InquiryController::class, 'index'])->name('inquiry');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 

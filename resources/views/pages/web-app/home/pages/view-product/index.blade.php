@@ -4,7 +4,7 @@
     <section>
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="m-2 shadow p-3 mb-5 bg-white rounded">
-                <a href="/product/{{$product->id}}/inquiry">
+                <a href="/home//product/{{$product->id}}/inquiry">
                     <img src="{{asset('storage/' . $product->photo_path) }}"  alt="product">
                 </a>
                 <div class="mt-2">
