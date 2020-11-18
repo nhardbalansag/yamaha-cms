@@ -18,7 +18,7 @@
     </head>
     <body class="antialiased">
         @livewire('home.navigation-bar')
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+        <div class="relative flex items-top justify-center min-h-screen bg-white dark:bg-gray-900 sm:items-center sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -33,7 +33,7 @@
                 </div>
             @endif
             {{--  --}}
-            <div class = "grid grid-cols-1 md:flex w-4/5 m-auto">
+            <div class = "grid grid-cols-1 md:flex w-4/5 m-auto ">
                 {{-- side search --}}
                 @livewire('home.navigation-search')  
                 {{-- end side search --}}

@@ -82,22 +82,30 @@
         </div>
     </div>
 
-    @livewire('admin.product.create-specification', ['product_id' => $product->id])
-
-    @livewire('admin.product.color-category',  ['product_id' => $product->id])
+   
+   
      
     <div class="row mt-4">
         <nav class="w-100">
             <div class="nav nav-tabs" id="product-tab" role="tablist">
             <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Description</a>
             <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">Specification</a>
+             <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-color" role="tab" aria-controls="product-comments" aria-selected="false">Add Colors Variety</a>
+              <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-specification" role="tab" aria-controls="product-comments" aria-selected="false">Add Specification</a>
             </div>
         </nav>
-        <div class="tab-content p-3" id="nav-tabContent">
+        <div class="tab-content p-3 w-full" id="nav-tabContent">
             <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> 
                 {{$product->description}}
             </div>
-            <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab"> Vivamus rhoncus nisl sed venenatis luctus. Sed condimentum risus ut tortor feugiat laoreet. Suspendisse potenti. Donec et finibus sem, ut commodo lectus. Cras eget neque dignissim, placerat orci interdum, venenatis odio. Nulla turpis elit, consequat eu eros ac, consectetur fringilla urna. Duis gravida ex pulvinar mauris ornare, eget porttitor enim vulputate. Mauris hendrerit, massa nec aliquam cursus, ex elit euismod lorem, vehicula rhoncus nisl dui sit amet eros. Nulla turpis lorem, dignissim a sapien eget, ultrices venenatis dolor. Curabitur vel turpis at magna elementum hendrerit vel id dui. Curabitur a ex ullamcorper, ornare velit vel, tincidunt ipsum. 
+            <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab"> 
+            all sepecification
+            </div>
+            <div class="tab-pane fade" id="product-color" role="tabpanel" aria-labelledby="product-comments-tab">  
+                 @livewire('admin.product.color-category',  ['product_id' => $product->id])
+            </div>
+            <div class="tab-pane fade" id="product-specification" role="tabpanel" aria-labelledby="product-comments-tab">  
+                @livewire('admin.product.create-specification', ['product_id' => $product->id])
             </div>
         </div>
     </div>

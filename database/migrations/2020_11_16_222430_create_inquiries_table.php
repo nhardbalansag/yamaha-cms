@@ -26,8 +26,8 @@ class CreateInquiriesTable extends Migration
             $table->char('city', 100);
             $table->char('state_province', 100);
             $table->char('postal', 100);
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->unsigned()
+            $table->integer('productId')->unsigned();
+            $table->foreign('productId')->unsigned()
             ->references('id')->on('products')
             ->onDelete('cascade')
             ->onUpdate('cascade');

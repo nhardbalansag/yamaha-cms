@@ -39,7 +39,7 @@
                                 Description
                             </label>
                             <div class="rounded-md shadow-sm">
-                                <textarea wire:model="description" id="about" rows="3" class="form-textarea mt-1 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="description here"></textarea>
+                                <textarea wire:model="description" id="about" rows="6" class="form-textarea mt-1 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="description here"></textarea>
                             </div>
                              @error('description') <span class="error text-red-600">{{ $message }}</span> @enderror
                             <p class="mt-2 text-sm text-gray-500 ">
@@ -47,9 +47,10 @@
                             </p>
                         </div>
 
-                        <div class="col-span-6 sm:col-span-3">
+                        <div class="col-span-3 sm:col-span-3 w-1/4">
                             <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Country / Region</label>
-                            <select wire:model.prevent ="status" id="country" class="mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                            <select wire:model.prevent ="status" id="country" class="mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out text-xl">
+                                <option >Select Status</option>
                                 <option value = "publish" >Publish</option>
                                 <option value = "pending" >Pending</option>
                             </select>

@@ -21,6 +21,6 @@ class Inquiry extends Model
         'city',
         'state_province',
         'postal',
-        'product_id'
+        'productId'
     ];
 }

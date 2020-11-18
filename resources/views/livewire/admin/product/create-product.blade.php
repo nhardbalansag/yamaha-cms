@@ -77,6 +77,7 @@
                                 <div class="w-1/2 mr-2 mb-4">
                                     <label for="country" class="block text-sm font-medium leading-5 text-gray-700 capitalize">product category</label>
                                     <select wire:model.prevent ="product_category_id" id="country" class="capitalize mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out text-xl">
+                                        <option>Select Category</option>
                                         @forelse($productCategory as $category)
                                             <option class = "capitalize" value = "{{$category->id}}" >{{$category->title}}</option>
                                             @empty
@@ -135,6 +136,7 @@
                                 <div class="col-span-3 sm:col-span-3 w-1/4">
                                     <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Status</label>
                                     <select wire:model.prevent ="status" id="country" class="mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out text-xl">
+                                        <option>Select Status</option>
                                         <option value = "publish" >Publish</option>
                                         <option value = "pending" >Pending</option>
                                     </select>

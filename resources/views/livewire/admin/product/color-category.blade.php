@@ -1,4 +1,4 @@
-<div class=" shadow p-4 m-4 sm:mt-0">
+<div class=" p-4 m-4 sm:mt-0">
     <div class="">
         <div class="md:col-span-1">
             <div class="sm:px-0">

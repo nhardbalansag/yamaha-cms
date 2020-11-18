@@ -3,7 +3,7 @@
     
     <section>
         <div class="grid grid-cols-1 lg:grid-cols-2">
-            <div class="m-2 shadow p-3 mb-5 bg-white rounded">
+            <div class="mx-2 mb-5 bg-white rounded">
                 <a href="/home//product/{{$product->id}}/inquiry">
                     <img src="{{asset('storage/' . $product->photo_path) }}"  alt="product">
                 </a>
@@ -12,17 +12,7 @@
                     <p>SRP: <span>{{$product->price}}</span></p>
                     <div class = "grid grid-cols-1 md:grid-cols-2">
                         <div>
-                            <a href="/home/product/{{$product->id}}/inquiry" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">inquire</a>
-                        </div>
-                        <div class = "flex flex-row justify-around">
-                           <a href="#" class="bg-red-700 rounded-full h-10 w-10 flex items-center justify-center">
-                           </a>
-                            <a href="#" class="bg-blue-700 rounded-full h-10 w-10 flex items-center justify-center">
-                           </a>
-                            <a href="#" class="bg-black rounded-full h-10 w-10 flex items-center justify-center">
-                           </a>
-                            <a href="#" class="bg-gray-700 rounded-full h-10 w-10 flex items-center justify-center">
-                           </a>
+                            <a href="/home/product/{{$product->id}}/inquiry" class="btn btn-outline-primary" role="button" aria-pressed="true">inquire</a>
                         </div>
                     </div>
                 </div>

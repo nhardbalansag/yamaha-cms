@@ -1,4 +1,4 @@
-<div class = "md:w-1/3 shadow-lg p-3 mb-5 bg-white rounded">
+<div class = "md:w-1/3 p-3 mb-5 bg-white rounded">
     <form class="" action = "" method = "">
         <div class="grid grid-cols-1 mb-6">
             <div class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3 mb-3" role="alert">
@@ -9,7 +9,7 @@
                 <label class="block tracking-wide mb-2 text-xl capitalize" for="grid-first-name">
                     keyword
                 </label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Search">
+                <input class="appearance-none block w-full  border rounded py-2 px-2 mb-3 focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Search">
                 <p class="text-red-500 text-lg italic">Please fill out this field.</p>
             </div>
             <div class="w-full px-3 mb-6">
@@ -17,7 +17,7 @@
                     Sort
                 </label>
                 <div class="relative">
-                    <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select class="block appearance-none w-full p-3 border rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                     <option>New Mexico</option>
                     <option>Missouri</option>
                     <option>Texas</option>
@@ -32,7 +32,7 @@
                     order by
                 </label>
                 <div class="relative">
-                    <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select class="block appearance-none w-full border border-gray-200 p-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                     <option>New Mexico</option>
                     <option>Missouri</option>
                     <option>Texas</option>
@@ -47,7 +47,7 @@
                     motocycle type
                 </label>
                 <div class="relative">
-                    <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select class="block appearance-none w-full border p-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                     <option>New Mexico</option>
                     <option>Missouri</option>
                     <option>Texas</option>
@@ -62,7 +62,7 @@
                     category
                 </label>
                 <div class="relative">
-                    <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select class="block appearance-none w-full border p-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                     <option>New Mexico</option>
                     <option>Missouri</option>
                     <option>Texas</option>
@@ -77,7 +77,7 @@
                     model
                 </label>
                 <div class="relative">
-                    <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select class="block appearance-none w-full border p-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                     <option>New Mexico</option>
                     <option>Missouri</option>
                     <option>Texas</option>
@@ -104,12 +104,12 @@
                 <label class="block tracking-wide mb-2 text-xl capitalize" for="grid-first-name">
                     fuel
                 </label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Search">
+                <input class="appearance-none block w-full border p-3 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Search">
                 <p class="text-red-500 text-lg italic">Please fill out this field.</p>
             </div>
         </div>
-        <div class = "text-center">
-            <button type="button" class="btn btn-primary btn-lg">Search product</button>
+        <div class = "text-center ">
+            <button type="button" class="btn btn-outline-primary btn-lg w-full">Search product</button>
         </div>
     </form>
 </div>

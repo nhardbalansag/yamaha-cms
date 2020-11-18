@@ -1,7 +1,7 @@
 
 <section style  = "background-color: #1b3295" class = "bg-black py-4">
   <nav class="navbar navbar-expand-lg navbar-dark lg:container lg:mx-auto">
-    <a class="font-extrabold h1 text-decoration-none text-primary" href="#">YAMAHA</a>
+    <a class="font-extrabold h1 text-decoration-none text-primary" href="/">YAMAHA</a>
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon text-white"></span>
     </button>
@@ -39,6 +39,12 @@
         
         <li class="nav-item active">
           <a class="nav-link font-bold text-xl text-white" href="#" tabindex="-1" aria-disabled="true">Contact Us</a>
+        </li>
+         <li class="nav-item active">
+          <a class="nav-link font-bold text-xl text-white" href="#" tabindex="-1" aria-disabled="true">Register</a>
+        </li>
+         <li class="nav-item active">
+          <a class="nav-link font-bold text-xl text-white" href="#" tabindex="-1" aria-disabled="true">Login</a>
         </li>
       </ul>
     </div>
