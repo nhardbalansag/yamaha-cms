@@ -3,11 +3,11 @@
                 <p class = "font-bold text-4xl capitalize">recommended</p>
             </div>
             <div class="swiper-container">
-                <div class="swiper-wrapper">
+                <div class="swiper-wrapper pb-20">
                     @foreach($recommended as $key => $value)
                         <div class="swiper-slide flex justify-center ">
-                            <div class=" mb-5 w-64 h-full bg-white rounded p-2">
-                                <div class="h-full w-full">
+                            <div class="">
+                                <div class="w-full">
                                     <a href="/home/product/{{$value->id}}">
                                         <img class="w-64 h-48" src="{{asset('storage/' . $value->photo_path) }}"  alt="product photo">
                                     </a>

@@ -50,9 +50,39 @@
     </div>
   </nav>
 </section>
-<div class="jumbotron jumbotron-fluid">
+{{-- <div class="jumbotron jumbotron-fluid bg-dark">
   <div class="container">
-    <h1 class="display-4 capitalize">megavia</h1>
-    <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum enim eligendi voluptas</p>
+    <h1 class="display-4 capitalize text-white">megavia</h1>
+    <p class="lead text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum enim eligendi voluptas</p>
+  </div>
+</div> --}}
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active bg-dark">
+      <div class="container py-4">
+        <h1 class="display-4 capitalize text-white">megavia</h1>
+        <p class="lead text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum enim eligendi voluptas</p>
+      </div>
+    </div>
+    <div class="carousel-item bg-dark">
+      <div class="container py-4">
+        <h1 class="display-4 capitalize text-white">motorcycles</h1>
+        <p class="lead text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum enim eligendi voluptas</p>
+      </div>
+    </div>
+    <div class="carousel-item bg-dark">
+      <div class="container py-4">
+        <h1 class="display-4 capitalize text-white">parts</h1>
+        <p class="lead text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum enim eligendi voluptas</p>
+      </div>
+    </div>
+     <div class="carousel-item bg-dark">
+      <div class="container py-4">
+        <h1 class="display-4 capitalize text-white">mantainance and services</h1>
+        <p class="lead text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum enim eligendi voluptas</p>
+      </div>
+    </div>
+    
   </div>
 </div>
