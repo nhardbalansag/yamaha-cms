@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-
+        $data['recommended'] = Product::where('status', 'publish')->get();
         $data['product'] = Product::where('status', 'publish')->get();
         
         return view('pages.web-app.home.pages.home.index', $data);

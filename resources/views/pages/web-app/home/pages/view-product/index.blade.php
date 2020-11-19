@@ -11,8 +11,11 @@
                     <h5 class="truncate">{{$product->title}}</h5>
                     <p>SRP: <span>{{$product->price}}</span></p>
                     <div class = "grid grid-cols-1 md:grid-cols-2">
-                        <div>
-                            <a href="/home/product/{{$product->id}}/inquiry" class="btn btn-outline-primary" role="button" aria-pressed="true">inquire</a>
+                        <div class="flex justify-between items-center">
+                            <a href="/home/product/{{$product->id}}/inquiry" class="btn btn-outline-primary" role="button" aria-pressed="true">Inquire</a>
+                            <div>
+                               <div class="fb-share-button" data-href="{{url()->current()}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" class="fb-xfbml-parse-ignore">Share</a></div>
+                            </div>
                         </div>
                     </div>
                 </div>
