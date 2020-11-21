@@ -12,7 +12,7 @@
                     <p>SRP: <span>{{$product->price}}</span></p>
                     <div class = "grid grid-cols-1 md:grid-cols-2">
                         <div class="flex justify-between items-center">
-                            <a href="/home/product/{{$product->id}}/inquiry" class="btn btn-outline-primary" role="button" aria-pressed="true">Inquire</a>
+                            <a href="/home/product/{{$product->id}}/inquiry" class="btn btn-outline-primary" role="button" aria-pressed="true">sdfsfsdfsfssfdsfsffsfsf</a>
                             <div>
                             {{--  --}}
                                 <div class="d-flex justify-content-end">
