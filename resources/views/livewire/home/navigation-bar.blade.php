@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse ml-8 " id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto ">
         <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle font-bold text-xl text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-xl text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Model
             </a>
             <div class="dropdown-menu w-full" aria-labelledby="navbarDropdown">
@@ -20,7 +20,7 @@
             </div>
           </li>
           <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle font-bold text-xl text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-xl text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Promos
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -31,20 +31,20 @@
           </div>
         </li>
         <li class="nav-item active">
-          <a class="nav-link font-bold text-xl text-white" href="#">Service <span class="sr-only">(current)</span></a>
+          <a class="nav-link text-xl text-white" href="#">Service <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link font-bold text-xl text-white" href="#">Parts</a>
+          <a class="nav-link text-xl text-white" href="#">Parts</a>
         </li>
         
         <li class="nav-item active">
-          <a class="nav-link font-bold text-xl text-white" href="#" tabindex="-1" aria-disabled="true">Contact Us</a>
+          <a class="nav-link text-xl text-white" href="#" tabindex="-1" aria-disabled="true">Contact Us</a>
         </li>
          <li class="nav-item active">
-          <a class="nav-link font-bold text-xl text-white" href="#" tabindex="-1" aria-disabled="true">Register</a>
+          <a class="nav-link text-xl text-white" href="/user/register" tabindex="-1" aria-disabled="true">Register</a>
         </li>
          <li class="nav-item active">
-          <a class="nav-link font-bold text-xl text-white" href="#" tabindex="-1" aria-disabled="true">Login</a>
+          <a class="nav-link text-xl text-white" href="/user/login" tabindex="-1" aria-disabled="true">Login</a>
         </li>
       </ul>
     </div>

@@ -22,15 +22,35 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'middle_name' => ['required', 'string', 'max:255'],
+            'home_address' => ['required', 'string', 'max:255'],
+            'street_address' => ['required', 'string', 'max:255'],
+            'country_region' => ['required', 'string', 'max:255'],
+            'contact_number' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'state_province' => ['required', 'string', 'max:255'],
+            'postal' => ['required', 'string', 'max:255'],
+            // 'account_type' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
         ])->validate();
 
         return DB::transaction(function () use ($input) {
             return tap(User::create([
-                'name' => $input['name'],
-                'email' => $input['email'],
+                'first_name' => $input['first_name'],
+                'last_name' => $input['last_name'],
+                'middle_name' => $input['middle_name'],
+                'home_address' => $input['home_address'],
+                'street_address' => $input['street_address'],
+                'country_region' => $input['country_region'],
+                'contact_number' => $input['contact_number'],
+                'city' => $input['city'],
+                'state_province' => $input['state_province'],
+                'postal' => $input['postal'],
+                'account_type' => "admin",
+                'email' => $input['email'], 
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
                 $this->createTeam($user);

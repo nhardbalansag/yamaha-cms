@@ -8,10 +8,62 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
+            {{-- first name --}}
+             <div>
+                <x-jet-label for="first_name" value="{{ __('First name') }}" />
+                <x-jet-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
+            </div>
+            {{-- last name --}}
             <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-label for="name" value="{{ __('Last name') }}" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
+            </div>
+            {{-- middle name --}}
+             <div>
+                <x-jet-label for="middle_name" value="{{ __('Name') }}" />
+                <x-jet-input id="middle_name" class="block mt-1 w-full" type="text" name="middle_name" :value="old('middle_name')" required autofocus autocomplete="middle_name" />
+            </div>
+
+            {{-- home address --}}
+             <div>
+                <x-jet-label for="home_address" value="{{ __('home address') }}" />
+                <x-jet-input id="home_address" class="block mt-1 w-full" type="text" name="home_address" :value="old('home_address')" required autofocus autocomplete="home_address" />
+            </div>
+
+            {{-- street address --}}
+             <div>
+                <x-jet-label for="street_address" value="{{ __('street address') }}" />
+                <x-jet-input id="street_address" class="block mt-1 w-full" type="text" name="street_address" :value="old('street_address')" required autofocus autocomplete="street_address" />
+            </div>
+
+            {{-- country --}}
+             <div>
+                <x-jet-label for="country_region" value="{{ __('country/region') }}" />
+                <x-jet-input id="country_region" class="block mt-1 w-full" type="text" name="country_region" :value="old('country_region')" required autofocus autocomplete="country_region" />
+            </div>
+
+            {{-- contact_number  --}}
+             <div>
+                <x-jet-label for="contact_number" value="{{ __('contact number') }}" />
+                <x-jet-input id="contact_number" class="block mt-1 w-full" type="text" name="contact_number" :value="old('contact_number')" required autofocus autocomplete="contact_number" />
+            </div>
+
+            {{-- city  --}}
+             <div>
+                <x-jet-label for="city" value="{{ __('city') }}" />
+                <x-jet-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')" required autofocus autocomplete="city" />
+            </div>
+
+            {{-- province  --}}
+             <div>
+                <x-jet-label for="state_province" value="{{ __('state province') }}" />
+                <x-jet-input id="state_province" class="block mt-1 w-full" type="text" name="state_province" :value="old('state_province')" required autofocus autocomplete="state_province" />
+            </div>
+
+            {{-- postal  --}}
+            <div>
+                <x-jet-label for="postal" value="{{ __('postal') }}" />
+                <x-jet-input id="postal" class="block mt-1 w-full" type="text" name="postal" :value="old('postal')" required autofocus autocomplete="postal" />
             </div>
 
             <div class="mt-4">
