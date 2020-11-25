@@ -27,6 +27,7 @@ class SendInquiry extends Mailable
         $this->email_address = $emailType == "inquiry" ? $productData['allusersData']['email_address']: $productData['email'];
         $this->dataContent['userInfo'] = $this->first_name ." " . $this->middle_name . " " . $this->last_name;
         $this->dataContent['productInfo'] = $productData;
+        $emailType == "inquiry" ? $this->dataContent['dataCount'] = count($this->dataContent['productInfo']['specification']) : "";
         $this->emailType = $emailType;
        
     }

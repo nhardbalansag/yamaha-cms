@@ -25,8 +25,9 @@ class CreateUsersTable extends Migration
             $table->char('city', 100);
             $table->char('state_province', 100);
             $table->char('postal', 100);
-            $table->char('account_type', 50);
-            // $table->string('name');
+            // $table->char('account_type', 50);
+            $table->char('role', 50);
+            $table->boolean('verified');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
