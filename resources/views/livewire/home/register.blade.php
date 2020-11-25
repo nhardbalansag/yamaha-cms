@@ -12,103 +12,93 @@
                     </div>
                 @endif
             </div>
-            <form wire:submit.prevent="createEndUserRegistration">
-                <div class="overflow-hidden sm:rounded-md">
-                <div class="px-4 py-5 bg-white sm:p-6">
-                    <div class="">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-4">
-                            <div class="">
-                                <label for="email" class="block text-sm font-medium leading-5 text-gray-700">Email address</label>
-                                <input wire:model='email' id="email" class="p-2 border-solid border-1 border-gray-600  mt-1 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                                @error('email') <span class="error text-red-600">{{ $message }}</span> @enderror
-                            </div>
-                            <div class="">
-                                <label for="email_address" class="block text-sm font-medium leading-5 text-gray-700">Contact Number</label>
-                                <input  wire:model='contact_number' id="email_address" class="p-2 border-solid border-1 border-gray-600  mt-1 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                                @error('contact_number') <span class="error text-red-600">{{ $message }}</span> @enderror
-                            </div>
-                        </div>
-
-                       <div class="grid grid-cols-1 md:grid-cols-3 gap-2  mb-4">
-                            <div class="">
-                                <label for="first_name" class="block text-sm font-medium leading-5 text-gray-700">First name</label>
-                                <input wire:model='first_name' id="first_name" class="p-2 border-solid border-1 border-gray-600 mt-1 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                                    @error('first_name') <span class="error text-red-600">{{ $message }}</span> @enderror
-                            </div>
-
-                            <div class="">
-                                <label  for="last_name" class="block text-sm font-medium leading-5 text-gray-700">Last name</label>
-                                <input  wire:model='last_name'  id="last_name" class="p-2 border-solid border-1 border-gray-600 mt-1 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                                    @error('last_name') <span class="error text-red-600">{{ $message }}</span> @enderror
-                            </div>
-
-                            <div class="">
-                                <label for="last_name" class="block text-sm font-medium leading-5 text-gray-700">Middle name</label>
-                                <input wire:model='middle_name' id="last_name" class="p-2 border-solid border-1 border-gray-600 mt-1 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                                    @error('middle_name') <span class="error text-red-600">{{ $message }}</span> @enderror
-                            </div>
-                       </div>
-
-                        <div class="col-span-6">
-                        <label for="email_address" class="block text-sm font-medium leading-5 text-gray-700">Address</label>
-                        <input wire:model='home_address' id="email_address" class="p-2 border-solid border-1 border-gray-600  mt-1 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                        @error('home_address') <span class="error text-red-600">{{ $message }}</span> @enderror
+                <x-jet-validation-errors class="mb-4" />
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+                    <x-jet-input id="url" class=" mt-1 w-ful    l hidden" type="text" name="url" :value="url()->current()"  autofocus autocomplete="url" />
+                    {{-- first name --}}
+                    <div>
+                        <x-jet-label for="first_name" value="{{ __('First name') }}" />
+                        <x-jet-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
+                    </div>
+                    {{-- last name --}}
+                    <div>
+                        <x-jet-label for="name" value="{{ __('Last name') }}" />
+                        <x-jet-input id="name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
+                    </div>
+                    {{-- middle name --}}
+                    <div>
+                        <x-jet-label for="middle_name" value="{{ __('Middle name') }}" />
+                        <x-jet-input id="middle_name" class="block mt-1 w-full" type="text" name="middle_name" :value="old('middle_name')" required autofocus autocomplete="middle_name" />
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2  mt-4">
-                        {{--  --}}
-                        <div class="">
-                            <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Country / Region</label>
-                            <select wire:model='country_region' id="country" class="p-2 border-solid border-1 border-gray-600 mt-1 block form-select w-full py-2 px-3 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                            <option>United States</option>
-                            <option>Canada</option>
-                            <option>Mexico</option>
-                            </select>
-                                @error('country_region') <span class="error text-red-600">{{ $message }}</span> @enderror
-                        </div>
-                            
-
-
-                        <div class="">
-                            <label for="street_address" class="block text-sm font-medium leading-5 text-gray-700">Street address</label>
-                            <input  wire:model='street_address' id="street_address" class="p-2 border-solid border-1 border-gray-600 mt-1 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                                @error('street_address') <span class="error text-red-600">{{ $message }}</span> @enderror
-                        </div>
-
-                        <div class="">
-                            <label for="city" class="block text-sm font-medium leading-5 text-gray-700">City</label>
-                            <input wire:model='city' id="city" class="p-2 border-solid border-1 border-gray-600 mt-1 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                                @error('city') <span class="error text-red-600">{{ $message }}</span> @enderror
-                        </div>
-
-                        <div class="">
-                            <label for="state" class="block text-sm font-medium leading-5 text-gray-700">State / Province</label>
-                            <input wire:model='state_province' id="state" class="p-2 border-solid border-1 border-gray-600 mt-1 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                            @error('state_province') <span class="error text-red-600">{{ $message }}</span> @enderror
-                        </div>
-                        <div class="">
-                            <label for="postal_code" class="block text-sm font-medium leading-5 text-gray-700">ZIP / Postal</label>
-                            <input wire:model='postal' id="postal_code" class="p-2 border-solid border-1 border-gray-600 mt-1 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                            @error('postal') <span class="error text-red-600">{{ $message }}</span> @enderror
-                        </div>
-                       
-                        {{--  --}}
+                    {{-- home address --}}
+                    <div>
+                        <x-jet-label for="home_address" value="{{ __('home address') }}" />
+                        <x-jet-input id="home_address" class="block mt-1 w-full" type="text" name="home_address" :value="old('home_address')" required autofocus autocomplete="home_address" />
                     </div>
-                     <div class="w-1/4">
-                        <label for="password" class="block text-sm font-medium leading-5 text-gray-700">Password</label>
-                        <input wire:model='password' id="password" type="password" class="p-2 border-solid border-1 border-gray-600  mt-1 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                        @error('password') <span class="error text-red-600">{{ $message }}</span> @enderror
+
+                    {{-- street address --}}
+                    <div>
+                        <x-jet-label for="street_address" value="{{ __('street address') }}" />
+                        <x-jet-input id="street_address" class="block mt-1 w-full" type="text" name="street_address" :value="old('street_address')" required autofocus autocomplete="street_address" />
                     </div>
-                    
+
+                    {{-- country --}}
+                    <div>
+                        <x-jet-label for="country_region" value="{{ __('country/region') }}" />
+                        <x-jet-input id="country_region" class="block mt-1 w-full" type="text" name="country_region" :value="old('country_region')" required autofocus autocomplete="country_region" />
                     </div>
-                </div>
-                <div class="px-4 py-3 bg-gray-50 text-left sm:px-6 ">
-                    <button type="submit" class="btn  btn-outline-primary">
-                    Create account
-                    </button>
-                </div>
-                </div>
-            </form>
+
+                    {{-- contact_number  --}}
+                    <div>
+                        <x-jet-label for="contact_number" value="{{ __('contact number') }}" />
+                        <x-jet-input id="contact_number" class="block mt-1 w-full" type="text" name="contact_number" :value="old('contact_number')" required autofocus autocomplete="contact_number" />
+                    </div>
+
+                    {{-- city  --}}
+                    <div>
+                        <x-jet-label for="city" value="{{ __('city') }}" />
+                        <x-jet-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')" required autofocus autocomplete="city" />
+                    </div>
+
+                    {{-- province  --}}
+                    <div>
+                        <x-jet-label for="state_province" value="{{ __('state province') }}" />
+                        <x-jet-input id="state_province" class="block mt-1 w-full" type="text" name="state_province" :value="old('state_province')" required autofocus autocomplete="state_province" />
+                    </div>
+
+                    {{-- postal  --}}
+                    <div>
+                        <x-jet-label for="postal" value="{{ __('postal') }}" />
+                        <x-jet-input id="postal" class="block mt-1 w-full" type="text" name="postal" :value="old('postal')" required autofocus autocomplete="postal" />
+                    </div>
+
+                    <div class="mt-4">
+                        <x-jet-label for="email" value="{{ __('Email') }}" />
+                        <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                    </div>
+
+                    <div class="mt-4">
+                        <x-jet-label for="password" value="{{ __('Password') }}" />
+                        <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                    </div>
+
+                    <div class="mt-4">
+                        <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                        <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                    </div>
+
+                    <div class="flex items-center justify-end mt-4">
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                            {{ __('Already registered?') }}
+                        </a>
+
+                        <x-jet-button class="ml-4">
+                            {{ __('Register') }}
+                        </x-jet-button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>

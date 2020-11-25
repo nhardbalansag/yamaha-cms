@@ -8,6 +8,7 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
+             <x-jet-input id="url" class=" mt-1 w-full hidden" type="text" name="url" :value="url()->current()"  autofocus autocomplete="url" />
             {{-- first name --}}
              <div>
                 <x-jet-label for="first_name" value="{{ __('First name') }}" />
@@ -20,7 +21,7 @@
             </div>
             {{-- middle name --}}
              <div>
-                <x-jet-label for="middle_name" value="{{ __('Name') }}" />
+                <x-jet-label for="middle_name" value="{{ __('Middle name') }}" />
                 <x-jet-input id="middle_name" class="block mt-1 w-full" type="text" name="middle_name" :value="old('middle_name')" required autofocus autocomplete="middle_name" />
             </div>
 

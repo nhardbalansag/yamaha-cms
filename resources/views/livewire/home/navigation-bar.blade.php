@@ -40,12 +40,36 @@
         <li class="nav-item active">
           <a class="nav-link text-xl text-white" href="#" tabindex="-1" aria-disabled="true">Contact Us</a>
         </li>
-         <li class="nav-item active">
-          <a class="nav-link text-xl text-white" href="/user/register" tabindex="-1" aria-disabled="true">Register</a>
-        </li>
-         <li class="nav-item active">
-          <a class="nav-link text-xl text-white" href="/user/login" tabindex="-1" aria-disabled="true">Login</a>
-        </li>
+        @auth
+          @if(Auth::user()->role === "admin")
+            <li class="nav-item active">
+              <a class="nav-link text-xl text-white" href="/dashboard" tabindex="-1" aria-disabled="true">Dashboard</a>
+            </li>
+          @elseif(Auth::user()->role === "customer"){
+            <li class="nav-item active">
+              <a class="nav-link text-xl text-white" href="" tabindex="-1" aria-disabled="true">My Account</a>
+            </li>
+          }
+          @endif
+            
+            <li class="nav-item active">
+             <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <a  class="nav-link text-xl text-white" aria-disabled="true" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                    {{ __('Logout') }}
+                </a>
+              </form>
+            </li>
+        @else
+          <li class="nav-item active">
+            <a class="nav-link text-xl text-white" href="/customer/register" tabindex="-1" aria-disabled="true">Register</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-xl text-white" href="/customer/login" tabindex="-1" aria-disabled="true">Login</a>
+          </li>
+        @endif
       </ul>
     </div>
   </nav>

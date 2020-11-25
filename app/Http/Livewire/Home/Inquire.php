@@ -50,7 +50,7 @@ class Inquire extends Component
             SELECT product_specifications.title as title, product_specifications.description as description
             FROM product_specifications, products
             WHERE (product_specifications.status = "publish") AND (product_specifications.product_id = ' .$this->productId . ')
-           ');
+            GROUP BY product_specifications.title, product_specifications.description');
 
         Mail::send(new \App\Mail\SendInquiry($this->emailType, $productData));
 

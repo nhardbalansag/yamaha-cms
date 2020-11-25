@@ -30,22 +30,31 @@ Route::get('/', [HomeController::class, 'index'])->name('home page');
 Route::get('/home/product/{id}', [HomeProductController::class, 'viewOne'])->name('view product');
 Route::get('/home/product/{search}/inquiry', [InquiryController::class, 'index'])->name('inquiry');
 
-Route::get('/user/login', [LoginRegisterController::class, 'login'])->name('user login');
-Route::get('/user/register', [LoginRegisterController::class, 'register'])->name('user register');
+Route::get('/customer/login', [LoginRegisterController::class, 'login'])->name('user login');
+Route::get('/customer/register', [LoginRegisterController::class, 'register'])->name('user register');
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-    Route::get('/dashboard',  [Dashboard::class, 'index'])->name('dashboard');
+Route::middleware('auth')->group(function(){
+    Route::middleware('user:Customer')->group(function(){
+        Route::get('/home', [HomeController::class, 'index'])->name('home page');
+    });
+});
 
-    Route::get('/product',  [ProductController::class, 'productIndex'])->name('product index');
-    Route::get('/product/create',  [ProductController::class, 'index'])->name('product');
-    Route::get('/product/all',  [ProductController::class, 'viewAll'])->name('view all product');
-    Route::get('/product/view/{id}', [ProductController::class, 'viewOne'])->name('view one product');
+Route::middleware('auth')->group(function(){
+    Route::middleware('user:Admin')->group(function(){
+        
+        Route::get('/dashboard',  [Dashboard::class, 'index'])->name('dashboard');
 
-    Route::get('/product/createCategory',  [ProductCategoryController::class, 'index'])->name('product category');
+        Route::get('/product',  [ProductController::class, 'productIndex'])->name('product index');
+        Route::get('/product/create',  [ProductController::class, 'index'])->name('product');
+        Route::get('/product/all',  [ProductController::class, 'viewAll'])->name('view all product');
+        Route::get('/product/view/{id}', [ProductController::class, 'viewOne'])->name('view one product');
 
-    Route::get('/product/specificationCategory/create',  [Specification::class, 'index'])->name('specification category');
+        Route::get('/product/createCategory',  [ProductCategoryController::class, 'index'])->name('product category');
 
+        Route::get('/product/specificationCategory/create',  [Specification::class, 'index'])->name('specification category');
+
+    });
 });
 
 

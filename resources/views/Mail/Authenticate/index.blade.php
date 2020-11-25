@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
     <title>yamaha megavia capstone</title>
     <style>
     	.button {
@@ -28,31 +28,30 @@
             margin: 20px;
         }
     </style>
-</head>
-<body>
-    <div style = "border: 1px solid gray: padding: 5px: border-radius: 5px">
-    	<div class="box">
-        <center><h1 style ="color:blue; text-transform: capitalize">yamaha megavia capstone</h1></center>
-        <h3>{{$userInfo}}</h3>
-        <div class="just">
-        <div>
-            <p>You registered an account on customer's Yamaha Website, before being able to use your account you need to verify that this is your email address by clicking the button below.</p>
+    </head>
+    <body>
+        <div style = "border: 1px solid gray: padding: 5px: border-radius: 5px">
+            <div class="box">
+                <center>
+                    <h1 style ="color:blue; text-transform: capitalize">yamaha megavia capstone</h1>
+                </center>
+                <h3>{{$userInfo}}</h3>
+                <div class="just">
+                    <div>
+                        <p>You registered an account on customer's Yamaha Website, before being able to use your account you need to verify that this is your email address by clicking the button below.</p>
+                    </div>
+                    <div>  	
+                        <center>
+                            <a href="#" class="button">Confirm Email</a>
+                        <center>
+                    </div>
+                    <p>And if not, ignore this message.</p>
+                    <p>Thank you!</p>
+                    <center>
+                        <p>'Copyright 2020 | All Rights Reserved | Powered by capstone project'</p>
+                    </center>
+                </div>
+            </div>
         </div>
-        <div>  	
-        	<center><a href="#" class="button">Confirm Email</a><center>
-        </div>
-
-       <p>And if not, ignore this message.</p>
-
-         <p>Thank you!</p>
-		<center><p>
-        'Copyright 2020 | All Rights Reserved | Powered by capstone project'
-		</p></center>
-    
-   
-     </div>
-    </div>
-</div>
-
-</body> 
+    </body> 
 </html>
