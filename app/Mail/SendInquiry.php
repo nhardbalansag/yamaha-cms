@@ -20,7 +20,7 @@ class SendInquiry extends Mailable
      * @return void
      */
     public function __construct($emailType, $productData)
-    {   
+    { 
         $this->first_name = $emailType == "inquiry" ? $productData['allusersData']['first_name'] : $productData['first_name'];  
         $this->last_name = $emailType == "inquiry" ? $productData['allusersData']['last_name'] : $productData['last_name'];
         $this->middle_name = $emailType == "inquiry" ?  $productData['allusersData']['middle_name'] : $productData['middle_name']; 

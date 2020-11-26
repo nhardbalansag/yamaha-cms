@@ -31,8 +31,10 @@ class Account extends Controller
     public function verify($id){
         
         $affected = DB::table('users')
-                    ->where('id', $id)
+                    ->where('email', $id)
                     ->update(['verified' => true]);
-        
+
+                    return redirect('/home');
     }
+
 }

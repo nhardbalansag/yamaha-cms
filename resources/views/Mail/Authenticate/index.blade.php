@@ -42,7 +42,7 @@
                     </div>
                     <div>  	
                         <center>
-                            <a href="#" class="button">Confirm Email</a>
+                            <a href="http://yamaha-cms.test/account/verify/{{$productInfo['email']}}">ciick here to confirm email</a>
                         <center>
                     </div>
                     <p>And if not, ignore this message.</p>
