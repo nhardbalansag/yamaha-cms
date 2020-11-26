@@ -45,11 +45,10 @@
             <li class="nav-item active">
               <a class="nav-link text-xl text-white" href="/dashboard" tabindex="-1" aria-disabled="true">Dashboard</a>
             </li>
-          @elseif(Auth::user()->role === "customer"){
+          @elseif(Auth::user()->role === "customer")
             <li class="nav-item active">
-              <a class="nav-link text-xl text-white" href="" tabindex="-1" aria-disabled="true">My Account</a>
+              <a class="nav-link text-xl text-white" href="/my-account/{{Auth::user()->id}}" tabindex="-1" aria-disabled="true">My Account</a>
             </li>
-          }
           @endif
             
             <li class="nav-item active">

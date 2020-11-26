@@ -10,6 +10,7 @@ use App\Http\Controllers\WebApp\HomeController;
 use App\Http\Controllers\WebApp\InquiryController;
 use App\Http\Controllers\WebApp\HomeProductController;
 use App\Http\Controllers\WebApp\LoginRegisterController;
+use App\Http\Controllers\Customer\Account;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,13 @@ Route::middleware('auth')->group(function(){
     Route::middleware('user:Customer')->group(function(){
         Route::get('/home', [HomeController::class, 'index'])->name('home page');
     });
+});
+
+Route::middleware('auth')->group(function(){
+    Route::get('/my-account/{id}', [Account::class, 'index'])->name('my account');
+    Route::get('/my-account/loan/application', [Account::class, 'loanApplication']);
+    Route::get('/my-account/order/payment', [Account::class, 'payment']);
+    Route::get('/my-account/services/reservation', [Account::class, 'reservation']);
 });
 
 Route::middleware('auth')->group(function(){
