@@ -5,10 +5,13 @@ namespace App\Http\Livewire\Home;
 use Livewire\Component;
 use App\Models\Admin\Products\Product;
 use App\Models\Users\Inquiry;
-
+use Illuminate\Support\Facades\DB;
+use Mail;
 
 class Inquire extends Component
-{
+{   
+    protected $emailType = "inquiry";
+    
     public $productId, $first_name, $last_name, $middle_name, $email_address, $home_address, $street_address, $country_region, $contact_number, $city, $state_province, $postal;
 
     public $data = [
@@ -30,6 +33,8 @@ class Inquire extends Component
 
         $data['product'] = Product::where('id', $this->productId)->first();
 
+        
+
         return view('livewire.home.inquire', $data);
     }// end of function
 
@@ -38,6 +43,16 @@ class Inquire extends Component
 
         $validatedData = $this->validate($this->data);
         Inquiry::create($validatedData);
+
+        $productData['allusersData'] =  $validatedData;
+        $productData['product'] = Product::where('id', $this->productId)->first();
+        $productData['specification'] = DB::select('
+            SELECT product_specifications.title as title, product_specifications.description as description
+            FROM product_specifications, products
+            WHERE (product_specifications.status = "publish") AND (product_specifications.product_id = ' .$this->productId . ')
+            GROUP BY product_specifications.title, product_specifications.description');
+
+        Mail::send(new \App\Mail\SendInquiry($this->emailType, $productData));
 
         session()->flash('message', 'your inquiry sends succesfully');
         return redirect()->to('/home/product/' . $this->productId . '/inquiry');

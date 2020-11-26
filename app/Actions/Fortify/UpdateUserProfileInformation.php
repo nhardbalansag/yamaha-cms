@@ -19,7 +19,17 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     public function update($user, array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'middle_name' => ['required', 'string', 'max:255'],
+            'home_address' => ['required', 'string', 'max:255'],
+            'street_address' => ['required', 'string', 'max:255'],
+            'country_region' => ['required', 'string', 'max:255'],
+            'contact_number' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'state_province' => ['required', 'string', 'max:255'],
+            'postal' => ['required', 'string', 'max:255'],
+            'account_type' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'image', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
@@ -33,7 +43,18 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $this->updateVerifiedUser($user, $input);
         } else {
             $user->forceFill([
-                'name' => $input['name'],
+                'first_name' => $input['first_name'],
+                'last_name' => $input['last_name'],
+                'middle_name' => $input['middle_name'],
+                'home_address' => $input['home_address'],
+                'street_address' => $input['street_address'],
+                'country_region' => $input['country_region'],
+                'contact_number' => $input['contact_number'],
+                'city' => $input['city'],
+                'verified' => true,
+                'state_province' => $input['state_province'],
+                'postal' => $input['postal'],
+                'account_type' => $input['account_type'],
                 'email' => $input['email'],
             ])->save();
         }
@@ -49,7 +70,18 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     protected function updateVerifiedUser($user, array $input)
     {
         $user->forceFill([
-            'name' => $input['name'],
+            'first_name' => $input['first_name'],
+            'last_name' => $input['last_name'],
+            'middle_name' => $input['middle_name'],
+            'home_address' => $input['home_address'],
+            'street_address' => $input['street_address'],
+            'country_region' => $input['country_region'],
+            'contact_number' => $input['contact_number'],
+            'city' => $input['city'],
+            'state_province' => $input['state_province'],
+            'postal' => $input['postal'],
+            'verified' => true,
+            'account_type' => $input['account_type'],
             'email' => $input['email'],
             'email_verified_at' => null,
         ])->save();

@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\Product\Color;
 use App\Http\Controllers\WebApp\HomeController;
 use App\Http\Controllers\WebApp\InquiryController;
 use App\Http\Controllers\WebApp\HomeProductController;
+use App\Http\Controllers\WebApp\LoginRegisterController;
+use App\Http\Controllers\Customer\Account;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,19 +31,38 @@ Route::get('/', [HomeController::class, 'index'])->name('home page');
 Route::get('/home/product/{id}', [HomeProductController::class, 'viewOne'])->name('view product');
 Route::get('/home/product/{search}/inquiry', [InquiryController::class, 'index'])->name('inquiry');
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+Route::get('/customer/login', [LoginRegisterController::class, 'login'])->name('user login');
+Route::get('/customer/register', [LoginRegisterController::class, 'register'])->name('user register');
+Route::get('/account/verify/{id}', [Account::class, 'verify']);
 
-    Route::get('/dashboard',  [Dashboard::class, 'index'])->name('dashboard');
+Route::middleware('auth')->group(function(){
+    Route::middleware('user:Customer')->group(function(){
+        Route::get('/home', [HomeController::class, 'index'])->name('home page');
+    });
+});
 
-    Route::get('/product',  [ProductController::class, 'productIndex'])->name('product index');
-    Route::get('/product/create',  [ProductController::class, 'index'])->name('product');
-    Route::get('/product/all',  [ProductController::class, 'viewAll'])->name('view all product');
-    Route::get('/product/view/{id}', [ProductController::class, 'viewOne'])->name('view one product');
+Route::middleware('auth')->group(function(){
+    Route::get('/my-account/{id}', [Account::class, 'index'])->name('my account');
+    Route::get('/my-account/loan/application', [Account::class, 'loanApplication']);
+    Route::get('/my-account/order/payment', [Account::class, 'payment']);
+    Route::get('/my-account/services/reservation', [Account::class, 'reservation']);
+});
 
-    Route::get('/product/createCategory',  [ProductCategoryController::class, 'index'])->name('product category');
+Route::middleware('auth')->group(function(){
+    Route::middleware('user:Admin')->group(function(){
+        
+        Route::get('/dashboard',  [Dashboard::class, 'index'])->name('dashboard');
 
-    Route::get('/product/specificationCategory/create',  [Specification::class, 'index'])->name('specification category');
+        Route::get('/product',  [ProductController::class, 'productIndex'])->name('product index');
+        Route::get('/product/create',  [ProductController::class, 'index'])->name('product');
+        Route::get('/product/all',  [ProductController::class, 'viewAll'])->name('view all product');
+        Route::get('/product/view/{id}', [ProductController::class, 'viewOne'])->name('view one product');
 
+        Route::get('/product/createCategory',  [ProductCategoryController::class, 'index'])->name('product category');
+
+        Route::get('/product/specificationCategory/create',  [Specification::class, 'index'])->name('specification category');
+
+    });
 });
 
 
