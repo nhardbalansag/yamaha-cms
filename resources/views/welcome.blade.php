@@ -20,10 +20,12 @@
         <!-- Styles -->
     </head>
     <body class="antialiased">
+    <!-- Load Facebook SDK for JavaScript -->
+
         @livewire('home.navigation-bar')
-        <div class="relative flex items-top justify-center min-h-screen bg-white dark:bg-gray-900 sm:items-center sm:pt-0">
+        <div class="relative flex justify-center min-h-screen bg-white items-top dark:bg-gray-900 sm:items-center sm:pt-0">
             {{-- @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                <div class="fixed top-0 right-0 hidden px-6 py-4 sm:block">
                     @auth
                         @if(Auth::user()->role === 'admin')
                             <a href="{{ url('/dashboard') }}" class="text-xl text-gray-700 underline">Dashboard</a>
@@ -32,11 +34,11 @@
                 </div>
             @endif --}}
             {{--  --}}
-            <div class = "grid grid-cols-1 md:flex w-4/5 m-auto ">
+            <div class = "grid w-4/5 grid-cols-1 m-auto md:flex ">
                 {{-- side search --}}
                 @livewire('home.navigation-search')  
                 {{-- end side search --}}
-                <div class = "p-4 w-full md:w-4/5"> 
+                <div class = "w-full p-4 md:w-4/5"> 
                     {{-- top sort --}}
                         @livewire('home.top-sort')  
                     {{-- end top sort --}}
@@ -59,5 +61,36 @@
     
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="ufOIooEq"></script>
+
+
+
+              <div id="fb-root"></div>
+                <script>
+                    window.fbAsyncInit = function() {
+                    FB.init({
+                        xfbml            : true,
+                        version          : 'v9.0'
+                    });
+                    };
+
+                    (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+                </script>
+
+                <!-- Your Chat Plugin code -->
+                <div class="fb-customerchat"
+                    attribution=setup_tool
+                    page_id="105158801438012"
+                    theme_color="#20cef5"
+                    logged_in_greeting="Hi! How can we help you this is only for capstone project"
+                    logged_out_greeting="Hi! How can we help you this is only for capstone project">
+                </div>
+                
     </body>
+
 </html>

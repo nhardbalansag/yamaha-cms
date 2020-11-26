@@ -27,4 +27,14 @@ class Account extends Controller
     public function reservation(){
         return view('pages.client.pages.reservation');
     }
+
+    public function verify($id){
+        
+        $affected = DB::table('users')
+                    ->where('email', $id)
+                    ->update(['verified' => true]);
+
+                    return redirect('/home');
+    }
+
 }
