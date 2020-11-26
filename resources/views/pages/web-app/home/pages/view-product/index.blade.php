@@ -4,15 +4,38 @@
     <section>
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="mx-2 mb-5 bg-white rounded">
-                <a href="/home//product/{{$product->id}}/inquiry">
+                <a href="">
                     <img src="{{asset('storage/' . $product->photo_path) }}"  alt="product">
                 </a>
                 <div class="mt-2">
                     <h5 class="truncate">{{$product->title}}</h5>
                     <p>SRP: <span>{{$product->price}}</span></p>
-                    <div class = "grid grid-cols-1 md:grid-cols-2">
+                    <div class = "grid grid-cols-1 md:grid-cols-3">
                         <div class="flex justify-between items-center">
                             <a href="/home/product/{{$product->id}}/inquiry" class="btn btn-outline-primary" role="button" aria-pressed="true">Inquire</a>
+                            <div class="btn-lg btn-block">
+                                    <a href='{{Auth::user() ? (($category[0]->title == 'parts' ? '/my-account/order/payment' : ($category[0]->title == 'motorcycle' ? '/my-account/loan/application' : ($category[0]->title == 'services' ? '/my-account/services/reservation' : '/my-account/services/reservation'))))  : "/customer/login"}}' class="btn btn-outline-primary  d-flex flex-row justify-content-between" role="button" aria-pressed="true">
+                                    <span>
+                                        @if($category[0]->title === 'parts')
+                                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                            </svg>
+                                        @elseif($category[0]->title == 'motorcycle')
+                                             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                            </svg>
+                                        @elseif($category[0]->title == 'service')
+                                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                            </svg>
+                                        @endif
+                                       
+                                    </span>
+                                    <span class="text-uppercase">
+                                        {{($category[0]->title == 'motorcycle') ? 'apply' : ($category[0]->title == 'services' ? 'reserve' : ($category[0]->title == 'parts' ? 'order' : 'apply'))  }}
+                                    </span>
+                                </a>
+                            </div>
                             <div>
                             {{--  --}}
                                 <div class="d-flex justify-content-end">
@@ -106,6 +129,7 @@
                                 </div>
                             {{--  --}}
                             </div>
+                            
                         </div>
                     </div>
                 </div>

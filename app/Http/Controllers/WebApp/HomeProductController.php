@@ -21,7 +21,12 @@ class HomeProductController extends Controller
             FROM product_specifications, products
             WHERE (product_specifications.status = "publish") AND (product_specifications.product_id = ' . $id . ')
            ');
-        
+
+        $data['category'] = DB::select('SELECT product_categories.title
+                                        FROM product_categories, products
+                                        WHERE product_categories.id = ' . $data['product']->product_category_id .
+                                        ' GROUP BY product_categories.title' );
+       
         return view('pages.web-app.home.pages.view-product.index', $data);
     }
 }
