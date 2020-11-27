@@ -33,7 +33,7 @@ Route::get('/home/product/{search}/inquiry', [InquiryController::class, 'index']
 
 Route::get('/customer/login', [LoginRegisterController::class, 'login'])->name('user login');
 Route::get('/customer/register', [LoginRegisterController::class, 'register'])->name('user register');
-
+Route::get('/account/verify/{id}', [Account::class, 'verify']);
 
 Route::middleware('auth')->group(function(){
     Route::middleware('user:Customer')->group(function(){
