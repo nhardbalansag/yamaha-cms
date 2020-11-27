@@ -44,8 +44,8 @@ Route::middleware('auth')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('/my-account/{id}', [Account::class, 'index'])->name('my account');
     Route::get('/my-account/loan/application', [Account::class, 'loanApplication']);
-    Route::get('/my-account/order/payment', [Account::class, 'payment']);
-    Route::get('/my-account/services/reservation', [Account::class, 'reservation']);
+    Route::get('/my-account/order/{product_id}/payment/{customer_id}', [Account::class, 'payment']);
+    Route::get('/my-account/services/{service_id}/{id}', [Account::class, 'payment']);
 });
 
 Route::middleware('auth')->group(function(){
