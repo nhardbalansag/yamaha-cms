@@ -20,8 +20,8 @@
         <!-- Styles -->
     </head>
     <body class="antialiased">
-    <!-- Load Facebook SDK for JavaScript -->
-
+    hello world
+    <!-- Load Facebook SDK for JavaScript -
         @livewire('home.navigation-bar')
         <div class="relative flex justify-center min-h-screen bg-white items-top dark:bg-gray-900 sm:items-center sm:pt-0">
             {{-- @if (Route::has('login'))
