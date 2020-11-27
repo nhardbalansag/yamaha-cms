@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Admin\Products\Product;
+use App\Models\User;
 
 class Account extends Controller
 {
@@ -20,8 +22,19 @@ class Account extends Controller
         return view('pages.client.pages.loan-application');
     }
 
-    public function payment(){
-        return view('pages.client.pages.payment');
+    public function payment($product_id, $account_id){
+        //checkout details
+        $accountInfo = User::where('id', $account_id)->first();
+
+        //product details customer want to avail
+        $product = Product::where('id', $product_id)->first();
+
+        $data['data'] = array( 
+                "account" => $accountInfo, 
+                "product" => $product);
+         
+        //send email when checkout
+        return view('pages.client.pages.payment', $data);
     }
 
     public function reservation(){

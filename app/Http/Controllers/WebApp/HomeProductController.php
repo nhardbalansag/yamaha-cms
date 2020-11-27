@@ -29,4 +29,7 @@ class HomeProductController extends Controller
        
         return view('pages.web-app.home.pages.view-product.index', $data);
     }
+
+    
+
 }

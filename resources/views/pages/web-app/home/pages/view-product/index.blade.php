@@ -11,21 +11,21 @@
                     <h5 class="truncate">{{$product->title}}</h5>
                     <p>SRP: <span>{{$product->price}}</span></p>
                     <div class = "grid grid-cols-1 md:grid-cols-3">
-                        <div class="flex justify-between items-center">
+                        <div class="flex items-center justify-between">
                             <a href="/home/product/{{$product->id}}/inquiry" class="btn btn-outline-primary" role="button" aria-pressed="true">Inquire</a>
                             <div class="btn-lg btn-block">
-                                    <a href='{{Auth::user() ? (($category[0]->title == 'parts' ? '/my-account/order/payment' : ($category[0]->title == 'motorcycle' ? '/my-account/loan/application' : ($category[0]->title == 'services' ? '/my-account/services/reservation' : '/my-account/services/reservation'))))  : "/customer/login"}}' class="btn btn-outline-primary  d-flex flex-row justify-content-between" role="button" aria-pressed="true">
+                                    <a href='{{Auth::user() ? (($category[0]->title == 'parts' ? '/my-account/order/' . $product->id . '/payment/' . Auth::user()->id : ($category[0]->title == 'motorcycle' ? '/my-account/loan/application' : ($category[0]->title == 'services' ? '/my-account/services/' . $product->id . '/' . Auth::user()->id  : '/my-account/services/reservation'))))  : "/customer/login"}}' class="flex-row btn btn-outline-primary d-flex justify-content-between" role="button" aria-pressed="true">
                                     <span>
                                         @if($category[0]->title === 'parts')
-                                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                             </svg>
                                         @elseif($category[0]->title == 'motorcycle')
-                                             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                             </svg>
                                         @elseif($category[0]->title == 'service')
-                                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                             </svg>
                                         @endif
@@ -40,9 +40,9 @@
                             {{--  --}}
                                 <div class="d-flex justify-content-end">
                                     <button type="button" class="btn btn-light"  data-toggle="modal" data-target="#staticBackdrop">
-                                        <div class="text-danger d-flex justify-content-between gap-2">
+                                        <div class="gap-2 text-danger d-flex justify-content-between">
                                             <span>
-                                               <svg class="h-6 w-6"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                               <svg class="w-6 h-6"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                                                 </svg>
                                             </span>
@@ -61,12 +61,12 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body border-bottom ml-2">
+                                            <div class="ml-2 modal-body border-bottom">
                                                 <a target="_blank" href="mailTo:?subject=Yamaha Megavia&amp;body={{url()->current()}}" class="fb-xfbml-parse-ignore h6 text-uppercase">
                                                     <span>
                                                         <i class="far fa-envelope h5"></i>
                                                     </span>
-                                                    <span class="text-uppercase ml-2">
+                                                    <span class="ml-2 text-uppercase">
                                                             email
                                                     </span>
                                                 </a>
@@ -74,52 +74,52 @@
                                             
                                             <div class="modal-body border-bottom" >
                                                 <div data-href="{{url()->current()}}" data-layout="button" data-size="large">
-                                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" class="text-uppercase ml-2">
+                                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" class="ml-2 text-uppercase">
                                                     <span>
                                                         <i class="fab fa-facebook-square text-primary h5"></i>
                                                     </span>
-                                                        <span class="text-uppercase ml-2">facebook</span>
+                                                        <span class="ml-2 text-uppercase">facebook</span>
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="modal-body border-bottom ml-2">
+                                            <div class="ml-2 modal-body border-bottom">
                                                 <a href="https://twitter.com/share?text={{url()->current()}}" target="_blank" rel="noopener noreferrer">
                                                     <span>
                                                         <i class="fab fa-twitter h5"></i>
                                                     </span>
-                                                    <span class="text-uppercase ml-2">Twitter</span>
+                                                    <span class="ml-2 text-uppercase">Twitter</span>
                                                 </a>
                                             </div>
-                                            <div class="modal-body border-bottom ml-2">
+                                            <div class="ml-2 modal-body border-bottom">
                                                 <a href= "whatsapp://send?text={{url()->current()}}"
                                                     data-action="share/whatsapp/share"
                                                     target="_blank"> 
                                                     <span>
                                                         <i class="fab fa-whatsapp h5"></i>
                                                     </span>
-                                                    <span class="text-uppercase ml-2">
+                                                    <span class="ml-2 text-uppercase">
                                                         Share to whatsapp 
                                                     </span>
                                                 </a> 
                                             </div>
-                                            <div class="modal-body border-bottom ml-2">
+                                            <div class="ml-2 modal-body border-bottom">
                                                 <a href= "https://www.addtoany.com/add_to/sms?linkurl={{url()->current()}}"
                                                     data-action="share/whatsapp/share"
                                                     target="_blank"> 
                                                     <span>
                                                         <i class="fas fa-comment-alt h5"></i>
                                                     </span>
-                                                    <span class="text-uppercase ml-2">
+                                                    <span class="ml-2 text-uppercase">
                                                         SMS 
                                                     </span>
                                                 </a> 
                                             </div>
-                                            <div class="modal-body border-bottom ml-2">
+                                            <div class="ml-2 modal-body border-bottom">
                                                 <a class="copy_text" data-toggle="modal" title="Copy to Clipboard" href="{{url()->current()}}">
                                                     <span>
                                                         <i class="fas fa-copy h5"></i>
                                                     </span>
-                                                    <span class="text-uppercase ml-2" id="copylinkTitle">
+                                                    <span class="ml-2 text-uppercase" id="copylinkTitle">
                                                         copy link
                                                     </span>
                                                 </a>
@@ -135,8 +135,8 @@
                 </div>
             </div>
             <div class = "capitalize">
-                <div class = "bg-blue-900 text-center">
-                    <p class="text-white font-extrabold text-4xl">SRP: ₱{{$product->price}}</p>
+                <div class = "text-center bg-blue-900">
+                    <p class="text-4xl font-extrabold text-white">SRP: ₱{{$product->price}}</p>
                 </div>
                 <div>
                     <table class="table-auto">
@@ -149,8 +149,8 @@
                         <tbody>
                             @foreach($specification as $key => $value)
                                 <tr>
-                                    <td class="border px-4 py-2 font-bold">{{$value->title}}</td>
-                                    <td class="border px-4 py-2">
+                                    <td class="px-4 py-2 font-bold border">{{$value->title}}</td>
+                                    <td class="px-4 py-2 border">
                                        {{$value->description}}
                                     </td>
                                 </tr>
