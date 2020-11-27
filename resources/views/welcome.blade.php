@@ -48,21 +48,7 @@
             </div>
             {{--  --}}
         </div>
-         <footer class="container py-5">
-            @include('pages.web-app.home.components.footer')
-        </footer>
-         @livewireScripts   
-         <script src= "{{mix('js/app.js')}}"></script>
-        <!-- jQuery and JS bundle w/ Popper.js -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    
-        <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="ufOIooEq"></script>
-
-
-                <!-- facebook messgenge -->
-              <div id="fb-root"></div>
+         <div id="fb-root"></div>
                 <script>
                     window.fbAsyncInit = function() {
                     FB.init({
@@ -88,6 +74,21 @@
                     logged_in_greeting="Hi! How can we help you this is only for capstone project"
                     logged_out_greeting="Hi! How can we help you this is only for capstone project">
                 </div>
+         <footer class="container py-5">
+            @include('pages.web-app.home.components.footer')
+        </footer>
+         @livewireScripts   
+         <script src= "{{mix('js/app.js')}}"></script>
+        <!-- jQuery and JS bundle w/ Popper.js -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="ufOIooEq"></script>
+
+
+                <!-- facebook messgenge -->
+             
                 
     </body>
 
