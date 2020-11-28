@@ -19,7 +19,6 @@ class User
     {
 
         if( Auth::user()){
-                   
             return redirect('/');
         }
     }
