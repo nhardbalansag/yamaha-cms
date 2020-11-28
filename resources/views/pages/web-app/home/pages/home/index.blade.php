@@ -3,23 +3,25 @@
 
     @include('pages.web-app.home.components.recommended')
 
-    <div class="grid grid-cols-1 mb-4 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 mb-4 md:grid-cols-2 lg:grid-cols-4">
         @foreach($product as $key => $value)
  
-            <div class="flex justify-center m-2 mb-5 rounded">
-                <div>
-                    <div class="w-full ">
-                        <a href="/home/product/{{$value->id}}">
-                            <img class="w-64 h-48" src="{{asset('storage/' . $value->photo_path) }}"  alt="product photo">
-                        </a>
+            <a href="/home/product/{{$value->id}}" class="w-full btn btn-lg" tabindex="0">
+                <div class="row">
+                    <div class="py-2 col-md-12 app-card-image">
+                        <img src="{{url('storage/' . $value->photo_path) }}" loading="lazy" class="b-card-img" alt="...">
                     </div>
-                    <div class="mt-2">
-                        <h5 class="text-truncate">{{$value->title}}</h5>
-                        <p>SRP: <span>{{$value->price}}</span></p>
-                        <a href="/home/product/{{$value->id}}" class="w-full btn btn-outline-primary btn-lg" role="button" aria-pressed="true">View Details</a>
+                    <div class="p-3 card-body app-card-body w-100">
+                        <div class="row">
+                            <div class="mb-2 col-md-12 b-fs-title font-weight-bold text-truncate">{{$value->title}}</div>
+                        </div>
+                        <div class="row text-secondary align-self-end">
+                            <div class="pr-0 text-sm col-4 b-fs-text align-self-end">Buy Now</div>
+                            <div class="pl-0 text-right col-8 b-fs-title font-weight-bold text-dark text-truncate">P {{$value->price}}.00</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
                
         @endforeach
     </div>
@@ -75,3 +77,6 @@
     </div>
 
 @endsection
+
+
+
