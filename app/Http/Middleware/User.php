@@ -19,9 +19,8 @@ class User
     {
 
         if( Auth::user()){
-            
-            dd(Auth::user()->role);
-            return redirect('/facebook.com');
+                   
+            return redirect('/home');
         }
     }
 }
