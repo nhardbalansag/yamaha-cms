@@ -13,78 +13,58 @@
                 <p class="text-lg italic text-red-500">Please fill out this field.</p>
             </div>
             <div class="mb-6">
-                <label class="block mb-2 text-xl tracking-wide capitalize" for="grid-state">
-                    Sort
-                </label>
-                <div class="relative">
-                    <select class="block w-full p-3 leading-tight border rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                    <option>New Mexico</option>
-                    <option>Missouri</option>
-                    <option>Texas</option>
+                <div class="">
+                    <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Sort</label>
+                    <select wire:model='country_region' id="country" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>Mexico</option>
                     </select>
-                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                        @error('country_region') <span class="text-red-600 error">{{ $message }}</span> @enderror
                 </div>
             </div>
             <div class="mb-6">
-                <label class="block mb-2 text-xl tracking-wide capitalize" for="grid-state">
-                    order by
-                </label>
-                <div class="relative">
-                    <select class="block w-full p-3 leading-tight border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                    <option>New Mexico</option>
-                    <option>Missouri</option>
-                    <option>Texas</option>
+                <div class="">
+                    <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Order By</label>
+                    <select wire:model='country_region' id="country" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>Mexico</option>
                     </select>
-                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                        @error('country_region') <span class="text-red-600 error">{{ $message }}</span> @enderror
                 </div>
             </div>
             <div class="mb-6">
-                <label class="block mb-2 text-xl tracking-wide capitalize" for="grid-state">
-                    motocycle type
-                </label>
-                <div class="relative">
-                    <select class="block w-full p-3 leading-tight border rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                    <option>New Mexico</option>
-                    <option>Missouri</option>
-                    <option>Texas</option>
+                 <div class="">
+                    <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Motorcycle type</label>
+                    <select wire:model='country_region' id="country" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>Mexico</option>
                     </select>
-                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                        @error('country_region') <span class="text-red-600 error">{{ $message }}</span> @enderror
                 </div>
             </div>
             <div class="mb-6">
-                <label class="block mb-2 text-xl tracking-wide capitalize" for="grid-state">
-                    category
-                </label>
-                <div class="relative">
-                    <select class="block w-full p-3 leading-tight border rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                    <option>New Mexico</option>
-                    <option>Missouri</option>
-                    <option>Texas</option>
+                 <div class="">
+                    <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Category</label>
+                    <select wire:model='country_region' id="country" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>Mexico</option>
                     </select>
-                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                        @error('country_region') <span class="text-red-600 error">{{ $message }}</span> @enderror
                 </div>
             </div>
             <div class="mb-6">
-                <label class="block mb-2 text-xl tracking-wide capitalize" for="grid-state">
-                    model
-                </label>
-                <div class="relative">
-                    <select class="block w-full p-3 leading-tight border rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                    <option>New Mexico</option>
-                    <option>Missouri</option>
-                    <option>Texas</option>
+                 <div class="">
+                    <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Model</label>
+                    <select wire:model='country_region' id="country" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>Mexico</option>
                     </select>
-                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                        @error('country_region') <span class="text-red-600 error">{{ $message }}</span> @enderror
                 </div>
             </div>
             <div class="w-full px-3">
