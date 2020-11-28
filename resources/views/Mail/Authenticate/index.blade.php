@@ -42,7 +42,7 @@
                     </div>
                     <div>  	
                         <center>
-                            <a href="https://yamaha-cms.cdmngo.online/account/verify/{{$productInfo['email']}}">click here to confirm email</a>
+                            <a href="https://bbalansag.online/account/verify/{{$productInfo['email']}}">click here to confirm email</a>
                         <center>
                     </div>
                     <p>And if not, ignore this message.</p>
