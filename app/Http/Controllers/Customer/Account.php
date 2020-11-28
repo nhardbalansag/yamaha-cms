@@ -35,7 +35,7 @@ class Account extends Controller
          
         //send email when checkout
         return view('pages.client.pages.payment', $data);
-    }
+    }   
 
     public function reservation(){
         return view('pages.client.pages.reservation');
@@ -47,7 +47,8 @@ class Account extends Controller
                     ->where('email', $id)
                     ->update(['verified' => true]);
 
-                    return redirect('/');
+
+        return redirect('/');
     }
 
 }

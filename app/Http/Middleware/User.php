@@ -18,10 +18,10 @@ class User
     public function handle(Request $request, Closure $next, string $user)
     {
 
-        if( Auth::user()){
-            
-            dd(Auth::user()->role);
-            return redirect('/facebook.com');
+        if( Auth::user()->role === 'admin'){
+            return redirect('/dashboard');
+        }else if(Auth::user()->role === 'customer'){
+            return redirect('/');
         }
     }
 }
