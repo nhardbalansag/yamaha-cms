@@ -1,6 +1,6 @@
 
 <section style  = "background-color: #1b3295" class = "py-4 bg-black">
-  <nav class="navbar navbar-expand-lg navbar-dark lg:container lg:mx-auto">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="font-extrabold h1 text-decoration-none text-primary" href="/">YAMAHA</a>
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="text-white navbar-toggler-icon"></span>

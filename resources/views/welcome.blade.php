@@ -19,7 +19,7 @@
 
         <!-- Styles -->
     </head>
-    <body class="antialiased">
+    <body>
         @livewire('home.navigation-bar')
         <div class="w-full m-auto md:container">
             {{-- @if (Route::has('login'))
@@ -32,12 +32,12 @@
                 </div>
             @endif --}}
             {{--  --}}
-            <div class="pt-3 row col-md-12">
-                <div class="col-md-3">
+            <div class="pt-3 m-auto row col-12 col-md-12">
+                <div class="p-0 col-12 col-md-3">
                     {{-- search --}}
                     @livewire('home.navigation-search')
                 </div> 
-                <div class="col-md-9">
+                <div class="p-0 col-12 col-md-9">
                     {{-- content --}}
                     {{-- top sort --}}
                         @livewire('home.top-sort')  
