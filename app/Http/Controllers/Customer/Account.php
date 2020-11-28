@@ -47,7 +47,7 @@ class Account extends Controller
                     ->where('email', $id)
                     ->update(['verified' => true]);
 
-                    return redirect('/home');
+                    return redirect('/');
     }
 
 }

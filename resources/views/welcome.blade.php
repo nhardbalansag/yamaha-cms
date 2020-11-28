@@ -21,7 +21,7 @@
     </head>
     <body class="antialiased">
         @livewire('home.navigation-bar')
-        <div class="relative flex justify-center min-h-screen bg-white items-top dark:bg-gray-900 sm:items-center sm:pt-0">
+        <div class="w-full m-auto md:container">
             {{-- @if (Route::has('login'))
                 <div class="fixed top-0 right-0 hidden px-6 py-4 sm:block">
                     @auth
@@ -32,11 +32,13 @@
                 </div>
             @endif --}}
             {{--  --}}
-            <div class = "grid w-4/5 grid-cols-1 m-auto md:flex ">
-                {{-- side search --}}
-                @livewire('home.navigation-search')  
-                {{-- end side search --}}
-                <div class = "w-full p-4 md:w-4/5"> 
+            <div class="pt-3 row col-md-12">
+                <div class="col-md-3">
+                    {{-- search --}}
+                    @livewire('home.navigation-search')
+                </div> 
+                <div class="col-md-9">
+                    {{-- content --}}
                     {{-- top sort --}}
                         @livewire('home.top-sort')  
                     {{-- end top sort --}}
@@ -44,11 +46,10 @@
                     {{-- contents --}}
                         @yield('home-contents')
                     {{-- end contents --}}
-                </div>
-            </div>
-            {{--  --}}
+                </div> 
+            </div> 
         </div>
-         <div id="fb-root"></div>
+                <div id="fb-root"></div>
                 <script>
                     window.fbAsyncInit = function() {
                     FB.init({
