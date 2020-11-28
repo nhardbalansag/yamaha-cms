@@ -63,7 +63,7 @@
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="ufOIooEq"></script>
 
 
-
+                <!-- facebook messgenge -->
               <div id="fb-root"></div>
                 <script>
                     window.fbAsyncInit = function() {
@@ -79,7 +79,7 @@
                     js = d.createElement(s); js.id = id;
                     js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
                     fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
+                    }(document, 'script', 'facebook-jssdk'));
                 </script>
 
                 <!-- Your Chat Plugin code -->
