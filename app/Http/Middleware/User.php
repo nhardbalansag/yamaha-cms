@@ -20,7 +20,7 @@ class User
 
         if( Auth::user()){
                    
-            return redirect('/home');
+            return redirect('/');
         }
     }
 }
