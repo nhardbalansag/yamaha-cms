@@ -56,7 +56,7 @@ class CreateNewUser implements CreatesNewUsers
                 'verified' => false,
                 'state_province' => $input['state_province'],
                 'postal' => $input['postal'],
-                'role' => $input['url'] == 'http://yamaha-cms.test/register' ? "admin" : "customer",
+                'role' => $input['url'] == env('APP_URL') . '/register' ? "admin" : "customer",
                 // 'account_type' => "admin",
                 'email' => $input['email'],     
                 'password' => Hash::make($input['password']),
