@@ -46,7 +46,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Description</h5>
                   <li class="pricing-features-item">
-                    <span class="text-uppercase ml-2">{{$productInfo['product']->title}},</span> 
+                    <span class="ml-2 text-uppercase">{{$productInfo['product']->title}},</span> 
                     {{$productInfo['product']->description}}
                   </li>
                 </div>
@@ -78,8 +78,8 @@
                 </table>
               </div>
 
-              <div class="card-body">
-                <center><button type="button" class="btn btn-primary">Register</button></center>
+              <div class="card-body"><a href="{{env('APP_URL') . '/customer/register'}}">Register</a>
+                <center><button type="button" class="btn btn-primary"></button></center>
               </div>
           </div>
         </div>

@@ -18,17 +18,10 @@ class User
     public function handle(Request $request, Closure $next, string $user)
     {
 
-        if( Auth::user()->role != "admin"){
-            return redirect('/');
+        if( Auth::user()){
+            
+            dd(Auth::user()->role);
+            return redirect('/facebook.com');
         }
-
-        $user = Auth::user();
-        if (
-            str_contains($user, Auth::user()->role) 
-        ) {
-            return $next($request);
-        }
-
-        abort(403, 'Unauthorized');
     }
 }
