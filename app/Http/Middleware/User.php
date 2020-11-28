@@ -18,7 +18,9 @@ class User
     public function handle(Request $request, Closure $next, string $user)
     {
 
-        if( Auth::user()){
+        if( Auth::user()->role === 'admin'){
+            return redirect('/dashboard');
+        }else if(Auth::user()->role === 'customer'){
             return redirect('/');
         }
     }

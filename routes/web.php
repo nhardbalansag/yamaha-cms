@@ -50,16 +50,16 @@ Route::middleware('auth')->group(function(){
 
 Route::middleware('auth')->group(function(){
         
-    Route::get('/dashboard',  [Dashboard::class, 'index'])->name('dashboard');
+        Route::get('/dashboard',  [Dashboard::class, 'index'])->name('dashboard');
 
-    Route::get('/product',  [ProductController::class, 'productIndex'])->name('product index');
-    Route::get('/product/create',  [ProductController::class, 'index'])->name('product');
-    Route::get('/product/all',  [ProductController::class, 'viewAll'])->name('view all product');
-    Route::get('/product/view/{id}', [ProductController::class, 'viewOne'])->name('view one product');
+        Route::get('/product',  [ProductController::class, 'productIndex'])->name('product index');
+        Route::get('/product/create',  [ProductController::class, 'index'])->name('product');
+        Route::get('/product/all',  [ProductController::class, 'viewAll'])->name('view all product');
+        Route::get('/product/view/{id}', [ProductController::class, 'viewOne'])->name('view one product');
 
-    Route::get('/product/createCategory',  [ProductCategoryController::class, 'index'])->name('product category');
+        Route::get('/product/createCategory',  [ProductCategoryController::class, 'index'])->name('product category');
 
-    Route::get('/product/specificationCategory/create',  [Specification::class, 'index'])->name('specification category');
+        Route::get('/product/specificationCategory/create',  [Specification::class, 'index'])->name('specification category');
 
 });
 
