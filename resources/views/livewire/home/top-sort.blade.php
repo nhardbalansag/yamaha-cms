@@ -1,13 +1,12 @@
 <div class = "grid items-center justify-around grid-cols-1 p-3 mb-5 bg-white rounded shadow md:flex">
     <div class="w-full md:w-48">
         <div class="relative">
-            <select class="block w-full p-3 leading-tight border rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                @for($i = 0; $i < count($productCategory); $i++)
-                    <option value = "{{$productCategory[$i]['id']}}">{{$productCategory[$i]['title']}}</option>
-                @endfor
-            </select>
-            <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-            <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            <div class="">
+                <select wire:model='country_region' id="country" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-600 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                    @for($i = 0; $i < count($productCategory); $i++)
+                        <option value = "{{$productCategory[$i]['id']}}">{{$productCategory[$i]['title']}}</option>
+                    @endfor
+                </select>
             </div>
         </div>
     </div>
