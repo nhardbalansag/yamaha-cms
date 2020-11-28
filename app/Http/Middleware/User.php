@@ -17,11 +17,14 @@ class User
      */
     public function handle(Request $request, Closure $next, string $user)
     {
-
-        if( Auth::user()->role === 'admin'){
-            return redirect('/dashboard');
-        }else if(Auth::user()->role === 'customer'){
-            return redirect('/');
+        if(Auth::user()->role !== 'admin' && $user !== 'admin'){
+            return $next($request);
         }
+        if(Auth::user()->role !== 'customer' && $user !== 'customer'){
+            return $next($request);
+        }
+        
+        abort(403, 'Unauthorized');
+
     }
 }

@@ -36,20 +36,18 @@ Route::get('/customer/register', [LoginRegisterController::class, 'register'])->
 Route::get('/account/verify/{id}', [Account::class, 'verify']);
 
 Route::middleware('auth')->group(function(){
-    Route::middleware('user:Customer')->group(function(){
+    Route::middleware('user:customer')->group(function(){
         Route::get('/home', [HomeController::class, 'index'])->name('home page');
+        Route::get('/my-account/{id}', [Account::class, 'index'])->name('my account');
+        Route::get('/my-account/loan/application', [Account::class, 'loanApplication']);
+        Route::get('/my-account/order/{product_id}/payment/{customer_id}', [Account::class, 'payment']);
+        Route::get('/my-account/services/{service_id}/{id}', [Account::class, 'payment']);
     });
 });
 
 Route::middleware('auth')->group(function(){
-    Route::get('/my-account/{id}', [Account::class, 'index'])->name('my account');
-    Route::get('/my-account/loan/application', [Account::class, 'loanApplication']);
-    Route::get('/my-account/order/{product_id}/payment/{customer_id}', [Account::class, 'payment']);
-    Route::get('/my-account/services/{service_id}/{id}', [Account::class, 'payment']);
-});
-
-Route::middleware('auth')->group(function(){
-        
+    Route::middleware('user:admin')->group(function(){
+        Route::get('/home/admin', [HomeController::class, 'index'])->name('home page');
         Route::get('/dashboard',  [Dashboard::class, 'index'])->name('dashboard');
 
         Route::get('/product',  [ProductController::class, 'productIndex'])->name('product index');
@@ -61,6 +59,7 @@ Route::middleware('auth')->group(function(){
 
         Route::get('/product/specificationCategory/create',  [Specification::class, 'index'])->name('specification category');
 
+    });
 });
 
 
