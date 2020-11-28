@@ -33,7 +33,7 @@
             @endif --}}
             {{--  --}}
             <div class="pt-3 m-auto row col-12 col-md-12">
-                <div class="p-0 col-12 col-md-3">
+                <div class="p-0 md:mr-5 col-12 col-md-2">
                     {{-- search --}}
                     @livewire('home.navigation-search')
                 </div> 
