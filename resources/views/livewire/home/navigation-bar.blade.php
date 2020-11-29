@@ -50,7 +50,6 @@
               <a class="text-xl text-white nav-link" href="/my-account/{{Auth::user()->id}}" tabindex="-1" aria-disabled="true">My Account</a>
             </li>
           @endif
-            
             <li class="nav-item active">
              <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -109,3 +108,36 @@
     
   </div>
 </div>
+
+
+
+<div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+$(function() { alert("shortcut for document.ready method in jQuery"); });
+hello();
+function hello(){
+  alert()
+}
+</script>
