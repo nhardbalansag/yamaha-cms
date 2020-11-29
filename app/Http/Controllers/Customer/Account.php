@@ -46,24 +46,22 @@ class Account extends Controller
         $column = ['email'=> $email];
 
         $results = User::select('email')
-                        ->where($column) 
-                        ->get();
-
-        if($results[0]->email === $email){
-            dd("matched");
-        }else if($results[0]->email !== $email){
-            return redirect('/customer/register');
+                        ->where('email', $email) 
+                        ->first();
+       
+        if(!empty($results)){
+            if($results->email === $email ){
+                $affected = DB::table('users')
+                            ->where('email', $email)
+                            ->update(['verified' => true]);
+            }
+            
+            return redirect('/');
         }
-                  
         
-        // $affected = DB::table('users')
-        //                 ->where('email', $email)
-        //                 ->update(['verified' => true]);
+        return redirect('/customer/register');
 
-
-        // return redirect('/');
     }
-
 }
 
        
