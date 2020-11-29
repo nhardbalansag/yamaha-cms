@@ -3,25 +3,24 @@
 
     @include('pages.web-app.home.components.recommended')
 
-    <div class="grid grid-cols-1 mb-4 md:grid-cols-2 lg:grid-cols-4">
+    <div class=" row col-12 col-md-12">
         @foreach($product as $key => $value)
  
-            <a href="/home/product/{{$value->id}}" class="w-full btn btn-lg" tabindex="0">
-                <div class="row">
-                    <div class="py-2 col-md-12 app-card-image">
-                        <img src="{{url('storage/' . $value->photo_path) }}" loading="lazy" alt="...">
-                    </div>
-                    <div class="p-3 card-body app-card-body">
-                        <div class="row">
-                            <div class="mb-2 col-md-12 b-fs-title font-weight-bold text-truncate">{{$value->title}}</div>
-                        </div>
-                        <div class="row text-secondary align-self-end">
-                            <div class="pr-0 text-sm col-4 b-fs-text align-self-end">Buy Now</div>
-                            <div class="pl-0 text-right col-8 b-fs-title font-weight-bold text-dark text-truncate">P {{$value->price}}.00</div>
+           <div class="p-0 mx-2 border col-12 col-md-3">
+                <a href="/home/product/{{$value->id}}" class="btn btn-lg" tabindex="0">
+                    <div class=" row">
+                        <div class="h-64 p-0 border col-md-12 d-flex align-items-center" >
+                            <img src="{{url('storage/' . $value->photo_path) }}" loading="lazy" alt="...">
                         </div>
                     </div>
-                </div>
-            </a>
+                    <div class="d-flex align-items-end">
+                        <div class=" col-12">
+                            <div class="col-12 font-weight-bold text-truncate">{{$value->title}}</div>
+                            <div class="col-12 font-weight-bold text-dark text-truncate">P {{$value->price}}.00</div>
+                        </div>
+                    </div>
+                </a>
+           </div>
                
         @endforeach
     </div>

@@ -41,7 +41,7 @@
           <a class="text-xl text-white nav-link" href="#" tabindex="-1" aria-disabled="true">Contact Us</a>
         </li>
         @auth
-          @if(Auth::user()->role === 'admin' && Auth::user()->verified === 1)
+          @if(Auth::user()->role === 'admin')
             <li class="nav-item active">
               <a class="text-xl text-white nav-link" href="/dashboard" tabindex="-1" aria-disabled="true">Dashboard</a>
             </li>
@@ -50,7 +50,6 @@
               <a class="text-xl text-white nav-link" href="/my-account/{{Auth::user()->id}}" tabindex="-1" aria-disabled="true">My Account</a>
             </li>
           @endif
-            
             <li class="nav-item active">
              <form method="POST" action="{{ route('logout') }}">
                 @csrf
