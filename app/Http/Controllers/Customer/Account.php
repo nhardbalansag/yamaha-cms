@@ -41,7 +41,7 @@ class Account extends Controller
         return view('pages.client.pages.reservation');
     }
 
-    public function verify($email){
+    public function verify(){
 
         // $column = ['email'=> $email];
        
