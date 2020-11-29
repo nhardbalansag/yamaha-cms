@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-end">
-                        <div>
+                        <div class="w-full">
                             <div class ="font-weight-bold text-truncate">{{$value->title}}</div>
                             <div class="font-weight-bold text-dark text-truncate">P {{$value->price}}.00</div>
                         </div>
