@@ -14,9 +14,13 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-end">
-                        <div class="w-full">
-                            <div class ="font-weight-bold text-truncate">{{$value->title}}</div>
-                            <div class="font-weight-bold text-dark text-truncate">P {{$value->price}}.00</div>
+                        <div class="w-100">
+                            <div class="row">
+                                <div class="mb-2 col-md-12 b-fs-title font-weight-bold text-truncate">{{$value->title}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="font-weight-bold text-dark text-truncate">P {{$value->price}}.00</div>
+                            </div>
                         </div>
                     </div>
                 </a>
