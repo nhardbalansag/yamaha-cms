@@ -61,8 +61,6 @@ Route::middleware('auth')->group(function(){
     });
 });
 
-
-    Route::get('/account/verify/{$email}', [Account::class, 'verify'])->name('verification');
-
+    Route::get('/account/verify/{email}/{token}', [Account::class, 'verify'])->name('verification');
 
 
