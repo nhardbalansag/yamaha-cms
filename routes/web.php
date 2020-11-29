@@ -61,8 +61,8 @@ Route::middleware('auth')->group(function(){
     });
 });
 
-Route::middleware('auth')->group(function(){
+
     Route::get('/account/verify/{email}', [Account::class, 'verify']);
-});
+
 
 
