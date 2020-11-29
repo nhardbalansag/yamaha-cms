@@ -1,6 +1,5 @@
- <section>
+ <div>
         <div class=" sm:mt-0">
-             
             <div class="md:mt-0 md:col-span-2">
                 <div class="my-4 sm:px-0">
                 <h1 class="text-lg leading-6 text-black">Create your Account</h1>
@@ -15,9 +14,9 @@
                 <x-jet-validation-errors class="mb-4" />
                 <form method="POST" action="{{ route('register') }}" >
                     @csrf
-                    <div>
-                        <x-jet-input id="url" class="hidden block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="url" :value="url()->current()"  autofocus autocomplete="url" />
-                        <div class="row col-12 col-md-12">
+                    <div class="p-0 m-auto">
+                        <x-jet-input id="url" class="hidden w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="url" :value="url()->current()"  autofocus autocomplete="url" />
+                        <div class="p-0 m-auto row col-12 col-md-12">
                             <div class="col-12 col-md-4">
                                 <x-jet-label for="email" value="{{ __('Email') }}" />
                                 <x-jet-input id="email" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="email" :value="old('email')" required autofocus autocomplete="email" />
@@ -27,7 +26,7 @@
                                 <x-jet-input id="contact_number" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="contact_number" :value="old('contact_number')" required autofocus autocomplete="contact_number" />
                             </div>
                         </div>
-                        <div class="row col-12 col-md-12">
+                        <div class="p-0 m-auto row col-12 col-md-12">
                             <div class="col-12 col-md-4">
                                 <x-jet-label for="first_name" value="{{ __('First name') }}" />
                                 <x-jet-input id="first_name" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
@@ -41,7 +40,8 @@
                                 <x-jet-input id="middle_name" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="middle_name" :value="old('middle_name')" autofocus autocomplete="middle_name" />
                             </div>
                         </div>
-                        <div class="mt-4 row col-12 col-md-12">
+                        <hr class="bg-black">
+                        <div class="p-0 m-auto mt-4 row col-12 col-md-12">
                             <div class="col-12 col-md-6">
                                 <x-jet-label for="home_address" value="{{ __('home address') }}" />
                                 <x-jet-input id="home_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="home_address" :value="old('home_address')" required autofocus autocomplete="home_address" />
@@ -51,7 +51,7 @@
                                 <x-jet-input id="street_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="street_address" :value="old('street_address')" required autofocus autocomplete="street_address" />
                             </div>
                         </div>
-                        <div class="row col-12 col-md-12">
+                        <div class="p-0 m-auto row col-12 col-md-12">
                             <div class="col-12 col-md-3">
                                 <x-jet-label for="country_region" value="{{ __('country/region') }}" />
                                 <x-jet-input id="country_region" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="country_region" :value="old('country_region')" required autofocus autocomplete="country_region" />
@@ -69,6 +69,7 @@
                                 <x-jet-input id="postal" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="postal" :value="old('postal')" required autofocus autocomplete="postal" />
                             </div>
                         </div>
+                        <hr class="bg-black">
                         <div class="my-4 row col-12 col-md-12">
                             <div class="col-12 col-md-6">
                                 <x-jet-label for="password" value="{{ __('Password') }}" />
@@ -95,4 +96,4 @@
                 </form>
             </div>
         </div>
-    </section>
+    </div>
