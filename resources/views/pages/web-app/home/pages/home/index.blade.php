@@ -3,10 +3,10 @@
 
     @include('pages.web-app.home.components.recommended')
 
-    <div class=" row col-md-12">
+    <div class=" row col-12 col-md-12">
         @foreach($product as $key => $value)
  
-           <div class="p-0 mx-2 border col-md-3">
+           <div class="p-0 mx-2 border col-12 col-md-3">
                 <a href="/home/product/{{$value->id}}" class="btn btn-lg" tabindex="0">
                     <div class=" row">
                         <div class="w-64 h-64 p-0 border col-md-12 d-flex align-items-center" >
