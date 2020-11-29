@@ -43,9 +43,20 @@ class Account extends Controller
 
     public function verify($email){
 
-      
- dd( $results);
-      
+        // $column = ['email'=> $email];
+       
+        // $results = User::select('email')
+        //                 ->where($column) 
+        //                 ->get();
+                       
+        // if($results[0]->email === $email){
+        //   dd("matched");
+        // }else if($results[0]->email !== $email){
+        //     return redirect('/');
+        // }
+
+        dd("dhdfsfd");
+
     }
 
 }
