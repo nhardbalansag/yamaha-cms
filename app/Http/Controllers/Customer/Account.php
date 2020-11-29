@@ -48,7 +48,7 @@ class Account extends Controller
         $results = User::select('email')
                         ->where($column) 
                         ->get();
-
+ dd( $results);
                        
         if($results[0]->email === $email){
           dd("matched");
