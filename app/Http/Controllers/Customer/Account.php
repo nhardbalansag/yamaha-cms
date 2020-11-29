@@ -42,18 +42,18 @@ class Account extends Controller
     }
 
     public function verify($email){
-        dd($email);
-        // $column = ['email'=> $email];
 
-        // $results = User::select('email')
-        //                 ->where($column) 
-        //                 ->get();
+        $column = ['email'=> $email];
 
-        // if($results[0]->email === $email){
-        //     dd("matched");
-        // }else if($results[0]->email !== $email){
-        //     return redirect('/customer/register');
-        // }
+        $results = User::select('email')
+                        ->where($column) 
+                        ->get();
+
+        if($results[0]->email === $email){
+            dd("matched");
+        }else if($results[0]->email !== $email){
+            return redirect('/customer/register');
+        }
                   
         
         // $affected = DB::table('users')
