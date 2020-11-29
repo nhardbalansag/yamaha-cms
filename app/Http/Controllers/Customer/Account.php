@@ -55,7 +55,7 @@ class Account extends Controller
                                 ->update(['verified' => true]);
             }
             
-            return redirect('/');
+            return redirect('/home');
         }
         
         return redirect('/customer/register');
