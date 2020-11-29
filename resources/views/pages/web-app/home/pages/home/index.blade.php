@@ -6,10 +6,10 @@
     <div class=" row col-12 col-md-12">
         @foreach($product as $key => $value)
  
-           <div class="py-2 mx-2 border col-12 col-md-3">
+           <div class="p-0 py-2 mx-2 border col-12 col-md-3">
                 <a href="/home/product/{{$value->id}}" class="btn btn-lg" tabindex="0">
                     <div class="row">
-                        <div class="h-64 p-0 border col-12 col-md-12 d-flex align-items-center" >
+                        <div class="h-64 p-0 col-12 col-md-12 d-flex align-items-center" >
                             <img src="{{url('storage/' . $value->photo_path) }}" loading="lazy" alt="...">
                         </div>
                     </div>
