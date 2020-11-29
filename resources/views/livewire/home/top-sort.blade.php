@@ -2,7 +2,7 @@
     <div class="w-full md:w-48">
         <div class="relative">
             <div class="">
-                <select wire:model='country_region' id="country" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-600 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                <select  class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-600 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
                     @for($i = 0; $i < count($productCategory); $i++)
                         <option value = "{{$productCategory[$i]['id']}}">{{$productCategory[$i]['title']}}</option>
                     @endfor

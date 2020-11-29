@@ -41,14 +41,23 @@ class Account extends Controller
         return view('pages.client.pages.reservation');
     }
 
-    public function verify($id){
+    public function verify($email, $token){
+
+        $column = ['email'=> $email];
+       
+        $results = User::select('email')
+                        ->where($column) 
+                        ->get();
+
+                       
+        if($results[0]->email === $email){
+          dd("matched");
+        }else if($results[0]->email !== $email){
+            return redirect('/');
+        }
+
         
-        $affected = DB::table('users')
-                    ->where('email', $id)
-                    ->update(['verified' => true]);
 
-
-        return redirect('/');
     }
 
 }
