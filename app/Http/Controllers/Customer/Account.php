@@ -41,7 +41,7 @@ class Account extends Controller
         return view('pages.client.pages.reservation');
     }
 
-    public function verify(){
+    public function verify($email){
 
         // $column = ['email'=> $email];
        
@@ -55,7 +55,7 @@ class Account extends Controller
         //     return redirect('/');
         // }
 
-        dd("dhdfsfd");
+        dd($email);
 
     }
 
