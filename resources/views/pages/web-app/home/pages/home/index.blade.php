@@ -9,9 +9,9 @@
             <a href="/home/product/{{$value->id}}" class="w-full btn btn-lg" tabindex="0">
                 <div class="row">
                     <div class="py-2 col-md-12 app-card-image">
-                        <img src="{{url('storage/' . $value->photo_path) }}" loading="lazy" class="b-card-img" alt="...">
+                        <img src="{{url('storage/' . $value->photo_path) }}" loading="lazy" alt="...">
                     </div>
-                    <div class="p-3 card-body app-card-body w-100">
+                    <div class="p-3 card-body app-card-body">
                         <div class="row">
                             <div class="mb-2 col-md-12 b-fs-title font-weight-bold text-truncate">{{$value->title}}</div>
                         </div>
