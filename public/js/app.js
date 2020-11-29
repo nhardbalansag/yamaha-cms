@@ -31164,9 +31164,6 @@ __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.es
       }
     }
   });
-  $(document).ready(function () {
-    $("#myModal").modal('show');
-  });
 })();
 
 /***/ }),
