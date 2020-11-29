@@ -48,12 +48,11 @@ class Account extends Controller
         $results = User::select('email')
                         ->where('email', $email) 
                         ->first();
-       
+        
         if(!empty($results)){
             if($results->email === $email ){
-                $affected = DB::table('users')
-                            ->where('email', $email)
-                            ->update(['verified' => true]);
+                $affected = User::where('email', $email)
+                                ->update(['verified' => true]);
             }
             
             return redirect('/');
