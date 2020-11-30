@@ -17,6 +17,7 @@
                         <div>
                             <div class="mb-2 font-weight-bold">{{$value->title}}</div>
                             <div class="font-weight-bold text-dark ">P {{$value->price}}.00</div>
+                            <a href="/home/product/{{$value->id}}" class="btn btn-outline-primary btn-lg w-full" role="button" aria-pressed="true">View Details</a>
                         </div>
                     </div>
                 </a>
