@@ -6,7 +6,7 @@
     <div class=" row col-12 col-md-12">
         @foreach($product as $key => $value)
  
-           <div class="p-0 my-2 border mx-md-2 col-12 col-md-3">
+           <div class="p-0 my-4 border mx-md-2 col-12 col-md-3">
                 <a href="/home/product/{{$value->id}}" class="btn btn-lg" tabindex="0">
                     <div class="row">
                         <div class="p-0 col-12 col-md-12 d-flex align-items-center" >
