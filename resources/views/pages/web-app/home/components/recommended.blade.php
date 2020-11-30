@@ -3,9 +3,9 @@
                 <p class = "text-4xl font-bold capitalize">recommended</p>
             </div>
             <div class="swiper-container">
-                <div class="pb-20 swiper-wrapper ">
+                <div class="pb-20 swiper-wrapper h-25">
                     @foreach($recommended as $key => $value)
-                        <div class="p-0 border swiper-slide" style="height:200px">
+                        <div class="p-0 border swiper-slide">
                             <a href="/home/product/{{$value->id}}" class="btn btn-lg" tabindex="0">
                                 <div class="row">
                                     <div class="p-0 col-12 col-md-12 d-flex align-items-center" >
