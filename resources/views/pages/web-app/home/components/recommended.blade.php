@@ -8,7 +8,7 @@
                         <div class="p-0 border swiper-slide">
                             <a href="/home/product/{{$value->id}}" class="btn btn-lg" tabindex="0">
                                 <div class="row">
-                                    <div class="p-0 col-12 col-md-12 d-flex align-items-center" >
+                                    <div class="h-50 p-0 col-12 col-md-12 d-flex align-items-center" >
                                         <img src="{{url('storage/' . $value->photo_path) }}" loading="lazy" alt="...">
                                     </div>
                                 </div>
