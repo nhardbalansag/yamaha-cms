@@ -9,14 +9,14 @@
                             <a href="/home/product/{{$value->id}}" class="btn btn-lg" tabindex="0">
                                 <div class="row">
                                     <div class="p-0 col-12 col-md-12 d-flex align-items-center" >
-                                        <img class="w-64 h-48" src="{{url('storage/' . $value->photo_path) }}" loading="lazy" alt="...">
+                                        <img src="{{url('storage/' . $value->photo_path) }}" loading="lazy" alt="...">
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-end">
-                                    <div>
-                                        <div class="mb-2 font-weight-bold">{{$value->title}}</div>
-                                        <div class="font-weight-bold text-dark ">P {{$value->price}}.00</div>
-                                        <a href="/home/product/{{$value->id}}" class="btn btn-outline-primary btn-lg w-full" role="button" aria-pressed="true">View Details</a>
+                                    <div class ="col-12">
+                                        <div class="mb-2 font-weight-bold col-12">{{$value->title}}</div>
+                                        <div class="font-weight-bold text-dark col-12">P {{$value->price}}.00</div>
+                                        <a href="/home/product/{{$value->id}}" class="col-12 btn btn-outline-primary btn-lg w-full" role="button" aria-pressed="true">View Details</a>
                                     </div>
                                 </div>
                             </a>
