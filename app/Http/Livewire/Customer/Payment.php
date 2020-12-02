@@ -36,6 +36,6 @@ class Payment extends Component
 
         CustomerOrder::create($query);
        
-        session()->flash('message', 'paid successfully');
+        session()->flash('message', 'order placed succesfully');
     }
 }

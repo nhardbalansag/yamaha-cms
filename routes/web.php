@@ -11,6 +11,7 @@ use App\Http\Controllers\WebApp\InquiryController;
 use App\Http\Controllers\WebApp\HomeProductController;
 use App\Http\Controllers\WebApp\LoginRegisterController;
 use App\Http\Controllers\Customer\Account;
+use App\Http\Controllers\Admin\Customer\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,13 @@ Route::middleware('auth')->group(function(){
         Route::get('/product/createCategory',  [ProductCategoryController::class, 'index'])->name('product category');
 
         Route::get('/product/specificationCategory/create',  [Specification::class, 'index'])->name('specification category');
+
+        //CUSTOMER
+        Route::get('/customer-all',  [CustomerController::class, 'index']);
+        Route::get('/customer-all/not-verified',  [CustomerController::class, 'viewNotVerified']);
+        Route::get('/customer-all/verified',  [CustomerController::class, 'verified']);
+        Route::get('/customer-all/inquiries',  [CustomerController::class, 'inquiries']);
+
 
     });
 });
