@@ -32,20 +32,17 @@
                             @livewire('admin-side-navigation')
                           {{-- end side navigation --}}
                           {{-- main content --}}
-                            <main role="main" class="mt-4 w-3/4 p-2">
+                            <main role="main" class="w-3/4 p-2 mt-4">
                                 <!-- Page Heading -->
-                                    <header class="bg-white shadow">
-                                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                                            {{ $header }}
-                                        </div>
-                                    </header>
-                                    {{ $slot }}
+                                    <div>
+                                        {{ $header }}
+                                    </div>
+                                    @yield('contents')
                                     {{-- @yield('contents') --}}
                             </main>
                            {{-- end main content --}}
                     </div>
                 </div>
-                
             </main>
         </div>
 
