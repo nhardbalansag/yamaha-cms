@@ -16,6 +16,9 @@ class Dashboard extends Controller
      */
     public function index()
     {
+
+        $data['type'] = 'bar';
+
         $data['products'] = DB::select('
             SELECT 
                 product_categories.title as categoryTitle,
@@ -30,6 +33,102 @@ class Dashboard extends Controller
             FROM products, product_categories
             WHERE products.product_category_id = product_categories.id
             LIMIT 0,10');
+
+
+            $data['inquiries'] = DB::select('SELECT MONTH(created_at) month , YEAR(CURDATE()) year, COUNT(*) inquiries
+                                            FROM inquiries
+                                            WHERE YEAR(created_at) = YEAR(CURDATE())
+                                            GROUP BY MONTH(created_at)' );
+
+            $month = array();
+            $values = array();
+            $year = array();
+
+            for($i = 0; $i < count($data['inquiries']); $i++){
+                array_push($month, $data['inquiries'][$i]->month);
+                array_push($values, $data['inquiries'][$i]->inquiries);
+                array_push($year, $data['inquiries'][$i]->year);
+            }
+           
+            $data['inquiries_month'] = $month;
+            $data['inquiries_values'] = $values;
+            $data['inquiries_year'] = $year;
+          
+         
+            unset($month);               
+            unset($values);               
+            unset($year);
+          
+            //end inquiries
+            $data['reserve'] = DB::select('SELECT MONTH(created_at) month , YEAR(CURDATE()) year, COUNT(*) reserve
+                                            FROM reservations
+                                            WHERE YEAR(created_at) = YEAR(CURDATE())
+                                            GROUP BY MONTH(created_at)' );
+
+            $month = array();
+            $values = array();
+            $year = array();
+
+            for($i = 0; $i < count($data['reserve']); $i++){
+                array_push($month, $data['reserve'][$i]->month);
+                array_push($values, $data['reserve'][$i]->reserve);
+                array_push($year, $data['reserve'][$i]->year);
+            }
+           
+            $data['reserve_month'] = $month;
+            $data['reserve_values'] = $values;
+            $data['reserve_year'] = $year;
+         
+            unset($month);               
+            unset($values);               
+            unset($year);
+
+            //end reserve
+            $data['order'] = DB::select('SELECT MONTH(created_at) month , YEAR(CURDATE()) year, COUNT(*) ordervalue
+                                            FROM customer_orders
+                                            WHERE YEAR(created_at) = YEAR(CURDATE())
+                                            GROUP BY MONTH(created_at)' );
+
+            $month = array();
+            $values = array();
+            $year = array();
+
+            for($i = 0; $i < count($data['order']); $i++){
+                array_push($month, $data['order'][$i]->month);
+                array_push($values, $data['order'][$i]->ordervalue);
+                array_push($year, $data['order'][$i]->year);
+            }
+           
+            $data['order_month'] = $month;
+            $data['order_values'] = $values;
+            $data['order_year'] = $year;
+         
+            unset($month);               
+            unset($values);               
+            unset($year);
+            //end orders
+
+            $data['not_verified'] = DB::select('SELECT COUNT(*) as not_verified
+                                                    FROM users
+                                                    WHERE verified =  0' );
+
+             $data['verified'] = DB::select('SELECT COUNT(*) as verified
+                                                    FROM users
+                                                    WHERE verified =  1' );
+
+            $data['customerStatus'] = array($data['not_verified'][0]->not_verified, $data['verified'][0]->verified);
+
+
+            $data['pending'] = DB::select('SELECT COUNT(*) as pending
+                                                FROM products
+                                                WHERE status =  "pending"' );
+
+            $data['publish'] = DB::select('SELECT COUNT(*) as publish
+                                            FROM products
+                                            WHERE status =  "publish"' );
+                        
+            $data['productStatus'] = array($data['pending'][0]->pending, $data['publish'][0]->publish);
+
 
         return view('pages.admin.dashboard.index', $data);
     }

@@ -39,10 +39,10 @@
                                     <a href="/product/create" class="text-black">create product</a>
                                </div>
                                 <div class="py-2 col-12">
-                                    <a href="" class="text-black">pending</a>
+                                    <a href="/product/pending" class="text-black">pending</a>
                                </div>
                                 <div class="py-2 col-12">
-                                    <a href="" class="text-black">publish</a>
+                                    <a href="/product/publish" class="text-black">publish</a>
                                </div>
                             </div>
                         </li>
