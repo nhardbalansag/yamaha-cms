@@ -28,4 +28,6 @@ class ViewAllProduct extends Component
         
         return view('livewire.admin.product.view-all-product', $data);
     }
+
+    
 }

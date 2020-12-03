@@ -53,6 +53,8 @@ Route::middleware('auth')->group(function(){
         Route::get('/product',  [ProductController::class, 'productIndex'])->name('product index');
         Route::get('/product/create',  [ProductController::class, 'index'])->name('product');
         Route::get('/product/all',  [ProductController::class, 'viewAll'])->name('view all product');
+        Route::get('/product/pending',  [ProductController::class, 'pendingProduct'])->name('pending products');
+        Route::get('/product/publish',  [ProductController::class, 'publishProduct'])->name('publish products');
         Route::get('/product/view/{id}', [ProductController::class, 'viewOne'])->name('view one product');
 
         Route::get('/product/createCategory',  [ProductCategoryController::class, 'index'])->name('product category');
