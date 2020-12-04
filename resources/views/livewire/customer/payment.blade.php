@@ -44,7 +44,7 @@
           <div class="mt-4 collapse col-12" id="customers">
             <div id="paymentOption"></div>
           </div>
-          <script src="https://www.paypal.com/sdk/js?client-id=AUB0GhANvSY0aWb2pEOXO8z6srFXkSklHpuQGPXlkDeC3Gk0B08bxUmFbf5O9S2lDo4Vj2U4uEQAWpNN"></script>
+          <script src="https://www.paypal.com/sdk/js?client-id=AUv6MRnzLnf3BjlH3kCTcVaV2wXMcnAwoA_YbnPzrgKm9AX6_VRfKGUYpeX5iuKJGqSwxCPQUQCsMv5Q"></script>
 
           <script>
             paypal.Buttons({
