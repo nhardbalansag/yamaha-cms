@@ -65,7 +65,7 @@
                                              {{ $value->products_created_at }}
                                         </td>
                                         <td class="px-6 py-4 text-sm leading-5 text-center whitespace-no-wrap ">
-                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">view</a>
+                                            <a href="/product/view/{{$value->products_id}}" class="text-indigo-600 hover:text-indigo-900">view</a>
                                         </td>
                                         <td class="px-6 py-4 text-sm leading-5 whitespace-no-wrap">
                                             <a href="#" class="text-center text-indigo-600 hover:text-indigo-900">Edit</a>

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin\Products\Product;
 use App\Models\User;
+use App\Models\Users\Transaction;
+use Illuminate\Support\Facades\Auth;
 
 class Account extends Controller
 {
@@ -15,6 +17,11 @@ class Account extends Controller
         $data['account_info'] = DB::select('SELECT * 
                                 FROM users
                                 WHERE id = ' . $id);
+        $data['transactionData'] = DB::select('SELECT *, transactions.status as transactionStatus
+                                                FROM transactions, users, products
+                                                WHERE 
+                                                    (users.id = transactions.customerId AND products.id = transactions.productId) AND users.id = ' . Auth::user()->id);
+        
         return view('pages.client.pages.my-account', $data);
     }
 
@@ -32,8 +39,9 @@ class Account extends Controller
         $data['data'] = array( 
                 "account" => $accountInfo, 
                 "product" => $product);
-         
+
         //send email when checkout
+
         return view('pages.client.pages.payment', $data);
     }   
 
@@ -60,6 +68,25 @@ class Account extends Controller
         
         return redirect('/customer/register');
 
+    }
+
+    public function checkoutDetails($user_id, $product_id, $amount){
+
+
+        $data = array(
+            'customerId' => $user_id == Auth::user()->id ? Auth::user()->id : abort(403, 'Unauthorized') , 
+            'productId' => $product_id, 
+            'purchaseAmount' => $amount,
+            'status' => "processing"
+        );
+        
+        if(Transaction::create($data)){
+            $data['result'] = true;
+            return redirect('/my-account/' . Auth::user()->id);
+        }else{
+            $data['result'] = false;
+            return view('pages.client.pages.payment-result', $data);
+        }
     }
 }
 

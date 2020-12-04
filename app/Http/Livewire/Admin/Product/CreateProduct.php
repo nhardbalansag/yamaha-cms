@@ -21,7 +21,7 @@ class CreateProduct extends Component
         'title' => 'required',
         'description' => 'required',
         'status' => 'required',
-        'price' => 'required|numeric',
+        'price' => 'required|numeric|min:1',
         'product_category_id' => 'required'
     ];
 
