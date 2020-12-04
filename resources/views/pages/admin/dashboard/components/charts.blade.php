@@ -1,12 +1,12 @@
 <div class="row col-md-12">
     <div class="col-md-4">
-        <canvas id="inquiry"></canvas>
+        <canvas id="inquiry" height="250"></canvas>
     </div>
     <div class="col-md-4">
-        <canvas id="reserve"></canvas>
+        <canvas id="reserve" height="250"></canvas>
     </div>
     <div class="col-md-4">
-        <canvas id="order"></canvas>
+        <canvas id="order" height="250"></canvas>
     </div>
 </div>
 <hr>
@@ -50,7 +50,7 @@ var reserve = new Chart(document.getElementById('reserve').getContext('2d'), {
     data: {
         labels: {!!json_encode($reserve_month)!!},
         datasets: [{
-            label: '# of Votes',
+            label: '# of reservations',
             data: {!!json_encode($reserve_values)!!},
             backgroundColor: 'rgba(3,76,141, .3)',
             borderColor: 'rgba(3,76,141)',
@@ -74,7 +74,7 @@ var order = new Chart(document.getElementById('order').getContext('2d'), {
     data: {
         labels: {!!json_encode($order_values)!!},
         datasets: [{
-            label: '# of Votes',
+            label: '# of order',
             data: {!!json_encode($order_values)!!},
             backgroundColor: 'rgba(3,76,141, .3)',
             borderColor:'rgba(3,76,141)',
@@ -100,8 +100,7 @@ var customerStatus = new Chart(document.getElementById('customerStatus').getCont
         datasets: [{
             label: '# of customer status',
             data: {!!json_encode($customerStatus)!!},
-            backgroundColor: 'rgba(3,76,141, .3)',
-            borderColor: 'rgba(3,76,141)',
+            backgroundColor: ['#dc3545','#007bff'],
             borderWidth: 1
         }]
     },
@@ -123,8 +122,7 @@ var productStatus = new Chart(document.getElementById('productStatus').getContex
         datasets: [{
             label: '# of Votes',
             data: {!!json_encode($productStatus)!!},
-            backgroundColor: 'rgba(3,76,141, .3)',
-            borderColor: 'rgba(3,76,141)',
+            backgroundColor: ['#dc3545','#007bff'],
             borderWidth: 1
         }]
     },

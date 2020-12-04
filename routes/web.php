@@ -42,6 +42,9 @@ Route::middleware('auth')->group(function(){
         Route::get('/my-account/loan/application', [Account::class, 'loanApplication']);
         Route::get('/my-account/order/{product_id}/payment/{customer_id}', [Account::class, 'payment']);
         Route::get('/my-account/services/{service_id}/{id}', [Account::class, 'payment']);
+
+        //PAYMENT
+        Route::get('/my-account/checkout/{user_id}/{product_id}/{amount}', [Account::class, 'checkoutDetails']);
     });
 });
 

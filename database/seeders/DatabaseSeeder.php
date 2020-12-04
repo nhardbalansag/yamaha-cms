@@ -58,8 +58,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'first_name' =>  'customer1',
-            'last_name' =>  'balansag',
+            'first_name' =>  'rinabelle',
+            'last_name' =>  'de jesus',
             'middle_name' => 'none',
             'home_address' => '8747 ba lepanto condominium corporation',
             'street_address' => 'paseo de roxas',
@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
             'postal' => '1226',
             'role' => 'customer',
             'verified' => true,
-            'email' => 'customer1@email.com',
+            'email' => 'rinabelle@email.com',
             'password' => Hash::make('helloworld'),
         ]);
         DB::table('teams')->insert([
@@ -80,7 +80,29 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'first_name' =>  'customer2',
+            'first_name' =>  'kim alfred',
+            'last_name' =>  'agpalo',
+            'middle_name' => 'none',
+            'home_address' => '8747 ba lepanto condominium corporation',
+            'street_address' => 'paseo de roxas',
+            'country_region' => 'phillipines',
+            'contact_number' => '09214408767',
+            'city' => 'makati',
+            'state_province' => 'manila',
+            'postal' => '1226',
+            'role' => 'customer',
+            'verified' => true,
+            'email' => 'kimalfred@email.com',
+            'password' => Hash::make('helloworld'),
+        ]);
+        DB::table('teams')->insert([
+            'user_id' => 3,
+            'name' => "null",
+            'personal_team' => 1
+        ]);
+
+        DB::table('users')->insert([
+            'first_name' =>  'bernard',
             'last_name' =>  'balansag',
             'middle_name' => 'none',
             'home_address' => '8747 ba lepanto condominium corporation',
@@ -92,14 +114,15 @@ class DatabaseSeeder extends Seeder
             'postal' => '1226',
             'role' => 'customer',
             'verified' => true,
-            'email' => 'customer2@email.com',
+            'email' => 'bernardbalansag@email.com',
             'password' => Hash::make('helloworld'),
         ]);
         DB::table('teams')->insert([
-            'user_id' => 3,
+            'user_id' => 4,
             'name' => "null",
             'personal_team' => 1
         ]);
 
     }
 }
+

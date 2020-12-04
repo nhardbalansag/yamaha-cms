@@ -17,11 +17,11 @@
                     @include('pages.client.component.profile')
                 </div>
                 <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab"> 
-                all sepecification
+                    @include('pages.client.component.orders')
                 </div>
                 <div class="tab-pane fade" id="product-color" role="tabpanel" aria-labelledby="product-comments-tab">  
                     {{-- @livewire('admin.product.color-category',  ['product_id' => $product->id]) --}}
-                    orders
+                      
                 </div>
                 <div class="tab-pane fade" id="product-specification" role="tabpanel" aria-labelledby="product-comments-tab">  
                     @include('pages.client.component.loan-application')
