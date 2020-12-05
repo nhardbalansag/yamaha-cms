@@ -3,7 +3,7 @@
                 <p class = "text-4xl font-bold capitalize">recommended</p>
             </div>
             <div class="swiper-container">
-                <div class="pb-20 swiper-wrapper h-100">
+                <div class="pb-20 swiper-wrapper h-100 d-flex justify-content-center">
                     @foreach($recommended as $key => $value)
                         <div class="p-0 border swiper-slide">
                             <a href="/home/product/{{$value->id}}" class="btn btn-lg" tabindex="0">
@@ -12,11 +12,9 @@
                                         <img src="{{url('storage/' . $value->photo_path) }}" loading="lazy" alt="...">
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-end">
-                                    <div>
-                                        <div class="mb-2 font-weight-bold">{{$value->title}}</div>
-                                        <div class="font-weight-bold text-dark ">P {{$value->price}}.00</div>
-                                    </div>
+                                <div>
+                                    <div class="mb-2 font-weight-bold">{{$value->title}}</div>
+                                    <div class="font-weight-bold text-dark ">P {{$value->price}}.00</div>
                                 </div>
                             </a>
                         </div>
