@@ -5,7 +5,7 @@
             <div class="swiper-container">
                 <div class="pb-20 swiper-wrapper h-100 d-flex justify-content-center">
                     @foreach($recommended as $key => $value)
-                        <div class="p-0 border swiper-slide">
+                        <div class=" swiper-slide">
                             <a href="/home/product/{{$value->id}}" class="btn btn-lg" tabindex="0">
                                 <div class="row">
                                     <div class="p-0 d-flex align-items-center" >
