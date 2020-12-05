@@ -57,7 +57,7 @@ class CreateNewUser implements CreatesNewUsers
                 'verified' => false,
                 'state_province' => $input['state_province'],
                 'postal' => $input['postal'],
-                'role' => $input['url'] == env('APP_URL') . '/register' ? "customer assistant" : "customer",
+                'role' => "customer",
                 // 'account_type' => "admin",
                 'email' => $input['email'],     
                 'password' => Hash::make($input['password']),
