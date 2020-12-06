@@ -41,6 +41,7 @@
                                         {{ $header }}
                                     </div>
                                     @yield('contents')
+                                     {{ $slot }}
                                     {{-- @yield('contents') --}}
                             </main>
                            {{-- end main content --}}
