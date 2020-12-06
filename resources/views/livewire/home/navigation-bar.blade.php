@@ -43,11 +43,11 @@
         @auth
           @if(Auth::user()->role === 'admin' && Auth::user()->verified === 1)
             <li class="nav-item active">
-              <a class="text-xl text-white nav-link" href="/dashboard" tabindex="-1" aria-disabled="true">Dashboard</a>
+              <a class="text-white  nav-link" href="/dashboard" tabindex="-1" aria-disabled="true">Dashboard</a>
             </li>
           @elseif(Auth::user()->role === 'customer' && Auth::user()->verified === 1)
             <li class="nav-item active">
-              <a class="text-xl text-white nav-link" href="/my-account/{{Auth::user()->id}}" tabindex="-1" aria-disabled="true">My Account</a>
+              <a class="text-white  nav-link" href="/my-account/{{Auth::user()->id}}" tabindex="-1" aria-disabled="true">My Account</a>
             </li>
           @endif
             <li class="nav-item active">

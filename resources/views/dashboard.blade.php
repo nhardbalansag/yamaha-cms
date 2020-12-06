@@ -3,10 +3,10 @@
         
     </x-slot>
 
-    <div>
+    <div class="py-12">
         <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
 
-           
+          
 
         </div>
     </div>
