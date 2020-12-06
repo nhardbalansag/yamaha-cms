@@ -3,23 +3,25 @@
 
     @include('pages.web-app.home.components.recommended')
 
-    <div class=" row col-12 col-md-12">
+    <div class="p-0 mx-auto row col-12 col-md-12">
         @foreach($product as $key => $value)
  
-           <div class=" my-4 mx-2 col-5 col-md-3">
-                <a href="/home/product/{{$value->id}}" class="btn btn-lg" tabindex="0">
-                    <div class="row">
-                        <div class="p-0 image fluid col-12 col-md-12 d-flex align-items-center" >
-                            <img src="{{url('storage/' . $value->photo_path) }}" loading="lazy" alt="...">
-                        </div>
+           <div class="my-4 col-6 col-md-3">
+                <a href="/home/product/{{$value->id}}">
+                    <div class="p-0"  style="height:75%; width:100%">
+                        <img src="{{url('storage/' . $value->photo_path) }}"  class="image-fluid" loading="lazy" alt="...">
                     </div>
                     <div>
-                        <div class="mb-2 font-weight-bold">{{$value->title}}</div>
-                        <div class="font-weight-bold text-dark ">P {{$value->price}}.00</div>
+                        <div class="mb-2 truncate w-100 font-weight-bold text-primary text-capitalize">{{$value->title}}</div>
+                        <div class="font-weight-light text-dark ">{{date('m/d/Y', strtotime($value->created_at))}}</div>
+                        <div class="d-flex justify-content-between">
+                            <p class="font-weight-light text-dark text-capitalize">buy now :</p>
+                            <p class="font-weight-bold text-dark ">P {{$value->price}}.00</p>
+                        </div>
                     </div>
                 </a>
            </div>
-               
+
         @endforeach
     </div>
     <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">

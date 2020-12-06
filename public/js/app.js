@@ -31140,7 +31140,7 @@ __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.es
 (function () {
   // Custom script
   var swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.swiper-container', {
-    slidesPerView: 1,
+    slidesPerView: 2,
     spaceBetween: 10,
     slidesPerGroup: 1,
     loop: false,
@@ -31154,10 +31154,6 @@ __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.es
       prevEl: '.swiper-button-prev'
     },
     breakpoints: {
-      772: {
-        slidesPerView: 2,
-        spaceBetweenSlides: 10
-      },
       1111: {
         slidesPerView: 4,
         spaceBetweenSlides: 10

@@ -28,8 +28,8 @@ var inquiry = new Chart(document.getElementById('inquiry').getContext('2d'), {
         datasets: [{
             label: '# of inquiries',
             data: {!!json_encode($inquiries_values)!!},
-            backgroundColor: 'rgba(3,76,141, .3)',
-            borderColor: 'rgba(3,76,141)',
+            backgroundColor: 'rgb(3,76,141)',
+            borderColor: 'rgb(3,76,141)',
             borderWidth: 1
         }]
     },

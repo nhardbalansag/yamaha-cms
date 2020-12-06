@@ -26,8 +26,11 @@ class Inquire extends Component
         'city' => 'required|max:100',
         'state_province' => 'required|max:100',
         'postal' => 'required|min:4|numeric',
-        'productId' => 'required|numeric'
+        'productId' => 'required|numeric',
+        'g-recaptcha-response' => 'required|recaptcha'
     ];
+
+
 
     public function render(){
 
