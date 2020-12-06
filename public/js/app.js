@@ -31141,7 +31141,7 @@ __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.es
   // Custom script
   var swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.swiper-container', {
     slidesPerView: 2,
-    spaceBetween: 10,
+    spaceBetween: 20,
     slidesPerGroup: 1,
     loop: false,
     loopFillGroupWithBlank: true,

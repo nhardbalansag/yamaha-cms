@@ -1,4 +1,4 @@
-<div class = "mb-5 bg-white rounded">
+<div class = "block mb-5 bg-white rounded collapse d-md-block" id="search">
     <form class="" action = "" method = "">
         <div class="mb-6">
             <div class="flex items-center px-4 py-3 mb-3 text-sm font-bold text-white bg-blue-500" role="alert">

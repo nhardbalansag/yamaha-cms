@@ -26,21 +26,8 @@ class Inquire extends Component
         'city' => 'required|max:100',
         'state_province' => 'required|max:100',
         'postal' => 'required|min:4|numeric',
-        'productId' => 'required|numeric',
-        'g-recaptcha-response' => 'required'
+        'productId' => 'required|numeric'
     ];
-
-    public function messages()
-    {
-        return [
-       'required' => 'The :attribute field is required.',
-       'email' => 'The :attribute must use a valid email address',
-       'g-recaptcha-response.recaptcha' => 'Captcha verification failed',
-       'g-recaptcha-response.required' => 'Please complete the captcha'
-       ];
-    }
-
-
 
     public function render(){
 
@@ -53,33 +40,6 @@ class Inquire extends Component
 
 
     public function createInquiry(){
-
-        $url = 'https://www.google.com/recaptcha/api/siteverify';
-$remoteip = $_SERVER['REMOTE_ADDR'];
-$data = [
-        'secret' => config('services.recaptcha.secret'),
-        'response' => $request->get('recaptcha'),
-        'remoteip' => $remoteip
-      ];
-$options = [
-        'http' => [
-          'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-          'method' => 'POST',
-          'content' => http_build_query($data)
-        ]
-    ];
-$context = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
-        $resultJson = json_decode($result);
-if ($resultJson->success != true) {
-        return back()->withErrors(['captcha' => 'ReCaptcha Error']);
-        }
-if ($resultJson->score >= 0.3) {
-        //Validation was successful, add your form submission logic here
-        return back()->with('message', 'Thanks for your message!');
-} else {
-        return back()->withErrors(['captcha' => 'ReCaptcha Error']);
-}
 
         $validatedData = $this->validate($this->data);
         Inquiry::create($validatedData);
