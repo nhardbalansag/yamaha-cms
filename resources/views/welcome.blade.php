@@ -88,19 +88,6 @@
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="ufOIooEq"></script>
         <!-- facebook messgenge -->
-
-        {{-- recaptcha --}}
-        <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.sitekey') }}"></script>
-        <script>
-                grecaptcha.ready(function() {
-                    grecaptcha.execute('{{ config('services.recaptcha.sitekey') }}', {action: 'contact'}).then(function(token) {
-                        if (token) {
-                        document.getElementById('recaptcha').value = token;
-                        }
-                    });
-                });
-        </script>
-             
                 
     </body>
 
