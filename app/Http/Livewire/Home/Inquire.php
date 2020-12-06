@@ -27,7 +27,7 @@ class Inquire extends Component
         'state_province' => 'required|max:100',
         'postal' => 'required|min:4|numeric',
         'productId' => 'required|numeric',
-        'g-recaptcha-response' => 'required|recaptcha'
+        'g-recaptcha-response' => 'required'
     ];
 
 
