@@ -7,7 +7,7 @@ import swiper from 'swiper/bundle';
 (function() {
     // Custom script
     const swiper = new Swiper('.swiper-container', {
-        slidesPerView: 1,
+        slidesPerView: 2,
         spaceBetween: 10,
         slidesPerGroup: 1,
         loop: false,
@@ -21,10 +21,6 @@ import swiper from 'swiper/bundle';
           prevEl: '.swiper-button-prev',
         },
         breakpoints: {
-            772: {
-            slidesPerView: 2,
-            spaceBetweenSlides: 10
-            },
             1111: {
                 slidesPerView: 4,
                 spaceBetweenSlides: 10
