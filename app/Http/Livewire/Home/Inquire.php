@@ -30,6 +30,16 @@ class Inquire extends Component
         'g-recaptcha-response' => 'required'
     ];
 
+    public function messages()
+    {
+        return [
+       'required' => 'The :attribute field is required.',
+       'email' => 'The :attribute must use a valid email address',
+       'g-recaptcha-response.recaptcha' => 'Captcha verification failed',
+       'g-recaptcha-response.required' => 'Please complete the captcha'
+       ];
+    }
+
 
 
     public function render(){
