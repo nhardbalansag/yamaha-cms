@@ -17,14 +17,32 @@
                     @include('pages.client.component.profile')
                 </div>
                 <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab"> 
-                    @include('pages.client.component.orders')
+                    @if (Auth::user()->verified != 1)
+                        <div class="alert alert-warning text-center" role="alert">
+                            <p>
+                                Note: at the moment you cant buy or reserve a product or services. Please verify first your email address.
+                            </p>
+                            <a href="/my-account/{{ Auth::user()->id }}">click here to account</a>
+                        </div>
+                    @else
+                        @include('pages.client.component.orders')
+                    @endif
                 </div>
                 <div class="tab-pane fade" id="product-color" role="tabpanel" aria-labelledby="product-comments-tab">  
                     {{-- @livewire('admin.product.color-category',  ['product_id' => $product->id]) --}}
                       
                 </div>
                 <div class="tab-pane fade" id="product-specification" role="tabpanel" aria-labelledby="product-comments-tab">  
-                    @include('pages.client.component.loan-application')
+                    @if (Auth::user()->verified != 1)
+                        <div class="alert alert-warning text-center" role="alert">
+                            <p>
+                                Note: at the moment you cant buy or reserve a product or services. Please verify first your email address.
+                            </p>
+                            <a href="/my-account/{{ Auth::user()->id }}">click here to account</a>
+                        </div>
+                    @else
+                        @include('pages.client.component.loan-application')
+                    @endif
                 </div>
             </div>
         </div>
