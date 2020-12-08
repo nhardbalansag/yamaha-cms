@@ -45,6 +45,9 @@ Route::middleware('auth')->group(function(){
 
         //PAYMENT
         Route::get('/my-account/checkout/{user_id}/{product_id}/{amount}', [Account::class, 'checkoutDetails']);
+
+        //EMAIL VERIFICATION
+        Route::get('/my-account/verify/{id}', [Account::class, 'verifyEmail']);
     });
 });
 
