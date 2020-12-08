@@ -20,7 +20,7 @@ class User
         if((Auth::user()->role === 'admin' && $user === 'admin') && Auth::user()->verified === 1){
             return $next($request);
         }
-        if((Auth::user()->role === 'customer' && $user === 'customer') && Auth::user()->verified === 1){
+        if((Auth::user()->role === 'customer' && $user === 'customer')){
             return $next($request);
         }
         
