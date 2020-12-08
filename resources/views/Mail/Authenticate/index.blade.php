@@ -40,10 +40,8 @@
                     <div>
                         <p>You registered an account on customer's Yamaha Website, before being able to use your account you need to verify that this is your email address by clicking the button below.</p>
                     </div>
-                    <div>  	
-                        <center>
-                            <a href="{{env('APP_URL') . '/account/verify/' . $productInfo['email'] }}">click here to confirm email</a>
-                        <center>
+                    <div style="text-align: center">  	
+                        <h3>{{ $productInfo['verification'] }}</h3>
                     </div>
                     <p>And if not, ignore this message.</p>
                     <p>Thank you!</p>

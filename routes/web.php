@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function(){
 
         //EMAIL VERIFICATION
         Route::get('/my-account/verify/{id}', [Account::class, 'verifyEmail']);
+        Route::post('/my-account/verify/email/code', [Account::class, 'verifyCode']);
     });
 });
 

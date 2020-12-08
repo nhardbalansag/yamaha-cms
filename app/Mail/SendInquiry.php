@@ -11,7 +11,7 @@ class SendInquiry extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject, $dataContent, $template, $to_email, $emailType;
+    public $subject, $dataContent, $template, $to_email, $emailType, $verification;
     public $productId, $first_name, $last_name, $middle_name, $email_address, $home_address, $street_address, $country_region, $contact_number, $city, $state_province, $postal;
 
     /**

@@ -10,9 +10,14 @@ use App\Models\User;
 use App\Models\Users\Transaction;
 use App\Models\Users\AccountVerification;
 use Illuminate\Support\Facades\Auth;
+use Mail;
 
 class Account extends Controller
 {
+
+    protected $emailType = "registration";
+
+
     public function index($id){
 
         $data['account_info'] = DB::select('SELECT * 
@@ -91,22 +96,59 @@ class Account extends Controller
     }
 
 
-    public function verifyEmail($id){
+    public function verifyEmail(){
         
         $verification = rand(0, 10000);
 
         $data = [
             'verificationCode' =>  $verification,
-            'customerId' => $id
+            'customerId' => Auth::user()->id
+        ];
+
+        $email = [
+            "first_name" => Auth::user()->first_name,
+            "last_name" => Auth::user()->last_name,
+            "middle_name" => Auth::user()->middle_name,
+            "verification" =>  $verification,
+            "email" =>  Auth::user()->email
         ];
 
         if(AccountVerification::create($data)){
-            $data['result'] = true;
-            return redirect('/my-account/' . Auth::user()->id);
-        }else{
-            $data['result'] = false;
-            return view('pages.client.pages.payment-result', $data);
+            $data['result'] = "we have sended a verification code to your email please check your email";
+            $data['result_bool'] = true;
+
+            Mail::send(new \App\Mail\SendInquiry($this->emailType, $email));
+
+            return view('pages.client.pages.verify-code', $data);
+            
         }
+
+    }
+
+    public function verifyCode(Request $request){
+
+        $request->validate([
+            'verificationCode' => 'required|numeric'
+        ]);
+
+        $data['result'] = DB::select('SELECT customerId
+                                        FROM account_verifications 
+                                            WHERE verificationCode = ?', [$request->input()['verificationCode']]);
+
+       if(!empty($data['result'])){
+            //update status
+            $affected = User::where('id', $data['result'][0]->customerId)
+                                ->update(['verified' => true]);
+                                
+            return redirect('/my-account/' . $data['result'][0]->customerId);
+
+       }else{
+            $data['result'] = "verification failed please confirm your email";
+            $data['result_bool'] = false;
+
+            return view('pages.client.pages.verify-code', $data);
+
+       }
 
     }
 }
