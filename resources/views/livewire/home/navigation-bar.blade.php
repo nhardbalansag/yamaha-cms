@@ -43,13 +43,12 @@
         @auth
           @if(Auth::user()->role === 'admin' && Auth::user()->verified === 1)
             <li class="nav-item active">
-              <a class="text-white  nav-link" href="/dashboard" tabindex="-1" aria-disabled="true">Dashboard</a>
-            </li>
-          @elseif(Auth::user()->role === 'customer' && Auth::user()->verified === 1)
-            <li class="nav-item active">
-              <a class="text-white  nav-link" href="/my-account/{{Auth::user()->id}}" tabindex="-1" aria-disabled="true">My Account</a>
+              <a class="text-white nav-link" href="/dashboard" tabindex="-1" aria-disabled="true">Dashboard</a>
             </li>
           @endif
+            <li class="nav-item active">
+              <a class="text-white nav-link" href="/my-account/{{Auth::user()->id}}" tabindex="-1" aria-disabled="true">My Account</a>
+            </li>
             <li class="nav-item active">
              <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -60,14 +59,15 @@
                 </a>
               </form>
             </li>
-        @else
+        @endauth
+        @guest
           <li class="nav-item active">
             <a class="text-white nav-link" href="/customer/register" tabindex="-1" aria-disabled="true">Register</a>
           </li>
           <li class="nav-item active">
             <a class="text-white nav-link" href="/customer/login" tabindex="-1" aria-disabled="true">Login</a>
           </li>
-        @endif
+        @endguest
       </ul>
     </div>
     <div class="d-flex justify-content-center d-md-none">

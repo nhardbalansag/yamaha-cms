@@ -32,10 +32,24 @@
                 {{$account_info[0]->postal}}
             </p>
              <hr>
-             <strong><i class="mr-1 fas fa-book"></i>email</strong>
-            <p class="text-muted">
-                {{$account_info[0]->email}}
-            </p>
+             <strong><i class="mr-1 fas fa-book"></i>Email</strong>
+            <div class="p-0 row col-12 col-md-12">
+                <div class="col-12 col-md-4">
+                    <p class="text-muted">
+                        {{$account_info[0]->email}}
+                    </p>
+                </div>
+                <div class="mx-auto col-12 col-md-4">
+                    <p class="px-2 text-capitalize btn btn-sm text-white rounded-pill {{Auth::user()->verified == 1 ? "bg-success" : "bg-danger"}}">
+                        {{Auth::user()->verified == 1 ? "verified" : "not verified"}}
+                    </p>
+                </div>
+                <div class="col-12 col-md-4">
+                    @if(Auth::user()->verified != 1)
+                        <a href="">verify email</a>
+                    @endif
+                </div>
+            </div>
             <hr>
              <strong><i class="mr-1 fas fa-book"></i>Contact number</strong>
             <p class="text-muted">

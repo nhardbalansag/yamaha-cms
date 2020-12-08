@@ -34,6 +34,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'photo' => ['nullable', 'image', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
 
+        
+
         if (isset($input['photo'])) {
             $user->updateProfilePhoto($input['photo']);
         }
