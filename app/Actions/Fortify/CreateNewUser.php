@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
-use Mail;
+
 
 
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
 
-    protected $emailType = "registration";
+    
 
     /**
      * Create a newly registered user.
@@ -42,7 +42,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
         
-        Mail::send(new \App\Mail\SendInquiry($this->emailType, $input));
+       
 
         return DB::transaction(function () use ($input) {
             return tap(User::create([
