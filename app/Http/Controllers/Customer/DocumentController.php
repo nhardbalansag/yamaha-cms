@@ -25,6 +25,15 @@ class DocumentController extends Controller
         return view('pages.client.pages.set-up-loan-credentials', $data);
     }
 
+
+    public function resubmit($id){
+
+        $data['passId'] = DB::select('SELECT *
+                                        FROM customers_documents
+                                        WHERE customers_documents.document_id = ' . $id . ' and customers_documents.customer_id = ' . Auth::user()->id);
+        return view('pages.client.pages.resubmit-document');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
