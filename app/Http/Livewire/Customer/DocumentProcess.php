@@ -13,7 +13,7 @@ class DocumentProcess extends Component
 
     use WithFileUploads;
 
-    public $photo_path, $document_id;
+    public $photo_path, $document_id, $percent;
 
     public $data = [
         'photo_path' => 'required|image|max:1024',
@@ -23,8 +23,16 @@ class DocumentProcess extends Component
     public function render()
     {
         $data['document_category'] = DB::select('select * from document_categories');
-        $data['submitted_document'] = DB::select('select * from customers_documents');
+        $data['submitted_document'] = DB::select('SELECT
+                                                    customers_documents.photo_path as file_path,
+                                                    customers_documents.status as file_status,
+                                                    document_categories.title as document_title
 
+                                                    FROM customers_documents, document_categories
+                                                    WHERE customers_documents.document_id = document_categories.id and customers_documents.customer_id = ' . Auth::user()->id);
+        $data['percent'] = $this->percent;
+
+        // dd($data['passingDocs']);
         return view('livewire.customer.document-process', $data);
     }
 
@@ -39,9 +47,18 @@ class DocumentProcess extends Component
             'status' => "pending",
         ];
 
-        CustomersDocument::create($formData);
+        $data['validId'] = DB::select('SELECT COUNT(*) as data_count
+                                            FROM customers_documents, document_categories
+                                            WHERE customers_documents.document_id = ' . $this->document_id . ' and customers_documents.customer_id = ' . Auth::user()->id);
 
-        session()->flash('message', 'Document uploaded successfully');
-        return redirect()->to('/my-account/credential/documents/set-up');
+        if($data['validId'][0]->data_count != 0){
+            session()->flash('error', 'you had already submitted this type of document');
+        }else{
+            CustomersDocument::create($formData);
+
+            session()->flash('message', 'Document uploaded successfully');
+            return redirect()->to('/my-account/credential/documents/set-up');
+        }
+
     }
 }

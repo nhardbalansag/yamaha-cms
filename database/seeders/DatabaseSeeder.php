@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $tittle = array('motorcycle', 'services', 'parts');
         $description = array('motorcycle description', 'services description', 'parts description');
         $documents = array('billing statement', 'proof of billing', 'company id', 'any valid id');
-        
+
         for($index = 0; $index < 3; $index++){
             DB::table('product_categories')->insert([
                 'title' =>  $tittle[$index],
