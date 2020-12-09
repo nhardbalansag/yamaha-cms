@@ -66,6 +66,19 @@
                                </div>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a class="text-black nav-link" data-toggle="collapse" href="#loanApplicants">
+                                <svg width="24" height="24"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                  </svg>
+                                Loan Applicants
+                            </a>
+                            <div class="collapse col-12" id="loanApplicants">
+                               <div class="py-2 col-12">
+                                    <a href="/loan/applicants" class="text-black">view all applicants</a>
+                               </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </nav>

@@ -20,14 +20,14 @@ class Account extends Controller
 
     public function index($id){
 
-        $data['account_info'] = DB::select('SELECT * 
+        $data['account_info'] = DB::select('SELECT *
                                 FROM users
                                 WHERE id = ' . $id);
         $data['transactionData'] = DB::select('SELECT *, transactions.status as transactionStatus
                                                 FROM transactions, users, products
-                                                WHERE 
+                                                WHERE
                                                     (users.id = transactions.customerId AND products.id = transactions.productId) AND users.id = ' . Auth::user()->id);
-        
+
         return view('pages.client.pages.my-account', $data);
     }
 
@@ -42,14 +42,14 @@ class Account extends Controller
         //product details customer want to avail
         $product = Product::where('id', $product_id)->first();
 
-        $data['data'] = array( 
-                "account" => $accountInfo, 
+        $data['data'] = array(
+                "account" => $accountInfo,
                 "product" => $product);
 
         //send email when checkout
 
         return view('pages.client.pages.payment', $data);
-    }   
+    }
 
     public function reservation(){
         return view('pages.client.pages.reservation');
@@ -60,18 +60,18 @@ class Account extends Controller
         $column = ['email'=> $email];
 
         $results = User::select('email')
-                        ->where('email', $email) 
+                        ->where('email', $email)
                         ->first();
-        
+
         if(!empty($results)){
             if($results->email === $email ){
                 $affected = User::where('email', $email)
                                 ->update(['verified' => true]);
             }
-            
+
             return redirect('/home');
         }
-        
+
         return redirect('/customer/register');
 
     }
@@ -80,12 +80,12 @@ class Account extends Controller
 
 
         $data = array(
-            'customerId' => $user_id == Auth::user()->id ? Auth::user()->id : abort(403, 'Unauthorized') , 
-            'productId' => $product_id, 
+            'customerId' => $user_id == Auth::user()->id ? Auth::user()->id : abort(403, 'Unauthorized') ,
+            'productId' => $product_id,
             'purchaseAmount' => $amount,
             'status' => "processing"
         );
-        
+
         if(Transaction::create($data)){
             $data['result'] = true;
             return redirect('/my-account/' . Auth::user()->id);
@@ -97,7 +97,7 @@ class Account extends Controller
 
 
     public function verifyEmail(){
-        
+
         $verification = rand(0, 10000);
 
         $data = [
@@ -120,7 +120,7 @@ class Account extends Controller
             Mail::send(new \App\Mail\SendInquiry($this->emailType, $email));
 
             return view('pages.client.pages.verify-code', $data);
-            
+
         }
 
     }
@@ -132,14 +132,14 @@ class Account extends Controller
         ]);
 
         $data['result'] = DB::select('SELECT customerId
-                                        FROM account_verifications 
+                                        FROM account_verifications
                                             WHERE verificationCode = ?', [$request->input()['verificationCode']]);
 
        if(!empty($data['result'])){
             //update status
             $affected = User::where('id', $data['result'][0]->customerId)
                                 ->update(['verified' => true]);
-                                
+
             return redirect('/my-account/' . $data['result'][0]->customerId);
 
        }else{
@@ -153,8 +153,7 @@ class Account extends Controller
     }
 }
 
-       
-        
 
-                       
-        
+
+
+

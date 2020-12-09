@@ -22,11 +22,18 @@ class DocumentProcess extends Component
 
     public function render()
     {
+
+        $data['approval_percent'] = DB::select('SELECT COUNT(*) as data_count
+                                        FROM customers_documents
+                                        WHERE customers_documents.status = "approved" and customers_documents.customer_id = ' . Auth::user()->id);
+
+        $data['approval_result'] = round(($data['approval_percent'][0]->data_count / 4) * 100);
         $data['document_category'] = DB::select('select * from document_categories');
         $data['submitted_document'] = DB::select('SELECT
                                                     customers_documents.photo_path as file_path,
                                                     customers_documents.status as file_status,
-                                                    document_categories.title as document_title
+                                                    document_categories.title as document_title,
+                                                    customers_documents.id as doc_id
 
                                                     FROM customers_documents, document_categories
                                                     WHERE customers_documents.document_id = document_categories.id and customers_documents.customer_id = ' . Auth::user()->id);
@@ -61,4 +68,7 @@ class DocumentProcess extends Component
         }
 
     }
+
+
+
 }

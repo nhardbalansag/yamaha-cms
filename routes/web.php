@@ -13,8 +13,9 @@ use App\Http\Controllers\WebApp\LoginRegisterController;
 use App\Http\Controllers\Customer\Account;
 use App\Http\Controllers\Customer\DocumentController;
 use App\Http\Controllers\Admin\Customer\CustomerController;
+use App\Http\Controllers\Loan\LoanController;
 
-/*
+/*x
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -27,7 +28,7 @@ use App\Http\Controllers\Admin\Customer\CustomerController;
 
 // Route::get('/', function () {
 //     return view('welcome');
-// });  
+// });
 
 Route::get('/', [HomeController::class, 'index'])->name('home page');
 Route::get('/home/product/{id}', [HomeProductController::class, 'viewOne'])->name('view product');
@@ -53,6 +54,7 @@ Route::middleware('auth')->group(function(){
 
         //Documents
         Route::get('/my-account/credential/documents/set-up', [DocumentController::class, 'index']);
+        Route::get('/my-account/credential/documents/resubmit/{id}',  [DocumentController::class, 'resubmit']);
     });
 });
 
@@ -77,6 +79,13 @@ Route::middleware('auth')->group(function(){
         Route::get('/customer-all/not-verified',  [CustomerController::class, 'viewNotVerified']);
         Route::get('/customer-all/verified',  [CustomerController::class, 'verified']);
         Route::get('/customer-all/inquiries',  [CustomerController::class, 'inquiries']);
+
+
+        //LOAN APPLICANTS
+        Route::get('/loan/applicants',  [LoanController::class, 'index']);
+        Route::get('/loan/applicants/{id}',  [LoanController::class, 'viewCustomerDocument']);
+        Route::get('/loan/applicants/approved/{id}/{customer_id}',  [LoanController::class, 'approved']);
+        Route::get('/loan/applicants/declined/{id}/{customer_id}',  [LoanController::class, 'declined']);
 
 
     });

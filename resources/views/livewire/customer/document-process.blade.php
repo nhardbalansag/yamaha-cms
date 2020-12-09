@@ -71,7 +71,7 @@
         <p class="h6 text-capitalize">Approval status</p>
     </div>
     <div class="progress">
-      <div class="progress-bar " style="width:25%" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+        <div class="progress-bar {{ $approval_result >= 100 ? 'bg-success' : 'bg-primary' }}" style="width: {{ $approval_result }}%" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ $approval_result }}%</div>
     </div>
     <div class="p-0 mx-auto my-4 col-12 row">
         @foreach($submitted_document as $key => $value)
@@ -82,13 +82,13 @@
                 <div class="col-md-3 ">action</div>
             </div>
             <div class="mx-auto text-center row col-6 col-md-12">
-                <div class="col-md-3 text-truncate">{{ $value->file_path}}</div>
+                <div class="col-md-3 text-truncate"><a href="{{ asset('storage/' . $value->file_path) }}">{{asset('storage/' . $value->file_path) }}</a></div>
                 <div class="font-bold col-md-3 text-capitalize">{{ $value->document_title }}</div>
                 <div class="col-md-3 ">
-                    <p class ="text-white rounded-pill text-capitalize {{ $value->file_status == "success" ? 'bg-success' : ($value->file_status == "pending" ? 'bg-warning' : 'bg-danger') }}">{{ $value->file_status }}</p>
+                    <p class ="text-white rounded-pill text-capitalize {{ $value->file_status == "approved" ? 'text-success' : ($value->file_status == "pending" ? 'text-warning' : 'text-danger') }}">{{ $value->file_status }}</p>
                 </div>
-                <div class="p-0 d-flex justify-content-center col-md-3 {{ $value->file_status == "success" ? 'text-success' : ($value->file_status == "pending" ? 'text-warning' : 'text-danger') }}">
-                    @if($value->file_status === "success")
+                <div class="p-0 d-flex justify-content-center col-md-3 {{ $value->file_status == "approved" ? 'text-success' : ($value->file_status == "pending" ? 'text-warning' : 'text-danger') }}">
+                    @if($value->file_status === "approved")
                         <svg height="30" width="30" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -97,9 +97,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                         </svg>
                     @else
-                        <svg height="30" width="30" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                        <a href="/my-account/credential/documents/resubmit/{{ $value->doc_id}}">Resubmit</a>
                     @endif
                 </div>
             </div>

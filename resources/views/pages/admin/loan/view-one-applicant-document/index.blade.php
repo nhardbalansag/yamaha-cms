@@ -1,50 +1,40 @@
 @extends('dashboard')
 @section('contents')
 
-
 <div class="my-4 text-center border-bottom border-dark row col-md-12 text-capitalize">
     <div class="col-md-3">
-        name
+        image
     </div>
     <div class="col-md-3">
         status
     </div>
     <div class="col-md-3">
-        role
-    </div>
-    <div class="col-md-3">
-        email
-    </div>
-    <div class="col-md-3">
-        action
+        type
     </div>
 </div>
-@foreach($notVerified as $key => $value)
-
+@foreach($documents as $key => $value)
     <div class="py-2 my-2 text-center border-bottom border-dark row col-md-12">
         <div class="col-md-3 text-truncate">
-            {{$value->first_name}}
+
+             <a href="{{ asset('storage/' . $value->photo_path) }}">{{asset('storage/' . $value->photo_path) }}</a>
         </div>
-        <div class="col-md-3 {{ $value->verified == 1 ? 'text-success' : 'text-danger' }}">
-            {{$value->verified == 1 ? 'verified' : 'not verified'}}
-        </div>
-        <div class="col-md-3">
-            {{$value->role }}
+        <div class="col-md-3 {{ $value->status == "approved" ? 'text-success' : ($value->status == "pending" ? 'text-warning' : 'text-danger') }}">
+            {{ $value->status }}
         </div>
         <div class="col-md-3">
-            {{$value->email }}
+            {{ $value->title }}
         </div>
         <div class=" col-md-3">
             <div class="mb-2 dropdown">
                 <a class="dropdown-toggle " data-toggle="dropdown" href="#" >Actions</a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <li>
-                        <a class="dropdown-item text-primary" href="/loan/applicants/{{ $value->id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
-                    </li>
+                    <li><a class="dropdown-item text-success" href="/loan/applicants/approved/{{ $value->id }}/{{ $value->customer_id }}">Approved</a></li>
+                    <li><a class="dropdown-item text-danger" href="/loan/applicants/declined/{{ $value->id }}/{{ $value->customer_id }}">Decline</a></li>
                 </ul>
             </div>
         </div>
     </div>
 @endforeach
+
 
 @endsection
