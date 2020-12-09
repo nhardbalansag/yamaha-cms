@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class DocumentController extends Controller
 {
@@ -14,7 +16,13 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        return view('pages.client.pages.set-up-loan-credentials');
+        $data['passId'] = DB::select('SELECT count(*) as data_count
+        FROM customers_documents, document_categories
+        WHERE customers_documents.document_id = document_categories.id and customers_documents.customer_id = ' . Auth::user()->id);
+
+        $data['passingDocs'] = ($data['passId'][0]->data_count / 4) * 100;
+
+        return view('pages.client.pages.set-up-loan-credentials', $data);
     }
 
     /**

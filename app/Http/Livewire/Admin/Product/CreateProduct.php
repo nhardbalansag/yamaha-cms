@@ -17,7 +17,7 @@ class CreateProduct extends Component
     public $photo_path, $title, $description, $status, $update_count, $price, $product_category_id, $specification_id, $colors_type_id;
 
     public $data = [
-        'photo_path' => 'required|image|max:1024', 
+        'photo_path' => 'required|image|max:1024',
         'title' => 'required',
         'description' => 'required',
         'status' => 'required',
@@ -33,11 +33,11 @@ class CreateProduct extends Component
     }
 
     public function createProduct(){
-       
+
         $validatedData = $this->validate($this->data);
 
         $formData = [
-            'photo_path' => $this->photo_path->store('photos'), 
+            'photo_path' => $this->photo_path->store('photos'),
             'title' => $this->title,
             'description' => $this->description,
             'status' => $this->status,
