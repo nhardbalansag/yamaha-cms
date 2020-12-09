@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->text('photo_path')->nullable();
             $table->char('title', 100);
-            $table->string('description', 500);
+            $table->text('description');
             $table->char('status', 50);
             $table->integer('update_count')->nullable();
             $table->integer('price');
