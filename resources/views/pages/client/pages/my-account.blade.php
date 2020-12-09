@@ -18,7 +18,7 @@
                 </div>
                 <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab"> 
                     @if (Auth::user()->verified != 1)
-                        <div class="alert alert-warning text-center" role="alert">
+                        <div class="text-center alert alert-warning" role="alert">
                             <p>
                                 Note: at the moment you cant buy or reserve a product or services. Please verify first your email address.
                             </p>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="tab-pane fade" id="product-specification" role="tabpanel" aria-labelledby="product-comments-tab">  
                     @if (Auth::user()->verified != 1)
-                        <div class="alert alert-warning text-center" role="alert">
+                        <div class="text-center alert alert-warning" role="alert">
                             <p>
                                 Note: at the moment you cant buy or reserve a product or services. Please verify first your email address.
                             </p>
