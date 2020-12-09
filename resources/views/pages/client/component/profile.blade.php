@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-12 col-md-4">
                     @if(Auth::user()->verified != 1)
-                        <a href="/my-account/verify/{{ Auth::user()->id }}">verify email</a>
+                        <a href="/my-account/verify/index">verify email</a>
                     @endif
                 </div>
             </div>
@@ -59,24 +59,21 @@
             <div class="pb-4">
                 <strong><i class="mr-1 fas fa-book"></i>Loan Credentials</strong>
             </div>
-            <div class="row col-md-12 text-center">
-                <div class="col-md-4">
+            <div class="text-center row col-12">
+                <div class="col-6">
                     <p>Status</p>
                 </div> 
-                <div class="col-md-4">
+                <div class="col-6">
                     <p>Action</p>
                 </div> 
-                <div class="col-md-4">
-                    <p></p>
-                </div>  
             </div>
-            <div class="col-12 col-md-12 row text-center">
-                <div class="col-12 col-md-4">
-                    <p class="px-2 text-capitalize btn btn-sm text-white rounded-pill bg-danger">
+            <div class="text-center col-12 row">
+                <div class="col-6">
+                    <p class="px-2 text-white text-capitalize btn btn-sm rounded-pill bg-danger">
                         not verified
                     </p>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="col-6">
                     <a href="/my-account/credential/documents/set-up">set up credentials for loan</a>
                 </div>
             </div>

@@ -22,9 +22,8 @@ class User
         }
         if((Auth::user()->role === 'customer' && $user === 'customer')){
             return $next($request);
+        }else{
+            abort(403, 'Unauthorized');
         }
-        
-        abort(403, 'Unauthorized');
-
     }
 }
