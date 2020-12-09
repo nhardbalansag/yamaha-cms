@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Admin\Products\Product;
 use App\Models\User;
 use App\Models\Users\Transaction;
+use App\Models\Users\AccountVerification;
 use Illuminate\Support\Facades\Auth;
 
 class Account extends Controller
@@ -87,6 +88,26 @@ class Account extends Controller
             $data['result'] = false;
             return view('pages.client.pages.payment-result', $data);
         }
+    }
+
+
+    public function verifyEmail($id){
+        
+        $verification = rand(0, 10000);
+
+        $data = [
+            'verificationCode' =>  $verification,
+            'customerId' => $id
+        ];
+
+        if(AccountVerification::create($data)){
+            $data['result'] = true;
+            return redirect('/my-account/' . Auth::user()->id);
+        }else{
+            $data['result'] = false;
+            return view('pages.client.pages.payment-result', $data);
+        }
+
     }
 }
 

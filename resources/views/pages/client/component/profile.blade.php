@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-12 col-md-4">
                     @if(Auth::user()->verified != 1)
-                        <a href="">verify email</a>
+                        <a href="/my-account/verify/{{ Auth::user()->id }}">verify email</a>
                     @endif
                 </div>
             </div>
