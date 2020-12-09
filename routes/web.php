@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/my-account/checkout/{user_id}/{product_id}/{amount}', [Account::class, 'checkoutDetails']);
 
         //EMAIL VERIFICATION
-        Route::get('/my-account/verify', [Account::class, 'verifyEmail']);
+        Route::get('/my-account/verify/index', [Account::class, 'verifyEmail']);
         Route::post('/my-account/verify/email/code', [Account::class, 'verifyCode']);
 
         //Documents
