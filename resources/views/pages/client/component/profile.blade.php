@@ -56,6 +56,30 @@
                 {{$account_info[0]->contact_number}}
             </p>
             <hr>
+            <div class="pb-4">
+                <strong><i class="mr-1 fas fa-book"></i>Loan Credentials</strong>
+            </div>
+            <div class="row col-md-12 text-center">
+                <div class="col-md-4">
+                    <p>Status</p>
+                </div> 
+                <div class="col-md-4">
+                    <p>Action</p>
+                </div> 
+                <div class="col-md-4">
+                    <p></p>
+                </div>  
+            </div>
+            <div class="col-12 col-md-12 row text-center">
+                <div class="col-12 col-md-4">
+                    <p class="px-2 text-capitalize btn btn-sm text-white rounded-pill bg-danger">
+                        not verified
+                    </p>
+                </div>
+                <div class="col-12 col-md-4">
+                    <a href="/my-account/credential/documents/set-up">set up credentials for loan</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

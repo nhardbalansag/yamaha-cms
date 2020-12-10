@@ -11,6 +11,7 @@ use App\Http\Controllers\WebApp\InquiryController;
 use App\Http\Controllers\WebApp\HomeProductController;
 use App\Http\Controllers\WebApp\LoginRegisterController;
 use App\Http\Controllers\Customer\Account;
+use App\Http\Controllers\Customer\DocumentController;
 use App\Http\Controllers\Admin\Customer\CustomerController;
 
 /*
@@ -47,8 +48,11 @@ Route::middleware('auth')->group(function(){
         Route::get('/my-account/checkout/{user_id}/{product_id}/{amount}', [Account::class, 'checkoutDetails']);
 
         //EMAIL VERIFICATION
-        Route::get('/my-account/verify/{id}', [Account::class, 'verifyEmail']);
+        Route::get('/my-account/verify', [Account::class, 'verifyEmail']);
         Route::post('/my-account/verify/email/code', [Account::class, 'verifyCode']);
+
+        //Documents
+        Route::get('/my-account/credential/documents/set-up', [DocumentController::class, 'index']);
     });
 });
 
