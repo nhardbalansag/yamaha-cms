@@ -3,6 +3,10 @@
 
   <section>
         <div>
+            <div>
+                <p style="font-size: 30px">My account</p>
+                <p style="font-size: 20px">manage you account | account informations</p>
+            </div>
             <nav>
                 <div class="nav nav-tabs" id="product-tab" role="tablist">
                 <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Account information</a>
@@ -12,11 +16,11 @@
                 </div>
             </nav>
             <div class="w-full p-3 tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> 
+                <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab">
                     {{-- {{$product->description}} --}}
                     @include('pages.client.component.profile')
                 </div>
-                <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab"> 
+                <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
                     @if (Auth::user()->verified != 1)
                         <div class="text-center alert alert-warning" role="alert">
                             <p>
@@ -28,10 +32,10 @@
                         @include('pages.client.component.orders')
                     @endif
                 </div>
-                <div class="tab-pane fade" id="product-color" role="tabpanel" aria-labelledby="product-comments-tab">  
+                <div class="tab-pane fade" id="product-color" role="tabpanel" aria-labelledby="product-comments-tab">
                     {{-- @livewire('admin.product.color-category',  ['product_id' => $product->id]) --}}
                     @if (Auth::user()->verified != 1)
-                        <div class="alert alert-warning text-center" role="alert">
+                        <div class="text-center alert alert-warning" role="alert">
                             <p>
                                 Note: at the moment you cant buy or reserve a product or services. Please verify first your email address.
                             </p>
@@ -41,7 +45,7 @@
                         @include('pages.client.component.orders')
                     @endif
                 </div>
-                <div class="tab-pane fade" id="product-specification" role="tabpanel" aria-labelledby="product-comments-tab">  
+                <div class="tab-pane fade" id="product-specification" role="tabpanel" aria-labelledby="product-comments-tab">
                     @if (Auth::user()->verified != 1)
                         <div class="text-center alert alert-warning" role="alert">
                             <p>
