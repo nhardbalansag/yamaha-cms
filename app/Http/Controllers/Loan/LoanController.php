@@ -93,11 +93,6 @@ class LoanController extends Controller
         return view('pages.admin.loan.view-one-applicant-document.index', $data);
     }
 
-    public function resubmit($id){
-
-
-        return view();
-    }
 
     /**
      * Show the form for creating a new resource.
