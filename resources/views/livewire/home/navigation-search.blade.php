@@ -22,7 +22,6 @@
     <div class="row col-12-col-md-12">
         <div class="col-12 col-md-2">
             <div class = "block mb-5 bg-white rounded collapse d-md-block" id="search">
-                <form wire:submit.prevent="searchProduct">
                     <div>
                         <div class="py-2 mb-2 text-sm text-center text-white bg-primary alert ">
                             <p class = "capitalize">search product</p>
@@ -32,18 +31,10 @@
                                 <label for="sortBy" class="block text-sm font-medium leading-5 text-gray-700">Sort</label>
                                 <select wire:model='sortBy' id="sortBy" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
                                     <option>- Sort By -</option>
-                                    <option value="title">Name</option>
-                                    <option value="price">Price</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mb-6">
-                            <div class="">
-                                <label for="orderBy" class="block text-sm font-medium leading-5 text-gray-700">Order By</label>
-                                <select wire:model='orderBy' id="orderBy" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
-                                    <option>- Order By -</option>
-                                    <option value="DESC">High to Low</option>
-                                    <option value="ASC">Low to High</option>
+                                    <option value="1">Name Descending</option>
+                                    <option value="2">Name Ascending</option>
+                                    <option value="3">Price Descending</option>
+                                    <option value="4">Price Ascending</option>
                                 </select>
                             </div>
                         </div>
@@ -62,11 +53,10 @@
                     <div class = "text-center ">
                         <button type="submit" class="w-full btn btn-dark">Search product</button>
                     </div>
-                </form>
             </div>
         </div>
         <div class="col-12 col-md-10 ">
-            @include('pages.web-app.home.components.recommended')
+
             <div class="p-0 mx-auto row col-12 col-md-12">
                 @foreach($product as $key => $value)
                     <div class="my-4 col-6 col-md-3">
