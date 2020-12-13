@@ -15,7 +15,7 @@
                     <img src="{{asset('storage/' . $product->photo_path) }}"  alt="product">
                 </a>
                 <div class="mx-auto mt-2">
-                    <div class = "grid grid-cols-1 md:grid-cols-3 d-flex justify-content-center">
+                    <div class = "grid grid-cols-1 my-2 md:grid-cols-3 d-flex justify-content-center">
                         <div class="row">
                             <a href="/home/product/{{$product->id}}/inquiry" class="btn text-primary" role="button" aria-pressed="true">INQUIRE</a>
                             <div>
