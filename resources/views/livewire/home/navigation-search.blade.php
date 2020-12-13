@@ -62,6 +62,9 @@
                 @endif
             </div>
             <div class="p-0 mx-auto row col-12 col-md-12">
+                <div class="col-12">
+                    <p class = "text-lg font-bold capitalize">All Products ({{ count($product) }})</p>
+                </div>
                 @foreach($product as $key => $value)
                     <div class="my-4 col-6 col-md-3">
                         <a href="/home/product/{{$value->id}}">
