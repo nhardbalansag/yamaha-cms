@@ -8,7 +8,7 @@
                         <div class=" swiper-slide">
                             <a href="/home/product/{{$value->id}}">
                                 <div class="p-0"  >
-                                    <img src="{{url('storage/' . $value->photo_path) }}"  style="height:150px" loading="lazy" alt="...">
+                                    <img src="{{url('storage/' . $value->photo_path) }}" class="image-fluid" loading="lazy" alt="...">
                                 </div>
                                 <div class="px-4">
                                     <div class="mb-2 truncate w-100 font-weight-bold text-primary text-capitalize">{{$value->title}}</div>

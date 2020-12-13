@@ -68,7 +68,7 @@
                 @foreach($product as $key => $value)
                     <div class="my-4 col-6 col-md-3">
                         <a href="/home/product/{{$value->id}}">
-                            <div class="p-0"  style="height:75%; width:100%">
+                            <div class="p-0"  style=" width:100%">
                                 <img src="{{url('storage/' . $value->photo_path) }}"  class="image-fluid" loading="lazy" alt="...">
                             </div>
                             <div>
