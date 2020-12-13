@@ -8,28 +8,9 @@
 
     <div class="ml-8 collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="mr-auto navbar-nav ">
-        <li class="nav-item dropdown active">
-            <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Model
-            </a>
-            <div class="w-full dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+        <li class="nav-item active">
+            <a class="text-white nav-link" href="#">Motorcycle <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item dropdown active">
-          <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Promos
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
         <li class="nav-item active">
           <a class="text-white nav-link" href="#">Service <span class="sr-only">(current)</span></a>
         </li>
@@ -38,7 +19,7 @@
         </li>
 
         <li class="nav-item active">
-          <a class="text-white nav-link" href="#" tabindex="-1" aria-disabled="true">Contact Us</a>
+          <a class="text-white nav-link" href="#" tabindex="-1" aria-disabled="true">Contact us</a>
         </li>
         @auth
           @if(Auth::user()->role === 'admin' && Auth::user()->verified === 1)
