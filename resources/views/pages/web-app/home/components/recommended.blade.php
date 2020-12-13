@@ -1,4 +1,4 @@
-        <div class = "m-auto mt-20">
+        <div class = "m-auto">
             <div>
                 <p class = "text-lg font-bold capitalize">recommended ({{ count($recommended) }})</p>
             </div>
