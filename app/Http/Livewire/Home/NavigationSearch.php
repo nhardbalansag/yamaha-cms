@@ -27,7 +27,6 @@ class NavigationSearch extends Component
 
         if(!empty($this->topSearch)){
             $data['product'] = $this->searchProduct();
-            $this->topSearch = "";
         }else if(empty($this->topSearch)){
             $data['product'] = $this->sortProduct();
         }
@@ -37,7 +36,7 @@ class NavigationSearch extends Component
 
     public function sortProduct(){
 
-        if(!empty($this->productCategory) && (!empty($this->orderBy) || !empty($this->sortBy)) ){
+        if($this->productCategory != "" ){
 
             $data = DB::select('SELECT *
                                 FROM products
@@ -52,10 +51,6 @@ class NavigationSearch extends Component
                                 FROM products
                                 WHERE status = "publish" ');
         }
-
-        $this->productCategory = "";
-        $this->sortBy = "";
-        $this->orderBy = "";
 
         return  $data;
     }
