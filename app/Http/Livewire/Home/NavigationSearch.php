@@ -43,19 +43,19 @@ class NavigationSearch extends Component
                                         WHERE status = "publish" AND product_category_id = ?', [$this->productCategory]);
         }
 
-        if(!empty($this->sortBy) && $this->sortBy === 1){
+        if(!empty($this->sortBy) && $this->sortBy === "1"){
             $data['product'] = DB::select('SELECT *
                                         FROM products
                                         WHERE status = "publish" ORDER BY title DESC');
-        }else if(!empty($this->sortBy) && $this->sortBy === 2){
+        }else if(!empty($this->sortBy) && $this->sortBy === "2"){
             $data['product'] = DB::select('SELECT *
                                         FROM products
                                         WHERE status = "publish" ORDER BY title ASC');
-        }else if(!empty($this->sortBy) && $this->sortBy === 3){
+        }else if(!empty($this->sortBy) && $this->sortBy === "3"){
             $data['product'] = DB::select('SELECT *
                                         FROM products
                                         WHERE status = "publish" ORDER BY price DESC');
-        }else if(!empty($this->sortBy) && $this->sortBy === 4){
+        }else if(!empty($this->sortBy) && $this->sortBy === "4"){
             $data['product'] = DB::select('SELECT *
                                         FROM products
                                         WHERE status = "publish" ORDER BY price ASC');
