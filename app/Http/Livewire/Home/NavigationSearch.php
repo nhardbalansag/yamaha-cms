@@ -9,13 +9,7 @@ use Livewire\Component;
 class NavigationSearch extends Component
 {
 
-    public $productCategory, $orderBy, $sortBy, $topSearch;
-
-    public $data = [
-        'productCategory' => 'required|numeric',
-        'orderBy' => 'required|max:5',
-        'sortBy' => 'required|max:5'
-    ];
+    public $productCategory="", $sortBy="", $topSearch = "";
 
     public $dataCategory = [ 'topSearch' => 'required'];
 
@@ -28,31 +22,44 @@ class NavigationSearch extends Component
                                 WHERE status = "publish"
                             ');
         $data['recommended'] = Product::where('status', 'publish')->get();
-        $data['product'] = Product::where('status', 'publish')->get();
 
+        if(empty($this->topSearch)){
 
-        return view('livewire.home.navigation-search', $data);
-    }
-
-    public function searchProduct(){
-
-        $validatedData = $this->validate($this->data);
-
-        $data['product'] = DB::select('SELECT *
+            $data['product'] = DB::select('SELECT *
                                         FROM products
-                                        WHERE status = "publish"
-                                        ORDER BY ' . $validatedData['sortBy'] . ' ' . $validatedData['orderBy']);
+                                        WHERE status = "publish" ');
 
-        return view('livewire.home.navigation-search', $data);
-    }
+        }else if(!empty($this->topSearch)){
 
-    public function searchCategory(){
+            $data['product'] = DB::select('SELECT *
+                                            FROM products
+                                            WHERE status = "publish" AND title = ?', [ $this->topSearch]);
+        }
 
-        $validatedData = $this->validate($this->dataCategory);
+        if(!empty($this->productCategory)){
 
-        $data['product'] = DB::select('SELECT *
+            $data['product'] = DB::select('SELECT *
                                         FROM products
-                                        WHERE status = "publish" AND title LIKE ?', [ $validatedData['topSearch']]);
+                                        WHERE status = "publish" AND product_category_id = ?', [$this->productCategory]);
+        }
+
+        if(!empty($this->sortBy) && $this->sortBy === 1){
+            $data['product'] = DB::select('SELECT *
+                                        FROM products
+                                        WHERE status = "publish" ORDER BY title DESC');
+        }else if(!empty($this->sortBy) && $this->sortBy === 2){
+            $data['product'] = DB::select('SELECT *
+                                        FROM products
+                                        WHERE status = "publish" ORDER BY title ASC');
+        }else if(!empty($this->sortBy) && $this->sortBy === 3){
+            $data['product'] = DB::select('SELECT *
+                                        FROM products
+                                        WHERE status = "publish" ORDER BY price DESC');
+        }else if(!empty($this->sortBy) && $this->sortBy === 4){
+            $data['product'] = DB::select('SELECT *
+                                        FROM products
+                                        WHERE status = "publish" ORDER BY price ASC');
+        }
 
         return view('livewire.home.navigation-search', $data);
     }
