@@ -1,6 +1,6 @@
         <div class = "m-auto mt-20">
             <div>
-                <p class = "text-xl font-bold capitalize">recommended</p>
+                <p class = "text-lg font-bold capitalize">recommended ({{ count($recommended) }})</p>
             </div>
             <div class="swiper-container">
                 <div class="swiper-wrapper d-flex justify-content-center ">
