@@ -15,7 +15,7 @@
                                     <div class="font-weight-light text-dark ">{{date('m/d/Y', strtotime($value->created_at))}}</div>
                                     <div class="d-flex justify-content-between">
                                         <p class="font-weight-light text-dark text-capitalize">buy now :</p>
-                                        <p class="font-weight-bold text-dark ">P {{$value->price}}.00</p>
+                                        <p class="font-weight-bold text-dark ">P {{number_format($value->price)}}.00</p>
                                     </div>
                                 </div>
                             </a>
