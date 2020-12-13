@@ -1,4 +1,4 @@
-<div class="my-4">
+<div class="mt-4 mb-10 md:mb-0">
     <div class="mx-auto mt-2 row col-12 d-flex justify-content-end">
         <div class="p-0 col-md-6 col-12">
             <div class="p-0 mb-3 input-group">
