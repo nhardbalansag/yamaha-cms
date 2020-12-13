@@ -33,7 +33,7 @@ class NavigationSearch extends Component
 
             $data['product'] = DB::select('SELECT *
                                             FROM products
-                                            WHERE status = "publish" AND title LIKE ?', [ $this->topSearch]);
+                                            WHERE status = "publish" AND title LIKE "%'.$this->topSearch.'%" ' );
         }
 
         if(!empty($this->productCategory)){
