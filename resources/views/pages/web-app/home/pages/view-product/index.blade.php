@@ -2,9 +2,9 @@
 @section('home-contents')
 
     <section>
-        <div class="mt-4 row col-12 col-md-12">
+        <div class="mx-auto mt-4 row col-12 col-md-12">
 
-            <div class="bg-white rounded col-md-6 col-12">
+            <div class="mx-auto bg-white rounded col-md-6 col-12">
                 <div class="mb-3">
                     <div>
                         <p class="h3 font-weight-bold">{{$product->title}}</p>
@@ -14,12 +14,12 @@
                 <a href="">
                     <img src="{{asset('storage/' . $product->photo_path) }}"  alt="product">
                 </a>
-                <div class="mt-2">
-                    <div class = "grid grid-cols-1 md:grid-cols-3">
-                        <div class="flex items-center justify-between">
-                            <a href="/home/product/{{$product->id}}/inquiry" class="btn btn-outline-primary" role="button" aria-pressed="true">Inquire</a>
-                            <div class="btn-lg btn-block">
-                                    <a href='{{Auth::user() ? (($category[0]->title == 'parts' ? '/my-account/order/' . $product->id . '/payment/' . Auth::user()->id : ($category[0]->title == 'motorcycle' ? '/my-account/loan/application' : ($category[0]->title == 'services' ? '/my-account/services/' . $product->id . '/' . Auth::user()->id  : '/my-account/services/reservation'))))  : "/customer/login"}}' class="flex-row btn btn-outline-primary d-flex justify-content-between" role="button" aria-pressed="true">
+                <div class="mx-auto mt-2">
+                    <div class = "grid grid-cols-1 md:grid-cols-3 d-flex justify-content-center">
+                        <div class="row">
+                            <a href="/home/product/{{$product->id}}/inquiry" class="btn text-primary" role="button" aria-pressed="true">INQUIRE</a>
+                            <div>
+                                <a href='{{Auth::user() ? (($category[0]->title == 'parts' ? '/my-account/order/' . $product->id . '/payment/' . Auth::user()->id : ($category[0]->title == 'motorcycle' ? '/my-account/loan/application' : ($category[0]->title == 'services' ? '/my-account/services/' . $product->id . '/' . Auth::user()->id  : '/my-account/services/reservation'))))  : "/customer/login"}}' class="flex-row btn d-flex justify-content-between text-primary" role="button" aria-pressed="true">
                                     <span>
                                         @if($category[0]->title === 'parts')
                                             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -44,8 +44,8 @@
                             <div>
                             {{--  --}}
                                 <div class="d-flex justify-content-end">
-                                    <button type="button" class="btn btn-light"  data-toggle="modal" data-target="#staticBackdrop">
-                                        <div class="gap-2 text-danger d-flex justify-content-between">
+                                    <button type="button" class="btn"  data-toggle="modal" data-target="#staticBackdrop">
+                                        <div class="text-primary d-flex justify-content-center">
                                             <span>
                                                <svg class="w-6 h-6"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
@@ -134,7 +134,6 @@
                                 </div>
                             {{--  --}}
                             </div>
-
                         </div>
                     </div>
                 </div>
