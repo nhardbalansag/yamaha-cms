@@ -30,9 +30,7 @@
             @yield('home-contents')
             {{-- end contents --}}
         </div>
-        <div wire:loading>
-            @include('pages.components.loadingState')
-       </div>
+
         <div id="fb-root"></div>
         <script>
             window.fbAsyncInit = function() {

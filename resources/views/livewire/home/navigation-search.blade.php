@@ -40,7 +40,7 @@
                             <div class="">
                             <label for="productCategory" class="block text-sm font-medium leading-5 text-gray-700">Category</label>
                             <select wire:model.defer="productCategory"  id="productCategory" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
-                                <option>Select Category</option>
+                                <option value="">Select Category</option>
                             @foreach($category as $key => $value)
                                 <option value="{{ $value->id }}">{{ $value->title }}</option>
                             @endforeach
@@ -82,4 +82,7 @@
             </div>
         </div>
     </div>
+    <div wire:loading>
+        @include('pages.components.loadingState')
+   </div>
 </div>
