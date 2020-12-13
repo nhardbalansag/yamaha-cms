@@ -1,15 +1,20 @@
 @extends('welcome')
 @section('home-contents')
-    
+
     <section>
-        <div class="grid grid-cols-1 lg:grid-cols-2">
-            <div class="mx-2 mb-5 bg-white rounded">
+        <div class="mt-4 row col-12 col-md-12">
+
+            <div class="bg-white rounded col-md-6 col-12">
+                <div class="mb-3">
+                    <div>
+                        <p class="h3 font-weight-bold">{{$product->title}}</p>
+                        <p class="text-muted">{{$product->description}}</p>
+                    </div>
+                </div>
                 <a href="">
                     <img src="{{asset('storage/' . $product->photo_path) }}"  alt="product">
                 </a>
                 <div class="mt-2">
-                    <h5 class="truncate">{{$product->title}}</h5>
-                    <p>SRP: <span>{{$product->price}}</span></p>
                     <div class = "grid grid-cols-1 md:grid-cols-3">
                         <div class="flex items-center justify-between">
                             <a href="/home/product/{{$product->id}}/inquiry" class="btn btn-outline-primary" role="button" aria-pressed="true">Inquire</a>
@@ -29,7 +34,7 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                             </svg>
                                         @endif
-                                       
+
                                     </span>
                                     <span class="text-uppercase">
                                         {{($category[0]->title == 'motorcycle') ? 'apply' : ($category[0]->title == 'services' ? 'reserve' : ($category[0]->title == 'parts' ? 'order' : 'apply'))  }}
@@ -71,7 +76,7 @@
                                                     </span>
                                                 </a>
                                             </div>
-                                            
+
                                             <div class="modal-body border-bottom" >
                                                 <div data-href="{{url()->current()}}" data-layout="button" data-size="large">
                                                     <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" class="ml-2 text-uppercase">
@@ -93,26 +98,26 @@
                                             <div class="ml-2 modal-body border-bottom">
                                                 <a href= "whatsapp://send?text={{url()->current()}}"
                                                     data-action="share/whatsapp/share"
-                                                    target="_blank"> 
+                                                    target="_blank">
                                                     <span>
                                                         <i class="fab fa-whatsapp h5"></i>
                                                     </span>
                                                     <span class="ml-2 text-uppercase">
-                                                        Share to whatsapp 
+                                                        Share to whatsapp
                                                     </span>
-                                                </a> 
+                                                </a>
                                             </div>
                                             <div class="ml-2 modal-body border-bottom">
                                                 <a href= "https://www.addtoany.com/add_to/sms?linkurl={{url()->current()}}"
                                                     data-action="share/whatsapp/share"
-                                                    target="_blank"> 
+                                                    target="_blank">
                                                     <span>
                                                         <i class="fas fa-comment-alt h5"></i>
                                                     </span>
                                                     <span class="ml-2 text-uppercase">
-                                                        SMS 
+                                                        SMS
                                                     </span>
-                                                </a> 
+                                                </a>
                                             </div>
                                             <div class="ml-2 modal-body border-bottom">
                                                 <a class="copy_text" data-toggle="modal" title="Copy to Clipboard" href="{{url()->current()}}">
@@ -129,14 +134,14 @@
                                 </div>
                             {{--  --}}
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div class = "capitalize">
+            <div class="capitalize col-12 col-md-6">
                 <div class = "text-center bg-blue-900">
-                    <p class="text-4xl font-extrabold text-white">SRP: ₱{{$product->price}}</p>
+                    <p class="text-4xl font-extrabold text-white">SRP: ₱{{number_format($product->price)}}.00</p>
                 </div>
                 <div>
                     <table class="table-auto">
@@ -149,8 +154,8 @@
                         <tbody>
                             @foreach($specification as $key => $value)
                                 <tr>
-                                    <td class="px-4 py-2 font-bold border">{{$value->title}}</td>
-                                    <td class="px-4 py-2 border">
+                                    <td class="px-4 py-2 font-bold border text-muted">{{$value->title}}</td>
+                                    <td class="px-4 py-2 border text-muted">
                                        {{$value->description}}
                                     </td>
                                 </tr>
@@ -164,5 +169,6 @@
         @include('pages.web-app.home.components.recommended')
 
     </section>
-     
+
 @endsection
+
