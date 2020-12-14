@@ -22,6 +22,7 @@ class DocumentProcess extends Component
 
     public function render()
     {
+        $data['tosubmitDocument'] = $this->rederDocuments();
 
         $data['approval_percent'] = DB::select('SELECT COUNT(*) as data_count
                                         FROM customers_documents
@@ -67,6 +68,36 @@ class DocumentProcess extends Component
             return redirect()->to('/my-account/credential/documents/set-up');
         }
 
+    }
+
+    public function countDocumentThatPass(){
+
+        $data = DB::select('SELECT
+                                document_categories.title as documentTitle,
+                                document_categories.id as documentId
+
+                            FROM customers_documents, document_categories
+                            WHERE NOT EXISTS
+                            (select customers_documents.document_id
+                                from customers_documents
+                                    where (customers_documents.document_id = document_categories.id) and customers_documents.customer_id = ' . Auth::user()->id. ')
+                            GROUP BY document_categories.id');
+        return $data;
+    }
+
+    public function rederDocuments(){
+
+        if(empty($this->countDocumentThatPass())){
+
+            $data = DB::select('SELECT
+                                    document_categories.title as documentTitle,
+                                    document_categories.id as documentId
+                                FROM document_categories');
+        }else{
+            $data = $this->countDocumentThatPass();
+        }
+
+        return $data;
     }
 
 
