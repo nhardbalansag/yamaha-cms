@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('home-contents')
 
-@livewire('customer.resubmit-document')
+@livewire('customer.resubmit-document', ["customersDocumentInfo" => $passId])
 
 @endsection
