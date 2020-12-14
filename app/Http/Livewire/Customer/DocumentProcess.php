@@ -81,7 +81,9 @@ class DocumentProcess extends Component
                             (select customers_documents.document_id
                                 from customers_documents
                                     where (customers_documents.document_id = document_categories.id) and customers_documents.customer_id = ' . Auth::user()->id. ')
-                            GROUP BY document_categories.id');
+                            GROUP BY
+                                document_categories.id,
+                                document_categories.title');
         return $data;
     }
 

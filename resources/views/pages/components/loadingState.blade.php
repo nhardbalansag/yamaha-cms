@@ -1,6 +1,6 @@
 
 <style>
-    .modal {
+    .loadingstate {
       display: none; /* Hidden by default */
       position: fixed; /* Stay in place */
       z-index: 1; /* Sit on top */
@@ -15,7 +15,7 @@
     }
 </style>
 
-<div id="myModal" class=" modal d-block d-flex justify-content-center align-items-center">
+<div id="myModal" class=" loadingstate modal d-block d-flex justify-content-center align-items-center">
     <div>
     <div class="bg-white spinner-grow" style="width: 3rem; height: 3rem;" role="status">
         <span class="sr-only">Loading...</span>
