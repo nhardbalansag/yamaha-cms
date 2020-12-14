@@ -2,12 +2,12 @@
 @section('home-contents')
 
   <section>
-        <div>
-            <div>
+        <div class="mt-4">
+            <div class="container">
                 <p style="font-size: 30px">My account</p>
                 <p style="font-size: 20px">manage you account | account informations</p>
             </div>
-            <nav>
+            <nav class="container">
                 <div class="nav nav-tabs" id="product-tab" role="tablist">
                 <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Account information</a>
                 <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">Orders</a>

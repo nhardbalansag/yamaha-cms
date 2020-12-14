@@ -23,7 +23,7 @@ class NavigationSearch extends Component
 
         $data['product'] = DB::select('SELECT *
                                         FROM products
-                                        WHERE status = "publish" ');
+                                        WHERE status = "publish" AND product_category_id  = 1');
 
         if(!empty($this->topSearch)){
             $data['product'] = $this->searchProduct();
@@ -49,7 +49,7 @@ class NavigationSearch extends Component
 
             $data = DB::select('SELECT *
                                 FROM products
-                                WHERE status = "publish" ');
+                                WHERE status = "publish" AND product_category_id  = 1');
         }
 
         return  $data;
