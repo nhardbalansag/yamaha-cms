@@ -27,6 +27,11 @@ class Account extends Controller
                                                 FROM transactions, users, products
                                                 WHERE
                                                     (users.id = transactions.customerId AND products.id = transactions.productId) AND users.id = ' . Auth::user()->id);
+        $data['approval_percent'] = DB::select('SELECT COUNT(*) as data_count
+                                                FROM customers_documents
+                                                WHERE customers_documents.status = "approved" and customers_documents.customer_id = ' . Auth::user()->id);
+
+        $data['approval_result'] = round(($data['approval_percent'][0]->data_count / 4) * 100);
 
         return view('pages.client.pages.my-account', $data);
     }

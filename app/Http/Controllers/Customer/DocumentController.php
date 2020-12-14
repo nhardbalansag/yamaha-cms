@@ -16,11 +16,28 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $data['passId'] = DB::select('SELECT count(*) as data_count
-        FROM customers_documents, document_categories
-        WHERE customers_documents.document_id = document_categories.id and customers_documents.customer_id = ' . Auth::user()->id);
+        $data['categoryCount'] = DB::select('SELECT * FROM document_categories');
 
-        $data['passingDocs'] = ($data['passId'][0]->data_count / 4) * 100;
+        $data['passId'] = DB::select('SELECT count(*) as data_count
+                                        FROM customers_documents, document_categories
+                                        WHERE
+                                            customers_documents.document_id = document_categories.id and customers_documents.customer_id = ' . Auth::user()->id);
+
+        $data['pending'] = DB::select('SELECT count(*) as data_count
+                                        FROM customers_documents, document_categories
+                                        WHERE
+                                            (customers_documents.status = "pending")
+                                            AND customers_documents.document_id = document_categories.id and customers_documents.customer_id = ' . Auth::user()->id);
+
+        $data['declined'] = DB::select('SELECT count(*) as data_count
+                                        FROM customers_documents, document_categories
+                                        WHERE
+                                            (customers_documents.status = "decline")
+                                            AND customers_documents.document_id = document_categories.id and customers_documents.customer_id = ' . Auth::user()->id);
+
+        $data['passingDocs'] = ($data['passId'][0]->data_count / count($data['categoryCount'])) * 100;
+        $data['pendingDocs'] = ($data['pending'][0]->data_count / count($data['categoryCount'])) * 100;
+        $data['declinedDocs'] = ($data['declined'][0]->data_count / count($data['categoryCount'])) * 100;
 
         return view('pages.client.pages.set-up-loan-credentials', $data);
     }
@@ -30,8 +47,8 @@ class DocumentController extends Controller
 
         $data['passId'] = DB::select('SELECT *
                                         FROM customers_documents
-                                        WHERE customers_documents.document_id = ' . $id . ' and customers_documents.customer_id = ' . Auth::user()->id);
-        return view('pages.client.pages.resubmit-document');
+                                        WHERE customers_documents.id = ' . $id . ' and customers_documents.customer_id = ' . Auth::user()->id);
+        return view('pages.client.pages.resubmit-document', $data);
     }
 
     /**

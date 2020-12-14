@@ -13,11 +13,10 @@ class ResubmitDocument extends Component
 
     use WithFileUploads;
 
-    public $photo_path, $document_id, $percent;
+    public $photo_path, $document_id, $percent, $customersDocumentInfo;
 
     public $data = [
-        'photo_path' => 'required|image|max:1024',
-        'document_id' => 'required|numeric'
+        'photo_path' => 'required|image|max:1024'
     ];
     public function render()
     {
@@ -27,8 +26,21 @@ class ResubmitDocument extends Component
 
     public function resubmit()
     {
-        session()->flash('message', 'Document uploaded successfully');
-        return view('livewire.customer.resubmit-document');
+        $validatedData = $this->validate($this->data);
+
+        $affected = DB::table('customers_documents')
+                        ->where('id',  $this->customersDocumentInfo[0]['id'])
+                        ->update(
+                            [
+                                'status' => "pending",
+                                'photo_path' => $validatedData['photo_path']
+                            ]
+                            );
+
+        $affected == true ? session()->flash('message', 'Document updated successfully') : session()->flash('error', 'unable to update document');
+
+        return redirect('/my-account/credential/documents/set-up');
+
     }
 
 }

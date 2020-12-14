@@ -78,9 +78,9 @@ class DocumentProcess extends Component
 
                             FROM customers_documents, document_categories
                             WHERE NOT EXISTS
-                            (select customers_documents.document_id
-                                from customers_documents
-                                    where (customers_documents.document_id = document_categories.id) and customers_documents.customer_id = ' . Auth::user()->id. ')
+                            (SELECT customers_documents.document_id
+                                FROM customers_documents
+                                    WHERE (customers_documents.document_id = document_categories.id) AND customers_documents.customer_id = ' . Auth::user()->id. ')
                             GROUP BY
                                 document_categories.id,
                                 document_categories.title');

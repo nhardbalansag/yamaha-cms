@@ -24,7 +24,13 @@ class LoanController extends Controller
                                                 users.email as email
                                             FROM users, customers_documents
                                             WHERE (users.id = customers_documents.customer_id)
-                                            GROUP BY users.id');
+                                            GROUP BY
+                                                users.id,
+                                                users.first_name,
+                                                users.verified,
+                                                users.role,
+                                                users.email
+                                                ');
 
         return view('pages.admin.loan.view-all-applicants.index', $data);
     }

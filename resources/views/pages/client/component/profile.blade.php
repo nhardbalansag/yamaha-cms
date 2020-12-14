@@ -89,8 +89,8 @@
             </div>
             <div class="text-center col-12 row">
                 <div class="col-6">
-                    <p class="px-2 text-white text-capitalize btn btn-sm rounded-pill bg-danger">
-                        not verified
+                    <p class="px-2 text-white text-capitalize btn btn-sm rounded-pill  {{ $approval_result >= 100 ? "bg-success" : "bg-danger" }}">
+                        {{$approval_result >= 100 ? "verified" : "not verified"}}
                     </p>
                 </div>
                 <div class="col-6">

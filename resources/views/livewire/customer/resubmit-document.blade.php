@@ -1,19 +1,36 @@
-<div>
-    @if (session()->has('message'))
-        <div class="container capitalize alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
-</div>
-<form wire:submit.prevent="resubmit" enctype="multipart/form-data" >
-    <div class="mx-auto row col-md-12">
-        <div class="mx-auto border rounded col-md-12">
-            <div class="mx-auto my-4 col-md-6">
-                <label class="block text-sm font-medium leading-5 text-gray-700 capitalize">Upload photo</label>
-                <div>
-                    <div>
-                        <label class="w-full py-2 font-semibold text-gray-800 bg-white border border-black rounded shadow-xs cursor-pointer hover:bg-gray-100">
 
+<div >
+    <div>
+        <p class="text-lg">Document Upload</p>
+        <p class="text-sm">upload you documents | documents informations</p>
+    </div>
+    <div>
+        @if (session()->has('message'))
+            <div class="container capitalize alert alert-success">
+                {{ session('message') }}
+            </div>
+        @elseif(session()->has('error'))
+            <div class="container capitalize alert alert-warning">
+                {{ session('error') }}
+            </div>
+        @endif
+    </div>
+    <div class="text-center col-12">
+        <div class=" col-12 d-flex justify-content-center align-items-end" style="color:#1b3295">
+            <svg width="150"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+        </div>
+        <form wire:submit.prevent="resubmit" enctype="multipart/form-data" >
+            <div class="col-12">
+                <p class="p-0 text-capitalize">resubmit document</p>
+                <p class="p-0 text-capitalize text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quibusdam sapiente harum veniam eaque. Unde officiis fugit accusantium eum, autem illum perferendiquibusdam. </p>
+            </div>
+            <div class="col-12">
+                <div class="p-0 mx-auto my-4 col-12 col-md-6">
+                    <label class="block text-sm font-medium leading-5 text-gray-700 capitalize">Upload photo</label>
+                    <div>
+                        <label class="w-full py-2 font-semibold text-gray-800 bg-white border-black rounded shadow-xs cursor-pointer border-bottom hover:bg-gray-100">
                             <input type="file"
                                 wire:model="photo_path"
                                 x-ref="photo_path"
@@ -28,26 +45,35 @@
                                 "
                             hidden>
                             <div x-show="! photoPreview">
-                                <div class="d-flex justify-content-center">
-                                    <svg height="34" width="34" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                                    </svg>
+                                <div class="row col-12 d-flex justify-content-center align-items-center"  style="color:#1b3295">
+                                    <div class="p-0 d-flex justify-content-end col-2">
+                                        <svg height="59" width="50" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <div class="p-0 text-left col-10 ">
+                                        <div class="p-0 col-12">
+                                            <span class="p-0 text-xs text-capitalize" >select documents from gallery</span>
+                                        </div>
+                                        <div class="p-0 col-12">
+                                            @if ($photo_path)
+                                            <p class="text-xs text-truncate text-muted">{{ $photo_path->temporaryUrl() }}</p>
+                                            @endif
+                                            @error('photo_path') <p class="ml-2 text-xs italic text-red-500">{{$message}}</p> @enderror
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </label>
-                        @error('photo_path') <p class="ml-2 text-lg italic text-red-500">{{$message}}</p> @enderror
-                        <div id="displayFileName" wire:ignore></div>
                     </div>
                 </div>
+                <div class="mx-auto col-12 col-md-3">
+                    <button type="submit" class="w-full btn btn-dark">Submit Document</button>
+                </div>
             </div>
-            <div class="mx-auto my-4 col-md-6">
-                @if ($photo_path)
-                   <p class="text-truncate text-primary"> {{ $photo_path->temporaryUrl() }}</p>
-                @endif
-            </div>
-            <div class="mx-auto my-4 col-md-6">
-                <button type="submit" class="btn btn-primary">Submit Document</button>
-            </div>
-        </div>
+        </form>
     </div>
-</form>
+    <div wire:loading>
+        @include('pages.components.loadingState')
+    </div>
+</div>
