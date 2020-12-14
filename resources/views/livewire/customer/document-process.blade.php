@@ -4,6 +4,17 @@
         <p class="text-lg">Document Upload</p>
         <p class="text-sm">upload you documents | documents informations</p>
     </div>
+    <div>
+        @if (session()->has('message'))
+            <div class="container capitalize alert alert-success">
+                {{ session('message') }}
+            </div>
+        @elseif(session()->has('error'))
+            <div class="container capitalize alert alert-warning">
+                {{ session('error') }}
+            </div>
+        @endif
+    </div>
     <div class="text-center col-12">
         <div class=" col-12 d-flex justify-content-center align-items-end" style="color:#1b3295">
             <svg width="150"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
