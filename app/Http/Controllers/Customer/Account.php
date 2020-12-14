@@ -88,7 +88,7 @@ class Account extends Controller
 
         if(Transaction::create($data)){
             $data['result'] = true;
-            return redirect('/my-account/' . Auth::user()->id);
+            return view('pages.client.pages.payment-result', $data);
         }else{
             $data['result'] = false;
             return view('pages.client.pages.payment-result', $data);

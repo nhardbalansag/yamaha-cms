@@ -43,7 +43,7 @@
                         <hr class="bg-black">
                         <div class="p-0 m-auto mt-4 row col-12 col-md-12">
                             <div class="w-full p-0 p-md-2 col-12 col-md-6">
-                                <x-jet-label for="home_address" value="{{ __('home address') }}" />
+                                <x-jet-label for="home_address" value="{{ __('house number, building name') }}" />
                                 <x-jet-input id="home_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="home_address" :value="old('home_address')" required autofocus autocomplete="home_address" />
                             </div>
                             <div class="w-full p-0 p-md-2 col-12 col-md-6">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="p-0 m-auto row col-12 col-md-12">
                             <div class="w-full p-0 p-md-2 col-12 col-md-3">
-                                <x-jet-label for="country_region" value="{{ __('country/region') }}" />
+                                <x-jet-label for="country_region" value="{{ __('country') }}" />
                                 <x-jet-input id="country_region" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="country_region" :value="old('country_region')" required autofocus autocomplete="country_region" />
                             </div>
                             <div class="w-full p-0 p-md-2 col-12 col-md-3">
@@ -65,7 +65,7 @@
                                 <x-jet-input id="state_province" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="state_province" :value="old('state_province')" required autofocus autocomplete="state_province" />
                             </div>
                             <div class="w-full p-0 p-md-2 col-12 col-md-3">
-                                <x-jet-label for="postal" value="{{ __('postal') }}" />
+                                <x-jet-label for="postal" value="{{ __('zip code') }}" />
                                 <x-jet-input id="postal" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="postal" :value="old('postal')" required autofocus autocomplete="postal" />
                             </div>
                         </div>
