@@ -1,7 +1,7 @@
 @extends('welcome')
 @section('home-contents')
 
-<div>
+<div class="mt-4">
     <p class="h6 text-capitalize">Document status</p>
 </div>
  <div class="progress">
