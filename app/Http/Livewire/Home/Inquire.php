@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\DB;
 use Mail;
 
 class Inquire extends Component
-{   
+{
     protected $emailType = "inquiry";
-    
+
     public $productId, $first_name, $last_name, $middle_name, $email_address, $home_address, $street_address, $country_region, $contact_number, $city, $state_province, $postal;
 
     public $data = [
-        'first_name' => 'required|max:100', 
+        'first_name' => 'required|max:100',
         'last_name' => 'required|max:100',
         'middle_name' => 'required|max:100',
         'email_address' => 'required|max:100|email',
@@ -33,7 +33,7 @@ class Inquire extends Component
 
         $data['product'] = Product::where('id', $this->productId)->first();
 
-        
+
 
         return view('livewire.home.inquire', $data);
     }// end of function
@@ -54,7 +54,7 @@ class Inquire extends Component
 
         Mail::send(new \App\Mail\SendInquiry($this->emailType, $productData));
 
-        session()->flash('message', 'your inquiry sends succesfully');
+        session()->flash('message', 'You have succesfully sent your inquiry.');
         return redirect()->to('/home/product/' . $this->productId . '/inquiry');
     }
 }
