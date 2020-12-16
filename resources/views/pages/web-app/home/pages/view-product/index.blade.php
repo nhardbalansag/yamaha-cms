@@ -11,7 +11,7 @@
                         <p class="text-muted">{{$product->description}}</p>
                     </div>
                 </div>
-                <a href="">
+                <a href="{{asset('storage/' . $product->photo_path) }}">
                     <img src="{{asset('storage/' . $product->photo_path) }}"  alt="product">
                 </a>
                 <div class="mx-auto mt-2">
