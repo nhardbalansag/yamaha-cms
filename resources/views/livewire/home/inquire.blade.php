@@ -1,6 +1,6 @@
  <section>
         <div class=" sm:mt-0">
-             
+
             <div class="md:mt-0 md:col-span-2">
                 <div class="my-4 sm:px-0">
                 <h1 class="text-5xl font-medium leading-6 text-gray-900">Contact US</h1>
@@ -18,8 +18,8 @@
                     <div class="">
                         <div class="grid grid-cols-1 gap-2 mb-4 md:grid-cols-2">
                             <div class="">
-                                <label for="email_address" class="block text-sm font-medium leading-5 text-gray-700">Email address</label>
-                                <input wire:model='email_address' id="email_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
+                                <label type="email"  for="email_address" class="block text-sm font-medium leading-5 text-gray-700">Email address</label>
+                                <input wire:model='email_address'  id="email_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
                                 @error('email_address') <span class="text-red-600 error">{{ $message }}</span> @enderror
                             </div>
                             <div class="">
@@ -310,7 +310,7 @@
                             </select>
                                 @error('country_region') <span class="text-red-600 error">{{ $message }}</span> @enderror
                         </div>
-                            
+
 
 
                         <div class="">
@@ -337,12 +337,8 @@
                         </div>
                         {{--  --}}
                     </div>
-                    @if(config('services.recaptcha.key'))
-                        <div class="mt-4 g-recaptcha"
-                            data-sitekey="{{config('services.recaptcha.key')}}">
-                        </div>
-                    @endif
-                    
+
+
                     </div>
                 </div>
                 <div class="px-4 py-3 text-left bg-gray-50 sm:px-6 ">
@@ -356,11 +352,3 @@
         </div>
     </section>
 
-    <script type="text/javascript">
-        var onloadCallback = function() {
-            alert("grecaptcha is ready!");
-        };
-    </script>
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-    async defer>
-</script>

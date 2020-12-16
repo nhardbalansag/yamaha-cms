@@ -30,15 +30,8 @@
     <a class="text-lg text-white text-decoration-none" href="/">
         <img class="w-40" src="{{ asset('slides-resource/Yamaha-logo.png') }}" alt="">
     </a>
-    {{-- <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="text-white navbar-toggler-icon"></span>
-    </button> --}}
-
     <div class="ml-8 collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="mr-auto navbar-nav ">
-        <li class="nav-item active">
-            <a class="text-white nav-link" href="#">Motorcycle <span class="sr-only">(current)</span></a>
-          </li>
         <li class="nav-item active">
           <a class="text-white nav-link" href="#" tabindex="-1" aria-disabled="true">Contact us</a>
         </li>
@@ -48,9 +41,11 @@
               <a class="text-white nav-link" href="/dashboard" tabindex="-1" aria-disabled="true">Dashboard</a>
             </li>
           @endif
+          @if(Auth::user()->role !== 'admin')
             <li class="nav-item active">
-              <a class="text-white nav-link" href="/my-account/{{Auth::user()->id}}" tabindex="-1" aria-disabled="true">My Account</a>
+                <a class="text-white nav-link" href="/my-account/{{Auth::user()->id}}" tabindex="-1" aria-disabled="true">My Account</a>
             </li>
+          @endif
             <li class="nav-item active">
              <form method="POST" action="{{ route('logout') }}">
                 @csrf

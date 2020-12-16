@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex items-center flex-shrink-0">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block w-auto h-9" />
+                        <img class="w-40" src="{{ asset('slides-resource/Yamaha-logo.png') }}" alt="">
                     </a>
                 </div>
 
@@ -22,13 +22,13 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                        {{-- @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <button class="flex text-sm transition duration-150 ease-in-out border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-                                <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->first_name }}" />
                             </button>
-                        @else
-                            <button class="flex items-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
-                                <div>{{ Auth::user()->name }}</div>
+                        @else --}}
+                            <button class="flex items-center text-sm font-medium text-white transition duration-150 ease-in-out hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
+                                <div>{{ Auth::user()->first_name }}</div>
 
                                 <div class="ml-1">
                                     <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -36,7 +36,7 @@
                                     </svg>
                                 </div>
                             </button>
-                        @endif
+                        {{-- @endif --}}
                     </x-slot>
 
                     <x-slot name="content">
