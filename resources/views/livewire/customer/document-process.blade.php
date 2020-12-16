@@ -41,7 +41,9 @@
                             <label class="form-check-label h3 text-uppercase font-weight-bold" for="flexRadioDefault2">{{ $tosubmitDocument[0]->documentTitle }}</label>
                         </div>
                         @error('document_id') <span class="text-red-600 error">{{ $message }}</span> @enderror
-                        <p class="p-0 text-capitalize text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quibusdam sapiente harum veniam eaque. Unde officiis fugit accusantium eum, autem illum perferendiquibusdam. </p>
+                        <p class="p-0 text-capitalize text-muted">
+                            Please provide these following requirements for you to be able to proceed on the next step of the process.
+                        </p>
                     </div>
                     <div class="col-12">
                         <div class="p-0 mx-auto my-4 col-12 col-md-6">
