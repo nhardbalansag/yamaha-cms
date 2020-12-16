@@ -24,7 +24,9 @@
         <form wire:submit.prevent="resubmit" enctype="multipart/form-data" >
             <div class="col-12">
                 <p class="p-0 text-capitalize">resubmit document</p>
-                <p class="p-0 text-capitalize text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quibusdam sapiente harum veniam eaque. Unde officiis fugit accusantium eum, autem illum perferendiquibusdam. </p>
+                <p class="p-0 text-capitalize text-muted">
+                    Please provide these following requirements for you to be able to proceed on the next step of the process.
+                </p>
             </div>
             <div class="col-12">
                 <div class="p-0 mx-auto my-4 col-12 col-md-6">
