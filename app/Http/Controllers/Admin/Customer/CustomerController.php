@@ -20,7 +20,7 @@ class CustomerController extends Controller
 
 
     public function viewNotVerified(){
-        
+
         $data['notVerified'] = DB::select('SELECT *
                                             FROM users
                                             WHERE verified = 0');
@@ -30,7 +30,7 @@ class CustomerController extends Controller
 
 
     public function verified(){
-        
+
         $data['verified'] = DB::select('SELECT *
                                             FROM users
                                             WHERE verified = 1');
@@ -40,10 +40,10 @@ class CustomerController extends Controller
     }
 
     public function inquiries(){
-        
+
         $data['inquiries'] = DB::select('SELECT *
                                             FROM inquiries');
-       
+
         return view('pages.admin.customer.inquiries', $data);
 
     }
