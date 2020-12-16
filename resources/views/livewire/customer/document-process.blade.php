@@ -36,8 +36,6 @@
                 </div>
                 <form wire:submit.prevent="createDocument" enctype="multipart/form-data" >
                     <div class="col-12">
-                        <p class="p-0 text-capitalize">you need to upload your</p>
-                        {{-- <p class="p-0 h3 text-capitalize font-weight-bold">driving license</p> --}}
                         <div class="mb-2 form-check">
                             <input wire:model='document_id' class="form-check-input" type="radio" name="flexRadioDefault" value="{{ $tosubmitDocument[0]->documentId }}" id="flexRadioDefault2" checked>
                             <label class="form-check-label h3 text-uppercase font-weight-bold" for="flexRadioDefault2">{{ $tosubmitDocument[0]->documentTitle }}</label>
