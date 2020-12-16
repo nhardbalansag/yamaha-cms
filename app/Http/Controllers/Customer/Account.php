@@ -119,7 +119,7 @@ class Account extends Controller
         ];
 
         if(AccountVerification::create($data)){
-            $data['result'] = "we have sended a verification code to your email please check your email";
+            $data['result'] = "We sent verification code to your email. Please check your email to verify your account";
             $data['result_bool'] = true;
 
             Mail::send(new \App\Mail\SendInquiry($this->emailType, $email));
