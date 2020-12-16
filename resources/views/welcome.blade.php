@@ -54,8 +54,8 @@
             attribution=setup_tool
             page_id="105158801438012"
             theme_color="#20cef5"
-            logged_in_greeting="Hi! How can we help you this is only for capstone project"
-            logged_out_greeting="Hi! How can we help you this is only for capstone project">
+            logged_in_greeting="Hi! How can we help you"
+            logged_out_greeting="Thank you for Inquiring with us">
         </div>
          <footer class="container py-5">
             @include('pages.web-app.home.components.footer')
