@@ -20,7 +20,7 @@
 
                             <div class="">
                                 <label type="email"  for="email_address" class="block text-sm font-medium leading-5 text-gray-700">Email address</label>
-                                <input wire:model='email_address' value="@auth {{ Auth::user()->email }} @endauth"  id="email_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
+                                <input value="@auth {{ Auth::user()->email }} @endauth" wire:model='email_address'   id="email_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
                                 @error('email_address') <span class="text-red-600 error">{{ $message }}</span> @enderror
                             </div>
                             <div class="">
