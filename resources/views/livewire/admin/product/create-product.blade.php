@@ -85,26 +85,6 @@
                                     </select>
                                     @error('product_category_id') <span class="italic text-red-600 error">{{ $message }}</span> @enderror
                                 </div>
-                                {{-- <div class="w-1/2 mr-2 ">
-                                    <label for="country" class="block text-sm font-medium leading-5 text-gray-700 capitalize">specification</label>
-                                    <select wire:model.prevent ="specification_id" id="country" class="block w-full px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md shadow-sm form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
-                                        @forelse($specification as $category)
-                                            <option value = "{{$category->id}}" >{{$category->title}}</option>
-                                            @empty
-                                        @endforelse
-                                    </select>
-                                    @error('specification_id') <span class="italic text-red-600 error">{{ $message }}</span> @enderror
-                                </div> --}}
-                                {{-- <div class="w-1/2 mr-2">
-                                    <label for="country" class="block text-sm font-medium leading-5 text-gray-700 capitalize">product color</label>
-                                    <select wire:model.prevent ="colors_type_id" id="country" class="block w-full px-3 py-2 mt-1 text-xl capitalize transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md shadow-sm form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 ">
-                                        @forelse($colorCategory as $category)
-                                            <option class = "capitalize" value = "{{$category->id}}" >{{$category->title}}</option>
-                                            @empty
-                                        @endforelse
-                                    </select>
-                                    @error('colors_type_id') <span class="italic text-red-600 error">{{ $message }}</span> @enderror
-                                </div> --}}
                                 <div class="my-4">
                                     <div class="">
                                         <label for="company_website" class="block text-sm font-medium leading-5 text-gray-700 capitalize">
