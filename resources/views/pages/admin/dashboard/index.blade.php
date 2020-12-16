@@ -27,7 +27,9 @@
 
             <div class="py-2 my-2 text-center border-bottom border-dark row col-md-12">
                 <div class="col-md-2 text-truncate">
-                    <a class="text-truncate text-primary" href="{{asset('storage/' . $value->products_photo_path) }}">{{asset('storage/' . $value->products_photo_path) }}</a>
+                    <a class="text-truncate text-primary" href="{{asset('storage/' . $value->products_photo_path) }}">
+                        <img class="w-20" src="{{asset('storage/' . $value->products_photo_path) }}" alt="">
+                    </a>
                 </div>
                 <div class="col-md-2">
                     {{$value->products_title}}
