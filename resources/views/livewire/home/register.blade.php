@@ -18,7 +18,7 @@
                         <x-jet-input id="url" class="hidden w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="url" :value="url()->current()"  autofocus autocomplete="url" />
                         <div class="p-0 m-auto row col-12 col-md-12">
                             <div class="w-full p-0 p-md-2 col-12 col-md-4">
-                                <x-jet-label for="email" value="{{ __('Email') }}" />
+                                <x-jet-label for="email" class="text-capitalize" value="{{ __('Email') }}" />
                                 <x-jet-input id="email" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="email" :value="old('email')" required autofocus autocomplete="email" />
                             </div>
                             <div class="w-full p-0 p-md-2 col-12 col-md-4">
@@ -28,55 +28,55 @@
                         </div>
                         <div class="w-full p-0 m-auto row col-12 col-md-12">
                             <div class="p-0 p-md-2 col-12 col-md-4">
-                                <x-jet-label for="first_name" value="{{ __('First name') }}" />
+                                <x-jet-label for="first_name" class="text-capitalize" value="{{ __('First name') }}" />
                                 <x-jet-input id="first_name" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
                             </div>
                             <div class="w-full p-0 p-md-2 col-12 col-md-4">
-                                <x-jet-label for="name" value="{{ __('Last name') }}" />
+                                <x-jet-label for="name" class="text-capitalize" value="{{ __('Last name') }}" />
                                 <x-jet-input id="name" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
                             </div>
                             <div class="w-full p-0 p-md-2 col-12 col-md-4">
-                                <x-jet-label for="middle_name" value="{{ __('Middle name') }}" />
+                                <x-jet-label for="middle_name" class="text-capitalize" value="{{ __('Middle name') }}" />
                                 <x-jet-input id="middle_name" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="middle_name" :value="old('middle_name')" autofocus autocomplete="middle_name" />
                             </div>
                         </div>
                         <hr class="bg-black">
                         <div class="p-0 m-auto mt-4 row col-12 col-md-12">
                             <div class="w-full p-0 p-md-2 col-12 col-md-6">
-                                <x-jet-label for="home_address" value="{{ __('house number, building name') }}" />
+                                <x-jet-label for="home_address" class="text-capitalize" value="{{ __('house number, building name') }}" />
                                 <x-jet-input id="home_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="home_address" :value="old('home_address')" required autofocus autocomplete="home_address" />
                             </div>
                             <div class="w-full p-0 p-md-2 col-12 col-md-6">
-                                <x-jet-label for="street_address" value="{{ __('street address') }}" />
+                                <x-jet-label for="street_address" class="text-capitalize" value="{{ __('street address') }}" />
                                 <x-jet-input id="street_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="street_address" :value="old('street_address')" required autofocus autocomplete="street_address" />
                             </div>
                         </div>
                         <div class="p-0 m-auto row col-12 col-md-12">
                             <div class="w-full p-0 p-md-2 col-12 col-md-3">
-                                <x-jet-label for="country_region" value="{{ __('country') }}" />
+                                <x-jet-label for="country_region" class="text-capitalize" value="{{ __('country') }}" />
                                 <x-jet-input id="country_region" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="country_region" :value="old('country_region')" required autofocus autocomplete="country_region" />
                             </div>
                             <div class="w-full p-0 p-md-2 col-12 col-md-3">
-                                <x-jet-label for="city" value="{{ __('city') }}" />
+                                <x-jet-label for="city" class="text-capitalize" value="{{ __('city') }}" />
                                 <x-jet-input id="city" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="city" :value="old('city')" required autofocus autocomplete="city" />
                             </div>
                             <div class="w-full p-0 p-md-2 col-12 col-md-3">
-                                <x-jet-label for="state_province" value="{{ __('state province') }}" />
+                                <x-jet-label for="state_province" class="text-capitalize" value="{{ __('state province') }}" />
                                 <x-jet-input id="state_province" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="state_province" :value="old('state_province')" required autofocus autocomplete="state_province" />
                             </div>
                             <div class="w-full p-0 p-md-2 col-12 col-md-3">
-                                <x-jet-label for="postal" value="{{ __('zip code') }}" />
+                                <x-jet-label for="postal" class="text-capitalize" value="{{ __('zip code') }}" />
                                 <x-jet-input id="postal" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="postal" :value="old('postal')" required autofocus autocomplete="postal" />
                             </div>
                         </div>
                         <hr class="bg-black">
                         <div class="p-0 m-auto my-4 row col-12 col-md-12">
                             <div class="w-full p-0 p-md-2 col-12 col-md-6">
-                                <x-jet-label for="password" value="{{ __('Password') }}" />
+                                <x-jet-label for="password" class="text-capitalize" value="{{ __('Password') }}" />
                                 <x-jet-input id="password" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="password" name="password" required autocomplete="new-password" />
                             </div>
                             <div class="w-full p-0 m-auto p-md-2 col-12 col-md-6">
-                                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                                <x-jet-label for="password_confirmation" class="text-capitalize" value="{{ __('Confirm Password') }}" />
                                 <x-jet-input id="password_confirmation" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="password" name="password_confirmation" required autocomplete="new-password" />
                             </div>
                         </div>
