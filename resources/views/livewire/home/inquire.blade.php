@@ -17,14 +17,15 @@
                 <div class="px-4 py-5 bg-white sm:p-6">
                     <div class="">
                         <div class="grid grid-cols-1 gap-2 mb-4 md:grid-cols-2">
+
                             <div class="">
                                 <label type="email"  for="email_address" class="block text-sm font-medium leading-5 text-gray-700">Email address</label>
-                                <input wire:model='email_address'  id="email_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
+                                <input wire:model='email_address' value="@auth {{ Auth::user()->email }} @endauth"  id="email_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
                                 @error('email_address') <span class="text-red-600 error">{{ $message }}</span> @enderror
                             </div>
                             <div class="">
                                 <label for="email_address" class="block text-sm font-medium leading-5 text-gray-700">Contact Number</label>
-                                <input  wire:model='contact_number' id="email_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
+                                <input  wire:model='contact_number' value="@auth {{ Auth::user()->contact_number }} @endauth" id="email_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
                                 @error('contact_number') <span class="text-red-600 error">{{ $message }}</span> @enderror
                             </div>
                         </div>
@@ -35,26 +36,26 @@
                        <div class="grid grid-cols-1 gap-2 mb-4 md:grid-cols-3">
                             <div class="">
                                 <label for="first_name" class="block text-sm font-medium leading-5 text-gray-700">First name</label>
-                                <input wire:model='first_name' id="first_name" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
+                                <input wire:model='first_name' value="@auth {{ Auth::user()->first_name }} @endauth" id="first_name" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
                                     @error('first_name') <span class="text-red-600 error">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="">
                                 <label  for="last_name" class="block text-sm font-medium leading-5 text-gray-700">Last name</label>
-                                <input  wire:model='last_name'  id="last_name" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
+                                <input  wire:model='last_name' value="@auth {{ Auth::user()->last_name }} @endauth" id="last_name" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
                                     @error('last_name') <span class="text-red-600 error">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="">
                                 <label for="last_name" class="block text-sm font-medium leading-5 text-gray-700">Middle name</label>
-                                <input wire:model='middle_name' id="last_name" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
+                                <input wire:model='middle_name' value="@auth {{ Auth::user()->middle_name }} @endauth" id="last_name" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
                                     @error('middle_name') <span class="text-red-600 error">{{ $message }}</span> @enderror
                             </div>
                        </div>
 
                         <div class="col-span-6">
                         <label for="email_address" class="block text-sm font-medium leading-5 text-gray-700">Address</label>
-                        <input wire:model='home_address' id="email_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
+                        <input wire:model='home_address' value="@auth {{ Auth::user()->home_address }} @endauth" id="email_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
                         @error('home_address') <span class="text-red-600 error">{{ $message }}</span> @enderror
                     </div>
 
@@ -315,24 +316,24 @@
 
                         <div class="">
                             <label for="street_address" class="block text-sm font-medium leading-5 text-gray-700">Street address</label>
-                            <input  wire:model='street_address' id="street_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
+                            <input  wire:model='street_address' value="@auth {{ Auth::user()->street_address }} @endauth" id="street_address" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
                                 @error('street_address') <span class="text-red-600 error">{{ $message }}</span> @enderror
                         </div>
 
                         <div class="">
                             <label for="city" class="block text-sm font-medium leading-5 text-gray-700">City</label>
-                            <input wire:model='city' id="city" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
+                            <input wire:model='city' value="@auth {{ Auth::user()->city }} @endauth" id="city" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
                                 @error('city') <span class="text-red-600 error">{{ $message }}</span> @enderror
                         </div>
 
                         <div class="">
                             <label for="state" class="block text-sm font-medium leading-5 text-gray-700">State / Province</label>
-                            <input wire:model='state_province' id="state" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
+                            <input wire:model='state_province' value="@auth {{ Auth::user()->state_province }} @endauth" id="state" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
                             @error('state_province') <span class="text-red-600 error">{{ $message }}</span> @enderror
                         </div>
                         <div class="">
                             <label for="postal_code" class="block text-sm font-medium leading-5 text-gray-700">ZIP / Postal</label>
-                            <input wire:model='postal' id="postal_code" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
+                            <input wire:model='postal' value="@auth {{ Auth::user()->postal_code }} @endauth" id="postal_code" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5">
                             @error('postal') <span class="text-red-600 error">{{ $message }}</span> @enderror
                         </div>
                         {{--  --}}
