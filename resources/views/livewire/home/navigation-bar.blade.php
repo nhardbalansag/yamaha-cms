@@ -106,25 +106,41 @@
     <div class="carousel-item active" id="firstslide">
       <div class="container py-4 " >
         <h1 class="text-white capitalize display-4">megavia</h1>
-        <p class="text-white lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum enim eligendi voluptas</p>
+        <p class="text-white lead">
+            Life without a motorcycle is just life.
+            Live to Ride, Ride to Live.
+            Maintenance is as much art as it is science.
+        </p>
       </div>
     </div>
     <div class="carousel-item" id="secondslide">
       <div class="container py-4">
         <h1 class="text-white capitalize display-4">motorcycles</h1>
-        <p class="text-white lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum enim eligendi voluptas</p>
+        <p class="text-white lead">
+            Life without a motorcycle is just life.
+            Live to Ride, Ride to Live.
+            Maintenance is as much art as it is science.
+        </p>
       </div>
     </div>
     <div class="carousel-item bg-dark" id="thirdslide">
       <div class="container py-4">
         <h1 class="text-white capitalize display-4">parts</h1>
-        <p class="text-white lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum enim eligendi voluptas</p>
+        <p class="text-white lead">
+            Life without a motorcycle is just life.
+            Live to Ride, Ride to Live.
+            Maintenance is as much art as it is science.
+        </p>
       </div>
     </div>
      <div class="carousel-item" id="secondslide">
       <div class="container py-4">
         <h1 class="text-white capitalize display-4">mantainance and services</h1>
-        <p class="text-white lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum enim eligendi voluptas</p>
+        <p class="text-white lead">
+            Life without a motorcycle is just life.
+            Live to Ride, Ride to Live.
+            Maintenance is as much art as it is science.
+        </p>
       </div>
     </div>
   </div>
