@@ -3,7 +3,7 @@
                 <p class = "text-lg font-bold capitalize">recommended ({{ count($recommended) }})</p>
             </div>
             <div class="swiper-container">
-                <div class="swiper-wrapper d-flex justify-content-center ">
+                <div class="mb-4 swiper-wrapper d-flex justify-content-center">
                     @foreach($recommended as $key => $value)
                         <div class=" swiper-slide">
                             <a href="/home/product/{{$value->id}}">
