@@ -8,7 +8,7 @@ import swiper from 'swiper/bundle';
     // Custom script
     const swiper = new Swiper('.swiper-container', {
         slidesPerView: 2,
-        spaceBetween: 20,
+        spaceBetween: 5,
         slidesPerGroup: 1,
         loop: true,
         loopFillGroupWithBlank: false,
@@ -23,11 +23,11 @@ import swiper from 'swiper/bundle';
         breakpoints: {
             1111: {
                 slidesPerView: 4,
-                spaceBetweenSlides: 10
+                spaceBetweenSlides: 5
             },
-         
+
         }
       });
-    
+
 
 })();
