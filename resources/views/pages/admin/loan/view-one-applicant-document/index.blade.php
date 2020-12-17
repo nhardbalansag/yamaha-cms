@@ -16,7 +16,9 @@
     <div class="py-2 my-2 text-center border-bottom border-dark row col-md-12">
         <div class="col-md-3 text-truncate">
 
-             <a href="{{ asset('storage/' . $value->photo_path) }}">{{asset('storage/' . $value->photo_path) }}</a>
+             <a href="{{ asset('storage/' . $value->photo_path) }}">
+                <img class="w-20" src="{{asset('storage/' . $value->photo_path) }}" alt="">
+            </a>
         </div>
         <div class="col-md-3 {{ $value->status == "approved" ? 'text-success' : ($value->status == "pending" ? 'text-warning' : 'text-danger') }}">
             {{ $value->status }}
