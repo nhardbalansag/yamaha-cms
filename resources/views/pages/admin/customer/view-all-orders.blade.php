@@ -25,10 +25,10 @@
 
     <div class="py-2 my-2 text-center border-bottom border-dark row col-md-12">
         <div class="col-md-1 text-truncate">
-            {{$value->first_name}}
+            {{$value->customerId}}
         </div>
         <div class="col-md-2 ">
-            {{$value->title}}
+            {{$value->productId}}
         </div>
         <div class="col-md-2">
             {{$value->purchaseAmount }}
