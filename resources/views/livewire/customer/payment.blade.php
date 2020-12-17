@@ -8,12 +8,14 @@
                     {{ session('message') }}
                 </div>
             @endif
-        </div>  
+        </div>
       <h2>Checkout form</h2>
-      <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+      <p class="lead">
+        below are the details about the product you are purchasing. Please check the details before proceeding thank you.
+      </p>
     </div>
     @if (Auth::user()->verified != 1)
-      <div class="alert alert-warning text-center" role="alert">
+      <div class="text-center alert alert-warning" role="alert">
         <p>
           Note: at the moment you cant buy or reserve a product or services. Please verify first your email address.
         </p>
@@ -78,9 +80,9 @@
           </script>
       </div>
     </div>
-        
+
     @endif
-    
+
 
     <footer class="pt-5 my-5 text-center text-muted text-small">
       <p class="mb-1">© 2017-2020 Company Name</p>
