@@ -154,10 +154,10 @@
                     @foreach($specification as $key => $value)
                         <div class="row col-12 border-bottom">
                             <div class="col-6">
-                                <p>{{$value->title}}</p>
+                                <p class="text-muted">{{$value->title}}</p>
                             </div>
                             <div class="col-6">
-                                <p> {{$value->description}}</p>
+                                <p class="text-muted"> {{$value->description}}</p>
                             </div>
                         </div>
                     @endforeach
