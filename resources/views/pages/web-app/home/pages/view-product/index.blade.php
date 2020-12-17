@@ -142,25 +142,25 @@
                 <div class = "text-center bg-blue-900">
                     <p class="text-4xl font-extrabold text-white">SRP: ₱{{number_format($product->price)}}.00</p>
                 </div>
-                <div>
-                    <table class="table-auto">
-                        <thead>
-                            <tr>
-                                <th class="px-4 py-2">specifications</th>
-                                <th class="px-4 py-2">description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($specification as $key => $value)
-                                <tr>
-                                    <td class="px-4 py-2 font-bold border text-muted">{{$value->title}}</td>
-                                    <td class="px-4 py-2 border text-muted">
-                                       {{$value->description}}
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div class="row col-12">
+                    <div class="col-12">
+                        <div class="col-6">
+                            <p>specifications</p>
+                        </div>
+                        <div class="col-6">
+                            <p>description</p>
+                        </div>
+                    </div>
+                    @foreach($specification as $key => $value)
+                        <div class="col-12">
+                            <div class="col-6">
+                                <p>{{$value->title}}</p>
+                            </div>
+                            <div class="col-6">
+                                <p> {{$value->description}}</p>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
