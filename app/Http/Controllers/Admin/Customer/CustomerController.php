@@ -48,6 +48,20 @@ class CustomerController extends Controller
 
     }
 
+    public function viewoneInquiry($inquiryID){
+
+        $data['inquiries'] = DB::select('SELECT *
+                                            FROM inquiries
+                                            WHERE id = ' . $inquiryID);
+
+        $data['productinfo'] = DB::select('SELECT *
+                                            FROM products
+                                            WHERE id = ' . $data['inquiries'][0]->productId);
+
+        return view('pages.admin.customer.view-one-inquiry', $data);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

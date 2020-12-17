@@ -1,45 +1,44 @@
 @extends('dashboard')
 @section('contents')
 
-
 <div class="my-4 text-center border-bottom border-dark row col-md-12 text-capitalize">
-    <div class="col-md-3">
+    <div class="col-md-2">
         name
     </div>
     <div class="col-md-2">
-        email
-    </div>
-    <div class="col-md-2">
-        contact number
+        status
     </div>
     <div class="col-md-3">
-        address
+        role
+    </div>
+    <div class="col-md-3">
+        email
     </div>
     <div class="col-md-2">
         action
     </div>
 </div>
-@foreach($inquiries as $key => $value)
+@foreach($verified as $key => $value)
 
     <div class="py-2 my-2 text-center border-bottom border-dark row col-md-12">
-        <div class="col-md-3 text-truncate">
+        <div class="col-md-2 text-truncate">
             {{$value->first_name}}
         </div>
-        <div class="col-md-2">
-            {{$value->email_address}}
-        </div>
-        <div class="col-md-2">
-            {{$value->contact_number }}
+        <div class="col-md-2 {{ $value->verified == 1 ? 'text-success' : 'text-danger' }}">
+            {{$value->verified == 1 ? 'verified' : 'not verified'}}
         </div>
         <div class="col-md-3">
-            {{$value->home_address . ', ' . $value->street_address . ', ' . $value->city . ', ' . $value->country_region . ', ' . $value->state_province}}
+            {{$value->role }}
+        </div>
+        <div class="col-md-3">
+            {{$value->email }}
         </div>
         <div class=" col-md-2">
             <div class="mb-2 dropdown">
                 <a class="dropdown-toggle " data-toggle="dropdown" href="#" >Actions</a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                     <li>
-                        <a class="dropdown-item text-primary" href="/order/{{ $value->id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
+                        <a class="dropdown-item text-primary" href="/loan/applicants/{{ $value->id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
                     </li>
                 </ul>
             </div>
