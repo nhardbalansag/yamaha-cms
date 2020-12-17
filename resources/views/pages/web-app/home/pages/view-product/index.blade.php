@@ -142,8 +142,8 @@
                 <div class = "text-center bg-blue-900">
                     <p class="text-4xl font-extrabold text-white">SRP: ₱{{number_format($product->price)}}.00</p>
                 </div>
-                <div class="row col-12">
-                    <div class="col-12">
+                <div class="col-12">
+                    <div class="row col-12">
                         <div class="col-6">
                             <p>specifications</p>
                         </div>
@@ -152,7 +152,7 @@
                         </div>
                     </div>
                     @foreach($specification as $key => $value)
-                        <div class="col-12">
+                        <div class="row col-12">
                             <div class="col-6">
                                 <p>{{$value->title}}</p>
                             </div>
