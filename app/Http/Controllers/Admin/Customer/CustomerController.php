@@ -72,7 +72,14 @@ class CustomerController extends Controller
                                             transactions.status as status,
                                             transactions.created_at as created_at
                                             FROM transactions,  users, products
-                                            GROUP BY transactions.id, users.first_name, products.title');
+                                            GROUP BY
+                                            transactions.id,
+                                            users.first_name,
+                                            products.title,
+                                            transactions.purchaseAmount,
+                                            transactions.status,
+                                            transactions.created_at'
+                                            );
 
         return view('pages.admin.customer.view-all-orders', $data);
 
