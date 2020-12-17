@@ -145,14 +145,14 @@
                 <div class="col-12">
                     <div class="row col-12">
                         <div class="col-6">
-                            <p>specifications</p>
+                            <p class="text-capitalize font-weight-bold">specifications</p>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 text-capitalize font-weight-bold">
                             <p>description</p>
                         </div>
                     </div>
                     @foreach($specification as $key => $value)
-                        <div class="row col-12">
+                        <div class="row col-12 border-bottom">
                             <div class="col-6">
                                 <p>{{$value->title}}</p>
                             </div>
