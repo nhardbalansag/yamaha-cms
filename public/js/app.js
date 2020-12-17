@@ -31141,7 +31141,7 @@ __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.es
   // Custom script
   var swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('.swiper-container', {
     slidesPerView: 2,
-    spaceBetween: 20,
+    spaceBetween: 5,
     slidesPerGroup: 1,
     loop: true,
     loopFillGroupWithBlank: false,
@@ -31156,7 +31156,7 @@ __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.es
     breakpoints: {
       1111: {
         slidesPerView: 4,
-        spaceBetweenSlides: 10
+        spaceBetweenSlides: 5
       }
     }
   });
