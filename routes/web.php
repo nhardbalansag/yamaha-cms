@@ -88,6 +88,10 @@ Route::middleware('auth')->group(function(){
         Route::get('/loan/applicants/declined/{id}/{customer_id}',  [LoanController::class, 'declined']);
 
 
+        //ORDERS
+        Route::get('/order/{id}',  [CustomerController::class, 'viewoneInquiry']);
+
+
     });
 });
 
