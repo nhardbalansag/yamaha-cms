@@ -90,6 +90,8 @@ Route::middleware('auth')->group(function(){
 
         //ORDERS
         Route::get('/order/{id}',  [CustomerController::class, 'viewoneInquiry']);
+        Route::get('/orders/viewallOrders/transactions',  [CustomerController::class, 'viewallOrders']);
+        Route::get('/orders/viewallOrders/transactions/{id}',  [CustomerController::class, 'viewoneOrderTransaction']);
 
 
     });

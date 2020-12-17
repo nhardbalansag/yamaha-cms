@@ -62,6 +62,32 @@ class CustomerController extends Controller
 
     }
 
+    public function viewallOrders(){
+
+        $data['transactions'] = DB::select('SELECT *
+                                            FROM transactions');
+
+        return view('pages.admin.customer.view-all-orders', $data);
+
+    }
+
+    public function viewoneOrderTransaction($id){
+
+        $data['transactions'] = DB::select('SELECT *
+                                            FROM transactions
+                                            WHERE id = ' . $id);
+
+         $data['users'] = DB::select('SELECT *
+                                                FROM users
+                                                WHERE id = ' . $data['transactions'][0]->customerId);
+
+        $data['products'] = DB::select('SELECT *
+                                            FROM products
+                                            WHERE id = ' . $data['transactions'][0]->productId);
+        return view('pages.admin.customer.viewoneTransaction', $data);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

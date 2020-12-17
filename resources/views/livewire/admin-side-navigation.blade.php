@@ -16,7 +16,7 @@
                             </a>
                             <div class="collapse col-12" id="orders">
                                <div class="py-2 col-12">
-                                    <a href="" class="text-black">view all orders</a>
+                                    <a href="/orders/viewallOrders/transactions" class="text-black">view all orders</a>
                                </div>
                                <div class="py-2 col-12">
                                     <a href="" class="text-black">active orders</a>
