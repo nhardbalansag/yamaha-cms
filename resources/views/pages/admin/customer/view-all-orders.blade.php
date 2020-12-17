@@ -3,10 +3,10 @@
 
 <div class="my-4 text-center border-bottom border-dark row col-md-12 text-capitalize">
     <div class="col-md-1">
-        name
+        customer ID
     </div>
     <div class="col-md-2">
-        product
+        product ID
     </div>
     <div class="col-md-2">
         purchase amount
