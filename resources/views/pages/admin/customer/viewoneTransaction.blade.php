@@ -91,7 +91,7 @@
               </div>
               <!-- /.col -->
               <div class="col-6">
-                <p class="lead">Amount Due {{ $transactions[0]->created_at }}</p>
+                <p class="lead">Amount Due P{{ number_format($transactions[0]->purchaseAmount) }}.00</p>
 
                 <div class="table-responsive">
                   <table class="table">
