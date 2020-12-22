@@ -2,5 +2,6 @@
 @api_key = bernardbalansag
 
 # Get Categories
-GET http://yamaha-cms.test/api HTTP/1.1
+GET https://www.bbalansag.online/api HTTP/1.1
 Accept: application/json
+Authorization: {{api_key}}
