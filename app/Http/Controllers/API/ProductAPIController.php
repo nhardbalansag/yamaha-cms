@@ -10,6 +10,8 @@ use App\Models\Admin\Products\Product;
 class ProductAPIController extends Controller
 {
     public function index(){
-        $data['product'] = Product::where('status', 'publish')->get();
+        $data = Product::where('status', 'publish')->get();
+
+        return $data;
     }
 }

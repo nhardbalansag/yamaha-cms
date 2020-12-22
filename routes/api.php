@@ -22,4 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/api/home', [ProductAPIController::class, 'index']);
+Route::get('/', [ProductAPIController::class, 'index']);
