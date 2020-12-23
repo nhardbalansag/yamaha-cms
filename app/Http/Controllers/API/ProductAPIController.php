@@ -12,6 +12,6 @@ class ProductAPIController extends Controller
     public function index(){
         $data = Product::where('status', 'publish')->get();
 
-        return response()->json(array('yamahaProductData'=>$data), 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+        return response()->json($data, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 }
