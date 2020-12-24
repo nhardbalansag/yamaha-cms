@@ -47,12 +47,13 @@ class CustomerAPIController extends Controller
             'password' => Hash::make($request->password)
         );
 
+        $errors = $validator->errors();
 
        if(!$validator->fails()){
             User::create($data);
-           $response = true;
+           $response = 'registered succesfully';
        }else{
-            $response = false;
+            $response = $errors->all();
        }
 
         return response()->json($response, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
