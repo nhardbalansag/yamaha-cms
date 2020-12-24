@@ -49,14 +49,28 @@ class CustomerAPIController extends Controller
 
         $errors = $validator->errors();
 
+        $dataresponse = array(
+            'first_name' => $errors->first('first_name'),
+            'last_name' => $errors->first('last_name'),
+            'middle_name' => $errors->first('middle_name'),
+            'home_address' => $errors->first('home_address'),
+            'street_address' => $errors->first('street_address'),
+            'country_region' => $errors->first('country_region'),
+            'contact_number' => $errors->first('contact_number'),
+            'city' => $errors->first('city'),
+            'state_province' => $errors->first('state_province'),
+            'postal' => $errors->first('postal'),
+            'role' => $errors->first('role'),
+            'verified' => $errors->first('verified'),
+            'email' => $errors->first('email'),
+            'password' => $errors->first('password')
+        );
+
        if(!$validator->fails()){
             User::create($data);
-           $response = 'registered succesfully';
-       }else{
-            $response = $errors->all();
        }
 
-        return response()->json($response, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+        return response()->json($dataresponse, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
 
     }
 }
