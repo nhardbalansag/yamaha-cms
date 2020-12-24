@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\API\ProductAPIController;
+use App\Http\Controllers\API\CustomerAPIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/', [ProductAPIController::class, 'index']);
+
+Route::get('/login', [CustomerAPIController::class, 'login']);
+Route::get('/register', [CustomerAPIController::class, 'register']);
