@@ -81,7 +81,7 @@ class CustomerAPIController extends Controller
 
     public function login(Request $request){
         $validator = Validator::make($request->all(), [
-            'email' => ['required', 'string', 'min:3|max:50'],
+            'email' => ['required', 'email', 'min:3|max:50'],
             'password' => ['required', 'string', 'min:5|max:255']
         ]);
 
@@ -89,36 +89,73 @@ class CustomerAPIController extends Controller
 
         if(!$validator->fails()){
 
-            $data['data'] = DB::select('SELECT *
+            $data = DB::select('SELECT *
                                             FROM users
                                             WHERE email = ' . '"' .$request->email .'"');
 
-            if(!empty($data['data'])){
+            if(!empty($data)){
                 $enteredPassword = $request->password;
-                $DBpassword = $data['data'][0]->password;
-                $DBemail = $data['data'][0]->email;
+                $DBpassword = $data[0]->password;
+                $DBemail = $data[0]->email;
                 $enteredEmail = $request->email;
 
                 $password = Hash::check($enteredPassword, $DBpassword);
                 $token = Hash::make($this->secret);
 
                 if($password && $enteredEmail === $DBemail){
-                    $response = array(
-                        "userInformation" => $data['data'],
-                        "token" =>  $token
-                    );
+                    $response = array_merge(
+                        array("information" => $data),
+                            array(
+                                "status" => [
+                                    "token" => $token,
+                                    "error" => false,
+                                    "type" => "data",
+                                    "messsage" => "login success"
+                                ]
+                            )
+                        );
                 }else{
-                    $response = "no matching records";
+                    $response = array_merge(
+                        array("information" => null),
+                            array(
+                                "status" => [
+                                    "token" => null,
+                                    "error" => true,
+                                    "type" => "data",
+                                    "messsage" => "no matching records"
+                                ]
+                            )
+                        );
                 }
             }else{
-                $response = "no matching records";
+                $response = array_merge(
+                    array("information" => $data),
+                        array(
+                            "status" => [
+                                "token" => null,
+                                "error" => true,
+                                "type" => "data",
+                                "messsage" => "no matching records"
+                            ]
+                        )
+                    );
             }
 
         }else{
-            $response = array(
-                'email' => $errors->first('email'),
-                'password' => $errors->first('password')
-            );
+            $response = array_merge(
+                array("information" => null),
+                    array(
+                        "status" => [
+                            "token" => null,
+                            "error" => true,
+                            "type" => "validation",
+                            "messsage" => array(
+                                'email' => $errors->first('email'),
+                                'password' => $errors->first('password')
+                            )
+                        ]
+                    )
+                );
         }
 
         return response()->json($response, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
