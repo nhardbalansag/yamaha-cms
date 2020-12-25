@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 
 class CustomerAPIController extends Controller
 {
+    private $secret = 'capstoneProject2020-2021';
+
     public function register(Request $request){
 
         $validator = Validator::make($request->all(), [
@@ -68,6 +70,7 @@ class CustomerAPIController extends Controller
 
        if(!$validator->fails()){
             User::create($data);
+            $dataresponse = array("token" =>Hash::make($this->secret));
        }
 
         return response()->json($dataresponse, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
