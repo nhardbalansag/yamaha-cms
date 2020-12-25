@@ -2,11 +2,18 @@
 @api_key = bernardbalansag
 
 # Get Categories
-GET https://www.bbalansag.online/api HTTP/1.1
+GET http://yamaha-cms.test/api HTTP/1.1
 Accept: application/json
-Authorization: {{api_key}}
+{
+    "KEY" : "$2y$10$Claj2RctAH3V4HRtSx17b.Q0WTh2STQyusvNZeCNo3UfSRakzStlC"
+}
+
 
 # Post user
 POST  http://yamaha-cms.test/api/register HTTP/1.1
 Accept: application/json
 Authorization: {{api_key}}
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
