@@ -22,6 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth')->group(function(){
+    Route::middleware('user:customer')->group(function(){
+        Route::get('/authenticate', [HomeController::class, 'index']);
+    });
+});
+
 
 Route::get('/', [ProductAPIController::class, 'index']);
 
