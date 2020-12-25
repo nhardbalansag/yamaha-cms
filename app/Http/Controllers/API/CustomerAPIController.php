@@ -100,9 +100,13 @@ class CustomerAPIController extends Controller
                 $enteredEmail = $request->email;
 
                 $password = Hash::check($enteredPassword, $DBpassword);
+                $token = Hash::make($this->secret);
 
                 if($password && $enteredEmail === $DBemail){
-                    $response = $data['data'];
+                    $response = array(
+                        "userInformation" => $data['data'],
+                        "token" =>  $token
+                    );
                 }else{
                     $response = "no matching records";
                 }
