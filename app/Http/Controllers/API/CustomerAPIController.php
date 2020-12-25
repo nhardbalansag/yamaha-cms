@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerAPIController extends Controller
 {
@@ -75,6 +76,48 @@ class CustomerAPIController extends Controller
 
         return response()->json($dataresponse, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
 
+    }
+
+
+    public function login(Request $request){
+        $validator = Validator::make($request->all(), [
+            'email' => ['required', 'string', 'min:3|max:50'],
+            'password' => ['required', 'string', 'min:5|max:255']
+        ]);
+
+        $errors = $validator->errors();
+
+        if(!$validator->fails()){
+
+            $data['data'] = DB::select('SELECT *
+                                            FROM users
+                                            WHERE email = ' . '"' .$request->email .'"');
+
+            if(!empty($data['data'])){
+                $enteredPassword = $request->password;
+                $DBpassword = $data['data'][0]->password;
+                $DBemail = $data['data'][0]->email;
+                $enteredEmail = $request->email;
+
+                $password = Hash::check($enteredPassword, $DBpassword);
+
+                if($password && $enteredEmail === $DBemail){
+                    $response = $data['data'];
+                }else{
+                    $response = "no matching records";
+                }
+            }else{
+                $response = "no matching records";
+            }
+
+        }else{
+            $response = array(
+                'email' => $errors->first('email'),
+                'password' => $errors->first('password')
+            );
+        }
+
+        return response()->json($response, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 }
 
