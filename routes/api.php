@@ -33,3 +33,4 @@ Route::get('/', [ProductAPIController::class, 'index']);
 
 Route::post('/login', [CustomerAPIController::class, 'login']);
 Route::post('/register', [CustomerAPIController::class, 'register']);
+Route::get('/view/product', [ProductAPIController::class, 'getoneProduct']);
