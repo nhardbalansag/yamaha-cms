@@ -27,7 +27,7 @@ class API_authentication
         $validateTOKEN = Hash::check( $secret, $token);
 
         if(!$validateAPIKEY){
-            return response()->json("Unauthorized" . $request->header('Autorization'), 401, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+            return response()->json("Unauthorized", 401, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
         }
         return $next($request);
     }
