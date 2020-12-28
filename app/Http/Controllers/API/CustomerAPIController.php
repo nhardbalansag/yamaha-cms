@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Users\Inquiry;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -159,6 +160,58 @@ class CustomerAPIController extends Controller
         }
 
         return response()->json($response, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+    }
+
+    public function sendInquiry(Request $request){
+        $validator = Validator::make($request->all(), [
+            'first_name' => ['required', 'string', 'min:3|max:255'],
+            'last_name' => ['required', 'string', 'min:3|max:255'],
+            'middle_name' => ['string', 'min:3|max:255'],
+            'home_address' => ['required', 'string', 'min:3|max:255'],
+            'street_address' => ['required', 'string', 'min:3|max:255'],
+            'country_region' => ['required', 'string', 'min:3|max:255'],
+            'contact_number' => ['required', 'string', 'min:11'],
+            'city' => ['required', 'string', 'min:3|max:255'],
+            'state_province' => ['required', 'string', 'min:3|max:255'],
+            'postal' => ['required', 'numeric', 'min:4'],
+            'email_address' => ['required', 'string', 'email', 'max:255'],
+            'productId' => ['required', 'numeric']
+        ]);
+
+        $data = array(
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'middle_name' => $request->middle_name,
+            'home_address' => $request->home_address,
+            'street_address' => $request->street_address,
+            'country_region' => $request->country_region,
+            'contact_number' => $request->contact_number,
+            'city' => $request->city,
+            'state_province' => $request->state_province,
+            'postal' => $request->postal,
+            'email_address' => $request->email_address,
+            'productId' => $request->productId
+        );
+
+        $errors = $validator->errors();
+
+        $token = $request->bearerToken();
+        $validateTOKEN = Hash::check( $this->secret, $token);
+
+        if(!$validateTOKEN){
+            $response = "Unauthorized";
+            $statusCode = 401;
+        }else{
+            if(!$validator->fails()){
+                Inquiry::create($data);
+                $response = true;
+                $statusCode = 200;
+           }else{
+                $response = false;
+                $statusCode = 200;
+           }
+        }
+        return response()->json($response ,  $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 }
 
