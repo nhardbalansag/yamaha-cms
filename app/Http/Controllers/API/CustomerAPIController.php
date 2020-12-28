@@ -10,10 +10,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Mail;
+use App\Models\Admin\Products\Product;
 
 class CustomerAPIController extends Controller
 {
     private $secret = 'capstoneProject2020-2021';
+    protected $emailType = "inquiry";
 
     public function register(Request $request){
 
@@ -206,6 +209,17 @@ class CustomerAPIController extends Controller
                 Inquiry::create($data);
                 $response = true;
                 $statusCode = 200;
+
+                $productData['allusersData'] =  $data;
+                $productData['product'] = Product::where('id', $request->productId)->first();
+                $productData['specification'] = DB::select('
+                    SELECT product_specifications.title as title, product_specifications.description as description
+                    FROM product_specifications, products
+                    WHERE (product_specifications.status = "publish") AND (product_specifications.product_id = ' . $request->productId . ')
+                    GROUP BY product_specifications.title, product_specifications.description');
+
+                Mail::send(new \App\Mail\SendInquiry($this->emailType, $productData));
+
            }else{
                 $response = false;
                 $statusCode = 200;
