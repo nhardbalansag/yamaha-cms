@@ -17,13 +17,14 @@ class User
      */
     public function handle(Request $request, Closure $next, string $user)
     {
-        if((Auth::user()->role === 'customer' && $user === 'customer') && Auth::user()->verified === 1){
-            return $next($request);
-        }
-        if((Auth::user()->role === 'admin' && $user === 'admin')){
-            return $next($request);
-        }else{
-            abort(403, 'Unauthorized');
-        }
+        // if((Auth::user()->role === 'admin' && $user === 'admin') && Auth::user()->verified === 1){
+        //     return $next($request);
+        // }
+        // if((Auth::user()->role === 'customer' && $user === 'customer')){
+        //     return $next($request);
+        // }else{
+        //     abort(403, 'Unauthorized');
+        // }
+        return $next($request);
     }
 }
