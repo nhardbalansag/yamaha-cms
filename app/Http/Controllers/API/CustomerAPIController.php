@@ -276,48 +276,67 @@ class CustomerAPIController extends Controller
             $statusCode = 401;
         }else{
             if(!$validator->fails()){
-                $statusCode = 200;
-                $response = true;
+
                 switch ($request->type) {
                     case $typeVariable['first_name']:
                         $affected = User::where('id', $request->id)
                                             ->update(['first_name' => $request->data]);
+                        $statusCode = 200;
+                        $response = true;
                         break;
                     case $typeVariable['last_name']:
                         $affected = User::where('id', $request->id)
                                             ->update(['last_name' => $request->data]);
+                        $statusCode = 200;
+                        $response = true;
                         break;
                     case $typeVariable['middle_name']:
                         $affected = User::where('id', $request->id)
                                             ->update(['middle_name' => $request->data]);
+                        $statusCode = 200;
+                        $response = true;
                         break;
                     case $typeVariable['home_address']:
                         $affected = User::where('id', $request->id)
                                             ->update(['home_address' => $request->data]);
+                        $statusCode = 200;
+                        $response = true;
                         break;
                     case $typeVariable['street_address']:
                         $affected = User::where('id', $request->id)
                                             ->update(['street_address' => $request->data]);
+                        $statusCode = 200;
+                        $response = true;
                         break;
                     case $typeVariable['country_region']:
                         $affected = User::where('id', $request->id)
                                             ->update(['country_region' => $request->data]);
+                        $statusCode = 200;
+                        $response = true;
                         break;
                     case $typeVariable['contact_number']:
                         $affected = User::where('id', $request->id)
                                             ->update(['contact_number' => $request->data]);
+                        $statusCode = 200;
+                        $response = true;
                         break;
                     case $typeVariable['city']:
                         $affected = User::where('id', $request->id)
                                             ->update(['city' => $request->data]);
+                        $statusCode = 200;
+                        $response = true;
                         break;
                     case $typeVariable['state_province']:
                         $affected = User::where('id', $request->id)
                                             ->update(['state_province' => $request->data]);
+                        $statusCode = 200;
+                        $response = true;
                         break;
                     case $typeVariable['postal']:
                         $affected = User::where('id', $request->id)
                                             ->update(['postal' => $request->data]);
+                        $statusCode = 200;
+                        $response = true;
                         break;
                     case $typeVariable['email']:
                         // if($emailstatus === 1){
@@ -327,12 +346,16 @@ class CustomerAPIController extends Controller
                         //     User::where('id', $request->id)
                         //                 ->update(['email' => $request->data]);
                         // }
-                        User::where('id', $request->id)
+                        $affected = User::where('id', $request->id)
                                         ->update(['email' => $request->data]);
+                        $statusCode = 200;
+                        $response = true;
                         break;
                     case $typeVariable['password']:
                         $affected = User::where('id', $request->id)
                                             ->update(['password' => $request->data]);
+                        $statusCode = 200;
+                        $response = true;
                         break;
                 }
            }else{
