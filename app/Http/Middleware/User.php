@@ -20,7 +20,7 @@ class User
         if((Auth::user()->role === 'customer' && $user === 'customer') && Auth::user()->verified === 0){
             return $next($request);
         }
-        if((Auth::user()->role === 'customer' && $user === 'customer')){
+        if((Auth::user()->role === 'admin' && $user === 'admin')){
             return $next($request);
         }else{
             abort(403, 'Unauthorized');
