@@ -77,15 +77,12 @@ class CustomerAPIController extends Controller
             User::create($data);
             $dataresponse = array("token" =>Hash::make($this->secret));
        }
-
         return response()->json($dataresponse, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
-
     }
-
 
     public function login(Request $request){
         $validator = Validator::make($request->all(), [
-            'email' => ['required', 'min:3|max:50'],
+            'email' => ['required', 'email','min:3|max:50'],
             'password' => ['required', 'string', 'min:5|max:255']
         ]);
 
@@ -245,24 +242,24 @@ class CustomerAPIController extends Controller
             "password"=> "password"
         );
 
-        // if($request->type === $typeVariable['email']){
+        if($request->type === $typeVariable['email']){
 
-        //     $emailstatus = DB::select('select verified from users where id = ?', [$request->id]);
-        //     $emailstatus = $emailstatus[0]->verified;
-        //     $sample = array(
-        //         "id"=> $request->id,
-        //         "email"=> $request->data
-        //     );
-        //     $validator = Validator::make($sample, [
-        //         'id' => ['required', 'numeric'],
-        //         'email' => ['required', 'email', 'unique:users']
-        //     ]);
-        // }else{
-        //     $validator = Validator::make($request->all(), [
-        //         'id' => ['required', 'numeric'],
-        //         'data' => ['required']
-        //     ]);
-        // }
+            $emailstatus = DB::select('select verified from users where id = ?', [$request->id]);
+            $emailstatus = $emailstatus[0]->verified;
+            $sample = array(
+                "id"=> $request->id,
+                "email"=> $request->data
+            );
+            $validator = Validator::make($sample, [
+                'id' => ['required', 'numeric'],
+                'email' => ['required', 'email', 'unique:users']
+            ]);
+        }else{
+            $validator = Validator::make($request->all(), [
+                'id' => ['required', 'numeric'],
+                'data' => ['required']
+            ]);
+        }
         $validator = Validator::make($request->all(), [
             'id' => ['required', 'numeric'],
             'data' => ['required']
@@ -339,15 +336,13 @@ class CustomerAPIController extends Controller
                         $response = true;
                         break;
                     case $typeVariable['email']:
-                        // if($emailstatus === 1){
-                        //     $response = false;
-                        //     $statusCode = 200;
-                        // }else{
-                        //     User::where('id', $request->id)
-                        //                 ->update(['email' => $request->data]);
-                        // }
-                        $affected = User::where('id', $request->id)
+                        if($emailstatus === 1){
+                            $response = false;
+                            $statusCode = 200;
+                        }else{
+                            User::where('id', $request->id)
                                         ->update(['email' => $request->data]);
+                        }
                         $statusCode = 200;
                         $response = true;
                         break;
