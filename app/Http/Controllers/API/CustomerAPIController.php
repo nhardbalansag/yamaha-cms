@@ -85,7 +85,7 @@ class CustomerAPIController extends Controller
 
     public function login(Request $request){
         $validator = Validator::make($request->all(), [
-            'email' => ['required', 'email', 'min:3|max:50'],
+            'email' => ['required', 'min:3|max:50'],
             'password' => ['required', 'string', 'min:5|max:255']
         ]);
 
@@ -177,7 +177,7 @@ class CustomerAPIController extends Controller
             'city' => ['required', 'string', 'min:3|max:255'],
             'state_province' => ['required', 'string', 'min:3|max:255'],
             'postal' => ['required', 'numeric', 'min:4'],
-            'email_address' => ['required', 'string', 'max:255'],
+            'email_address' => ['required', 'string', 'email', 'max:255'],
             'productId' => ['required', 'numeric']
         ]);
 
