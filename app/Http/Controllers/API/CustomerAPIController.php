@@ -86,7 +86,7 @@ class CustomerAPIController extends Controller
     public function login(Request $request){
         $validator = Validator::make($request->all(), [
             // 'email' => ['required', 'email', 'min:3|max:50'],
-            'email' => ['required', 'email', 'min:3|max:50'],
+            'email' => ['required', 'min:3|max:50'],
             'password' => ['required', 'string', 'min:5|max:255']
         ]);
 
