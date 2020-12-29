@@ -94,8 +94,8 @@ class CustomerAPIController extends Controller
         if(!$validator->fails()){
 
             $data = DB::select('SELECT *
-                                            FROM users
-                                            WHERE email = ' . '"' .$request->email .'"');
+                                    FROM users
+                                    WHERE email = ' . '"' .$request->email .'"');
 
             if(!empty($data)){
                 $enteredPassword = $request->password;
@@ -226,6 +226,95 @@ class CustomerAPIController extends Controller
            }
         }
         return response()->json($response ,  $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+    }
+
+    public function EditCustomerRecord(Request $request){
+        $validator = Validator::make($request->all(), [
+            'id' => ['required', 'numeric'],
+            'data' => ['required']
+        ]);
+
+        $typeVariable = array(
+            "first_name"=> "first_name",
+            "last_name"=> "last_name",
+            "middle_name"=> "middle_name",
+            "home_address"=> "home_address",
+            "street_address"=> "street_address",
+            "country_region"=> "country_region",
+            "contact_number"=> "contact_number",
+            "city"=> "city",
+            "state_province"=> "state_province",
+            "postal"=> "postal",
+            "email"=> "email",
+            "password"=> "password"
+        );
+
+        $token = $request->bearerToken();
+        $validateTOKEN = Hash::check( $this->secret, $token);
+
+        if(!$validateTOKEN){
+            $response = "Unauthorized";
+            $statusCode = 401;
+        }else{
+            if(!$validator->fails()){
+                $statusCode = 200;
+                $response = true;
+                switch ($request->type) {
+                    case $typeVariable['first_name']:
+                        $affected = User::where('id', $request->id)
+                                            ->update(['first_name' => $request->data]);
+                        break;
+                    case $typeVariable['last_name']:
+                        $affected = User::where('id', $request->id)
+                                            ->update(['last_name' => $request->data]);
+                        break;
+                    case $typeVariable['middle_name']:
+                        $affected = User::where('id', $request->id)
+                                            ->update(['middle_name' => $request->data]);
+                        break;
+                    case $typeVariable['home_address']:
+                        $affected = User::where('id', $request->id)
+                                            ->update(['home_address' => $request->data]);
+                        break;
+                    case $typeVariable['street_address']:
+                        $affected = User::where('id', $request->id)
+                                            ->update(['street_address' => $request->data]);
+                        break;
+                    case $typeVariable['country_region']:
+                        $affected = User::where('id', $request->id)
+                                            ->update(['country_region' => $request->data]);
+                        break;
+                    case $typeVariable['contact_number']:
+                        $affected = User::where('id', $request->id)
+                                            ->update(['contact_number' => $request->data]);
+                        break;
+                    case $typeVariable['city']:
+                        $affected = User::where('id', $request->id)
+                                            ->update(['city' => $request->data]);
+                        break;
+                    case $typeVariable['state_province']:
+                        $affected = User::where('id', $request->id)
+                                            ->update(['state_province' => $request->data]);
+                        break;
+                    case $typeVariable['postal']:
+                        $affected = User::where('id', $request->id)
+                                            ->update(['postal' => $request->data]);
+                        break;
+                    case $typeVariable['email']:
+                        $affected = User::where('id', $request->id)
+                                            ->update(['email' => $request->data]);
+                        break;
+                    case $typeVariable['password']:
+                        $affected = User::where('id', $request->id)
+                                            ->update(['password' => $request->data]);
+                        break;
+                }
+           }else{
+                $response = false;
+                $statusCode = 200;
+           }
+        }
+        return response()->json($response , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 }
 
