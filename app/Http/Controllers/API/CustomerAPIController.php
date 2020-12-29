@@ -347,8 +347,9 @@ class CustomerAPIController extends Controller
                         }
                         break;
                     case $typeVariable['password']:
+                        $newPassword = Hash::make($request->data);
                         $affected = User::where('id', $request->id)
-                                            ->update(['password' => $request->data]);
+                                            ->update(['password' => $newPassword]);
                         $statusCode = 200;
                         $response = true;
                         break;
