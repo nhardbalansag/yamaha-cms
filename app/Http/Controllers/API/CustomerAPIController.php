@@ -229,10 +229,6 @@ class CustomerAPIController extends Controller
     }
 
     public function EditCustomerRecord(Request $request){
-        $validator = Validator::make($request->all(), [
-            'id' => ['required', 'numeric'],
-            'data' => ['required']
-        ]);
 
         $typeVariable = array(
             "first_name"=> "first_name",
@@ -248,6 +244,25 @@ class CustomerAPIController extends Controller
             "email"=> "email",
             "password"=> "password"
         );
+
+        if($request->type === $typeVariable['email']){
+
+            $emailstatus = DB::select('select verified from users where id = ?', [$request->id]);
+            $emailstatus = $emailstatus[0]->verified;
+            $sample = array(
+                "id"=> $request->id,
+                "email"=> $request->data
+            );
+            $validator = Validator::make($sample, [
+                'id' => ['required', 'numeric'],
+                'email' => ['required', 'email', 'unique:users']
+            ]);
+        }else{
+            $validator = Validator::make($request->all(), [
+                'id' => ['required', 'numeric'],
+                'data' => ['required']
+            ]);
+        }
 
         $token = $request->bearerToken();
         $validateTOKEN = Hash::check( $this->secret, $token);
@@ -301,8 +316,13 @@ class CustomerAPIController extends Controller
                                             ->update(['postal' => $request->data]);
                         break;
                     case $typeVariable['email']:
-                        $affected = User::where('id', $request->id)
-                                            ->update(['email' => $request->data]);
+                        if($emailstatus === 1){
+                            $response = false;
+                            $statusCode = 200;
+                        }else{
+                            User::where('id', $request->id)
+                                        ->update(['email' => $request->data]);
+                        }
                         break;
                     case $typeVariable['password']:
                         $affected = User::where('id', $request->id)
