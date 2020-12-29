@@ -363,7 +363,7 @@ class CustomerAPIController extends Controller
                 $statusCode = 200;
            }
         }
-        return response()->json($response , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+        return response()->json($affected , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 }
 
