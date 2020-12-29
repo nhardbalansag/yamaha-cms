@@ -36,7 +36,7 @@
           <a class="text-white nav-link" href="#" tabindex="-1" aria-disabled="true">Contact us</a>
         </li>
         @auth
-          @if(Auth::user()->role === 'customer' && Auth::user()->verified === 0)
+          @if(Auth::user()->role === 'admin' && Auth::user()->verified === 1)
             <li class="nav-item active">
               <a class="text-white nav-link" href="/dashboard" tabindex="-1" aria-disabled="true">Dashboard</a>
             </li>
