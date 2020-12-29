@@ -35,3 +35,4 @@ Route::post('/login', [CustomerAPIController::class, 'login']);
 Route::post('/register', [CustomerAPIController::class, 'register']);
 Route::post('/view/product', [ProductAPIController::class, 'getoneProduct']);
 Route::post('/sendMessage/inquiry', [CustomerAPIController::class, 'sendInquiry']);
+Route::post('/credentials/edit', [CustomerAPIController::class, 'EditCustomerRecord']);
