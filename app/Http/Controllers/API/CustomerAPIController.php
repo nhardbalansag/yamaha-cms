@@ -248,22 +248,26 @@ class CustomerAPIController extends Controller
 
         if($request->type === $typeVariable['email']){
 
-            $emailstatus = DB::select('select verified from users where id = ?', [$request->id]);
-            $emailstatus = $emailstatus[0]->verified;
-            $sample = array(
-                "id"=> $request->id,
-                "email"=> $request->data
-            );
-            $validator = Validator::make($sample, [
-                'id' => ['required', 'numeric'],
-                'email' => ['required', 'email', 'unique:users']
-            ]);
-        }else{
-            $validator = Validator::make($request->all(), [
-                'id' => ['required', 'numeric'],
-                'data' => ['required']
-            ]);
-        }
+        //     $emailstatus = DB::select('select verified from users where id = ?', [$request->id]);
+        //     $emailstatus = $emailstatus[0]->verified;
+        //     $sample = array(
+        //         "id"=> $request->id,
+        //         "email"=> $request->data
+        //     );
+        //     $validator = Validator::make($sample, [
+        //         'id' => ['required', 'numeric'],
+        //         'email' => ['required', 'email', 'unique:users']
+        //     ]);
+        // }else{
+        //     $validator = Validator::make($request->all(), [
+        //         'id' => ['required', 'numeric'],
+        //         'data' => ['required']
+        //     ]);
+        // }
+        $validator = Validator::make($request->all(), [
+            'id' => ['required', 'numeric'],
+            'data' => ['required']
+        ]);
 
         $token = $request->bearerToken();
         $validateTOKEN = Hash::check( $this->secret, $token);
@@ -317,13 +321,15 @@ class CustomerAPIController extends Controller
                                             ->update(['postal' => $request->data]);
                         break;
                     case $typeVariable['email']:
-                        if($emailstatus === 1){
-                            $response = false;
-                            $statusCode = 200;
-                        }else{
-                            User::where('id', $request->id)
+                        // if($emailstatus === 1){
+                        //     $response = false;
+                        //     $statusCode = 200;
+                        // }else{
+                        //     User::where('id', $request->id)
+                        //                 ->update(['email' => $request->data]);
+                        // }
+                        User::where('id', $request->id)
                                         ->update(['email' => $request->data]);
-                        }
                         break;
                     case $typeVariable['password']:
                         $affected = User::where('id', $request->id)
