@@ -17,7 +17,7 @@ class User
      */
     public function handle(Request $request, Closure $next, string $user)
     {
-        if((Auth::user()->role === 'customer' && $user === 'customer') && Auth::user()->verified === 0){
+        if((Auth::user()->role === 'customer' && $user === 'customer') && Auth::user()->verified === 1){
             return $next($request);
         }
         if((Auth::user()->role === 'admin' && $user === 'admin')){
