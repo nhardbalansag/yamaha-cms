@@ -342,9 +342,9 @@ class CustomerAPIController extends Controller
                         }else{
                             User::where('id', $request->id)
                                         ->update(['email' => $request->data]);
+                            $statusCode = 200;
+                            $response = true;
                         }
-                        $statusCode = 200;
-                        $response = true;
                         break;
                     case $typeVariable['password']:
                         $affected = User::where('id', $request->id)
