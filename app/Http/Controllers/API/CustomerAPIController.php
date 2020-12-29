@@ -246,7 +246,7 @@ class CustomerAPIController extends Controller
             "password"=> "password"
         );
 
-        if($request->type === $typeVariable['email']){
+        // if($request->type === $typeVariable['email']){
 
         //     $emailstatus = DB::select('select verified from users where id = ?', [$request->id]);
         //     $emailstatus = $emailstatus[0]->verified;
