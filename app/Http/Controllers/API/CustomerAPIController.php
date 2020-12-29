@@ -177,7 +177,7 @@ class CustomerAPIController extends Controller
             'city' => ['required', 'string', 'min:3|max:255'],
             'state_province' => ['required', 'string', 'min:3|max:255'],
             'postal' => ['required', 'numeric', 'min:4'],
-            'email_address' => ['required', 'string', 'email', 'max:255'],
+            'email_address' => ['required', 'string', 'max:255'],
             'productId' => ['required', 'numeric']
         ]);
 
