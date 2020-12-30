@@ -38,3 +38,4 @@ Route::post('/sendMessage/inquiry', [CustomerAPIController::class, 'sendInquiry'
 Route::post('/credentials/edit', [CustomerAPIController::class, 'EditCustomerRecord']);
 Route::post('/getCount', [CustomerAPIController::class, 'getCount']);
 Route::post('/getOrder', [ProductAPIController::class, 'getOrder']);
+Route::post('/confirmEmail', [CustomerAPIController::class, 'confirmEmail']);

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Users\AccountVerification;
 use Mail;
 use App\Models\Admin\Products\Product;
 
@@ -17,6 +18,54 @@ class CustomerAPIController extends Controller
 {
     private $secret = 'capstoneProject2020-2021';
     protected $emailType = "inquiry";
+
+
+    public function confirmEmail(Request $request){
+        $emailType = "verification";
+        $token = $request->bearerToken();
+        $validateTOKEN = Hash::check( $this->secret, $token);
+
+        $validator = Validator::make($request->all(), [
+            'id' => ['required', 'numeric'],
+            'email' => ['required', 'email']
+        ]);
+
+        if(!$validateTOKEN){
+            $response = "Unauthorized";
+            $statusCode = 401;
+        }else{
+            if(!$validator->fails()){
+                $verification = rand(0, 10000);
+
+                $data = [
+                    'verificationCode' =>  $verification,
+                    'customerId' =>  $request->id
+                ];
+
+                $email = [
+                    "first_name" => $request->first_name,
+                    "last_name" =>  $request->last_name,
+                    "middle_name" =>  $request->middle_name,
+                    "verification" =>  $verification,
+                    "email" =>   $request->email
+                ];
+
+                if(AccountVerification::create($data)){
+                    Mail::send(new \App\Mail\SendInquiry($emailType, $email));
+                    $response = false;
+                    $statusCode = 200;
+                }else{
+                    $response = true;
+                    $statusCode = 200;
+                }
+
+           }else{
+                $response = false;
+                $statusCode = 200;
+           }
+        }
+        return response()->json($response ,  $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+    }
 
 
     public function getCount(Request $request){
