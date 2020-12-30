@@ -18,6 +18,52 @@ class CustomerAPIController extends Controller
     private $secret = 'capstoneProject2020-2021';
     protected $emailType = "inquiry";
 
+
+    public function getCount(Request $request){
+        $token = $request->bearerToken();
+        $validateTOKEN = Hash::check( $this->secret, $token);
+
+        $validator = Validator::make($request->all(), [
+            'id' => ['required', 'numeric'],
+        ]);
+
+        if(!$validateTOKEN){
+            $response = "Unauthorized";
+            $statusCode = 401;
+        }else{
+            if(!$validator->fails()){
+                $account_info = DB::select('SELECT *
+                                FROM users
+                                WHERE id = ' . $request->id);
+                $transactionData = DB::select('SELECT *, transactions.status as transactionStatus
+                                                        FROM transactions, users, products
+                                                        WHERE
+                                                            (users.id = transactions.customerId AND products.id = transactions.productId) AND users.id = ' . $request->id);
+                $approval_percent = DB::select('SELECT COUNT(*) as data_count
+                                                        FROM customers_documents
+                                                        WHERE customers_documents.status = "approved" and customers_documents.customer_id = ' . $request->id);
+                $transactionCount = DB::select('SELECT COUNT(*) as transactionCount
+                                                        FROM transactions, users, products
+                                                        WHERE
+                                                            (users.id = transactions.customerId AND products.id = transactions.productId) AND users.id = ' . $request->id);
+                $approval_result = round(($approval_percent[0]->data_count / 4) * 100);
+
+                $response = array(
+                    "account_information" => $account_info,
+                    "transactionData" => $transactionData,
+                    "transactionCount" => $transactionCount,
+                    "approval_result_percent" => $approval_result
+                );
+
+                $statusCode = 200;
+           }else{
+                $response = false;
+                $statusCode = 200;
+           }
+        }
+        return response()->json($response ,  $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+    }
+
     public function register(Request $request){
 
         $validator = Validator::make($request->all(), [
@@ -183,6 +229,7 @@ class CustomerAPIController extends Controller
             'last_name' => $request->last_name,
             'middle_name' => $request->middle_name,
             'home_address' => $request->home_address,
+            'email_address' => $request->email,
             'street_address' => $request->street_address,
             'country_region' => $request->country_region,
             'contact_number' => $request->contact_number,
