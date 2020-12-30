@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Admin\Products\Product;
+use App\Models\Users\Transaction;
 use Illuminate\Support\Facades\DB;
 
 class ProductAPIController extends Controller
@@ -31,11 +32,20 @@ class ProductAPIController extends Controller
             if(!$validator->fails()){
 
                 $response = DB::select('SELECT *, transactions.status as transactionStatus
-                                                        FROM transactions, users, products
-                                                        WHERE
-                                                            (users.id = transactions.customerId AND products.id = transactions.productId)
-                                                            AND transactions.status = '. '"' .$request->orderstatus .'"' . ' AND users.id = ' . $request->id);
+                                        FROM transactions, users, products
+                                        WHERE
+                                            (users.id = transactions.customerId AND products.id = transactions.productId)
+                                            AND transactions.status = '. '"' .$request->orderstatus .'"' . ' AND users.id = ' . $request->id);
 
+                $count = DB::select('SELECT COUNT(*) as transactionCount
+                                        FROM transactions, users, products
+                                        WHERE
+                                            (users.id = transactions.customerId AND products.id = transactions.productId)
+                                            AND transactions.status = '. '"' .$request->orderstatus .'"' . ' AND users.id = ' . $request->id);
+                $response = array(
+                    "transactionData" => $response,
+                    "transactionCount" => $count
+                );
                 $statusCode = 200;
            }else{
                 $response = false;
