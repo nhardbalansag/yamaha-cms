@@ -170,7 +170,12 @@ class CustomerAPIController extends Controller
 
        if(!$validator->fails()){
             User::create($data);
-            $dataresponse = array("token" =>Hash::make($this->secret));
+            $customerInformation = User::where('email', $request->email)->first();
+
+            $dataresponse = array(
+                "token" =>Hash::make($this->secret),
+                "information" => $customerInformation
+            );
        }
         return response()->json($dataresponse, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
