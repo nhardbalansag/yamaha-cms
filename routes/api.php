@@ -39,3 +39,4 @@ Route::post('/credentials/edit', [CustomerAPIController::class, 'EditCustomerRec
 Route::post('/getCount', [CustomerAPIController::class, 'getCount']);
 Route::post('/getOrder', [ProductAPIController::class, 'getOrder']);
 Route::post('/confirmEmail', [CustomerAPIController::class, 'confirmEmail']);
+Route::post('/confirmVerification', [CustomerAPIController::class, 'confirmVerification']);
