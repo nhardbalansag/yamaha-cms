@@ -19,6 +19,43 @@ class CustomerAPIController extends Controller
     private $secret = 'capstoneProject2020-2021';
     protected $emailType = "inquiry";
 
+    public function confirmVerification(Request $request){
+        $token = $request->bearerToken();
+        $validateTOKEN = Hash::check( $this->secret, $token);
+
+        $validator = Validator::make($request->all(), [
+            'id' => ['required', 'numeric'],
+            'verification' => ['required', 'numeric']
+        ]);
+
+        if(!$validateTOKEN){
+            $response = "Unauthorized";
+            $statusCode = 401;
+        }else{
+            if(!$validator->fails()){
+
+                $dataCount = DB::select('SELECT COUNT(*) as countdata
+                                        FROM account_verifications
+                                            WHERE customerId = ? AND verificationCode = ?', [$request->id, $request->verification]);
+
+                if($dataCount[0]->countdata === 1){
+                    //update status
+                    $affected = User::where('id', $request->id)
+                                        ->update(['verified' => true]);
+                    $response = true;
+                    $statusCode = 200;
+                }else{
+                    $response = false;
+                    $statusCode = 200;
+                }
+           }else{
+                $response = false;
+                $statusCode = 200;
+           }
+        }
+        return response()->json($response,  $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+    }
+
 
     public function confirmEmail(Request $request){
         $emailType = "verification";
