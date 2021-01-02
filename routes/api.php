@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\ProductAPIController;
 use App\Http\Controllers\API\CustomerAPIController;
+use App\Http\Controllers\API\DocumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,4 @@ Route::post('/getCount', [CustomerAPIController::class, 'getCount']);
 Route::post('/getOrder', [ProductAPIController::class, 'getOrder']);
 Route::post('/confirmEmail', [CustomerAPIController::class, 'confirmEmail']);
 Route::post('/confirmVerification', [CustomerAPIController::class, 'confirmVerification']);
+Route::get('/viewAllDocumentCategory', [DocumentController::class, 'viewAllDocumentCategory']);
