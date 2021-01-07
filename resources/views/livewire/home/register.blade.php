@@ -22,7 +22,7 @@
                                 <x-jet-input id="email" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="email" :value="old('email')" required autofocus autocomplete="email" />
                             </div>
                             <div class="w-full p-0 p-md-2 col-12 col-md-4">
-                                <x-jet-label for="contact_number" value="{{ __('contact number') }}" />
+                                <x-jet-label for="contact_number"  class="text-capitalize" value="{{ __('contact number') }}" />
                                 <x-jet-input id="contact_number" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="contact_number" :value="old('contact_number')" required autofocus autocomplete="contact_number" />
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                 <x-jet-input id="state_province" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="state_province" :value="old('state_province')" required autofocus autocomplete="state_province" />
                             </div>
                             <div class="w-full p-0 p-md-2 col-12 col-md-3">
-                                <x-jet-label for="postal" class="text-capitalize" value="{{ __('zip code') }}" />
+                                <x-jet-label for="postal" class="text-capitalize" value="{{ __('Zip Code') }}" />
                                 <x-jet-input id="postal" class="block w-full p-2 mt-1 transition duration-150 ease-in-out border-gray-600 border-solid border-1 form-input sm:text-sm sm:leading-5" type="text" name="postal" :value="old('postal')" required autofocus autocomplete="postal" />
                             </div>
                         </div>
