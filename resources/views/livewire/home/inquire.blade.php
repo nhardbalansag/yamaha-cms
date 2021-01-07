@@ -3,7 +3,7 @@
 
             <div class="md:mt-0 md:col-span-2">
                 <div class="my-4 sm:px-0">
-                <h1 class="text-5xl font-medium leading-6 text-gray-900">Contact</h1>
+                <h1 class="text-5xl font-medium leading-6 text-gray-900">Contact Us</h1>
             </div>
             <div>
                 @if (session()->has('message'))
