@@ -8,6 +8,7 @@ use App\Http\Controllers\API\ProductAPIController;
 use App\Http\Controllers\API\CustomerAPIController;
 use App\Http\Controllers\API\DocumentController;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,15 +31,21 @@ Route::middleware('auth')->group(function(){
 });
 
 
-Route::get('/', [ProductAPIController::class, 'index']);
+
 
 Route::post('/login', [CustomerAPIController::class, 'login']);
 Route::post('/register', [CustomerAPIController::class, 'register']);
-Route::post('/view/product', [ProductAPIController::class, 'getoneProduct']);
-Route::post('/sendMessage/inquiry', [CustomerAPIController::class, 'sendInquiry']);
-Route::post('/credentials/edit', [CustomerAPIController::class, 'EditCustomerRecord']);
-Route::post('/getCount', [CustomerAPIController::class, 'getCount']);
-Route::post('/getOrder', [ProductAPIController::class, 'getOrder']);
-Route::post('/confirmEmail', [CustomerAPIController::class, 'confirmEmail']);
-Route::post('/confirmVerification', [CustomerAPIController::class, 'confirmVerification']);
-Route::get('/viewAllDocumentCategory', [DocumentController::class, 'viewAllDocumentCategory']);
+
+//AUTH
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::get('/', [ProductAPIController::class, 'index']);
+    Route::post('/view/product', [ProductAPIController::class, 'getoneProduct']);
+    Route::post('/sendMessage/inquiry', [CustomerAPIController::class, 'sendInquiry']);
+    Route::post('/credentials/edit', [CustomerAPIController::class, 'EditCustomerRecord']);
+    Route::post('/getCount', [CustomerAPIController::class, 'getCount']);
+    Route::post('/getOrder', [ProductAPIController::class, 'getOrder']);
+    Route::post('/confirmEmail', [CustomerAPIController::class, 'confirmEmail']);
+    Route::post('/confirmVerification', [CustomerAPIController::class, 'confirmVerification']);
+    Route::get('/viewAllDocumentCategory', [DocumentController::class, 'viewAllDocumentCategory']);
+});
+  
