@@ -210,7 +210,6 @@ class CustomerAPIController extends Controller
                 $enteredEmail = $request->email;
 
                 $password = Hash::check($enteredPassword, $DBpassword);
-                $token = Hash::make($this->secret);
 
                 $userData = User::where('email', $request->email)
                             ->first();
