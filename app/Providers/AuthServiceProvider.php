@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Models\Team;
 use App\Policies\TeamPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Laravel\Passport\Passport;
+use App\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
