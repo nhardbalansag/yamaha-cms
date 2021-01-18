@@ -16,11 +16,11 @@
         "laravel-frontend-presets/material-dashboard": "^1.1",
         "laravel/framework": "^8.12",
         "laravel/jetstream": "^1.6",
+        "laravel/passport": "^10.1",
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.1",
-        "livewire/livewire": "^2.0",
-        "spatie/laravel-medialibrary": "^7.0.0"
+        "livewire/livewire": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
