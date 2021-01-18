@@ -17,6 +17,7 @@ use App\Models\Admin\Products\Product;
 
 class CustomerAPIController extends Controller
 {
+    protected $emailType = "inquiry";
 
     public function confirmVerification(Request $request){
         
@@ -277,6 +278,8 @@ class CustomerAPIController extends Controller
     }
 
     public function sendInquiry(Request $request){
+
+
         $validator = Validator::make($request->all(), [
             'productId' => ['required', 'numeric']
         ]);
@@ -285,15 +288,14 @@ class CustomerAPIController extends Controller
             'first_name' => Auth::user()->first_name,
             'last_name' =>  Auth::user()->last_name,
             'middle_name' =>  Auth::user()->middle_name,
-            'home_address' =>  Auth::user()->home_address,
             'email_address' =>  Auth::user()->email,
+            'home_address' =>  Auth::user()->home_address,
             'street_address' =>  Auth::user()->street_address,
             'country_region' =>  Auth::user()->country_region,
             'contact_number' =>  Auth::user()->contact_number,
             'city' =>  Auth::user()->city,
             'state_province' =>  Auth::user()->state_province,
             'postal' =>  Auth::user()->postal,
-            'email_address' =>  Auth::user()->email_address,
             'productId' => $request->productId
         );
 
