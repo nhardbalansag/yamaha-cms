@@ -57,7 +57,7 @@ class ProductAPIController extends Controller
             $statusCode = 200;
             $data = Product::where('status', 'publish')->get();
 
-        return response()->json(Auth::user()->email , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+        return response()->json( $data  , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 
     public function getoneProduct(Request $request){
