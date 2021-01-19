@@ -54,7 +54,7 @@ class DocumentProcess extends Component
             'document_id' => $this->document_id,
             'status' => "pending",
         ];
-dd($this->photo_path);
+
         $data['validId'] = DB::select('SELECT COUNT(*) as data_count
                                             FROM customers_documents, document_categories
                                             WHERE customers_documents.document_id = ' . $this->document_id . ' and customers_documents.customer_id = ' . Auth::user()->id);
