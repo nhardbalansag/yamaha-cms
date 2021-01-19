@@ -47,5 +47,6 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('/confirmEmail', [CustomerAPIController::class, 'confirmEmail']);
     Route::post('/confirmVerification', [CustomerAPIController::class, 'confirmVerification']);
     Route::get('/viewAllDocumentCategory', [DocumentController::class, 'viewAllDocumentCategory']);
+    Route::post('/send-document', [DocumentController::class, 'sendDocument']);
 });
   
