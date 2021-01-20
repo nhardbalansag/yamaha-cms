@@ -49,4 +49,4 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('/viewAllDocumentCategory', [DocumentController::class, 'viewAllDocumentCategory']);
     Route::post('/send-document', [DocumentController::class, 'sendDocument']);
 });
-  
+

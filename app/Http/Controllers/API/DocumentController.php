@@ -14,6 +14,8 @@ use App\Document;
 
 class DocumentController extends Controller
 {
+    public $secret = "capstoneProject2020-2021";
+
     public function viewAllDocumentCategory(Request $request){
 
         $response = DB::select('SELECT *
@@ -25,21 +27,34 @@ class DocumentController extends Controller
 
     public function sendDocument(Request $request){
         /////
-            // $validator = Validator::make($request->all(), 
-            // [ 
+            // $validator = Validator::make($request->all(),
+            // [
             //     'photo_path' => 'required|image',
             //     'document_id' => 'required|numeric'
-            // ]);   
+            // ]);
 
-            // if ($validator->fails()) {          
-            //     return response()->json(['error'=>$validator->errors()], 401);                        
-            // }  
+            // if ($validator->fails()) {
+            //     return response()->json(['error'=>$validator->errors()], 401);
+            // }
 
+            // if ($request->hasFile('file')) {
+            //     foreach ($request->file('file') as $image) {
+            //         if ($upload = $image->store('photos')) {
+            //             return  response()->json($upload, 201);
+            //         }else{
+            //             return  response()->json("no", 403);
+            //         }
+            //     }
+            // }else{
+            //     return  response()->json($request->hasFile('file'), 403);
+            // }
+            $samle = $request->file('file')->store('photos');
+            return  response()->json( $samle, 403);
 
             // if ($files = $request->file('image')) {
-                
+
                 //store file into document folder
-                $file = $request->file->store('photos');
+                // $file = $request->file->store('photos');
 
                 //store your file into database
                 // $formData = [
@@ -52,19 +67,20 @@ class DocumentController extends Controller
                 // $data['validId'] = DB::select('SELECT COUNT(*) as data_count
                 //                                 FROM customers_documents, document_categories
                 //                                 WHERE customers_documents.document_id = ' . $request->documentId . ' and customers_documents.customer_id = ' . Auth::user()->id);
-                
+
                 // if($data['validId'][0]->data_count != 0){
                 //     $response = "failed";
                 // }else{
                 //     CustomersDocument::create($formData);
-                //     $statusCode = 200;
+                    // $statusCode = 200;
                 //     $response = "success";
-                    
+
                 // }
 
             // }
         ///
-       
-        return response()->json($file, $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+
+        // return response()->json($file, $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
+
 }
