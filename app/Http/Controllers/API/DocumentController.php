@@ -5,8 +5,12 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Documents\CustomersDocument;
+use Livewire\WithFileUploads;
+
+use Validator,Redirect,Response,File;
+use App\Document;
 
 class DocumentController extends Controller
 {
@@ -21,44 +25,49 @@ class DocumentController extends Controller
         return response()->json($response , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 
-    public function submitDocument(Request $request){
+    public function sendDocument(Request $request){
+        /////
+            // $validator = Validator::make($request->all(),
+            // [
+            //     'photo_path' => 'required|image',
+            //     'document_id' => 'required|numeric'
+            // ]);
 
-        $token = $request->bearerToken();
-        $validateTOKEN = Hash::check( $this->secret, $token);
+            // if ($validator->fails()) {
+            //     return response()->json(['error'=>$validator->errors()], 401);
+            // }
 
-        $validator = Validator::make($request->all(), [
-            'id' => ['required', 'numeric'],
-            'orderstatus' => ['required', 'string', 'max:20']
-        ]);
 
-        if(!$validateTOKEN){
-            $response = "Unauthorized";
-            $statusCode = 401;
-        }else{
-            if(!$validator->fails()){
+            // if ($files = $request->file('image')) {
 
-                $response = DB::select('SELECT *, transactions.status as transactionStatus
-                                        FROM transactions, users, products
-                                        WHERE
-                                            (users.id = transactions.customerId AND products.id = transactions.productId)
-                                            AND transactions.status = '. '"' .$request->orderstatus .'"' . ' AND users.id = ' . $request->id);
+                //store file into document folder
+                $file = $request->file->store('photos');
 
-                $count = DB::select('SELECT COUNT(*) as transactionCount
-                                        FROM transactions, users, products
-                                        WHERE
-                                            (users.id = transactions.customerId AND products.id = transactions.productId)
-                                            AND transactions.status = '. '"' .$request->orderstatus .'"' . ' AND users.id = ' . $request->id);
-                $response = array(
-                    "transactionData" => $response,
-                    "transactionCount" => $count
-                );
-                $statusCode = 200;
-           }else{
-                $response = false;
-                $statusCode = 200;
-           }
-        }
+                //store your file into database
+                // $formData = [
+                //     'photo_path' => $request->file->store('photos'),
+                //     'customer_id' => Auth::user()->id,
+                //     'document_id' => $request->documentId,
+                //     'status' => "pending",
+                // ];
 
-        return response()->json($response , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+                // $data['validId'] = DB::select('SELECT COUNT(*) as data_count
+                //                                 FROM customers_documents, document_categories
+                //                                 WHERE customers_documents.document_id = ' . $request->documentId . ' and customers_documents.customer_id = ' . Auth::user()->id);
+
+                // if($data['validId'][0]->data_count != 0){
+                //     $response = "failed";
+                // }else{
+                //     CustomersDocument::create($formData);
+                    $statusCode = 200;
+                //     $response = "success";
+
+                // }
+
+            // }
+        ///
+
+        return response()->json($file, $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
+
 }

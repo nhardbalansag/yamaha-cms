@@ -14,139 +14,110 @@ use App\Models\Users\AccountVerification;
 use Mail;
 use App\Models\Admin\Products\Product;
 
+
 class CustomerAPIController extends Controller
 {
-    private $secret = 'capstoneProject2020-2021';
     protected $emailType = "inquiry";
 
     public function confirmVerification(Request $request){
-        $token = $request->bearerToken();
-        $validateTOKEN = Hash::check( $this->secret, $token);
-
+        
         $validator = Validator::make($request->all(), [
-            'id' => ['required', 'numeric'],
             'verification' => ['required', 'numeric']
         ]);
 
-        if(!$validateTOKEN){
-            $response = "Unauthorized";
-            $statusCode = 401;
-        }else{
-            if(!$validator->fails()){
+        if(!$validator->fails()){
 
-                $dataCount = DB::select('SELECT COUNT(*) as countdata
-                                        FROM account_verifications
-                                            WHERE customerId = ? AND verificationCode = ?', [$request->id, $request->verification]);
+            $dataCount = DB::select('SELECT COUNT(*) as countdata
+                                    FROM account_verifications
+                                        WHERE customerId = ? AND verificationCode = ?', [Auth::user()->id, $request->verification]);
 
-                if($dataCount[0]->countdata === 1){
-                    //update status
-                    $affected = User::where('id', $request->id)
-                                        ->update(['verified' => true]);
-                    $response = true;
-                    $statusCode = 200;
-                }else{
-                    $response = false;
-                    $statusCode = 200;
-                }
-           }else{
+            if($dataCount[0]->countdata === 1){
+                //update status
+                $affected = User::where('id', Auth::user()->id)
+                                    ->update(['verified' => true]);
+                $response = true;
+                $statusCode = 200;
+            }else{
                 $response = false;
                 $statusCode = 200;
-           }
+            }
+        }else{
+            $response = false;
+            $statusCode = 200;
         }
+
         return response()->json($response,  $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 
 
     public function confirmEmail(Request $request){
         $emailType = "verification";
-        $token = $request->bearerToken();
-        $validateTOKEN = Hash::check( $this->secret, $token);
 
         $validator = Validator::make($request->all(), [
-            'id' => ['required', 'numeric'],
             'email' => ['required', 'email']
         ]);
 
-        if(!$validateTOKEN){
-            $response = "Unauthorized";
-            $statusCode = 401;
-        }else{
-            if(!$validator->fails()){
-                $verification = rand(0, 10000);
+        if(!$validator->fails()){
+            $verification = rand(0, 10000);
 
-                $data = [
-                    'verificationCode' =>  $verification,
-                    'customerId' =>  $request->id
-                ];
+            $data = [
+                'verificationCode' =>  $verification,
+                'customerId' =>  Auth::user()->id
+            ];
 
-                $email = [
-                    "first_name" => $request->first_name,
-                    "last_name" =>  $request->last_name,
-                    "middle_name" =>  $request->middle_name,
-                    "verification" =>  $verification,
-                    "email" =>   $request->email
-                ];
+            $email = [
+                "first_name" => Auth::user()->first_name,
+                "last_name" =>  Auth::user()->last_name,
+                "middle_name" =>  Auth::user()->middle_name,
+                "verification" =>  $verification,
+                "email" =>   Auth::user()->email
+            ];
 
-                if(AccountVerification::create($data)){
-                    Mail::send(new \App\Mail\SendInquiry($emailType, $email));
-                    $response = false;
-                    $statusCode = 200;
-                }else{
-                    $response = true;
-                    $statusCode = 200;
-                }
-
-           }else{
+            if(AccountVerification::create($data)){
+                Mail::send(new \App\Mail\SendInquiry($emailType, $email));
                 $response = false;
                 $statusCode = 200;
-           }
+            }else{
+                $response = true;
+                $statusCode = 200;
+            }
+
+        }else{
+            $response = false;
+            $statusCode = 200;
         }
+
         return response()->json($response ,  $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 
 
     public function getCount(Request $request){
-        $token = $request->bearerToken();
-        $validateTOKEN = Hash::check( $this->secret, $token);
+     
+        $account_info = DB::select('SELECT *
+                        FROM users
+                        WHERE id = ' . Auth::user()->id);
+        $transactionData = DB::select('SELECT *, transactions.status as transactionStatus
+                                                FROM transactions, users, products
+                                                WHERE
+                                                    (users.id = transactions.customerId AND products.id = transactions.productId) AND users.id = ' .  Auth::user()->id);
+        $approval_percent = DB::select('SELECT COUNT(*) as data_count
+                                                FROM customers_documents
+                                                WHERE customers_documents.status = "approved" and customers_documents.customer_id = ' .  Auth::user()->id);
+        $transactionCount = DB::select('SELECT COUNT(*) as transactionCount
+                                                FROM transactions, users, products
+                                                WHERE
+                                                    (users.id = transactions.customerId AND products.id = transactions.productId) AND users.id = ' .  Auth::user()->id);
+        $approval_result = round(($approval_percent[0]->data_count / 4) * 100);
 
-        $validator = Validator::make($request->all(), [
-            'id' => ['required', 'numeric'],
-        ]);
+        $response = array(
+            "account_information" => $account_info,
+            "transactionData" => $transactionData,
+            "transactionCount" => $transactionCount,
+            "approval_result_percent" => $approval_result
+        );
 
-        if(!$validateTOKEN){
-            $response = "Unauthorized";
-            $statusCode = 401;
-        }else{
-            if(!$validator->fails()){
-                $account_info = DB::select('SELECT *
-                                FROM users
-                                WHERE id = ' . $request->id);
-                $transactionData = DB::select('SELECT *, transactions.status as transactionStatus
-                                                        FROM transactions, users, products
-                                                        WHERE
-                                                            (users.id = transactions.customerId AND products.id = transactions.productId) AND users.id = ' . $request->id);
-                $approval_percent = DB::select('SELECT COUNT(*) as data_count
-                                                        FROM customers_documents
-                                                        WHERE customers_documents.status = "approved" and customers_documents.customer_id = ' . $request->id);
-                $transactionCount = DB::select('SELECT COUNT(*) as transactionCount
-                                                        FROM transactions, users, products
-                                                        WHERE
-                                                            (users.id = transactions.customerId AND products.id = transactions.productId) AND users.id = ' . $request->id);
-                $approval_result = round(($approval_percent[0]->data_count / 4) * 100);
+        $statusCode = 200;
 
-                $response = array(
-                    "account_information" => $account_info,
-                    "transactionData" => $transactionData,
-                    "transactionCount" => $transactionCount,
-                    "approval_result_percent" => $approval_result
-                );
-
-                $statusCode = 200;
-           }else{
-                $response = false;
-                $statusCode = 200;
-           }
-        }
         return response()->json($response ,  $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 
@@ -209,8 +180,10 @@ class CustomerAPIController extends Controller
             User::create($data);
             $customerInformation = User::where('email', $request->email)->first();
 
+            $token = $customerInformation->createToken('authToken')->accessToken;
+
             $dataresponse = array(
-                "token" =>Hash::make($this->secret),
+                "token" =>$token,
                 "information" => $customerInformation
             );
        }
@@ -238,9 +211,14 @@ class CustomerAPIController extends Controller
                 $enteredEmail = $request->email;
 
                 $password = Hash::check($enteredPassword, $DBpassword);
-                $token = Hash::make($this->secret);
+
+                $userData = User::where('email', $request->email)
+                            ->first();
+
+                $token = $userData->createToken('authToken')->accessToken;
 
                 if($password && $enteredEmail === $DBemail){
+                    
                     $response = array_merge(
                         array("information" => $data),
                             array(
@@ -300,66 +278,49 @@ class CustomerAPIController extends Controller
     }
 
     public function sendInquiry(Request $request){
+
+
         $validator = Validator::make($request->all(), [
-            'first_name' => ['required', 'string', 'min:3|max:255'],
-            'last_name' => ['required', 'string', 'min:3|max:255'],
-            'middle_name' => ['string', 'min:3|max:255'],
-            'home_address' => ['required', 'string', 'min:3|max:255'],
-            'street_address' => ['required', 'string', 'min:3|max:255'],
-            'country_region' => ['required', 'string', 'min:3|max:255'],
-            'contact_number' => ['required', 'string', 'min:11'],
-            'city' => ['required', 'string', 'min:3|max:255'],
-            'state_province' => ['required', 'string', 'min:3|max:255'],
-            'postal' => ['required', 'numeric', 'min:4'],
-            'email_address' => ['required', 'string', 'email', 'max:255'],
             'productId' => ['required', 'numeric']
         ]);
 
         $data = array(
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'middle_name' => $request->middle_name,
-            'home_address' => $request->home_address,
-            'email_address' => $request->email,
-            'street_address' => $request->street_address,
-            'country_region' => $request->country_region,
-            'contact_number' => $request->contact_number,
-            'city' => $request->city,
-            'state_province' => $request->state_province,
-            'postal' => $request->postal,
-            'email_address' => $request->email_address,
+            'first_name' => Auth::user()->first_name,
+            'last_name' =>  Auth::user()->last_name,
+            'middle_name' =>  Auth::user()->middle_name,
+            'email_address' =>  Auth::user()->email,
+            'home_address' =>  Auth::user()->home_address,
+            'street_address' =>  Auth::user()->street_address,
+            'country_region' =>  Auth::user()->country_region,
+            'contact_number' =>  Auth::user()->contact_number,
+            'city' =>  Auth::user()->city,
+            'state_province' =>  Auth::user()->state_province,
+            'postal' =>  Auth::user()->postal,
             'productId' => $request->productId
         );
 
         $errors = $validator->errors();
+   
+        if(!$validator->fails()){
+            Inquiry::create($data);
+            $response = true;
+            $statusCode = 200;
 
-        $token = $request->bearerToken();
-        $validateTOKEN = Hash::check( $this->secret, $token);
+            $productData['allusersData'] =  $data;
+            $productData['product'] = Product::where('id', $request->productId)->first();
+            $productData['specification'] = DB::select('
+                SELECT product_specifications.title as title, product_specifications.description as description
+                FROM product_specifications, products
+                WHERE (product_specifications.status = "publish") AND (product_specifications.product_id = ' . $request->productId . ')
+                GROUP BY product_specifications.title, product_specifications.description');
 
-        if(!$validateTOKEN){
-            $response = "Unauthorized";
-            $statusCode = 401;
+            Mail::send(new \App\Mail\SendInquiry($this->emailType, $productData));
+
         }else{
-            if(!$validator->fails()){
-                Inquiry::create($data);
-                $response = true;
-                $statusCode = 200;
-
-                $productData['allusersData'] =  $data;
-                $productData['product'] = Product::where('id', $request->productId)->first();
-                $productData['specification'] = DB::select('
-                    SELECT product_specifications.title as title, product_specifications.description as description
-                    FROM product_specifications, products
-                    WHERE (product_specifications.status = "publish") AND (product_specifications.product_id = ' . $request->productId . ')
-                    GROUP BY product_specifications.title, product_specifications.description');
-
-                Mail::send(new \App\Mail\SendInquiry($this->emailType, $productData));
-
-           }else{
-                $response = false;
-                $statusCode = 200;
-           }
+            $response = false;
+            $statusCode = 200;
         }
+
         return response()->json($response ,  $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 
@@ -382,10 +343,10 @@ class CustomerAPIController extends Controller
 
         if($request->type === $typeVariable['email']){
 
-            $emailstatus = DB::select('select verified from users where id = ?', [$request->id]);
+            $emailstatus = DB::select('select verified from users where id = ?', [Auth::user()->id]);
             $emailstatus = $emailstatus[0]->verified;
             $sample = array(
-                "id"=> $request->id,
+                "id"=> Auth::user()->id,
                 "email"=> $request->data
             );
             $validator = Validator::make($sample, [
@@ -394,108 +355,98 @@ class CustomerAPIController extends Controller
             ]);
         }else{
             $validator = Validator::make($request->all(), [
-                'id' => ['required', 'numeric'],
                 'data' => ['required']
             ]);
         }
         $validator = Validator::make($request->all(), [
-            'id' => ['required', 'numeric'],
             'data' => ['required']
         ]);
 
-        $token = $request->bearerToken();
-        $validateTOKEN = Hash::check( $this->secret, $token);
+        if(!$validator->fails()){
 
-        if(!$validateTOKEN){
-            $response = "Unauthorized";
-            $statusCode = 401;
+            switch ($request->type) {
+                case $typeVariable['first_name']:
+                    $affected = User::where('id', Auth::user()->id)
+                                        ->update(['first_name' => $request->data]);
+                    $statusCode = 200;
+                    $response = true;
+                    break;
+                case $typeVariable['last_name']:
+                    $affected = User::where('id', Auth::user()->id)
+                                        ->update(['last_name' => $request->data]);
+                    $statusCode = 200;
+                    $response = true;
+                    break;
+                case $typeVariable['middle_name']:
+                    $affected = User::where('id', Auth::user()->id)
+                                        ->update(['middle_name' => $request->data]);
+                    $statusCode = 200;
+                    $response = true;
+                    break;
+                case $typeVariable['home_address']:
+                    $affected = User::where('id', Auth::user()->id)
+                                        ->update(['home_address' => $request->data]);
+                    $statusCode = 200;
+                    $response = true;
+                    break;
+                case $typeVariable['street_address']:
+                    $affected = User::where('id', Auth::user()->id)
+                                        ->update(['street_address' => $request->data]);
+                    $statusCode = 200;
+                    $response = true;
+                    break;
+                case $typeVariable['country_region']:
+                    $affected = User::where('id', Auth::user()->id)
+                                        ->update(['country_region' => $request->data]);
+                    $statusCode = 200;
+                    $response = true;
+                    break;
+                case $typeVariable['contact_number']:
+                    $affected = User::where('id', Auth::user()->id)
+                                        ->update(['contact_number' => $request->data]);
+                    $statusCode = 200;
+                    $response = true;
+                    break;
+                case $typeVariable['city']:
+                    $affected = User::where('id', Auth::user()->id)
+                                        ->update(['city' => $request->data]);
+                    $statusCode = 200;
+                    $response = true;
+                    break;
+                case $typeVariable['state_province']:
+                    $affected = User::where('id', Auth::user()->id)
+                                        ->update(['state_province' => $request->data]);
+                    $statusCode = 200;
+                    $response = true;
+                    break;
+                case $typeVariable['postal']:
+                    $affected = User::where('id', Auth::user()->id)
+                                        ->update(['postal' => $request->data]);
+                    $statusCode = 200;
+                    $response = true;
+                    break;
+                case $typeVariable['email']:
+                    if($emailstatus === 1){
+                        $response = false;
+                        $statusCode = 200;
+                    }else{
+                        User::where('id', Auth::user()->id)
+                                    ->update(['email' => $request->data]);
+                        $statusCode = 200;
+                        $response = true;
+                    }
+                    break;
+                case $typeVariable['password']:
+                    $newPassword = Hash::make($request->data);
+                    $affected = User::where('id', Auth::user()->id)
+                                        ->update(['password' => $newPassword]);
+                    $statusCode = 200;
+                    $response = true;
+                    break;
+            }
         }else{
-            if(!$validator->fails()){
-
-                switch ($request->type) {
-                    case $typeVariable['first_name']:
-                        $affected = User::where('id', $request->id)
-                                            ->update(['first_name' => $request->data]);
-                        $statusCode = 200;
-                        $response = true;
-                        break;
-                    case $typeVariable['last_name']:
-                        $affected = User::where('id', $request->id)
-                                            ->update(['last_name' => $request->data]);
-                        $statusCode = 200;
-                        $response = true;
-                        break;
-                    case $typeVariable['middle_name']:
-                        $affected = User::where('id', $request->id)
-                                            ->update(['middle_name' => $request->data]);
-                        $statusCode = 200;
-                        $response = true;
-                        break;
-                    case $typeVariable['home_address']:
-                        $affected = User::where('id', $request->id)
-                                            ->update(['home_address' => $request->data]);
-                        $statusCode = 200;
-                        $response = true;
-                        break;
-                    case $typeVariable['street_address']:
-                        $affected = User::where('id', $request->id)
-                                            ->update(['street_address' => $request->data]);
-                        $statusCode = 200;
-                        $response = true;
-                        break;
-                    case $typeVariable['country_region']:
-                        $affected = User::where('id', $request->id)
-                                            ->update(['country_region' => $request->data]);
-                        $statusCode = 200;
-                        $response = true;
-                        break;
-                    case $typeVariable['contact_number']:
-                        $affected = User::where('id', $request->id)
-                                            ->update(['contact_number' => $request->data]);
-                        $statusCode = 200;
-                        $response = true;
-                        break;
-                    case $typeVariable['city']:
-                        $affected = User::where('id', $request->id)
-                                            ->update(['city' => $request->data]);
-                        $statusCode = 200;
-                        $response = true;
-                        break;
-                    case $typeVariable['state_province']:
-                        $affected = User::where('id', $request->id)
-                                            ->update(['state_province' => $request->data]);
-                        $statusCode = 200;
-                        $response = true;
-                        break;
-                    case $typeVariable['postal']:
-                        $affected = User::where('id', $request->id)
-                                            ->update(['postal' => $request->data]);
-                        $statusCode = 200;
-                        $response = true;
-                        break;
-                    case $typeVariable['email']:
-                        if($emailstatus === 1){
-                            $response = false;
-                            $statusCode = 200;
-                        }else{
-                            User::where('id', $request->id)
-                                        ->update(['email' => $request->data]);
-                            $statusCode = 200;
-                            $response = true;
-                        }
-                        break;
-                    case $typeVariable['password']:
-                        $newPassword = Hash::make($request->data);
-                        $affected = User::where('id', $request->id)
-                                            ->update(['password' => $newPassword]);
-                        $statusCode = 200;
-                        $response = true;
-                        break;
-                }
-           }else{
-                $response = false;
-                $statusCode = 200;
-           }
+            $response = false;
+            $statusCode = 200;
         }
         return response()->json($response , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
