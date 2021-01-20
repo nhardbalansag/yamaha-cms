@@ -42,3 +42,4 @@ Route::post('/getOrder', [ProductAPIController::class, 'getOrder']);
 Route::post('/confirmEmail', [CustomerAPIController::class, 'confirmEmail']);
 Route::post('/confirmVerification', [CustomerAPIController::class, 'confirmVerification']);
 Route::get('/viewAllDocumentCategory', [DocumentController::class, 'viewAllDocumentCategory']);
+Route::get('/submitDocument', [DocumentController::class, 'submitDocument']);
