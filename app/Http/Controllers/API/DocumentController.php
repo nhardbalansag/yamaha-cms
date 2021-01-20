@@ -37,11 +37,24 @@ class DocumentController extends Controller
             //     return response()->json(['error'=>$validator->errors()], 401);
             // }
 
+            // if ($request->hasFile('file')) {
+            //     foreach ($request->file('file') as $image) {
+            //         if ($upload = $image->store('photos')) {
+            //             return  response()->json($upload, 201);
+            //         }else{
+            //             return  response()->json("no", 403);
+            //         }
+            //     }
+            // }else{
+            //     return  response()->json($request->hasFile('file'), 403);
+            // }
+            $samle = $request->file('file')->store('photos');
+            return  response()->json( $samle, 403);
 
             // if ($files = $request->file('image')) {
 
                 //store file into document folder
-                $file = $request->file->store('photos');
+                // $file = $request->file->store('photos');
 
                 //store your file into database
                 // $formData = [
@@ -59,7 +72,7 @@ class DocumentController extends Controller
                 //     $response = "failed";
                 // }else{
                 //     CustomersDocument::create($formData);
-                    $statusCode = 200;
+                    // $statusCode = 200;
                 //     $response = "success";
 
                 // }
@@ -67,7 +80,7 @@ class DocumentController extends Controller
             // }
         ///
 
-        return response()->json($file, $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+        // return response()->json($file, $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 
 }
