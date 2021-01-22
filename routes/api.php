@@ -38,7 +38,7 @@ Route::post('/register', [CustomerAPIController::class, 'register']);
 
 //AUTH
 Route::group(['middleware' => 'auth:api'], function() {
-    Route::get('/', [ProductAPIController::class, 'index']);
+    Route::get('/{limit}', [ProductAPIController::class, 'index']);
     Route::post('/view/product', [ProductAPIController::class, 'getoneProduct']);
     Route::post('/sendMessage/inquiry', [CustomerAPIController::class, 'sendInquiry']);
     Route::post('/credentials/edit', [CustomerAPIController::class, 'EditCustomerRecord']);
