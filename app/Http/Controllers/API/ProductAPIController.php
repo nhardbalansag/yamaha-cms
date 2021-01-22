@@ -18,7 +18,7 @@ class ProductAPIController extends Controller
 
 
     public function getOrder(Request $request){
-     
+
         $validator = Validator::make($request->all(), [
             'orderstatus' => ['required', 'string', 'max:20']
         ]);
@@ -53,15 +53,16 @@ class ProductAPIController extends Controller
         return response()->json($response , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 
-    public function index(Request $request){
+    public function index($limit){
             $statusCode = 200;
-            $data = Product::where('status', 'publish')->get();
+            $data = Product::where('status', 'publish')
+                            ->paginate($limit);
 
         return response()->json( $data  , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 
     public function getoneProduct(Request $request){
-        
+
         $statusCode = 200;
         $product = Product::where('id', $request->id)->get();
         $specification = DB::select('SELECT
