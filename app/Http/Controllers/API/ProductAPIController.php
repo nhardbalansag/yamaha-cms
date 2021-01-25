@@ -17,7 +17,7 @@ class ProductAPIController extends Controller
     public $secret = "capstoneProject2020-2021";
 
 
-    public function getOrder(Request $request){
+    public function getOrder(Request $request, $limit){
 
         $validator = Validator::make($request->all(), [
             'orderstatus' => ['required', 'string', 'max:20']
@@ -29,7 +29,7 @@ class ProductAPIController extends Controller
                                     FROM transactions, users, products
                                     WHERE
                                         (users.id = transactions.customerId AND products.id = transactions.productId)
-                                        AND transactions.status = '. '"' .$request->orderstatus .'"' . ' AND users.id = ' . Auth::user()->id);
+                                        AND transactions.status = '. '"' .$request->orderstatus .'"' . ' AND users.id = ' . Auth::user()->id . ' LIMIT ' . $limit);
 
             $count = DB::select('SELECT COUNT(*) as transactionCount
                                     FROM transactions, users, products
