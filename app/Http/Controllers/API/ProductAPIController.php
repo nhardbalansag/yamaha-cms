@@ -17,6 +17,16 @@ class ProductAPIController extends Controller
     public $secret = "capstoneProject2020-2021";
 
 
+    public function searchProducts($search){
+
+        $data = DB::select('SELECT *
+                            FROM products
+                            WHERE status = "publish" AND title LIKE "%' . $search . '%" ' );
+
+        return response()->json($data , 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+    }
+
+
     public function getOrder(Request $request, $limit){
 
         $validator = Validator::make($request->all(), [
