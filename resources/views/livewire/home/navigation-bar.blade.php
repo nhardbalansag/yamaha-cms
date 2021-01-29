@@ -43,7 +43,7 @@
           @endif
           @if(Auth::user()->role !== 'admin')
             <li class="nav-item active">
-                <a class="text-white nav-link" href="/my-account/{{Auth::user()->id}}" tabindex="-1" aria-disabled="true">My Account</a>
+                <a class="text-white nav-link" href="/my-account" tabindex="-1" aria-disabled="true">My Account</a>
             </li>
           @endif
             <li class="nav-item active">

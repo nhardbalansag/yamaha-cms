@@ -18,11 +18,11 @@ class Account extends Controller
     protected $emailType = "registration";
 
 
-    public function index($id){
+    public function index(){
 
         $data['account_info'] = DB::select('SELECT *
                                 FROM users
-                                WHERE id = ' . $id);
+                                WHERE id = ' . Auth::user()->id);
         $data['transactionData'] = DB::select('SELECT *, transactions.status as transactionStatus
                                                 FROM transactions, users, products
                                                 WHERE
@@ -83,7 +83,6 @@ class Account extends Controller
 
     public function checkoutDetails($user_id, $product_id, $amount){
 
-
         $data = array(
             'customerId' => $user_id == Auth::user()->id ? Auth::user()->id : abort(403, 'Unauthorized') ,
             'productId' => $product_id,
@@ -92,11 +91,38 @@ class Account extends Controller
         );
 
         if(Transaction::create($data)){
-            $data['result'] = true;
-            return view('pages.client.pages.payment-result', $data);
+
+            $productInformation = DB::table('products')
+                                ->where('id', $product_id)
+                                ->first();
+
+            if($productInformation->number_available == 0){
+
+                $affected = DB::table('products')
+                        ->where('id', $product_id)
+                        ->update(['status' => "pending"]);
+
+            }else{
+
+                $InventoryTotal = ($productInformation->number_available - 1);
+
+                $affected = DB::table('products')
+                                ->where('id', $product_id)
+                                ->update(['number_available' => $InventoryTotal]);
+
+                if($InventoryTotal == 0 ){
+                    $affected = DB::table('products')
+                                ->where('id', $product_id)
+                                ->update(['status' => "pending"]);
+                }
+            }
+
+            return redirect()->to('/my-account');
+
         }else{
-            $data['result'] = false;
-            return view('pages.client.pages.payment-result', $data);
+
+            return redirect()->to('/my-account');
+
         }
     }
 

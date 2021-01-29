@@ -42,7 +42,7 @@
                             <a href="/my-account/{{ Auth::user()->id }}">click here to account</a>
                         </div>
                     @else
-                        @include('pages.client.component.orders')
+                        @livewire('customer.reservation-process')
                     @endif
                 </div>
                 <div class="tab-pane fade" id="product-specification" role="tabpanel" aria-labelledby="product-comments-tab">
