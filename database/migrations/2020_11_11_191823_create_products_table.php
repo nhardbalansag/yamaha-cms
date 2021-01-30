@@ -21,24 +21,13 @@ class CreateProductsTable extends Migration
             $table->char('status', 50);
             $table->integer('update_count')->nullable();
             $table->integer('price');
+            $table->integer('number_available');
             $table->integer('product_category_id')->unsigned();
-            // $table->integer('specification_id')->unsigned();
-            // $table->integer('colors_type_id')->unsigned();
             $table->foreign('product_category_id')
                 ->references('id')
                 ->on('product_categories')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            // $table->foreign('specification_id')
-            //     ->references('id')
-            //     ->on('specifications')
-            //     ->onDelete('cascade')
-            //     ->onUpdate('cascade');
-            // $table->foreign('colors_type_id')
-            //     ->references('id')
-            //     ->on('color_types')
-            //     ->onDelete('cascade')
-            //     ->onUpdate('cascade');
             $table->timestamps();
         });
     }

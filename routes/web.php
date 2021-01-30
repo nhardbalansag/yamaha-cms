@@ -40,7 +40,7 @@ Route::get('/customer/register', [LoginRegisterController::class, 'register'])->
 Route::middleware('auth')->group(function(){
     Route::middleware('user:customer')->group(function(){
         Route::get('/home', [HomeController::class, 'index'])->name('home page');
-        Route::get('/my-account/{id}', [Account::class, 'index'])->name('my account');
+        Route::get('/my-account', [Account::class, 'index'])->name('my account');
         Route::get('/my-account/loan/application', [Account::class, 'loanApplication']);
         Route::get('/my-account/order/{product_id}/payment/{customer_id}', [Account::class, 'payment']);
         Route::get('/my-account/services/{service_id}/{id}', [Account::class, 'payment']);

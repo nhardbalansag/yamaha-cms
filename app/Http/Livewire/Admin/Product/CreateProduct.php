@@ -14,7 +14,7 @@ class CreateProduct extends Component
 {
     use WithFileUploads;
 
-    public $photo_path, $title, $description, $status, $update_count, $price, $product_category_id, $specification_id, $colors_type_id;
+    public $photo_path, $title, $description, $status, $update_count, $price, $product_category_id, $specification_id, $colors_type_id, $number_available;
 
     public $data = [
         'photo_path' => 'required|image|max:1024',
@@ -22,6 +22,7 @@ class CreateProduct extends Component
         'description' => 'required',
         'status' => 'required',
         'price' => 'required|numeric|min:1',
+        'number_available' => 'required|numeric',
         'product_category_id' => 'required'
     ];
 
@@ -42,6 +43,7 @@ class CreateProduct extends Component
             'description' => $this->description,
             'status' => $this->status,
             'price' => $this->price,
+            'number_available' => $this->number_available,
             'product_category_id' => $this->product_category_id
         ];
 
