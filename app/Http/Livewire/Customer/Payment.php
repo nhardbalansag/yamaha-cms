@@ -37,14 +37,7 @@ class Payment extends Component
 
         CustomerOrder::create($query);
 
-        $count = DB::select('SELECT  COUNT()
-                    FROM customer_orders where productId = ?', [$this->data['product']['id']]);
 
-        $inventoryCount = DB::select('SELECT  number_available
-                        FROM products where id = ?', [$this->data['product']['id']]);
-
-
-        dd($inventoryCount);
 
         session()->flash('message', 'order placed succesfully');
     }

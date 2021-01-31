@@ -10,7 +10,7 @@ import swiper from 'swiper/bundle';
         slidesPerView: 2,
         spaceBetween: 5,
         slidesPerGroup: 1,
-        loop: true,
+        loop: false,
         loopFillGroupWithBlank: false,
         pagination: {
           el: '.swiper-pagination',

@@ -31143,7 +31143,7 @@ __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.es
     slidesPerView: 2,
     spaceBetween: 5,
     slidesPerGroup: 1,
-    loop: true,
+    loop: false,
     loopFillGroupWithBlank: false,
     pagination: {
       el: '.swiper-pagination',
