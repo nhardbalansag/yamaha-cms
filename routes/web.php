@@ -5,7 +5,6 @@ use App\Http\Controllers\Admin\Dashboard;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Product\ProductCategoryController;
 use App\Http\Controllers\Admin\Product\Specification;
-use App\Http\Controllers\Admin\Product\Color;
 use App\Http\Controllers\WebApp\HomeController;
 use App\Http\Controllers\WebApp\InquiryController;
 use App\Http\Controllers\WebApp\HomeProductController;
