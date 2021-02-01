@@ -26,7 +26,7 @@ class UpdateProductStatus extends Component
                     ->where('id', $this->product_id)
                     ->update(['status' => $validatedData['status']]);
 
-        session()->flash('message', 'status updated');
+        session()->flash('statusmessage', 'status updated');
         return redirect()->to('/product/view/'. $this->product_id);
     }
 }
