@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Dompdf\Dompdf;
+use Carbon\Carbon;
+use PDO;
 
 class CustomerController extends Controller
 {
@@ -73,6 +76,7 @@ class CustomerController extends Controller
 
     public function viewoneOrderTransaction($id){
 
+
         $data['transactions'] = DB::select('SELECT *
                                             FROM transactions
                                             WHERE id = ' . $id);
@@ -84,73 +88,42 @@ class CustomerController extends Controller
         $data['products'] = DB::select('SELECT *
                                             FROM products
                                             WHERE id = ' . $data['transactions'][0]->productId);
+
+        $data['transationDate'] = Carbon::parse($data['transactions'][0]->created_at)->format('l jS \\of F Y h:i:s A');
+
         return view('pages.admin.customer.viewoneTransaction', $data);
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function createPdf($id)
     {
-        //
+        $data['transactions'] = DB::select('SELECT *
+                                FROM transactions
+                                WHERE id = ' . $id);
+
+        $data['users'] = DB::select('SELECT *
+                    FROM users
+                    WHERE id = ' . $data['transactions'][0]->customerId);
+
+        $data['products'] = DB::select('SELECT *
+                FROM products
+                WHERE id = ' . $data['transactions'][0]->productId);
+
+        $data['transationDate'] = Carbon::parse($data['transactions'][0]->created_at)->format('l jS \\of F Y h:i:s A');
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+        $html = view('pages.admin.customer.invoice-pdf', $data);
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream( $data['users'][0]->first_name ."-". $data['transactions'][0]->id . ".pdf");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
