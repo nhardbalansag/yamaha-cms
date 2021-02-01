@@ -2,9 +2,6 @@
 <div class="p-4 m-4">
     <div class="md:col-span-1">
         <h3 class="text-lg font-medium leading-6 text-gray-900 capitalize"> product specification </h3>
-        <p class="mt-1 text-sm leading-5 text-gray-600 capitalize">
-            create your product specification
-        </p>
     </div>
     <div class="">
         <div>
