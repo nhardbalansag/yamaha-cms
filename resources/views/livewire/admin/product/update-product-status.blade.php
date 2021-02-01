@@ -13,9 +13,9 @@
         <button class="w-1/2 btn btn-dark">Update status</button>
     </div>
     <div class="w-1/2 mt-2">
-        @if (session()->has('message'))
+        @if (session()->has('statusmessage'))
             <div class="container text-center capitalize alert alert-success">
-                {{ session('message') }}
+                {{ session('statusmessage') }}
             </div>
         @endif
     </div>
