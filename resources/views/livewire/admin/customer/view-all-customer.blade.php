@@ -20,7 +20,6 @@
     </div>
 </div>
 @foreach($allCustomer as $key => $value)
-
     <div class="py-2 my-2 text-center border-bottom border-dark row col-md-12">
         <div class="col-md-2 text-truncate">
             {{$value->first_name}}
