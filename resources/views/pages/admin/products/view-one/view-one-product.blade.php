@@ -12,44 +12,23 @@
         <div class="col-12 col-sm-6">
             <h3 class="my-3">{{$product->title}}</h3>
             <p>{{$product->description}}</p>
-            <div class="w-1/2 col-span-3 my-2 sm:col-span-3">
-                <label for="country" class="block text-xl font-medium leading-5 text-gray-700">Status</label>
-                <select wire:model.prevent ="status" id="country" class="block w-full px-3 py-2 mt-1 text-xl transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md shadow-sm form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300">
-                    <option>Select Status</option>
-                    <option value = "publish" >Publish</option>
-                    <option value = "pending" >Pending</option>
-                </select>
-                @error('status') <span class="italic text-red-600 error">{{ $message }}</span> @enderror
-            </div>
+                @livewire('admin.product.update-product-status', ['product_id' => $product->id])
             <div class="px-3 py-2 mt-4 bg-gray">
                 <h2 class="mb-0">
-                    {{$product->price}}
+                    ₱{{number_format($product->price)}}
                 </h2>
                 <h4 class="mt-0">
-                    <small>Price:{{$product->price}} </small>
+                    <small>Price: ₱{{$product->price}} </small>
                 </h4>
             </div>
-            <div class="mt-4 product-share">
-                <a href="#" class="text-gray">
-                    <i class="fab fa-facebook-square fa-2x"></i>
-                </a>
-                <a href="#" class="text-gray">
-                    <i class="fab fa-twitter-square fa-2x"></i>
-                </a>
-                <a href="#" class="text-gray">
-                    <i class="fas fa-envelope-square fa-2x"></i>
-                </a>
-                <a href="#" class="text-gray">
-                    <i class="fas fa-rss-square fa-2x"></i>
-                </a>
+            <div>
+                <h4 class="mt-0">
+                    <small>Products available: {{$product->number_available}} </small>
+                </h4>
+                @livewire('admin.product.update-product-inventory-count', ['product_id' => $product->id])
             </div>
-
         </div>
     </div>
-
-
-
-
     <div class="mt-4 row">
         <nav class="w-100">
             <div class="nav nav-tabs" id="product-tab" role="tablist">
@@ -63,7 +42,26 @@
                 {{$product->description}}
             </div>
             <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
-            all sepecification
+                <div class="col-12">
+                    <div class="row col-12">
+                        <div class="col-6">
+                            <p class="text-capitalize font-weight-bold">specifications</p>
+                        </div>
+                        <div class="col-6 text-capitalize font-weight-bold">
+                            <p>description</p>
+                        </div>
+                    </div>
+                    @foreach($product_specifications as $key => $value)
+                        <div class="row col-12 border-bottom">
+                            <div class="col-6">
+                                <p class="text-muted">{{$value->title}}</p>
+                            </div>
+                            <div class="col-6">
+                                <p class="text-muted"> {{$value->description}}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
             <div class="tab-pane fade" id="product-specification" role="tabpanel" aria-labelledby="product-comments-tab">
                 @livewire('admin.product.create-specification', ['product_id' => $product->id])
@@ -73,3 +71,5 @@
 </div>
 
 @endsection
+
+
