@@ -35,14 +35,7 @@
             {{$value->home_address . ', ' . $value->street_address . ', ' . $value->city . ', ' . $value->country_region . ', ' . $value->state_province}}
         </div>
         <div class=" col-md-2">
-            <div class="mb-2 dropdown">
-                <a class="dropdown-toggle " data-toggle="dropdown" href="#" >Actions</a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <li>
-                        <a class="dropdown-item text-primary" href="/order/{{ $value->id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
-                    </li>
-                </ul>
-            </div>
+            <a  href="/order/{{ $value->id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
         </div>
     </div>
 @endforeach
