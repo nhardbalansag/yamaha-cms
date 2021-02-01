@@ -22,6 +22,9 @@
                 </h4>
             </div>
             <div>
+                <h4 class="mt-0">
+                    <small>Products available: {{$product->number_available}} </small>
+                </h4>
                 @livewire('admin.product.update-product-inventory-count', ['product_id' => $product->id])
             </div>
         </div>
