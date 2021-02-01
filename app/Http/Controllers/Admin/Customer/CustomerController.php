@@ -67,8 +67,11 @@ class CustomerController extends Controller
 
     public function viewallOrders(){
 
-        $data['transactions'] = DB::select('SELECT *
-                                            FROM transactions');
+        $data['transactions'] = DB::table('transactions')
+                    ->join('products', 'products.id', '=', 'transactions.productId')
+                    ->join('users', 'users.id', '=', 'transactions.customerId')
+                    ->select('transactions.*', 'users.first_name', 'products.title')
+                    ->get();
 
         return view('pages.admin.customer.view-all-orders', $data);
 
