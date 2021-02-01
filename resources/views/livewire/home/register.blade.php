@@ -84,7 +84,7 @@
                     <hr class="bg-black">
                     <div class="row col-12 col-md-12">
                         <div class="p-0 col-6">
-                            <a class="w-full text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('login') }}">
+                            <a class="w-full text-sm text-gray-600 underline hover:text-gray-900" href="/customer/login">
                             {{ __('Already registered?') }}
                             </a>
                         </div>
