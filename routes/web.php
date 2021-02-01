@@ -25,10 +25,6 @@ use App\Http\Controllers\Loan\LoanController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', [HomeController::class, 'index'])->name('home page');
 Route::get('/home/product/{id}', [HomeProductController::class, 'viewOne'])->name('view product');
 Route::get('/home/product/{search}/inquiry', [InquiryController::class, 'index'])->name('inquiry');
