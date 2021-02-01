@@ -5,10 +5,7 @@
     <div class="">
         <div class="md:col-span-1">
             <div class="px-4 sm:px-0">
-                <h3 class="text-lg font-medium leading-6 text-gray-900 capitalize"> {{Request::route()->getName()}} </h3>
-                <p class="mt-1 text-sm leading-5 text-gray-600 capitalize">
-                    create your {{Request::route()->getName()}}
-                </p>
+                <h3 class="text-lg font-medium leading-6 text-gray-900 capitalize">  create your product </h3>
             </div>
         </div>
         <div class="mt-5 md:mt-0 md:col-span-2">
@@ -26,7 +23,7 @@
                     </label>
                      <div>
                         <div>
-                            <label class="w-1/2 px-4 py-2 ml-4 font-semibold text-gray-800 bg-white border border-gray-400 rounded shadow-xs cursor-pointer hover:bg-gray-100 ">
+                            <label class="w-1/4 px-4 py-2 ml-4 font-semibold text-gray-800 bg-white border border-gray-400 rounded shadow-xs cursor-pointer hover:bg-gray-100 ">
 
                                 <input type="file"
                                     wire:model="photo_path"
@@ -64,7 +61,7 @@
                             <div>
                                 <div class="w-1/2 py-2 my-4">
                                     <label for="company_website" class="block text-sm font-medium leading-5 text-gray-700 capitalize">
-                                    product prize
+                                    product price
                                     </label>
                                     <div class="flex mt-1 rounded-md shadow-sm">
                                     <span class="inline-flex items-center px-3 text-sm text-gray-500 border border-r-0 border-gray-300 rounded-l-md bg-gray-50">
@@ -123,7 +120,7 @@
                                     </div>
                                     @error('description') <span class="italic text-red-600 error">{{ $message }}</span> @enderror
                                     <p class="mt-2 text-sm text-gray-500 ">
-                                        Brief description for your category type.
+                                        Brief description for your product.
                                     </p>
                                 </div>
 
@@ -141,9 +138,7 @@
                     </div>
                     <div class="px-4 py-3 text-right bg-gray-50 sm:px-6">
                         <span class="inline-flex rounded-md shadow-sm">
-                        <button type="submit" class="inline-flex justify-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
-                            Save
-                        </button>
+                            <button class="btn btn-dark">create product</button>
                         </span>
                     </div>
                 </div>
