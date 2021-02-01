@@ -1,18 +1,12 @@
 @extends('dashboard')
 @section('contents')
-<div>
-    @if (session()->has('message'))
-        <div class="container capitalize alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
-</div>
+
 <div class="my-4 text-center border-bottom border-dark row col-md-12 text-capitalize">
     <div class="col-md-1">
-        customer ID
+        customer
     </div>
     <div class="col-md-2">
-        product ID
+        product
     </div>
     <div class="col-md-2">
         purchase amount
@@ -31,10 +25,10 @@
 
     <div class="py-2 my-2 text-center border-bottom border-dark row col-md-12">
         <div class="col-md-1 text-truncate">
-            {{$value->customerId}}
+            {{$value->first_name}}
         </div>
         <div class="col-md-2 ">
-            {{$value->productId}}
+            {{$value->title}}
         </div>
         <div class="col-md-2">
             {{$value->purchaseAmount }}
@@ -46,14 +40,7 @@
             {{$value->created_at }}
         </div>
         <div class=" col-md-2">
-            <div class="mb-2 dropdown">
-                <a class="dropdown-toggle " data-toggle="dropdown" href="#" >Actions</a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <li>
-                        <a class="dropdown-item text-primary" href="/orders/viewallOrders/transactions/{{ $value->id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
-                    </li>
-                </ul>
-            </div>
+            <a  href="/orders/viewallOrders/transactions/{{ $value->id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
         </div>
     </div>
 @endforeach
