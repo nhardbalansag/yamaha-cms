@@ -22,6 +22,7 @@
     </div>
 </div>
 @foreach($transactions as $key => $value)
+
     <div class="py-2 my-2 text-center border-bottom border-dark row col-md-12">
         <div class="col-md-1 text-truncate">
             {{$value->first_name}}
@@ -42,6 +43,7 @@
             <a  href="/orders/viewallOrders/transactions/{{ $value->id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
         </div>
     </div>
+
 @endforeach
 
 @endsection
