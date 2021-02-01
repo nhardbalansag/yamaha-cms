@@ -1,6 +1,12 @@
 @extends('dashboard')
 @section('contents')
-
+<div>
+    @if (session()->has('message'))
+        <div class="container capitalize alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+</div>
 <div class="my-4 text-center border-bottom border-dark row col-md-12 text-capitalize">
     <div class="col-md-1">
         customer ID

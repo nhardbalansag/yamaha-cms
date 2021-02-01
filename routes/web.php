@@ -93,6 +93,9 @@ Route::middleware('auth')->group(function(){
         Route::get('/orders/viewallOrders/transactions/{id}',  [CustomerController::class, 'viewoneOrderTransaction']);
 
 
+        //generate pdf
+        Route::get('/orders/viewallOrders/transactions/invoice-pdf/{id}',  [CustomerController::class, 'createPdf']);
+
     });
 });
 

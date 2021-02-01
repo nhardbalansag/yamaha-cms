@@ -10,8 +10,6 @@
             <h5><i class="fas fa-info"></i> Note:</h5>
             customers transaction invoice
           </div>
-
-
           <!-- Main content -->
           <div class="p-3 mb-3 invoice">
             <!-- title row -->
@@ -19,7 +17,7 @@
               <div class="col-12">
                 <h4>
                   <i class="fas fa-globe"></i> YAMAHA MEGAVIA
-                  <small class="float-right">Date: {{ $transactions[0]->created_at }}</small>
+                  <small class="float-right">Date: {{ $transationDate }}</small>
                 </h4>
               </div>
               <!-- /.col -->
@@ -78,7 +76,6 @@
               <!-- /.col -->
             </div>
             <!-- /.row -->
-
             <div class="row">
               <!-- accepted payments column -->
               <div class="col-6">
@@ -111,17 +108,15 @@
             <!-- /.row -->
 
             <!-- this row will not appear when printing -->
-            {{-- <div class="row no-print">
+            <div class="row no-print">
               <div class="col-12">
-                <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                <button type="button" class="float-right btn btn-success"><i class="far fa-credit-card"></i> Submit
-                  Payment
-                </button>
-                <button type="button" class="float-right btn btn-primary" style="margin-right: 5px;">
+                @livewire('admin.customer.update-order-status', ['transactionId' => $transactions[0]->id])
+
+                <a href="/orders/viewallOrders/transactions/invoice-pdf/{{ $transactions[0]->id }}" type="button" class="float-right btn btn-primary" style="margin-right: 5px;">
                   <i class="fas fa-download"></i> Generate PDF
-                </button>
+                </a>
               </div>
-            </div> --}}
+            </div>
           </div>
           <!-- /.invoice -->
         </div><!-- /.col -->
