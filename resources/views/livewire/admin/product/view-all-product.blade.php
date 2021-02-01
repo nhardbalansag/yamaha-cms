@@ -47,17 +47,7 @@
             {{ $value->products_created_at }}
         </div>
         <div class=" col-md-2">
-            <div class="mb-2 dropdown">
-                <a class="dropdown-toggle " data-toggle="dropdown" href="#" >Actions</a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <li>
-                        <a class="dropdown-item text-primary" href="/product/view/{{ $value->products_id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item text-primary" href="/product/view/{{ $value->products_id }}" class="text-indigo-600 hover:text-indigo-900">edit</a>
-                    </li>
-                </ul>
-            </div>
+            <a class="dropdown-item text-primary" href="/product/view/{{ $value->products_id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
         </div>
     </div>
 @endforeach
