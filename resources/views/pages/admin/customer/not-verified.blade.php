@@ -35,14 +35,7 @@
             {{$value->email }}
         </div>
         <div class=" col-md-3">
-            <div class="mb-2 dropdown">
-                <a class="dropdown-toggle " data-toggle="dropdown" href="#" >Actions</a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <li>
-                        <a class="dropdown-item text-primary" href="/loan/applicants/{{ $value->id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
-                    </li>
-                </ul>
-            </div>
+            <a href="/loan/applicants/{{ $value->id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
         </div>
     </div>
 @endforeach
