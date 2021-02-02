@@ -15,7 +15,7 @@ class ViewAllProduct extends Component
         $data['products'] = DB::table('products')
                     ->join('product_categories', 'product_categories.id', '=', 'products.product_category_id')
                     ->select('products.*', 'product_categories.title as categoryTitle')
-                    ->paginate(10);
+                    ->paginate(5);
 
         return view('livewire.admin.product.view-all-product', $data);
     }
