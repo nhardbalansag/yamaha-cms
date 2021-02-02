@@ -19,7 +19,7 @@ class LoanController extends Controller
         $data['applicants'] = DB::table('users')
                             ->join('customers_documents', 'users.id', '=', 'customers_documents.customer_id')
                             ->select('users.*')
-                            ->groupBy('users.id')
+                            ->groupBy('users.id', 'users.first_name')
                             ->paginate(5);
 
         return view('pages.admin.loan.view-all-applicants.index', $data);
