@@ -16,21 +16,10 @@ class LoanController extends Controller
      */
     public function index()
     {
-        $data['applicants'] = DB::select('SELECT
-                                                users.id as id,
-                                                users.first_name as first_name,
-                                                users.verified as verified,
-                                                users.role as role,
-                                                users.email as email
-                                            FROM users, customers_documents
-                                            WHERE (users.id = customers_documents.customer_id)
-                                            GROUP BY
-                                                users.id,
-                                                users.first_name,
-                                                users.verified,
-                                                users.role,
-                                                users.email
-                                                ');
+
+        $data['applicants'] = DB::table('users')
+                            ->join('customers_documents', 'users.id', '=', 'customers_documents.customer_id')
+                            ->paginate(5);
 
         return view('pages.admin.loan.view-all-applicants.index', $data);
     }
@@ -99,70 +88,4 @@ class LoanController extends Controller
         return view('pages.admin.loan.view-one-applicant-document.index', $data);
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
