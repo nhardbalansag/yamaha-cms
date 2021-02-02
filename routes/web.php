@@ -86,6 +86,8 @@ Route::middleware('auth')->group(function(){
         Route::get('/order/{id}',  [CustomerController::class, 'viewoneInquiry']);
         Route::get('/orders/viewallOrders/transactions',  [CustomerController::class, 'viewallOrders']);
         Route::get('/orders/viewallOrders/transactions/{id}',  [CustomerController::class, 'viewoneOrderTransaction']);
+        Route::get('/orders/viewallOrders/active',  [CustomerController::class, 'activeTransaction']);
+        Route::get('/orders/viewallOrders/done',  [CustomerController::class, 'doneTransaction']);
 
 
         //generate pdf

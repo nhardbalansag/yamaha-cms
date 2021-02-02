@@ -129,4 +129,28 @@ class CustomerController extends Controller
         $dompdf->stream( $data['users'][0]->first_name ."-". $data['transactions'][0]->id . ".pdf");
     }
 
+    public function activeTransaction(){
+
+        $data['transactions'] = DB::table('transactions')
+                    ->join('products', 'products.id', '=', 'transactions.productId')
+                    ->join('users', 'users.id', '=', 'transactions.customerId')
+                    ->where('transactions.status', 'processing')
+                    ->select('transactions.*', 'users.first_name', 'products.title')
+                    ->get();
+
+        return view('pages.admin.customer.view-all-active-orders', $data);
+    }
+
+    public function doneTransaction(){
+
+        $data['transactions'] = DB::table('transactions')
+                    ->join('products', 'products.id', '=', 'transactions.productId')
+                    ->join('users', 'users.id', '=', 'transactions.customerId')
+                    ->where('transactions.status', 'done')
+                    ->select('transactions.*', 'users.first_name', 'products.title')
+                    ->get();
+
+        return view('pages.admin.customer.view-all-active-orders', $data);
+    }
+
 }
