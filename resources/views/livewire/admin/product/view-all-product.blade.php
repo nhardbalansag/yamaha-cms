@@ -21,6 +21,14 @@
         date created
     </div>
 </div>
+@if(count($products) <= 0)
+    <div class="d-flex justify-content-center">
+        <div class="text-center">
+            <i class="fas fa-box-open fa-10x"></i>
+            <p class="capitalize">no items to show</p>
+        </div>
+    </div>
+@else
 @foreach($products as $key => $value)
 
     <div class="py-2 my-2 text-center border-bottom border-dark row col-md-12">
@@ -51,5 +59,6 @@
         </div>
     </div>
 @endforeach
+@endif
 
 @endsection
