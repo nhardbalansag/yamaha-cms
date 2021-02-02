@@ -40,6 +40,7 @@ class LoanController extends Controller
                                             GROUP BY
                                                 id, photo_path, customer_id, status, title
                                                 ');
+
         return view('pages.admin.loan.view-one-applicant-document.index', $data);
     }
 
