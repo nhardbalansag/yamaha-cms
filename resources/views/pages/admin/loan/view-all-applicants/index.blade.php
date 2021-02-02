@@ -50,9 +50,11 @@
         </div>
     </div>
 @endforeach
+
 <div>
     {!! $applicants->links() !!}
 </div>
+
 @endif
 
 @endsection
