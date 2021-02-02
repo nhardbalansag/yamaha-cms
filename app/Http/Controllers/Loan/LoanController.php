@@ -62,6 +62,7 @@ class LoanController extends Controller
                                                 ');
 
         return view('pages.admin.loan.view-one-applicant-document.index', $data);
+
     }
 
     public function declined($id, $customer_id){
