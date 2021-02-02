@@ -28,12 +28,14 @@ class ResubmitDocument extends Component
     {
         $validatedData = $this->validate($this->data);
 
+        $storePhoto = $this->photo_path->store('photos');
+
         $affected = DB::table('customers_documents')
                         ->where('id',  $this->customersDocumentInfo[0]['id'])
                         ->update(
                             [
                                 'status' => "pending",
-                                'photo_path' => $validatedData['photo_path']
+                                'photo_path' => $storePhoto
                             ]
                             );
 
