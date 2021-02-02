@@ -16,7 +16,6 @@ class LoanController extends Controller
      */
     public function index()
     {
-
         $data['applicants'] = DB::table('users')
                             ->join('customers_documents', 'users.id', '=', 'customers_documents.customer_id')
                             ->paginate(5);
