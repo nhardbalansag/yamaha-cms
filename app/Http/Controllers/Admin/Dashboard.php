@@ -129,20 +129,20 @@ class Dashboard extends Controller
             $data['productStatus'] = array($data['pending'][0]->pending, $data['publish'][0]->publish);
 
             $data['totalInquiries'] = DB::table('inquiries')
-                                ->select(DB::raw('count(*) as inquiries_count'))
-                                ->first();
+                                    ->select(DB::raw('count(*) as inquiries_count'))
+                                    ->first();
 
             $data['totalOrders'] = DB::table('transactions')
-                                ->select(DB::raw('count(*) as transaction_count'))
-                                ->first();
+                                    ->select(DB::raw('count(*) as transaction_count'))
+                                    ->first();
 
             $data['totalUsers'] = DB::table('users')
                                 ->select(DB::raw('count(*) as users_count'))
                                 ->first();
 
             $data['totalProducts'] = DB::table('products')
-                                ->select(DB::raw('count(*) as product_count'))
-                                ->first();
+                                    ->select(DB::raw('count(*) as product_count'))
+                                    ->first();
 
         return view('pages.admin.dashboard.index', $data);
     }
