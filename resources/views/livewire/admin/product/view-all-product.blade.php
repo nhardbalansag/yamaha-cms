@@ -55,7 +55,7 @@
             {{ $value->products_created_at }}
         </div>
         <div class=" col-md-2">
-            <a class="dropdown-item text-primary" href="/product/view/{{ $value->products_id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
+            <a href="/product/view/{{ $value->products_id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
         </div>
     </div>
 @endforeach
