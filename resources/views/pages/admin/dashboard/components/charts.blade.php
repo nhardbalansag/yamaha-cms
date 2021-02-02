@@ -53,18 +53,24 @@
 <div class="mt-5 ">
     <div class="row col-md-12">
         <div class="col-md-6">
+            <div>
+                <p style="font-size:30px">Inquiry report</p>
+            </div>
             <canvas id="inquiry" ></canvas>
         </div>
         <div class="col-md-6">
+            <p style="font-size:30px">Order report</p>
             <canvas id="order" ></canvas>
         </div>
     </div>
     <hr>
     <div class="row col-md-12">
         <div class="col-md-6">
+            <p style="font-size:30px">Users report</p>
             <canvas id="customerStatus" ></canvas>
         </div>
         <div class="col-md-6">
+            <p style="font-size:30px">product report</p>
             <canvas id="productStatus" ></canvas>
         </div>
     </div>
