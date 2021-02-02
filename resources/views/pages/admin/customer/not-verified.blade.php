@@ -47,6 +47,9 @@
         </div>
     </div>
 @endforeach
+<div>
+    {!! $notVerified->links() !!}
+</div>
 @endif
 
 @endsection

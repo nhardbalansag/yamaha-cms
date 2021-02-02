@@ -33,32 +33,35 @@
 
     <div class="py-2 my-2 text-center border-bottom border-dark row col-md-12">
         <div class="col-md-2 text-truncate">
-            <a class="text-truncate text-primary" href="{{asset('storage/' . $value->products_photo_path) }}">
-                <img class="w-20" src="{{asset('storage/' . $value->products_photo_path) }}" alt="">
+            <a class="text-truncate text-primary" href="{{asset('storage/' . $value->photo_path) }}">
+                <img class="w-20" src="{{asset('storage/' . $value->photo_path) }}" alt="">
             </a>
         </div>
         <div class="col-md-2">
-            {{$value->products_title}}
+            {{$value->title}}
         </div>
         <div class="col-md-1">
             <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
-                {{$value->products_status}}
+                {{$value->status}}
             </span>
         </div>
         <div class="col-md-1">
             {{$value->categoryTitle }}
         </div>
         <div class="col-md-2">
-            {{$value->products_price }}
+            {{$value->price }}
         </div>
         <div class="col-md-2">
-            {{ $value->products_created_at }}
+            {{ $value->created_at }}
         </div>
         <div class=" col-md-2">
-            <a href="/product/view/{{ $value->products_id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
+            <a href="/product/view/{{ $value->id }}" class="text-indigo-600 hover:text-indigo-900">view</a>
         </div>
     </div>
 @endforeach
+<div>
+    {!! $products->links() !!}
+</div>
 @endif
 
 @endsection

@@ -54,7 +54,9 @@
         </div>
 
     @endforeach
-
+    <div>
+        {!! $transactions->links() !!}
+    </div>
 @endif
 
 @endsection

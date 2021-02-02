@@ -46,6 +46,11 @@
         </div>
     </div>
 @endforeach
+
+<div>
+    {!! $allCustomer->links() !!}
+</div>
+
 @endif
 
 @endsection

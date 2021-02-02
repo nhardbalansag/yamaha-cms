@@ -47,6 +47,9 @@
         </div>
     </div>
 @endforeach
+<div>
+    {!! $inquiries->links() !!}
+</div>
 @endif
 
 @endsection

@@ -18,6 +18,14 @@
         action
     </div>
 </div>
+@if(count($applicants) <= 0)
+    <div class="d-flex justify-content-center">
+        <div class="text-center">
+            <i class="fas fa-box-open fa-10x"></i>
+            <p class="capitalize">no items to show</p>
+        </div>
+    </div>
+@else
 @foreach($applicants as $key => $value)
 
     <div class="py-2 my-2 text-center border-bottom border-dark row col-md-12">
@@ -42,6 +50,10 @@
         </div>
     </div>
 @endforeach
+<div>
+    {!! $applicants->links() !!}
+</div>
+@endif
 
 @endsection
 
