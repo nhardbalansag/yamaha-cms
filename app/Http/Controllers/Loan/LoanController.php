@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Loan;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Customer\DocumentController;
 
 class LoanController extends Controller
 {
@@ -49,7 +47,6 @@ class LoanController extends Controller
         $affected = DB::table('customers_documents')
                             ->where('id', $id)
                             ->update(['status' => "approved"]);
-
 
         $data['documents'] = DB::select('SELECT
                                                 customers_documents.photo_path as photo_path,
