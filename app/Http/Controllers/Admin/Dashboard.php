@@ -20,7 +20,7 @@ class Dashboard extends Controller
         $data['type'] = 'bar';
 
         $data['products'] = DB::select('
-            SELECT 
+            SELECT
                 product_categories.title as categoryTitle,
                 products.id as products_id,
                 products.photo_path as products_photo_path,
@@ -29,7 +29,7 @@ class Dashboard extends Controller
                 products.status as products_status,
                 products.price as products_price,
                 products.created_at as products_created_at
-            
+
             FROM products, product_categories
             WHERE products.product_category_id = product_categories.id
             LIMIT 0,10');
@@ -49,16 +49,16 @@ class Dashboard extends Controller
                 array_push($values, $data['inquiries'][$i]->inquiries);
                 array_push($year, $data['inquiries'][$i]->year);
             }
-           
+
             $data['inquiries_month'] = $month;
             $data['inquiries_values'] = $values;
             $data['inquiries_year'] = $year;
-          
-         
-            unset($month);               
-            unset($values);               
+
+
+            unset($month);
+            unset($values);
             unset($year);
-          
+
             //end inquiries
             $data['reserve'] = DB::select('SELECT MONTH(created_at) month , YEAR(CURDATE()) year, COUNT(*) reserve
                                             FROM reservations
@@ -74,18 +74,18 @@ class Dashboard extends Controller
                 array_push($values, $data['reserve'][$i]->reserve);
                 array_push($year, $data['reserve'][$i]->year);
             }
-           
+
             $data['reserve_month'] = $month;
             $data['reserve_values'] = $values;
             $data['reserve_year'] = $year;
-         
-            unset($month);               
-            unset($values);               
+
+            unset($month);
+            unset($values);
             unset($year);
 
             //end reserve
             $data['order'] = DB::select('SELECT MONTH(created_at) month , YEAR(CURDATE()) year, COUNT(*) ordervalue
-                                            FROM customer_orders
+                                            FROM transactions
                                             WHERE YEAR(created_at) = YEAR(CURDATE())
                                             GROUP BY MONTH(created_at)' );
 
@@ -98,13 +98,13 @@ class Dashboard extends Controller
                 array_push($values, $data['order'][$i]->ordervalue);
                 array_push($year, $data['order'][$i]->year);
             }
-           
+
             $data['order_month'] = $month;
             $data['order_values'] = $values;
             $data['order_year'] = $year;
-         
-            unset($month);               
-            unset($values);               
+
+            unset($month);
+            unset($values);
             unset($year);
             //end orders
 
@@ -126,76 +126,26 @@ class Dashboard extends Controller
             $data['publish'] = DB::select('SELECT COUNT(*) as publish
                                             FROM products
                                             WHERE status =  "publish"' );
-                        
+
             $data['productStatus'] = array($data['pending'][0]->pending, $data['publish'][0]->publish);
 
+            $data['totalInquiries'] = DB::table('inquiries')
+                                ->select(DB::raw('count(*) as inquiries_count'))
+                                ->first();
+
+            $data['totalOrders'] = DB::table('transactions')
+                                ->select(DB::raw('count(*) as transaction_count'))
+                                ->first();
+
+            $data['totalUsers'] = DB::table('users')
+                                ->select(DB::raw('count(*) as users_count'))
+                                ->first();
+
+            $data['totalProducts'] = DB::table('products')
+                                ->select(DB::raw('count(*) as product_count'))
+                                ->first();
 
         return view('pages.admin.dashboard.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

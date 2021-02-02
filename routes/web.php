@@ -75,7 +75,6 @@ Route::middleware('auth')->group(function(){
         Route::get('/customer-all/verified',  [CustomerController::class, 'verified']);
         Route::get('/customer-all/inquiries',  [CustomerController::class, 'inquiries']);
 
-
         //LOAN APPLICANTS
         Route::get('/loan/applicants',  [LoanController::class, 'index']);
         Route::get('/loan/applicants/{id}',  [LoanController::class, 'viewCustomerDocument']);
