@@ -27,7 +27,6 @@
     </div>
 @else
 @foreach($applicants as $key => $value)
-
     <div class="py-2 my-2 text-center border-bottom border-dark row col-md-12">
         <div class="col-md-3 text-truncate">
             {{$value->first_name}}
