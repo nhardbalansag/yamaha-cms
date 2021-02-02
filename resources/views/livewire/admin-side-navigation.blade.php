@@ -19,10 +19,10 @@
                                     <a href="/orders/viewallOrders/transactions" class="text-black">view all orders</a>
                                </div>
                                <div class="py-2 col-12">
-                                    <a href="" class="text-black">active orders</a>
+                                    <a href="/orders/viewallOrders/active" class="text-black">active orders</a>
                                </div>
                                 <div class="py-2 col-12">
-                                    <a href="" class="text-black">done orders</a>
+                                    <a href="/orders/viewallOrders/done" class="text-black">done orders</a>
                                </div>
                             </div>
                         </li>
