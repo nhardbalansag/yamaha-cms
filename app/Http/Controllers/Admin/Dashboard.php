@@ -34,7 +34,6 @@ class Dashboard extends Controller
             WHERE products.product_category_id = product_categories.id
             LIMIT 0,10');
 
-
             $data['inquiries'] = DB::select('SELECT MONTH(created_at) month , YEAR(CURDATE()) year, COUNT(*) inquiries
                                             FROM inquiries
                                             WHERE YEAR(created_at) = YEAR(CURDATE())
