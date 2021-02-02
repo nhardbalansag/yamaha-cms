@@ -72,7 +72,6 @@ class LoanController extends Controller
                             ->where('id', $id)
                             ->update(['status' => "decline"]);
 
-
         $data['documents'] = DB::select('SELECT
                                                 customers_documents.photo_path as photo_path,
                                                 customers_documents.customer_id as customer_id,
