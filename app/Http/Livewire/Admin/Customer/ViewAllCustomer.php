@@ -10,7 +10,7 @@ class ViewAllCustomer extends Component
     public function render()
     {
         $data['allCustomer'] = DB::table('users')
-                                ->paginate(1);
+                                ->paginate(5);
 
         return view('livewire.admin.customer.view-all-customer', $data);
     }
