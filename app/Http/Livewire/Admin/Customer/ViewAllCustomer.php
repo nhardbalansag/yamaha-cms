@@ -9,12 +9,11 @@ class ViewAllCustomer extends Component
 {
     public function render()
     {
-        $data['allCustomer'] = DB::select('SELECT *
-                                            FROM users
-                                            WHERE role = "customer"');
-        
+        $data['allCustomer'] = DB::table('users')
+                                ->paginate(1);
+
         return view('livewire.admin.customer.view-all-customer', $data);
     }
 
-    
+
 }
