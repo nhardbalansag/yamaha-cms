@@ -26,7 +26,7 @@ class UpdateProductInventoryCount extends Component
                     ->where('id', $this->product_id)
                     ->update(['number_available' => $validatedData['count']]);
 
-        session()->flash('message', 'inventory count updated');
+        session()->flash('inventoryMessage', 'inventory count updated');
         return redirect()->to('/product/view/'. $this->product_id);
     }
 }

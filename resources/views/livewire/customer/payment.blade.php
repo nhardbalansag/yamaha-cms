@@ -82,8 +82,6 @@
     </div>
 
     @endif
-
-
     <footer class="pt-5 my-5 text-center text-muted text-small">
       <p class="mb-1">© 2017-2020 Company Name</p>
       <ul class="list-inline">
@@ -93,4 +91,7 @@
       </ul>
     </footer>
   </div>
-    </section>
+    <div wire:loading>
+        @include('pages.components.loadingState')
+    </div>
+</section>
