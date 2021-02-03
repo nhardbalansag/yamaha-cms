@@ -65,6 +65,13 @@
                 <div class="col-12">
                     <p class = "text-lg font-bold capitalize">All Products ({{ count($product) }})</p>
                 </div>
+                @if(count($product) <= 0)
+                    <div class="d-flex justify-content-center">
+                        <div class="text-center">
+                            <p class="capitalize">no items to show</p>
+                        </div>
+                    </div>
+                @else
                 @foreach($product as $key => $value)
                     <div class="my-4 col-6 col-md-3">
                         <a href="/home/product/{{$value->id}}">
@@ -82,6 +89,10 @@
                         </a>
                     </div>
                 @endforeach
+                    <div>
+                        {!! $product->links() !!}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

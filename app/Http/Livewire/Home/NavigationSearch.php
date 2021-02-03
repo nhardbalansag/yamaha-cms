@@ -13,16 +13,14 @@ class NavigationSearch extends Component
 
     public function render()
     {
-        $data['category'] = DB::select('
-                                SELECT *
-                                FROM product_categories
-                                WHERE status = "publish"
-                            ');
+        $data['category'] = DB::table('product_categories')->where('status', 'publish')->get();
+
         $data['recommended'] = Product::where('status', 'publish')->get();
 
-        $data['product'] = DB::select('SELECT *
-                                        FROM products
-                                        WHERE status = "publish" AND product_category_id  = 1');
+        $data['product'] = DB::table('products')
+                        ->where('status', 'publish')
+                        ->where('product_category_id', 1)
+                        ->paginate(10);
 
         if(!empty($this->topSearch)){
             $data['product'] = $this->searchProduct();
@@ -37,10 +35,11 @@ class NavigationSearch extends Component
 
         if($this->productCategory != "" ){
 
-            $data = DB::select('SELECT *
-                                FROM products
-                                WHERE status = "publish" AND product_category_id = '. $this->productCategory .'
-                                    ORDER BY ' . $this->sortBy  . ' ' . $this->orderBy);
+            $data =  DB::table('products')
+                    ->where('status', 'publish')
+                    ->where('product_category_id', $this->productCategory)
+                    ->orderByRaw(($this->sortBy  ? $this->sortBy : 'title') . ' ' .  ($this->orderBy ? $this->orderBy : 'DESC'))
+                    ->paginate(10);
 
             session()->flash('message', 'Your search returned ' . count($data) . ' item(s)');
 
@@ -49,8 +48,7 @@ class NavigationSearch extends Component
             $data =  DB::table('products')
                 ->where('status', 'publish')
                 ->where('product_category_id', 1)
-                ->get();
-
+                ->paginate(10);
         }
 
         return  $data;
@@ -61,6 +59,7 @@ class NavigationSearch extends Component
         $data = DB::select('SELECT *
                             FROM products
                             WHERE status = "publish" AND title LIKE "%'.$this->topSearch.'%" ' );
+
         session()->flash('message', 'Your search returned ' . count($data) . ' item(s)');
         return $data;
     }
