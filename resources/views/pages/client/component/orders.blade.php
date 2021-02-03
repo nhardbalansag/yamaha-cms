@@ -32,11 +32,11 @@
                         </p>
                     </div>
                 </div>
-            @endforeach
-                <div>
-                    {!! $transactionData->links() !!}
-                </div>
-            @endif
+                @endforeach
+                    <div>
+                        {!! $transactionData->links() !!}
+                    </div>
+                @endif
         </div>
     </div>
 </div>
