@@ -13,7 +13,6 @@ class NavigationSearch extends Component
 
     public function render()
     {
-
         $data['category'] = DB::select('
                                 SELECT *
                                 FROM product_categories
