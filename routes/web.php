@@ -79,9 +79,6 @@ Route::middleware('auth')->group(function(){
         //LOAN APPLICANTS
         Route::get('/loan/applicants',  [LoanController::class, 'index']);
         Route::get('/loan/applicants/{id}',  [LoanController::class, 'viewCustomerDocument']);
-        Route::get('/loan/applicants/approved/{id}/{customer_id}',  [LoanController::class, 'approved']);
-        Route::get('/loan/applicants/declined/{id}/{customer_id}',  [LoanController::class, 'declined']);
-
 
         //ORDERS
         Route::get('/order/{id}',  [CustomerController::class, 'viewoneInquiry']);

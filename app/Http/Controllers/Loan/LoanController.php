@@ -18,7 +18,7 @@ class LoanController extends Controller
                             ->join('customers_documents', 'users.id', '=', 'customers_documents.customer_id')
                             ->select('users.id', 'users.first_name', 'users.verified', 'users.role', 'users.email')
                             ->groupBy('users.id', 'users.first_name', 'users.verified', 'users.role', 'users.email')
-                            ->paginate(5);
+                            ->paginate(10);
 
         return view('pages.admin.loan.view-all-applicants.index', $data);
     }
@@ -63,28 +63,6 @@ class LoanController extends Controller
 
         return view('pages.admin.loan.view-one-applicant-document.index', $data);
 
-    }
-
-    public function declined($id, $customer_id){
-
-        $affected = DB::table('customers_documents')
-                            ->where('id', $id)
-                            ->update(['status' => "decline"]);
-
-        $data['documents'] = DB::select('SELECT
-                                                customers_documents.photo_path as photo_path,
-                                                customers_documents.customer_id as customer_id,
-                                                customers_documents.status as status,
-                                                document_categories.title as title,
-                                                customers_documents.id as id
-
-                                            FROM customers_documents, document_categories
-                                            WHERE  (document_categories.id = customers_documents.document_id) and customers_documents.customer_id = ' . $customer_id .'
-                                            GROUP BY
-                                                id, photo_path, customer_id, status, title
-                                                ');
-
-        return view('pages.admin.loan.view-one-applicant-document.index', $data);
     }
 
 }
