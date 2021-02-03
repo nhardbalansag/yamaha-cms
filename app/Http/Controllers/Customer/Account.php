@@ -127,7 +127,6 @@ class Account extends Controller
         }
     }
 
-
     public function verifyEmail(){
 
         $verification = rand(0, 10000);

@@ -43,69 +43,63 @@
         @auth
           <div class="modal-header d-flex justify-content-between align-items-center">
             <a data-value="User Account" data-header="User Account" >
-              <span  class="capitalize h6 text-secondary font-weight-bold">{{Auth::user()->first_name}}'s account</span> 
+              <span  class="capitalize h6 text-secondary font-weight-bold">{{Auth::user()->first_name}}'s account</span>
             </a>
-          
+
           </div>
         @endauth
         <div class="modal-header d-flex flex-column justify-content-left align-items-left">
           <a class="my-2" data-disable="true" data-value="My Buying" data-header="My Buying" href="#">
-            <span class="h6 text-dark font-weight-bold">My Account</span> 
+            <span class="h6 text-dark font-weight-bold">My Account</span>
           </a>
           <a  @auth href="/my-account/{{Auth::user()->id}}" @endauth class="my-2" href="/customer/login">
-            <span class="h6 text-dark">Order</span> 
+            <span class="h6 text-dark">Order</span>
           </a>
           <a class="my-2" @auth href="/my-account/{{Auth::user()->id}}"  @endauth href="/customer/login">
-            <span class="h6 text-dark">Reserve</span> 
+            <span class="h6 text-dark">Reserve</span>
           </a>
         </div>
         <div class="modal-header d-flex flex-column justify-content-left align-items-left">
           <a class="my-2" data-disable="true" data-value="My Buying" data-header="My Buying" href="#">
-            <span class="h6 text-dark font-weight-bold">Explore</span> 
+            <span class="h6 text-dark font-weight-bold">Explore</span>
           </a>
-          <a class="my-2">
-            <span class="h6 text-dark">Contact Us</span> 
+          <a href="/" class="my-2" >
+            <span class="h6 text-dark">Parts</span>
           </a>
-          <a class="my-2" >
-            <span class="h6 text-dark">Parts</span> 
-          </a>
-           <a class="my-2" >
-            <span class="h6 text-dark">Service</span> 
-          </a>
-           <a class="my-2" >
-            <span class="h6 text-dark">Service</span> 
+           <a href="/my-account" class="my-2" >
+            <span class="h6 text-dark">Service</span>
           </a>
         </div>
         <div class="modal-header d-flex flex-column justify-content-left align-items-left">
           @auth
-            @if(Auth::user()->role === 'admin' && Auth::user()->verified === 1)
+            @if(Auth::user()->role === 'admin')
                 <a class="my-2" href="/dashboard">
-                    <span class="h6 text-dark font-weight-bold">User Account</span> 
+                    <span class="h6 text-dark font-weight-bold">User Account</span>
                 </a>
-            @elseif(Auth::user()->role === 'customer' && Auth::user()->verified === 1)
+            @elseif(Auth::user()->role === 'customer')
                 <a class="my-2" href="/my-account/{{Auth::user()->id}}">
-                    <span class="h6 text-dark font-weight-bold">User Account</span> 
+                    <span class="h6 text-dark font-weight-bold">User Account</span>
                 </a>
             @endif
-          @endauth  
+          @endauth
           @guest
           <div class="col-12">
               <div class="my-2 text-center col-11">
                 <a href="/customer/login" class="m-auto text-lg btn btn-primary w-100 font-weight-bold text-uppercase">Login</a>
-              </div>  
+              </div>
               <div class="my-2 text-center col-11">
                 <a href="/customer/register" class="m-auto text-lg btn btn-light text-primary w-100 font-weight-bold text-uppercase" > Sign Up</a>
               </div>
             </div>
           @endguest
-          
+
         </div>
         @auth
           <div class="mt-2 col-12">
               <div class="my-2 text-center col-11">
                 <form class="form-logout" action="{{ route('logout') }}" method="POST">
                 @csrf
-                  <a class="m-auto text-lg text-white btn btn-primary col-12 w-100 app-logout font-weight-bold text-uppercase" 
+                  <a class="m-auto text-lg text-white btn btn-primary col-12 w-100 app-logout font-weight-bold text-uppercase"
                     onclick="event.preventDefault();
                     this.closest('form').submit();">
                     Sign out
@@ -113,7 +107,7 @@
                 </form>
               </div>
           </div>
-        @endauth  
+        @endauth
       </div>
     </div>
   </div>
