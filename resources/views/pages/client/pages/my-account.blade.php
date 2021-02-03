@@ -17,7 +17,6 @@
             </nav>
             <div class="w-full p-3 tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab">
-                    {{-- {{$product->description}} --}}
                     @include('pages.client.component.profile')
                 </div>
                 <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">

@@ -20,13 +20,15 @@ class Account extends Controller
 
     public function index(){
 
-        $data['account_info'] = DB::select('SELECT *
-                                FROM users
-                                WHERE id = ' . Auth::user()->id);
-        $data['transactionData'] = DB::select('SELECT *, transactions.status as transactionStatus
-                                                FROM transactions, users, products
-                                                WHERE
-                                                    (users.id = transactions.customerId AND products.id = transactions.productId) AND users.id = ' . Auth::user()->id);
+        $data['account_info'] = DB::table('users')->where('id', Auth::user()->id)->first();
+
+        $data['transactionData'] = DB::table('products')
+        ->join('transactions', 'transactions.productId', '=', 'products.id')
+        ->join('users', 'users.id', '=', 'transactions.customerId')
+        ->select('products.*', 'transactions.status as transactionStatus', 'transactions.purchaseAmount')
+        ->where('users.id',  Auth::user()->id)
+        ->paginate(5);
+
         $data['approval_percent'] = DB::select('SELECT COUNT(*) as data_count
                                                 FROM customers_documents
                                                 WHERE customers_documents.status = "approved" and customers_documents.customer_id = ' . Auth::user()->id);

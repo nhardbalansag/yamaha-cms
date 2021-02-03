@@ -1,8 +1,8 @@
  <div>
     <div class="mb-2 card card-primary card-outline">
         <div class="card-body box-profile">
-            <h3 class="text-center profile-username text-capitalize">{{$account_info[0]->last_name}}, {{$account_info[0]->first_name}}</h3>
-            <p class="text-center text-muted">{{$account_info[0]->role}}</p>
+            <h3 class="text-center profile-username text-capitalize">{{$account_info->last_name}}, {{$account_info->first_name}}</h3>
+            <p class="text-center text-muted">{{$account_info->role}}</p>
             <ul class="mb-3 list-group list-group-unbordered">
             <li class="list-group-item">
                 <div class="p-0 row col-12">
@@ -17,19 +17,6 @@
                     </div>
                 </div>
             </li>
-            <li class="list-group-item">
-                <div class="p-0 row col-12">
-                    <div class="col-8">
-                        <p class="font-weight-bold">Reserve</p>
-                    </div>
-                    <div class="p-0 col-4 d-flex justify-content-end ">
-                        <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <p>(1)</p>
-                    </div>
-                </div>
-            </li>
             </ul>
         </div>
     </div>
@@ -38,25 +25,25 @@
             <h3 class="card-title">Information</h3>
         </div>
         <div class="card-body">
-            <strong><i class="mr-1 fas fa-book"></i>Address</strong>
+            <strong><i class="mr-1 fas fa-map-marker-alt"></i>Address</strong>
             <p class="text-muted">
-                {{$account_info[0]->home_address}},
-                {{$account_info[0]->street_address}},
-                {{$account_info[0]->city}},
-                {{$account_info[0]->country_region}}
+                {{$account_info->home_address}},
+                {{$account_info->street_address}},
+                {{$account_info->city}},
+                {{$account_info->country_region}}
 
             </p>
             <hr>
-             <strong><i class="mr-1 fas fa-book"></i>Postal</strong>
+             <strong><i class="mr-1 fas fa-mail-bulk"></i>Postal</strong>
             <p class="text-muted">
-                {{$account_info[0]->postal}}
+                {{$account_info->postal}}
             </p>
              <hr>
-             <strong><i class="mr-1 fas fa-book"></i>Email</strong>
+             <strong><i class="mr-1 fas fa-envelope"></i>Email</strong>
             <div class="p-0 row col-12 col-md-12">
                 <div class="col-12 col-md-4">
                     <p class="text-muted">
-                        {{$account_info[0]->email}}
+                        {{$account_info->email}}
                     </p>
                 </div>
                 <div class="mx-auto col-12 col-md-4">
@@ -71,13 +58,13 @@
                 </div>
             </div>
             <hr>
-             <strong><i class="mr-1 fas fa-book"></i>Contact number</strong>
+             <strong><i class="mr-1 fas fa-mobile-alt"></i>Contact number</strong>
             <p class="text-muted">
-                {{$account_info[0]->contact_number}}
+                {{$account_info->contact_number}}
             </p>
             <hr>
             <div class="pb-4">
-                <strong><i class="mr-1 fas fa-book"></i>Loan Credentials</strong>
+                <strong><i class="mr-1 fas fa-file-alt"></i>Loan Credentials</strong>
             </div>
             <div class="text-center row col-12">
                 <div class="col-6">

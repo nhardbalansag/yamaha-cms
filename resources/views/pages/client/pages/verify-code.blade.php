@@ -1,7 +1,7 @@
 @extends('welcome')
 @section('home-contents')
-    <div class="d-flex justify-content-center align-items-center">
-            
+    <div class="mt-2 d-flex justify-content-center align-items-center">
+
         <form action="/my-account/verify/email/code" method="POST">
             @csrf
             <div>

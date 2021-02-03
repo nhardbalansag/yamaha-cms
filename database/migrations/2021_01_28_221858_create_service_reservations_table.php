@@ -23,7 +23,7 @@ class CreateServiceReservationsTable extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->string('status', 20);
-            $table->dateTime('reservationDate', $precision = 0);
+            $table->date('reservationDate');
             $table->timestamps();
         });
     }
