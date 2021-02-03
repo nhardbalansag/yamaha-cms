@@ -172,7 +172,7 @@ class Account extends Controller
             $affected = User::where('id', $data['result'][0]->customerId)
                                 ->update(['verified' => true]);
 
-            return redirect('/my-account/' . $data['result'][0]->customerId);
+            return redirect('/my-account');
 
        }else{
             $data['result'] = "verification failed please confirm your email";

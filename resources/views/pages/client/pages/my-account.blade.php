@@ -25,7 +25,7 @@
                             <p>
                                 Note: at the moment you cant buy or reserve a product or services. Please verify first your email address.
                             </p>
-                            <a href="/my-account/{{ Auth::user()->id }}">click here to account</a>
+                            <a href="/my-account">click here to account</a>
                         </div>
                     @else
                         @include('pages.client.component.orders')
@@ -38,7 +38,7 @@
                             <p>
                                 Note: at the moment you cant buy or reserve a product or services. Please verify first your email address.
                             </p>
-                            <a href="/my-account/{{ Auth::user()->id }}">click here to account</a>
+                            <a href="/my-account">click here to account</a>
                         </div>
                     @else
                         @livewire('customer.reservation-process')
@@ -50,7 +50,7 @@
                             <p>
                                 Note: at the moment you cant buy or reserve a product or services. Please verify first your email address.
                             </p>
-                            <a href="/my-account/{{ Auth::user()->id }}">click here to account</a>
+                            <a href="/my-account">click here to account</a>
                         </div>
                     @else
                         @include('pages.client.component.loan-application')
