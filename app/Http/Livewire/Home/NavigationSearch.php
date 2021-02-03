@@ -20,10 +20,10 @@ class NavigationSearch extends Component
                             ');
         $data['recommended'] = Product::where('status', 'publish')->get();
 
-        $data['product'] = DB::select('SELECT *
-                                        FROM products
-                                        WHERE status = "publish" AND product_category_id  = 1');
-
+        $data['product'] = DB::table('products')
+                        ->where('status', 'publish')
+                        ->where('product_category_id', 1)
+                        ->paginate(10);
         if(!empty($this->topSearch)){
             $data['product'] = $this->searchProduct();
         }else if(empty($this->topSearch)){
@@ -49,7 +49,7 @@ class NavigationSearch extends Component
             $data =  DB::table('products')
                 ->where('status', 'publish')
                 ->where('product_category_id', 1)
-                ->get();
+                ->paginate(10);
 
         }
 
