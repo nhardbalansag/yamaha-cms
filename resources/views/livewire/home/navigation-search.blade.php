@@ -19,7 +19,7 @@
                     <div class="mb-6">
                         <div class="">
                             <label for="sortBy" class="block text-sm font-medium leading-5 text-gray-700">Sort</label>
-                            <select wire:model="sortBy" id="sortBy" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                            <select wire:model.defer="sortBy" id="sortBy" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
                                 <option value="title" >- Sort By -</option>
                                 <option value="title">Name</option>
                                 <option value="price">Price</option>
@@ -29,7 +29,7 @@
                     <div class="mb-6">
                         <div class="">
                             <label for="orderBy" class="block text-sm font-medium leading-5 text-gray-700">Order By</label>
-                            <select wire:model="orderBy" id="orderBy" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                            <select wire:model.defer="orderBy" id="orderBy" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
                                 <option value="ASC">- Order By -</option>
                                 <option value="ASC">Ascending</option>
                                 <option value="DESC">Descending</option>
@@ -39,7 +39,7 @@
                     <div class="mb-6">
                         <div class="">
                             <label for="productCategory" class="block text-sm font-medium leading-5 text-gray-700">Category</label>
-                            <select wire:model="productCategory"  id="productCategory" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                            <select wire:model.defer="productCategory"  id="productCategory" class="block w-full p-2 px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border-gray-400 border-solid rounded-md shadow-sm border-1 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
                                 <option value="">Select Category</option>
                                 @foreach($category as $key => $value)
                                     <option value="{{ $value->id }}">{{ $value->title }}</option>

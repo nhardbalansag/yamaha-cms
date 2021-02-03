@@ -47,9 +47,9 @@ class NavigationSearch extends Component
         }else{
 
             $data =  DB::table('products')
-            ->where('status', 'publish')
-            ->where('product_category_id', 1)
-            ->get();
+                ->where('status', 'publish')
+                ->where('product_category_id', 1)
+                ->get();
 
         }
 
