@@ -46,9 +46,11 @@ class NavigationSearch extends Component
 
         }else{
 
-            $data = DB::select('SELECT *
-                                FROM products
-                                WHERE status = "publish" AND product_category_id  = 1');
+            $data =  DB::table('products')
+            ->where('status', 'publish')
+            ->where('product_category_id', 1)
+            ->get();
+
         }
 
         return  $data;
