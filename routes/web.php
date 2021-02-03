@@ -90,6 +90,9 @@ Route::middleware('auth')->group(function(){
         Route::get('/orders/viewallOrders/active',  [CustomerController::class, 'activeTransaction']);
         Route::get('/orders/viewallOrders/done',  [CustomerController::class, 'doneTransaction']);
 
+        //reservations
+        Route::get('/reservations',  [CustomerController::class, 'viewAllreservations']);
+
 
         //generate pdf
         Route::get('/orders/viewallOrders/transactions/invoice-pdf/{id}',  [CustomerController::class, 'createPdf']);

@@ -31,7 +31,7 @@ class ResubmitDocument extends Component
         $storePhoto = $this->photo_path->store('photos');
 
         $affected = DB::table('customers_documents')
-                        ->where('id',  $this->customersDocumentInfo[0]['id'])
+                        ->where('id',  $this->customersDocumentInfo['id'])
                         ->update(
                             [
                                 'status' => "pending",

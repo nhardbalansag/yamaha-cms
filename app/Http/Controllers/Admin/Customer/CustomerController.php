@@ -26,7 +26,7 @@ class CustomerController extends Controller
 
         $data['notVerified'] = DB::table('users')
                             ->where('verified', 0)
-                            ->paginate(5);
+                            ->paginate(10);
 
         return view('pages.admin.customer.not-verified', $data);
     }
@@ -36,7 +36,7 @@ class CustomerController extends Controller
 
         $data['verified'] = DB::table('users')
                             ->where('verified', 1)
-                            ->paginate(5);
+                            ->paginate(10);
 
         return view('pages.admin.customer.verified', $data);
 
@@ -45,7 +45,7 @@ class CustomerController extends Controller
     public function inquiries(){
 
         $data['inquiries'] = DB::table('inquiries')
-                            ->paginate(5);
+                            ->paginate(10);
 
         return view('pages.admin.customer.inquiries', $data);
 
@@ -71,7 +71,7 @@ class CustomerController extends Controller
                     ->join('products', 'products.id', '=', 'transactions.productId')
                     ->join('users', 'users.id', '=', 'transactions.customerId')
                     ->select('transactions.*', 'users.first_name', 'products.title')
-                    ->paginate(5);
+                    ->paginate(10);
 
         return view('pages.admin.customer.view-all-orders', $data);
 
@@ -136,7 +136,7 @@ class CustomerController extends Controller
                     ->join('users', 'users.id', '=', 'transactions.customerId')
                     ->where('transactions.status', 'processing')
                     ->select('transactions.*', 'users.first_name', 'products.title')
-                    ->paginate(5);
+                    ->paginate(10);
 
         return view('pages.admin.customer.view-all-active-orders', $data);
     }
@@ -148,9 +148,19 @@ class CustomerController extends Controller
                     ->join('users', 'users.id', '=', 'transactions.customerId')
                     ->where('transactions.status', 'done')
                     ->select('transactions.*', 'users.first_name', 'products.title')
-                    ->paginate(5);
+                    ->paginate(10);
 
         return view('pages.admin.customer.view-all-active-orders', $data);
+    }
+
+    public function viewAllreservations(){
+
+        $data['reservations'] = DB::table('service_reservations')
+                    ->join('users', 'users.id', '=', 'service_reservations.customerId')
+                    ->select('service_reservations.*', 'users.first_name', 'users.email')
+                    ->paginate(10);
+
+        return view('pages.admin.customer.view-all-reservations', $data);
     }
 
 }

@@ -47,7 +47,7 @@ class ProductController extends Controller
                             ->join('product_categories', 'products.product_category_id', '=', 'product_categories.id')
                             ->where('products.status', 'pending')
                             ->select('products.*', 'product_categories.title as categoryTitle')
-                            ->paginate(5);
+                            ->paginate(10);
 
         return view('livewire.admin.product.view-all-product', $data);
     }
@@ -58,7 +58,7 @@ class ProductController extends Controller
                             ->join('product_categories', 'products.product_category_id', '=', 'product_categories.id')
                             ->where('products.status', 'publish')
                             ->select('products.*', 'product_categories.title as categoryTitle')
-                            ->paginate(5);
+                            ->paginate(10);
 
         return view('livewire.admin.product.view-all-product', $data);
     }
