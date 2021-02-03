@@ -20,16 +20,24 @@ class SendInquiry extends Mailable
      * @return void
      */
     public function __construct($emailType, $productData)
-    { 
-        $this->first_name = $emailType == "inquiry" ? $productData['allusersData']['first_name'] : $productData['first_name'];  
-        $this->last_name = $emailType == "inquiry" ? $productData['allusersData']['last_name'] : $productData['last_name'];
-        $this->middle_name = $emailType == "inquiry" ?  $productData['allusersData']['middle_name'] : $productData['middle_name']; 
-        $this->email_address = $emailType == "inquiry" ? $productData['allusersData']['email_address']: $productData['email'];
-        $this->dataContent['userInfo'] = $this->first_name ." " . $this->middle_name . " " . $this->last_name;
-        $this->dataContent['productInfo'] = $productData;
-        $emailType == "inquiry" ? $this->dataContent['dataCount'] = count($this->dataContent['productInfo']['specification']) : "";
-        $this->emailType = $emailType;
-       
+    {
+
+        if($emailType === "deliver"){
+            $this->emailType = $emailType;
+            $this->first_name = $productData['first_name'];
+            $this->email_address = $productData['email'];
+            $this->dataContent['transactionInfo'] = $productData['product_details'];
+        }else{
+            $this->first_name = $emailType == "inquiry" ? $productData['allusersData']['first_name'] : $productData['first_name'];
+            $this->last_name = $emailType == "inquiry" ? $productData['allusersData']['last_name'] : $productData['last_name'];
+            $this->middle_name = $emailType == "inquiry" ?  $productData['allusersData']['middle_name'] : $productData['middle_name'];
+            $this->email_address = $emailType == "inquiry" ? $productData['allusersData']['email_address']: $productData['email'];
+            $this->dataContent['userInfo'] = $this->first_name ." " . $this->middle_name . " " . $this->last_name;
+            $this->dataContent['productInfo'] = $productData;
+            $emailType == "inquiry" ? $this->dataContent['dataCount'] = count($this->dataContent['productInfo']['specification']) : "";
+            $this->emailType = $emailType;
+        }
+
     }
 
     /**
@@ -41,13 +49,12 @@ class SendInquiry extends Mailable
     {
         $from_name                = env('MAIL_FROM_NAME');
         $from_email               = env('MAIL_FROM_ADDRESS');
-        $to_name                  = $this->first_name ." " . $this->middle_name . " " . $this->last_name;
+        $to_name                  = $this->first_name;
         $to_email                 = $this->email_address;
 
         return $this->from($from_email, $from_name)
-                    ->subject('Account Verification')
+                    ->subject('Notification')
                     ->to($to_email)
-                    ->view($this->emailType == 'inquiry' ? 'Mail.Inquiry.index' : 'Mail.Authenticate.index', $this->dataContent);
+                    ->view($this->emailType == 'inquiry' ? 'Mail.Inquiry.index' : ($this->emailType == 'deliver' ? 'Mail.OrderNotification.index' : 'Mail.Authenticate.index') , $this->dataContent);
     }
 }
-                    

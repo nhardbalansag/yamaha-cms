@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -6,9 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
     <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
     <title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,300,400,500,600,700" rel="stylesheet">
     <!-- CSS Reset : BEGIN -->
     <style>
 
@@ -33,7 +32,6 @@ body {
 div[style*="margin: 16px 0"] {
     margin: 0 !important;
 }
-
 /* What it does: Stops Outlook from adding extra spacing to tables. */
 table,
 td {
@@ -110,22 +108,18 @@ img.g-img + div {
         min-width: 414px !important;
     }
 }
+</style>
 
-    </style>
+<style>
 
-    <!-- CSS Reset : END -->
-
-    <!-- Progressive Enhancements : BEGIN -->
-    <style>
-
-	    .primary{
-	background: #30e3ca;
+.primary{
+	background: #17bebb;
 }
 .bg_white{
 	background: #ffffff;
 }
 .bg_light{
-	background: #fafafa;
+	background: #f7fafa;
 }
 .bg_black{
 	background: #000000;
@@ -165,16 +159,20 @@ img.g-img + div {
 	color: #000;
 	font-weight: 700;
 }
+.btn-custom{
+	color: rgba(0,0,0,.3);
+	text-decoration: underline;
+}
 
 h1,h2,h3,h4,h5,h6{
-	font-family: 'Lato', sans-serif;
+	font-family: 'Work Sans', sans-serif;
 	color: #000000;
 	margin-top: 0;
 	font-weight: 400;
 }
 
 body{
-	font-family: 'Lato', sans-serif;
+	font-family: 'Work Sans', sans-serif;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 1.8;
@@ -182,7 +180,7 @@ body{
 }
 
 a{
-	color: #30e3ca;
+	color:#1b3295;
 }
 
 table{
@@ -193,10 +191,10 @@ table{
 	margin: 0;
 }
 .logo h1 a{
-	color:#1b3295;
+	color: #1b3295;
 	font-size: 24px;
 	font-weight: 700;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Work Sans', sans-serif;
 }
 
 /*HERO*/
@@ -210,72 +208,42 @@ table{
 }
 .hero .text h2{
 	color: #000;
-	font-size: 40px;
-	margin-bottom: 0;
-	font-weight: 400;
-	line-height: 1.4;
+	font-size: 34px;
+	margin-bottom: 15px;
+	font-weight: 300;
+	line-height: 1.2;
 }
 .hero .text h3{
 	font-size: 24px;
-	font-weight: 300;
+	font-weight: 200;
 }
 .hero .text h2 span{
 	font-weight: 600;
-	color: #30e3ca;
+	color: #000;
 }
 
 
-/*HEADING SECTION*/
-.heading-section{
-}
-.heading-section h2{
-	color: #000000;
-	font-size: 28px;
-	margin-top: 0;
-	line-height: 1.4;
-	font-weight: 400;
-}
-.heading-section .subheading{
-	margin-bottom: 20px !important;
-	display: inline-block;
-	font-size: 13px;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	color: rgba(0,0,0,.4);
+/*PRODUCT*/
+.product-entry{
+	display: block;
 	position: relative;
+	float: left;
+	padding-top: 20px;
 }
-.heading-section .subheading::after{
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: -10px;
-	content: '';
-	width: 100%;
-	height: 2px;
-	background: #30e3ca;
-	margin: 0 auto;
+.product-entry .text{
+	width: calc(100% - 125px);
+	padding-left: 20px;
 }
-
-.heading-section-white{
-	color: rgba(255,255,255,.8);
-}
-.heading-section-white h2{
-	font-family:
-	line-height: 1;
+.product-entry .text h3{
+	margin-bottom: 0;
 	padding-bottom: 0;
 }
-.heading-section-white h2{
-	color: #ffffff;
+.product-entry .text p{
+	margin-top: 0;
 }
-.heading-section-white .subheading{
-	margin-bottom: 0;
-	display: inline-block;
-	font-size: 13px;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	color: rgba(255,255,255,.4);
+.product-entry img, .product-entry .text{
+	float: left;
 }
-
 
 ul.social{
 	padding: 0;
@@ -307,15 +275,10 @@ ul.social li{
 	color: rgba(0,0,0,1);
 }
 </style>
-
-
 </head>
 
 <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
 	<center style="width: 100%; background-color: #f1f1f1;">
-    <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
-      &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
-    </div>
     <div style="max-width: 600px; margin: 0 auto;" class="email-container">
     	<!-- BEGIN BODY -->
       <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
@@ -323,36 +286,48 @@ ul.social li{
           <td valign="top" class="bg_white" style="padding: 1em 2.5em 0 2.5em;">
           	<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
           		<tr>
-          			<td class="logo" style="text-align: center;">
+          			<td class="logo" style="text-align: left;">
 			            <h1><a href="#">{{ env('APP_NAME') }}</a></h1>
 			          </td>
           		</tr>
           	</table>
           </td>
 	      </tr><!-- end tr -->
-	      <tr>
-          <td valign="middle" class="hero bg_white" style="padding: 3em 0 2em 0;">
-            <img src="images/email.png" alt="" style="width: 300px; max-width: 600px; height: auto; margin: auto; display: block;">
-          </td>
-	      </tr><!-- end tr -->
 				<tr>
-          <td valign="middle" class="hero bg_white" style="padding: 2em 0 4em 0;">
-            <table>
+          <td valign="middle" class="hero bg_white" style="padding: 2em 0 2em 0;">
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
             	<tr>
-            		<td>
-            			<div class="text" style="padding: 0 2.5em; text-align: center;">
-            				<h2>Please verify your email</h2>
-                            <h3>Amazing deals, updates, interesting news right in your inbox</h3>
-                            <h4>Verification code: {{ $productInfo['verification'] }}</h4>
-            				<p><a href="{{ env('APP_URL') }}/my-account/verify/index" class="btn btn-primary">Check Account</a></p>
+            		<td style="padding: 0 2.5em; text-align: left;">
+            			<div class="text">
+            				<h2>{{ $transactionInfo->first_name }}, your item is now ready to be shipped thank you.</h2>
+            				<h3>Amazing deals, updates, interesting news right in your inbox</h3>
             			</div>
             		</td>
             	</tr>
             </table>
           </td>
-	      </tr><!-- end tr -->
-      <!-- 1 Column Text + Button : END -->
       </table>
+      <div class="pb-2 bg_white d-flex justify-content-center align-items-center">
+        <div>
+             <div class="col-md-12 col-12 row" style="border-bottom: 1px solid rgba(0,0,0,.05);">
+                 <div class="col-md-4 col-12">
+                     <img src="{{ env('APP_URL')}}/{{ $transactionInfo->photo_path }}" alt="product image" style="width: 100px; max-width: 600px; height: auto; margin-bottom: 20px; display: block;">
+                 </div>
+                 <div class="col-md-4 col-12">
+                     <div >
+                         <h3>{{ $transactionInfo->title }}</h3>
+                         <p>{{ $transactionInfo->description }}</p>
+                     </div>
+                 </div>
+                 <div class="col-md-4 col-12">
+                     <span class="price" style="color: #000; font-size: 20px;">₱{{number_format($transactionInfo->price)}}.00</span>
+                 </div>
+             </div>
+             <div class="pb-4">
+                <p><a href="{{ env('APP_URL') }}" class="btn btn-primary">Continue to your account</a></p>
+             </div>
+        </div>
+     </div>
       <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
       	<tr>
           <td valign="middle" class="bg_light footer email-section">
@@ -396,7 +371,7 @@ ul.social li{
               </tr>
             </table>
           </td>
-        </tr><!-- end: tr -->
+        </tr>
       </table>
     </div>
   </center>

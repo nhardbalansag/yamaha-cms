@@ -13,6 +13,7 @@ use App\Http\Controllers\Customer\Account;
 use App\Http\Controllers\Customer\DocumentController;
 use App\Http\Controllers\Admin\Customer\CustomerController;
 use App\Http\Controllers\Loan\LoanController;
+use App\Http\Controllers\Admin\Notification\NotificationController;
 
 /*x
 |--------------------------------------------------------------------------
@@ -92,6 +93,10 @@ Route::middleware('auth')->group(function(){
 
         //generate pdf
         Route::get('/orders/viewallOrders/transactions/invoice-pdf/{id}',  [CustomerController::class, 'createPdf']);
+
+
+        //notification
+        Route::get('/sendNotificationEmail/{id}',  [NotificationController::class, 'sendOrderStatusDeliver']);
 
     });
 });
