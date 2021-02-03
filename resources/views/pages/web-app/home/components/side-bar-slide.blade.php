@@ -52,10 +52,10 @@
           <a class="my-2" data-disable="true" data-value="My Buying" data-header="My Buying" href="#">
             <span class="h6 text-dark font-weight-bold">My Account</span>
           </a>
-          <a  @auth href="/my-account/{{Auth::user()->id}}" @endauth class="my-2" href="/customer/login">
+          <a  @auth href="/my-account" @endauth class="my-2" href="/customer/login">
             <span class="h6 text-dark">Order</span>
           </a>
-          <a class="my-2" @auth href="/my-account/{{Auth::user()->id}}"  @endauth href="/customer/login">
+          <a class="my-2" @auth href="/my-account"  @endauth href="/customer/login">
             <span class="h6 text-dark">Reserve</span>
           </a>
         </div>
@@ -77,7 +77,7 @@
                     <span class="h6 text-dark font-weight-bold">User Account</span>
                 </a>
             @elseif(Auth::user()->role === 'customer')
-                <a class="my-2" href="/my-account/{{Auth::user()->id}}">
+                <a class="my-2" href="/my-account">
                     <span class="h6 text-dark font-weight-bold">User Account</span>
                 </a>
             @endif
