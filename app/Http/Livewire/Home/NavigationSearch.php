@@ -9,7 +9,7 @@ use Livewire\Component;
 class NavigationSearch extends Component
 {
 
-    public $productCategory="", $orderBy="", $sortBy ="", $topSearch="";
+    public $productCategory, $orderBy, $sortBy, $topSearch;
 
     public function render()
     {
@@ -41,7 +41,7 @@ class NavigationSearch extends Component
             $data = DB::select('SELECT *
                                 FROM products
                                 WHERE status = "publish" AND product_category_id = '. $this->productCategory .'
-                                    ORDER BY ' . $this->sortBy . ' ' . $this->orderBy);
+                                    ORDER BY ' . $this->sortBy  . ' ' . $this->orderBy);
 
             session()->flash('message', 'Your search returned ' . count($data) . ' item(s)');
 
