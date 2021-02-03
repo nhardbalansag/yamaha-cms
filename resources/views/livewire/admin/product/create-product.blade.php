@@ -145,6 +145,9 @@
             </form>
         </div>
     </div>
+    <div wire:loading>
+        @include('pages.components.loadingState')
+    </div>
 </div>
 
 
