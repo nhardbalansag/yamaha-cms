@@ -311,7 +311,7 @@ ul.social li{
         <div>
              <div class="col-md-12 col-12 row" style="border-bottom: 1px solid rgba(0,0,0,.05);">
                  <div class="col-md-4 col-12">
-                     <img src="{{ env('APP_URL')}}/{{ $transactionInfo->photo_path }}" alt="product image" style="width: 100px; max-width: 600px; height: auto; margin-bottom: 20px; display: block;">
+                     <img src="{{ env('APP_URL')}}/storage/{{ $transactionInfo->photo_path }}" alt="product image" style="width: 100px; max-width: 600px; height: auto; margin-bottom: 20px; display: block;">
                  </div>
                  <div class="col-md-4 col-12">
                      <div >
