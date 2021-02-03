@@ -32,9 +32,6 @@
     </a>
     <div class="ml-8 collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="mr-auto navbar-nav ">
-        <li class="nav-item active">
-          <a class="text-white nav-link" href="#" tabindex="-1" aria-disabled="true">Contact us</a>
-        </li>
         @auth
           @if(Auth::user()->role === 'admin' && Auth::user()->verified === 1)
             <li class="nav-item active">
@@ -89,12 +86,6 @@
     </div>
   </nav>
 </section>
-{{-- <div class="jumbotron jumbotron-fluid bg-dark">
-  <div class="container">
-    <h1 class="text-white capitalize display-4">megavia</h1>
-    <p class="text-white lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum enim eligendi voluptas</p>
-  </div>
-</div> --}}
 
 <div id="carouselExampleSlidesOnly" class="hidden carousel slide md:block" data-ride="carousel">
   <div class="carousel-inner">
