@@ -17,7 +17,6 @@ class Account extends Controller
 
     protected $emailType = "registration";
 
-
     public function index(){
 
         $data['account_info'] = DB::table('users')->where('id', Auth::user()->id)->first();
