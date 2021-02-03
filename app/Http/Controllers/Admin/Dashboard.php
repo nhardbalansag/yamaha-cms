@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Products\Product;
 use App\Models\Admin\Products\ProductCategory;
 use Illuminate\Support\Facades\DB;
-
+use DateTime;
 class Dashboard extends Controller
 {
     /**
@@ -44,7 +44,9 @@ class Dashboard extends Controller
             $year = array();
 
             for($i = 0; $i < count($data['inquiries']); $i++){
-                array_push($month, $data['inquiries'][$i]->month);
+                $dateObj   = DateTime::createFromFormat('!m', $data['inquiries'][$i]->month);
+                $monthName = $dateObj->format('F'); // March
+                array_push($month, $monthName);
                 array_push($values, $data['inquiries'][$i]->inquiries);
                 array_push($year, $data['inquiries'][$i]->year);
             }
@@ -69,7 +71,9 @@ class Dashboard extends Controller
             $year = array();
 
             for($i = 0; $i < count($data['reserve']); $i++){
-                array_push($month, $data['reserve'][$i]->month);
+                $dateObj   = DateTime::createFromFormat('!m', $data['reserve'][$i]->month);
+                $monthName = $dateObj->format('F'); // March
+                array_push($month, $monthName);
                 array_push($values, $data['reserve'][$i]->reserve);
                 array_push($year, $data['reserve'][$i]->year);
             }
@@ -93,7 +97,9 @@ class Dashboard extends Controller
             $year = array();
 
             for($i = 0; $i < count($data['order']); $i++){
-                array_push($month, $data['order'][$i]->month);
+                $dateObj   = DateTime::createFromFormat('!m', $data['order'][$i]->month);
+                $monthName = $dateObj->format('F'); // March
+                array_push($month, $monthName);
                 array_push($values, $data['order'][$i]->ordervalue);
                 array_push($year, $data['order'][$i]->year);
             }
@@ -106,6 +112,108 @@ class Dashboard extends Controller
             unset($values);
             unset($year);
             //end orders
+
+
+            $data['customerStatus_not_verified'] = DB::select('SELECT MONTH(created_at) month , YEAR(CURDATE()) year, COUNT(*) ordervalue
+                                                    FROM users
+                                                    WHERE YEAR(created_at) = YEAR(CURDATE()) AND verified =  0
+                                                    GROUP BY MONTH(created_at)' );
+            $month = array();
+            $values = array();
+            $year = array();
+
+            for($i = 0; $i < count($data['customerStatus_not_verified']); $i++){
+                $dateObj   = DateTime::createFromFormat('!m', $data['customerStatus_not_verified'][$i]->month);
+                $monthName = $dateObj->format('F'); // March
+                array_push($month, $monthName);
+                array_push($values, $data['customerStatus_not_verified'][$i]->ordervalue);
+                array_push($year, $data['customerStatus_not_verified'][$i]->year);
+            }
+
+            $data['customerStatus_not_verified_month'] = $month;
+            $data['customerStatus_not_verified_values'] = $values;
+            $data['customerStatus_not_verified_year'] = $year;
+
+            unset($month);
+            unset($values);
+            unset($year);
+            //end not verified
+
+            $data['customerStatus_verified'] = DB::select('SELECT MONTH(created_at) month , YEAR(CURDATE()) year, COUNT(*) ordervalue
+                                                    FROM users
+                                                    WHERE YEAR(created_at) = YEAR(CURDATE()) AND verified =  1
+                                                    GROUP BY MONTH(created_at)' );
+            $month = array();
+            $values = array();
+            $year = array();
+
+            for($i = 0; $i < count($data['customerStatus_verified']); $i++){
+                $dateObj   = DateTime::createFromFormat('!m', $data['customerStatus_verified'][$i]->month);
+                $monthName = $dateObj->format('F'); // March
+                array_push($month, $monthName);
+                array_push($values, $data['customerStatus_verified'][$i]->ordervalue);
+                array_push($year, $data['customerStatus_verified'][$i]->year);
+            }
+
+            $data['customerStatus_verified_month'] = $month;
+            $data['customerStatus_verified_values'] = $values;
+            $data['customerStatus_verified_year'] = $year;
+
+            unset($month);
+            unset($values);
+            unset($year);
+            //end verified
+
+
+            $data['publish'] = DB::select('SELECT MONTH(created_at) month , YEAR(CURDATE()) year, COUNT(*) ordervalue
+                                                FROM products
+                                                WHERE YEAR(created_at) = YEAR(CURDATE()) AND status = "publish"
+                                                GROUP BY MONTH(created_at)' );
+            $month = array();
+            $values = array();
+            $year = array();
+
+            for($i = 0; $i < count($data['publish']); $i++){
+                $dateObj   = DateTime::createFromFormat('!m', $data['publish'][$i]->month);
+                $monthName = $dateObj->format('F'); // March
+                array_push($month, $monthName);
+                array_push($values, $data['publish'][$i]->ordervalue);
+                array_push($year, $data['publish'][$i]->year);
+            }
+
+            $data['publish_month'] = $month;
+            $data['publish_values'] = $values;
+            $data['publish_year'] = $year;
+
+            unset($month);
+            unset($values);
+            unset($year);
+            //end publish
+
+            $data['pending'] = DB::select('SELECT MONTH(created_at) month , YEAR(CURDATE()) year, COUNT(*) ordervalue
+                                                FROM products
+                                                WHERE YEAR(created_at) = YEAR(CURDATE()) AND status = "pending"
+                                                GROUP BY MONTH(created_at)' );
+            $month = array();
+            $values = array();
+            $year = array();
+
+            for($i = 0; $i < count($data['pending']); $i++){
+                $dateObj   = DateTime::createFromFormat('!m', $data['pending'][$i]->month);
+                $monthName = $dateObj->format('F'); // March
+                array_push($month, $monthName);
+                array_push($values, $data['pending'][$i]->ordervalue);
+                array_push($year, $data['pending'][$i]->year);
+            }
+
+            $data['pending_month'] = $month;
+            $data['pending_values'] = $values;
+            $data['pending_year'] = $year;
+
+            unset($month);
+            unset($values);
+            unset($year);
+            //end pending
 
             $data['not_verified'] = DB::select('SELECT COUNT(*) as not_verified
                                                     FROM users
