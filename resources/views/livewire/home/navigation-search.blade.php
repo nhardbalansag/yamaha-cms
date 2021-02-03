@@ -13,8 +13,8 @@
         <div class="col-12 col-md-2">
             <div class = "block mb-5 bg-white rounded collapse d-md-block" id="search">
                 <form wire:submit.prevent="sortProduct">
-                    <div class="py-2 mb-2 text-sm text-center text-white bg-primary alert ">
-                        <p class = "capitalize">search product</p>
+                    <div class="py-2 mb-2 text-sm text-center text-white bg-primary">
+                        <p class = "capitalize">filter result</p>
                     </div>
                     <div class="mb-6">
                         <div class="">
