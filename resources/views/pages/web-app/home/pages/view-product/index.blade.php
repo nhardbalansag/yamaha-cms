@@ -16,7 +16,7 @@
                 </a>
                 <div class="mx-auto mt-2">
                     <div class = "">
-                        <div class="row">
+                        <div class="d-flex justify-content-center align-items-center">
                             <a href="/home/product/{{$product->id}}/inquiry" class="btn text-primary" role="button" aria-pressed="true">INQUIRE</a>
                             <div>
                                 <a href='{{Auth::user() ? (($category[0]->title == 'parts' ? '/my-account/order/' . $product->id . '/payment/' . Auth::user()->id : ($category[0]->title == 'motorcycle' ? '/my-account/loan/application' : ($category[0]->title == 'services' ? '/my-account/services/' . $product->id . '/' . Auth::user()->id  : '/my-account/services/reservation'))))  : "/customer/login"}}' class="flex-row btn d-flex justify-content-between text-primary" role="button" aria-pressed="true">
