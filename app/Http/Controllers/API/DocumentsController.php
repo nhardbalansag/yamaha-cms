@@ -28,7 +28,7 @@ class DocumentsController extends Controller
         $formData = [
             'photo_path' => $request->file('file')->store('photos'),
             'customer_id' => Auth::user()->id,
-            'document_id' => $request->DocumentId,
+            'document_id' => $request->file('docId'),
             'status' => "pending",
         ];
 
