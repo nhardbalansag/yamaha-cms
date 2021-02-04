@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Loan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Mail;
 
 class LoanController extends Controller
 {
@@ -25,6 +26,31 @@ class LoanController extends Controller
 
     public function viewCustomerDocument($id){
 
+        $count  = DB::table('customers_documents')
+                ->where('status', 'approved')
+                ->where('customer_id', $id)
+                ->count();
+
+        // $docsCategoryCouunt  = DB::table('document_categories')
+        //                     ->where('status', 'publish')
+        //                     ->count();
+
+        // if($count === $docsCategoryCouunt){
+
+        //     $data = DB::table('users')
+        //         ->where('id', $id)
+        //         ->first();
+
+        //     $email = [
+        //         "first_name" =>  $data->first_name,
+        //         "information" => $data,
+        //         "email" =>   $data->email
+        //     ];
+
+        //     Mail::send(new \App\Mail\SendInquiry('verifiedDocument', $email));
+
+        // }
+
         $data['documents'] = DB::select('SELECT
                                                 customers_documents.photo_path as photo_path,
                                                 customers_documents.customer_id as customer_id,
@@ -40,29 +66,6 @@ class LoanController extends Controller
                                                 ');
 
         return view('pages.admin.loan.view-one-applicant-document.index', $data);
-    }
-
-    public function approved($id, $customer_id){
-
-        $affected = DB::table('customers_documents')
-                            ->where('id', $id)
-                            ->update(['status' => "approved"]);
-
-        $data['documents'] = DB::select('SELECT
-                                                customers_documents.photo_path as photo_path,
-                                                customers_documents.customer_id as customer_id,
-                                                customers_documents.status as status,
-                                                document_categories.title as title,
-                                                customers_documents.id as id
-
-                                            FROM customers_documents, document_categories
-                                            WHERE  (document_categories.id = customers_documents.document_id) and customers_documents.customer_id = ' . $customer_id .'
-                                            GROUP BY
-                                                id, photo_path, customer_id, status, title
-                                                ');
-
-        return view('pages.admin.loan.view-one-applicant-document.index', $data);
-
     }
 
 }
