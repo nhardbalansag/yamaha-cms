@@ -27,7 +27,6 @@ class LoanController extends Controller
     public function viewCustomerDocument($id){
 
         $count  = DB::table('customers_documents')
-                ->where('status', 'approved')
                 ->where('customer_id', $id)
                 ->count();
 
