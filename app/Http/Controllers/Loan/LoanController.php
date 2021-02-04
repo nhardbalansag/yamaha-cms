@@ -61,10 +61,6 @@ class LoanController extends Controller
                             ->where('customers_documents.customer_id', $id)
                             ->get();
 
-        if(!$data['documents']){
-            abort(404);
-        }
-
         return view('pages.admin.loan.view-one-applicant-document.index', $data);
     }
 
