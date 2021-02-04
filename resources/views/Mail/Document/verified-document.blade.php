@@ -336,10 +336,9 @@ ul.social li{
             	<tr>
             		<td>
             			<div class="text" style="padding: 0 2.5em; text-align: center;">
-            				<h2>Please verify your email</h2>
-                            <h3>Amazing deals, updates, interesting news right in your inbox</h3>
-                            <h4>Verification code: {{ $productInfo['verification'] }}</h4>
-            				<p><a href="{{ env('APP_URL') }}/my-account/verify/index" class="btn btn-primary">Check Account</a></p>
+            				<h2>Good day.</h2>
+                            <h3>The Document you sent are already approved and verified by our TEAM you may now go to our branch located at tondo or contact us by email call or chat for further details.</h3>
+            				<p><a href="{{ env('APP_URL') }}/my-account/credential/documents/set-up" class="btn btn-primary">Check Account</a></p>
             			</div>
             		</td>
             	</tr>
