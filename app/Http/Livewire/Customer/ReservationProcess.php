@@ -28,13 +28,22 @@ class ReservationProcess extends Component
 
         $now = Carbon::now('UTC');
 
-        $userReservationData = DB::table('service_reservations')
-        ->where('reservationDate', $this->reservation_date)
-        ->where('customerId', Auth::user()->id)
-        ->first();
+        $personalReservationCount = DB::table('service_reservations')
+                            ->where('reservationDate', $this->reservation_date)
+                            ->where('customerId', Auth::user()->id)
+                            ->count();
 
-        if($now > $this->reservation_date || $this->reservation_date === $now ||  $userReservationData !== null){
-            session()->flash('error', 'Selected date is not valid');
+        $allReservationCount = DB::table('service_reservations')
+                            ->where('reservationDate', $this->reservation_date)
+                            ->count();
+
+        $userReservationData = DB::table('service_reservations')
+                            ->where('reservationDate', $this->reservation_date)
+                            ->where('customerId', Auth::user()->id)
+                            ->first();
+
+        if($now > $this->reservation_date || $this->reservation_date === $now ||  $userReservationData !== null || $personalReservationCount > 0 || $allReservationCount >= 5){
+            session()->flash('error', 'Selected date is not available');
         }else{
             $validatedData = $this->validate($this->data);
 
