@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\ProductAPIController;
 use App\Http\Controllers\API\CustomerAPIController;
-use App\Http\Controllers\API\DocumentController;
+use App\Http\Controllers\API\DocumentsController;
 
 
 /*
@@ -46,8 +46,8 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('/getOrder/{limit}', [ProductAPIController::class, 'getOrder']);
     Route::post('/confirmEmail', [CustomerAPIController::class, 'confirmEmail']);
     Route::post('/confirmVerification', [CustomerAPIController::class, 'confirmVerification']);
-    Route::get('/viewAllDocumentCategory', [DocumentController::class, 'viewAllDocumentCategory']);
-    Route::post('/send-document', [DocumentController::class, 'sendDocument']);
+    Route::get('/viewAllDocumentCategory/view/all', [DocumentsController::class, 'viewAllDocumentCategory']);
+    Route::post('/send-document', [DocumentsController::class, 'sendDocument']);
     Route::get('/search/product/{search}', [ProductAPIController::class, 'searchProducts']);
 });
 
