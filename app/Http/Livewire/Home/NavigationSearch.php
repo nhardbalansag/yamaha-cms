@@ -3,16 +3,19 @@
 namespace App\Http\Livewire\Home;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin\Products\Product;
-
+use Livewire\WithPagination;
 use Livewire\Component;
 
 class NavigationSearch extends Component
 {
+    use WithPagination;
 
     public $productCategory, $orderBy, $sortBy, $topSearch;
 
     public function render()
     {
+
+
         $data['category'] = DB::table('product_categories')->where('status', 'publish')->get();
 
         $data['recommended'] = Product::where('status', 'publish')->get();
@@ -27,7 +30,7 @@ class NavigationSearch extends Component
         }else if(empty($this->topSearch)){
             $data['product'] = $this->sortProduct();
         }
-
+        $this->resetPage();
         return view('livewire.home.navigation-search', $data);
     }
 
