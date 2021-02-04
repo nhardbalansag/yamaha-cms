@@ -57,6 +57,7 @@ class LoanController extends Controller
 
         $data['documents'] = DB::table('customers_documents')
                             ->join('document_categories', 'customers_documents.document_id', 'document_categories.id')
+                            ->select('customers_documents.*', 'document_categories.title as document_title')
                             ->where('customers_documents.customer_id', $id)
                             ->get();
 

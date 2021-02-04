@@ -32,7 +32,7 @@
             {{ $value->status }}
         </div>
         <div class="col-md-3">
-            {{ $value->title }}
+            {{ $value->document_title }}
         </div>
         <div class=" col-md-3 d-flex justify-content-around align-items-center">
             @livewire('admin.loan.approve-document', ['sentDocsId' => $value->id, 'customer_id' => $value->customer_id])
