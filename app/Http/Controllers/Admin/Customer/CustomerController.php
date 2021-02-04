@@ -154,12 +154,7 @@ class CustomerController extends Controller
 
     public function viewAllreservations(){
 
-        $data['reservations'] = DB::table('service_reservations')
-                    ->join('users', 'users.id', '=', 'service_reservations.customerId')
-                    ->select('service_reservations.*', 'users.first_name', 'users.email')
-                    ->paginate(10);
-
-        return view('pages.admin.customer.view-all-reservations', $data);
+        return view('pages.admin.customer.view-all-reservations');
     }
 
 }
