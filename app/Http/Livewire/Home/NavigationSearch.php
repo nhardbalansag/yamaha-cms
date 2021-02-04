@@ -3,16 +3,19 @@
 namespace App\Http\Livewire\Home;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin\Products\Product;
-
+use Livewire\WithPagination;
 use Livewire\Component;
 
 class NavigationSearch extends Component
 {
+    use WithPagination;
 
     public $productCategory, $orderBy, $sortBy, $topSearch;
 
     public function render()
     {
+
+
         $data['category'] = DB::table('product_categories')->where('status', 'publish')->get();
 
         $data['recommended'] = Product::where('status', 'publish')->get();
@@ -27,7 +30,7 @@ class NavigationSearch extends Component
         }else if(empty($this->topSearch)){
             $data['product'] = $this->sortProduct();
         }
-
+        $this->resetPage();
         return view('livewire.home.navigation-search', $data);
     }
 
@@ -39,7 +42,7 @@ class NavigationSearch extends Component
                     ->where('status', 'publish')
                     ->where('product_category_id', $this->productCategory)
                     ->orderByRaw(($this->sortBy  ? $this->sortBy : 'title') . ' ' .  ($this->orderBy ? $this->orderBy : 'DESC'))
-                    ->paginate(10);
+                    ->paginate(1);
 
             session()->flash('message', 'Your search returned ' . count($data) . ' item(s)');
 
@@ -48,7 +51,7 @@ class NavigationSearch extends Component
             $data =  DB::table('products')
                 ->where('status', 'publish')
                 ->where('product_category_id', 1)
-                ->paginate(10);
+                ->paginate(1);
         }
 
         return  $data;
@@ -59,7 +62,7 @@ class NavigationSearch extends Component
          $data = DB::table('products')
                 ->orWhere('title', 'like', '%' . $this->topSearch . '%')
                 ->where('status', 'publish')
-                ->paginate(10);
+                ->paginate(1);
 
         session()->flash('message', 'Your search returned ' . count($data) . ' item(s)');
         return $data;
