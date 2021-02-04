@@ -42,7 +42,7 @@ class NavigationSearch extends Component
                     ->where('status', 'publish')
                     ->where('product_category_id', $this->productCategory)
                     ->orderByRaw(($this->sortBy  ? $this->sortBy : 'title') . ' ' .  ($this->orderBy ? $this->orderBy : 'DESC'))
-                    ->paginate(1);
+                    ->paginate(10);
 
             session()->flash('message', 'Your search returned ' . count($data) . ' item(s)');
 
@@ -51,7 +51,7 @@ class NavigationSearch extends Component
             $data =  DB::table('products')
                 ->where('status', 'publish')
                 ->where('product_category_id', 1)
-                ->paginate(1);
+                ->paginate(10);
         }
 
         return  $data;
@@ -62,7 +62,7 @@ class NavigationSearch extends Component
          $data = DB::table('products')
                 ->orWhere('title', 'like', '%' . $this->topSearch . '%')
                 ->where('status', 'publish')
-                ->paginate(1);
+                ->paginate(10);
 
         session()->flash('message', 'Your search returned ' . count($data) . ' item(s)');
         return $data;
