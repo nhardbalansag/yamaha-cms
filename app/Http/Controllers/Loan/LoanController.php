@@ -31,6 +31,10 @@ class LoanController extends Controller
                 ->where('customer_id', $id)
                 ->count();
 
+        if(!$count){
+            abort(404);
+        }
+
         // $docsCategoryCouunt  = DB::table('document_categories')
         //                     ->where('status', 'publish')
         //                     ->count();
@@ -51,19 +55,14 @@ class LoanController extends Controller
 
         // }
 
-        $data['documents'] = DB::select('SELECT
-                                                customers_documents.photo_path as photo_path,
-                                                customers_documents.customer_id as customer_id,
-                                                customers_documents.status as status,
-                                                document_categories.title as title,
-                                                customers_documents.id as id,
-                                                customers_documents.customer_id as customer_id
+        $data['documents'] = DB::table('customers_documents')
+                            ->join('document_categories', 'customers_documents.document_id', 'document_categories.id')
+                            ->where('customers_documents.customer_id', $id)
+                            ->get();
 
-                                            FROM customers_documents, document_categories
-                                            WHERE  (document_categories.id = customers_documents.document_id) and customers_documents.customer_id = ' . $id .'
-                                            GROUP BY
-                                                id, photo_path, customer_id, status, title
-                                                ');
+        if(!$data['documents']){
+            abort(404);
+        }
 
         return view('pages.admin.loan.view-one-applicant-document.index', $data);
     }

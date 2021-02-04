@@ -27,11 +27,11 @@
               <div class="col-sm-4 invoice-col">
                 From
                 <address>
-                  <strong>{{ $users[0]->first_name }}</strong><br>
-                  {{ $users[0]->home_address }}<br>
-                  {{ $users[0]->street_address . " " .  $users[0]->street_address . " " .  $users[0]->city }}<br>
-                  Phone: {{ $users[0]->contact_number }}<br>
-                  Email: {{ $users[0]->email }}
+                  <strong>{{ $users->first_name }}</strong><br>
+                  {{ $users->home_address }}<br>
+                  {{ $users->street_address . " " .  $users->street_address . " " .  $users->city }}<br>
+                  Phone: {{ $users->contact_number }}<br>
+                  Email: {{ $users->email }}
                 </address>
               </div>
               <!-- /.col -->
@@ -43,9 +43,9 @@
               </div>
               <!-- /.col -->
               <div class="col-sm-4 invoice-col">
-                <b>Invoice #{{ $users[0]->id . $transactions[0]->id .  $products[0]->id   }}</b><br>
+                <b>Invoice #{{ $users->id . $transactions->id .  $products->id   }}</b><br>
                 <br>
-                <b>Order ID:{{ $users[0]->id . $transactions[0]->id .  $products[0]->id   }}</b> <br>
+                <b>Order ID:{{ $users->id . $transactions->id .  $products->id   }}</b> <br>
               </div>
               <!-- /.col -->
             </div>
@@ -66,9 +66,9 @@
                   <tbody>
                   <tr>
                     <td>1</td>
-                    <td>{{ $products[0]->title }}</td>
-                    <td>{{ $products[0]->description }}</td>
-                    <td>P{{ number_format($transactions[0]->purchaseAmount) }}.00</td>
+                    <td>{{ $products->title }}</td>
+                    <td>{{ $products->description }}</td>
+                    <td>P{{ number_format($transactions->purchaseAmount) }}.00</td>
                   </tr>
                   </tbody>
                 </table>
@@ -88,17 +88,17 @@
               </div>
               <!-- /.col -->
               <div class="col-6">
-                <p class="lead">Amount Due P{{ number_format($transactions[0]->purchaseAmount) }}.00</p>
+                <p class="lead">Amount Due P{{ number_format($transactions->purchaseAmount) }}.00</p>
 
                 <div class="table-responsive">
                   <table class="table">
                     <tbody><tr>
                       <th style="width:50%">Subtotal:</th>
-                      <td>P{{ number_format($transactions[0]->purchaseAmount) }}.00</td>
+                      <td>P{{ number_format($transactions->purchaseAmount) }}.00</td>
                     </tr>
                     <tr>
                       <th>Total:</th>
-                      <td>P{{ number_format($transactions[0]->purchaseAmount) }}.00</td>
+                      <td>P{{ number_format($transactions->purchaseAmount) }}.00</td>
                     </tr>
                   </tbody></table>
                 </div>
@@ -110,9 +110,9 @@
             <!-- this row will not appear when printing -->
             <div class="row no-print">
               <div class="col-12">
-                @livewire('admin.customer.update-order-status', ['transactionId' => $transactions[0]->id])
+                @livewire('admin.customer.update-order-status', ['transactionId' => $transactions->id])
 
-                <a href="/orders/viewallOrders/transactions/invoice-pdf/{{ $transactions[0]->id }}" type="button" class="float-right btn btn-primary" style="margin-right: 5px;">
+                <a href="/orders/viewallOrders/transactions/invoice-pdf/{{ $transactions->id }}" type="button" class="float-right btn btn-primary" style="margin-right: 5px;">
                   <i class="fas fa-download"></i> Generate PDF
                 </a>
               </div>

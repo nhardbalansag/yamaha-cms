@@ -21,6 +21,11 @@
         action
     </div>
 </div>
+@if (session()->has('message'))
+    <div class="container capitalize alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
 @if(count($transactions) <= 0)
     <div class="d-flex justify-content-center">
         <div class="text-center">
@@ -42,7 +47,9 @@
             {{$value->purchaseAmount }}
         </div>
         <div class="col-md-3">
-            {{$value->status }}
+            <p class="p-1 text-white capitalize rounded {{ $value->status == 'processing' ? 'bg-primary' : 'bg-success' }} ">
+                {{$value->status}}
+            </p>
         </div>
         <div class="col-md-2">
             {{$value->created_at }}

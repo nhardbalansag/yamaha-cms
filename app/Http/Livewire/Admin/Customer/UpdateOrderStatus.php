@@ -35,10 +35,10 @@ class UpdateOrderStatus extends Component
             "email" =>   $data['data']->email
         ];
 
+        session()->flash('message', 'status updated');
+
         Mail::send(new \App\Mail\SendInquiry('deliver', $email));
 
-
-        session()->flash('message', 'status updated');
         return redirect()->to('/orders/viewallOrders/transactions');
 
     }

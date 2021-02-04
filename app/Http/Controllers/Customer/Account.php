@@ -46,7 +46,13 @@ class Account extends Controller
         $accountInfo = User::where('id', $account_id)->first();
 
         //product details customer want to avail
-        $product = Product::where('id', $product_id)->first();
+        $product = DB::table('products')
+                ->where('id', $product_id)
+                ->first();
+
+        if(!$product || !$accountInfo){
+            abort(404);
+        }
 
         $data['data'] = array(
                 "account" => $accountInfo,

@@ -16,24 +16,15 @@ class HomeProductController extends Controller
         $data['product'] = Product::where('id', $id)->first();
         $data['recommended'] = Product::where('status', 'publish')->get();
 
-        $data['specification'] = DB::select('SELECT
-                                                product_specifications.title as title,
-                                                product_specifications.description as description
+        $data['specification']  = DB::table('product_specifications')
+                                ->where('product_id', $id)
+                                ->get();
 
-                                                FROM product_specifications, products
-                                                WHERE (product_specifications.status = "publish") AND (product_specifications.product_id = ' . $id . ')
-                                                GROUP BY
-                                                product_specifications.title,
-                                                product_specifications.description');
-
-        $data['category'] = DB::select('SELECT product_categories.title
-                                        FROM product_categories, products
-                                        WHERE product_categories.id = ' . $data['product']->product_category_id .
-                                        ' GROUP BY product_categories.title' );
+        $data['category']   = DB::table('product_categories')
+                            ->where('id',  $data['product']->product_category_id)
+                            ->first();
 
         return view('pages.web-app.home.pages.view-product.index', $data);
     }
-
-
 
 }

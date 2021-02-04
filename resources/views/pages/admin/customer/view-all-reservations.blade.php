@@ -32,7 +32,9 @@
                 {{$value->first_name}}
             </div>
             <div class="col-md-2 ">
-                {{$value->status}}
+                <p class="p-1 text-white capitalize rounded {{ $value->status == 'ongoing' ? 'bg-primary' : 'bg-success' }} ">
+                    {{$value->status}}
+                </p>
             </div>
             <div class="col-md-2">
                 {{$value->reservationDate  }}
