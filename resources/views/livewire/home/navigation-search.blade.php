@@ -90,7 +90,7 @@
                     </div>
                 @endforeach
                     <div>
-                        {!! $product->links() !!}
+                         {{ $product->links() }}
                     </div>
                 @endif
             </div>
