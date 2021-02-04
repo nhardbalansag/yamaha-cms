@@ -47,7 +47,7 @@ class DocumentsController extends Controller
             //     return  response()->json($request->hasFile('file'), 403);
             // }
             $samle = $request->file('file')->store('photos');
-            return  response()->json( $samle, 403);
+            return  response()->json( $samle, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
 
             // if ($files = $request->file('image')) {
 
