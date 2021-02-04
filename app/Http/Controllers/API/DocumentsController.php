@@ -28,17 +28,17 @@ class DocumentsController extends Controller
         $formData = [
             'photo_path' => $request->file('file')->store('photos'),
             'customer_id' => Auth::user()->id,
-            'document_id' => $request->file('docId'),
+            'document_id' => $request->docId,
             'status' => "pending",
         ];
 
          $data['validId'] = DB::table('customers_documents')
-                            ->where('document_id', $request->DocumentId)
+                            ->where('document_id', $request->docId)
                             ->where('customer_id', Auth::user()->id)
                             ->count();
 
         if($data['validId'] != 0){
-           $response = "you had already submitted this type of document";
+          $response = "you had already submitted this type of document";
         }else{
             CustomersDocument::create($formData);
             $response = "Document uploaded successfully";
