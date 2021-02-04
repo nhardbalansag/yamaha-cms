@@ -44,18 +44,6 @@
                         @livewire('customer.reservation-process')
                     @endif
                 </div>
-                <div class="tab-pane fade" id="product-specification" role="tabpanel" aria-labelledby="product-comments-tab">
-                    @if (Auth::user()->verified != 1)
-                        <div class="text-center alert alert-warning" role="alert">
-                            <p>
-                                Note: at the moment you cant buy or reserve a product or services. Please verify first your email address.
-                            </p>
-                            <a href="/my-account">click here to account</a>
-                        </div>
-                    @else
-                        @include('pages.client.component.loan-application')
-                    @endif
-                </div>
             </div>
         </div>
     </section>
