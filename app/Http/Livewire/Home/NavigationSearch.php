@@ -57,8 +57,8 @@ class NavigationSearch extends Component
     public function searchProduct(){
 
          $data = DB::table('products')
-                ->where('status', 'publish')
                 ->orWhere('title', 'like', '%' . $this->topSearch . '%')
+                ->where('status', 'publish')
                 ->paginate(10);
 
         session()->flash('message', 'Your search returned ' . count($data) . ' item(s)');

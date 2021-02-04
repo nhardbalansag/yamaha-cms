@@ -24,6 +24,7 @@ class ViewAllReservation extends Component
         $data['reservations'] = DB::table('service_reservations')
                     ->join('users', 'users.id', '=', 'service_reservations.customerId')
                     ->select('service_reservations.*', 'users.first_name', 'users.email')
+                    ->groupBy( $this->filterBy)
                     ->paginate(10);
 
         session()->flash('message', 'Your filter returned ' . count($data) . ' item(s)');
