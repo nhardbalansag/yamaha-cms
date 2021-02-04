@@ -49,6 +49,9 @@ class DocumentController extends Controller
                         ->where('id', $id)
                         ->where('customer_id', Auth::user()->id)
                         ->first();
+        if(!$data['passId']){
+            abort(404);
+        }
 
         return view('pages.client.pages.resubmit-document', $data);
     }

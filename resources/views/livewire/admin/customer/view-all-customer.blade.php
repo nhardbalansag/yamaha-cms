@@ -33,7 +33,9 @@
             {{$value->first_name}}
         </div>
         <div class="col-md-2 {{ $value->verified == 1 ? 'text-success' : 'text-danger' }}">
-            {{$value->verified == 1 ? 'verified' : 'not verified'}}
+            <p class="p-1 text-white capitalize rounded {{ $value->verified == 1 ? 'badge-success' : 'badge-warning' }} ">
+                {{$value->verified == 1 ? 'verified' : 'not verified'}}
+            </p>
         </div>
         <div class="col-md-3">
             {{$value->role }}

@@ -53,13 +53,17 @@ class CustomerController extends Controller
 
     public function viewoneInquiry($inquiryID){
 
-        $data['inquiries'] = DB::select('SELECT *
-                                            FROM inquiries
-                                            WHERE id = ' . $inquiryID);
+        $data['inquiries'] = DB::table('inquiries')->where('id', $inquiryID)->first();
 
-        $data['productinfo'] = DB::select('SELECT *
-                                            FROM products
-                                            WHERE id = ' . $data['inquiries'][0]->productId);
+        if(!$data['inquiries']){
+            abort(404);
+        }
+
+        $data['productinfo'] = DB::table('products')->where('id', $data['inquiries']->productId)->first();
+
+        if(!$data['productinfo']){
+            abort(404);
+        }
 
         return view('pages.admin.customer.view-one-inquiry', $data);
 
@@ -79,20 +83,17 @@ class CustomerController extends Controller
 
     public function viewoneOrderTransaction($id){
 
+        $data['transactions'] = DB::table('transactions')->where('id', $id)->first();
 
-        $data['transactions'] = DB::select('SELECT *
-                                            FROM transactions
-                                            WHERE id = ' . $id);
+        if(!$data['transactions']){
+            abort(404);
+        }
 
-         $data['users'] = DB::select('SELECT *
-                                                FROM users
-                                                WHERE id = ' . $data['transactions'][0]->customerId);
+        $data['users'] = DB::table('users')->where('id', $data['transactions']->customerId)->first();
+        $data['products'] = DB::table('products')->where('id', $data['transactions']->customerId)->first();
 
-        $data['products'] = DB::select('SELECT *
-                                            FROM products
-                                            WHERE id = ' . $data['transactions'][0]->productId);
 
-        $data['transationDate'] = Carbon::parse($data['transactions'][0]->created_at)->format('l jS \\of F Y h:i:s A');
+        $data['transationDate'] = Carbon::parse($data['transactions']->created_at)->format('l jS \\of F Y h:i:s A');
 
         return view('pages.admin.customer.viewoneTransaction', $data);
 
@@ -100,19 +101,17 @@ class CustomerController extends Controller
 
     public function createPdf($id)
     {
-        $data['transactions'] = DB::select('SELECT *
-                                FROM transactions
-                                WHERE id = ' . $id);
 
-        $data['users'] = DB::select('SELECT *
-                    FROM users
-                    WHERE id = ' . $data['transactions'][0]->customerId);
+        $data['transactions'] = DB::table('transactions')->where('id', $id)->first();
 
-        $data['products'] = DB::select('SELECT *
-                FROM products
-                WHERE id = ' . $data['transactions'][0]->productId);
+        if(!$data['transactions']){
+            abort(404);
+        }
 
-        $data['transationDate'] = Carbon::parse($data['transactions'][0]->created_at)->format('l jS \\of F Y h:i:s A');
+        $data['users'] = DB::table('users')->where('id', $data['transactions']->customerId)->first();
+        $data['products'] = DB::table('products')->where('id', $data['transactions']->productId)->first();
+
+        $data['transationDate'] = Carbon::parse($data['transactions']->created_at)->format('l jS \\of F Y h:i:s A');
 
         // instantiate and use the dompdf class
         $dompdf = new Dompdf();
@@ -126,7 +125,7 @@ class CustomerController extends Controller
         $dompdf->render();
 
         // Output the generated PDF to Browser
-        $dompdf->stream( $data['users'][0]->first_name ."-". $data['transactions'][0]->id . ".pdf");
+        $dompdf->stream( $data['users']->first_name ."-". $data['transactions']->id . ".pdf");
     }
 
     public function activeTransaction(){

@@ -28,7 +28,7 @@
                                 <span class="inline-flex items-center px-3 text-sm text-gray-500 border border-r-0 border-gray-300 rounded-l-md bg-gray-50">
                                    title
                                 </span>
-                                <input wire:model='title' id="company_website" class="flex-1 block w-full transition duration-150 ease-in-out rounded-none form-input rounded-r-md sm:text-sm sm:leading-5">
+                                <input wire:model.defer='title' id="company_website" class="flex-1 block w-full transition duration-150 ease-in-out rounded-none form-input rounded-r-md sm:text-sm sm:leading-5">
                                 </div>
                                  @error('title') <span class="text-red-600 error">{{ $message }}</span> @enderror
                             </div>

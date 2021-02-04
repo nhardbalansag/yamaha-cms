@@ -34,9 +34,22 @@ class ProductController extends Controller
     public function viewOne($id){
 
         $data['product'] = DB::table('products')->where('id', $id)->first();
+
+        if(!$data['product']){
+            abort(404);
+        }
+
         $data['product_specifications'] = DB::table('product_specifications')
                             ->where('product_id', $data['product']->id)
                             ->get();
+
+        if(!$data['product_specifications']){
+            abort(404);
+        }
+
+        if(!$data['product'] || !$data['product_specifications']){
+            abort(404);
+        }
 
         return view('pages.admin.products.view-one.view-one-product', $data);
 

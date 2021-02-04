@@ -41,9 +41,9 @@
             {{$value->title}}
         </div>
         <div class="col-md-1">
-            <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
+            <p class="p-1 text-white capitalize rounded {{ $value->status == 'pending' ? 'badge-warning' : 'badge-success' }} ">
                 {{$value->status}}
-            </span>
+            </p>
         </div>
         <div class="col-md-1">
             {{$value->categoryTitle }}
