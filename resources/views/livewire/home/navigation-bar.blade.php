@@ -6,7 +6,7 @@
 }
 
 #firstslide{
-    background-image: url("/slides-resource/motor3.png");
+    background-image: url("/slides-resource/banner3.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -19,7 +19,7 @@
     background-size: cover;
 }
 #thirdslide{
-    background-image: url("/slides-resource/motor4000x600.png");
+    background-image: url("/slides-resource/banner2.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -90,7 +90,7 @@
 <div id="carouselExampleSlidesOnly" class="hidden carousel slide md:block" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" id="firstslide">
-      <div class="container py-4 " >
+      <div class="container py-5 " >
         <h1 class="text-white capitalize display-4">megavia</h1>
         <p class="text-white lead">
             Life without a motorcycle is just life.
@@ -100,7 +100,7 @@
       </div>
     </div>
     <div class="carousel-item" id="secondslide">
-      <div class="container py-4">
+      <div class="container py-5">
         <h1 class="text-white capitalize display-4">motorcycles</h1>
         <p class="text-white lead">
             Life without a motorcycle is just life.
@@ -110,7 +110,7 @@
       </div>
     </div>
     <div class="carousel-item bg-dark" id="thirdslide">
-      <div class="container py-4">
+      <div class="container py-5">
         <h1 class="text-white capitalize display-4">parts</h1>
         <p class="text-white lead">
             Life without a motorcycle is just life.
@@ -120,7 +120,7 @@
       </div>
     </div>
      <div class="carousel-item" id="secondslide">
-      <div class="container py-4">
+      <div class="container py-5">
         <h1 class="text-white capitalize display-4">mantainance and services</h1>
         <p class="text-white lead">
             Life without a motorcycle is just life.

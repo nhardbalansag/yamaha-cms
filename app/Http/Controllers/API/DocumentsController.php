@@ -12,14 +12,12 @@ use Livewire\WithFileUploads;
 use Validator,Redirect,Response,File;
 use App\Document;
 
-class DocumentController extends Controller
+class DocumentsController extends Controller
 {
-    public $secret = "capstoneProject2020-2021";
+     public function viewAllDocumentCategory(){
 
-    public function viewAllDocumentCategory(Request $request){
+        $response = DB::table('document_categories')->get();
 
-        $response = DB::select('SELECT *
-                    FROM document_categories');
         $statusCode = 200;
 
         return response()->json($response , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
@@ -82,5 +80,4 @@ class DocumentController extends Controller
 
         // return response()->json($file, $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
-
 }
