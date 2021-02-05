@@ -75,11 +75,11 @@
                 @foreach($product as $key => $value)
                     <div class="my-4 col-6 col-md-3">
                         <a href="/home/product/{{$value->id}}">
-                            <div class="p-0"  style=" width:100%">
+                            <div class="p-0"  style=" width:'100%'">
                                 <img src="{{url('storage/' . $value->photo_path) }}"  class="image-fluid" loading="lazy" alt="...">
                             </div>
                             <div>
-                                <div class="mb-2 truncate w-100 font-weight-bold text-primary text-capitalize">{{$value->title}}</div>
+                                <p style="word-break: break-all" class="b-2 font-weight-bold text-primary text-capitalize">{{$value->title}}</p>
                                 <div class="font-weight-light text-dark ">{{date('m/d/Y', strtotime($value->created_at))}}</div>
                                 <div class="d-flex justify-content-between">
                                     <p class="font-weight-light text-dark text-capitalize">buy now :</p>
