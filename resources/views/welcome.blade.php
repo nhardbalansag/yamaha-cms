@@ -71,7 +71,7 @@
             logged_in_greeting="Hi! How can we help you"
             logged_out_greeting="Thank you for Inquiring with us">
         </div>
-         <footer class="container py-5">
+         <footer class="py-5 bg-gray-800 ">
             @include('pages.web-app.home.components.footer')
         </footer>
          @livewireScripts
