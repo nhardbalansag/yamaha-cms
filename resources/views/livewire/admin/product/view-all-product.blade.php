@@ -41,7 +41,7 @@
             {{$value->title}}
         </div>
         <div class="col-md-1">
-            <p class="p-1 text-white capitalize rounded {{ $value->status == 'pending' ? 'badge-warning' : 'badge-success' }} ">
+            <p class="p-1 capitalize {{ $value->status == 'pending' ? 'text-warning' : 'text-success' }} ">
                 {{$value->status}}
             </p>
         </div>

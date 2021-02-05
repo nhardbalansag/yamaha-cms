@@ -10,7 +10,7 @@ class UpdateProductInventoryCount extends Component
     public $count, $product_id;
 
     public $data = [
-        'count' => 'required|numeric'
+        'count' => 'required|numeric|min:1'
     ];
 
     public function render()

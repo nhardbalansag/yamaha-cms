@@ -7,7 +7,7 @@
     <div class="col-6 col-md">
     <h5>Contact us</h5>
     <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="#">09214408767</a></li>
+        <li>09214408767</li>
     </ul>
     </div>
     <div class="col-6 col-md">
@@ -20,7 +20,7 @@
     <div class="col-6 col-md">
     <h5>About</h5>
     <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="#">Team</a></li>
+        <li>Team</li>
     </ul>
     </div>
 </div>
