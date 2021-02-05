@@ -43,8 +43,8 @@
                 {{$value->purchaseAmount }}
             </div>
             <div class="col-md-3">
-                <p class="p-1 text-white capitalize rounded {{ $value->status == 'processing' ? 'bg-primary' : 'bg-success' }} ">
-                    {{$value->status}}
+                <p class="p-1 capitalize {{ $value->status == 'processing' ? 'text-primary' : 'text-success' }} ">
+                    {{$value->status == 'processing' ? 'to process' : ($value->status == 'deliver' ? 'to deliver' : 'completed') }}
                 </p>
             </div>
             <div class="col-md-2">

@@ -52,8 +52,8 @@
                     {{$value->first_name}}
                 </div>
                 <div class="col-md-2 ">
-                    <p class="p-1 text-white capitalize rounded {{ $value->status == 'ongoing' ? 'bg-primary' : 'bg-success' }} ">
-                        {{$value->status}}
+                    <p class="p-1 capitalize {{ $value->status == 'ongoing' ? 'text-primary' : 'text-success' }} ">
+                        {{$value->status == 'ongoing' ? 'ongoing' : 'done'}}
                     </p>
                 </div>
                 <div class="col-md-2">
