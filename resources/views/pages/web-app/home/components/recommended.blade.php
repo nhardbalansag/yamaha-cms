@@ -11,7 +11,7 @@
                                     <img src="{{url('storage/' . $value->photo_path) }}" class="image-fluid" loading="lazy" alt="...">
                                 </div>
                                 <div class="px-4">
-                                    <div class="mb-2 truncate w-100 font-weight-bold text-primary text-capitalize">{{$value->title}}</div>
+                                    <div style="word-break: break-all" class="mb-2 truncate w-100 font-weight-bold text-primary text-capitalize">{{$value->title}}</div>
                                     <div class="font-weight-light text-dark ">{{date('m/d/Y', strtotime($value->created_at))}}</div>
                                     <div class="d-flex justify-content-between">
                                         <p class="font-weight-light text-dark text-capitalize">buy now :</p>
