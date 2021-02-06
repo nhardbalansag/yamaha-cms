@@ -28,7 +28,7 @@
             </a>
         </div>
         <div class="col-md-3 ">
-            <p class="text-white {{ $value->status == "approved" ? 'badge-success' : ($value->status == "pending" ? 'badge-warning' : 'badge-danger') }}">
+            <p class="text-white {{ $value->status == "approved" ? 'text-success' : ($value->status == "pending" ? 'text-warning' : 'text-danger') }}">
                 {{ $value->status }}
             </p>
         </div>
@@ -36,8 +36,13 @@
             {{ $value->document_title }}
         </div>
         <div class=" col-md-3 d-flex justify-content-around align-items-center">
-            @livewire('admin.loan.approve-document', ['sentDocsId' => $value->id, 'customer_id' => $value->customer_id])
-            @livewire('admin.loan.decline-document', ['sentDocsId' => $value->id, 'customer_id' => $value->customer_id])
+            @if($value->status === 'pending')
+                @livewire('admin.loan.approve-document', ['sentDocsId' => $value->id, 'customer_id' => $value->customer_id])
+                @livewire('admin.loan.decline-document', ['sentDocsId' => $value->id, 'customer_id' => $value->customer_id])
+            @else
+                <p class="text-center text-capitalize">you had already <span class="{{ $value->status === 'approved' ? 'text-success' : 'text-danger' }}">{{$value->status === 'approved' ? 'approved' : 'declined'  }}</span> this document</p>
+            @endif
+
         </div>
     </div>
 @endforeach

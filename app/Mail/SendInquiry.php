@@ -37,6 +37,11 @@ class SendInquiry extends Mailable
             $this->first_name = $productData['first_name'];
             $this->email_address = $productData['email'];
             $this->dataContent['transactionInfo'] = $productData['information'];
+        }else if($emailType === "complete"){
+            $this->emailType = $emailType;
+            $this->first_name = $productData['first_name'];
+            $this->email_address = $productData['email'];
+            $this->dataContent['transactionInfo'] = $productData['information'];
         }else if($emailType === "verifiedDocument"){
             $this->emailType = $emailType;
             $this->first_name = $productData['first_name'];
@@ -70,7 +75,7 @@ class SendInquiry extends Mailable
         return $this->from($from_email, $from_name)
                     ->subject('Notification')
                     ->to($to_email)
-                    ->view($this->emailType == 'inquiry' ? 'Mail.Inquiry.index' : ($this->emailType == 'deliver' ? 'Mail.OrderNotification.index' : ($this->emailType == 'document_decline' ? 'Mail.Document.decline' : ($this->emailType == 'document_approve' ? 'Mail.Document.approve' : ($this->emailType == 'verifiedDocument' ? 'Mail.Document.verified-document' : 'Mail.Authenticate.index')))) , $this->dataContent);
+                    ->view($this->emailType == 'inquiry' ? 'Mail.Inquiry.index' : ($this->emailType == 'deliver' ? 'Mail.OrderNotification.index' : ($this->emailType == 'document_decline' ? 'Mail.Document.decline' : ($this->emailType == 'document_approve' ? 'Mail.Document.approve' : ($this->emailType == 'verifiedDocument' ? 'Mail.Document.verified-document' : ($this->emailType == 'complete' ? 'Mail.Document.complete' : 'Mail.Authenticate.index'))))) , $this->dataContent);
     }
 }
 
