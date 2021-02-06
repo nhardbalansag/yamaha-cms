@@ -22,6 +22,9 @@
                                     <a href="/orders/viewallOrders/active" class="text-black text-capitalize">active orders</a>
                                </div>
                                 <div class="py-2 col-12">
+                                    <a href="/orders/viewallOrders/deliver" class="text-black text-capitalize">to deliver orders</a>
+                                </div>
+                                <div class="py-2 col-12">
                                     <a href="/orders/viewallOrders/done" class="text-black text-capitalize">done orders</a>
                                </div>
                                <div class="py-2 col-12">

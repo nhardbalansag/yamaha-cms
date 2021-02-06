@@ -85,6 +85,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/orders/viewallOrders/transactions/{id}',  [CustomerController::class, 'viewoneOrderTransaction']);
         Route::get('/orders/viewallOrders/active',  [CustomerController::class, 'activeTransaction']);
         Route::get('/orders/viewallOrders/done',  [CustomerController::class, 'doneTransaction']);
+        Route::get('/orders/viewallOrders/deliver',  [CustomerController::class, 'deliverTransaction']);
 
         //reservations
         Route::get('/reservations',  [CustomerController::class, 'viewAllreservations']);
