@@ -40,7 +40,7 @@
                 @livewire('admin.loan.approve-document', ['sentDocsId' => $value->id, 'customer_id' => $value->customer_id])
                 @livewire('admin.loan.decline-document', ['sentDocsId' => $value->id, 'customer_id' => $value->customer_id])
             @else
-                <p class="text-center text-capitalize">you had already <span class="{{ $value->status === 'approved' ? 'text-success' : 'text-danger' }}">{{$value->status === 'approved' ? 'approved' : 'declined'  }}</span> this document</p>
+                <p class="text-center text-capitalize">you have <span class="{{ $value->status === 'approved' ? 'text-success' : 'text-danger' }}">{{$value->status === 'approved' ? 'approved' : 'declined'  }}</span> this document</p>
             @endif
 
         </div>
