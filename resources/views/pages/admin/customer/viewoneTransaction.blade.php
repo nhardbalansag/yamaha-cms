@@ -7,7 +7,8 @@
       <div class="row">
         <div class="col-12">
           <div class="callout callout-info">
-            <h5><i class="fas fa-info"></i> Note:</h5>
+            <h5><i class="fas fa-info"></i> status:</h5>
+            <h1><span class="text-white badge {{ $transactions->status == "processing" ? 'bg-primary' : ($transactions->status === "deliver" ? 'bg-info' : 'bg-success') }} text-capitalize">{{ $transactions->status === 'deliver' ? 'to deliver' : ($transactions->status === 'processing' ? 'to process' : 'done transaction') }}</span></h1>
             customers transaction invoice
           </div>
           <!-- Main content -->
@@ -110,7 +111,7 @@
             <!-- this row will not appear when printing -->
             <div class="row no-print">
               <div class="col-12">
-                @livewire('admin.customer.update-order-status', ['transactionId' => $transactions->id])
+                @livewire('admin.customer.update-order-status', ['transactionId' => $transactions->id, 'transactionStatus' => $transactions->status])
 
                 <a href="/orders/viewallOrders/transactions/invoice-pdf/{{ $transactions->id }}" type="button" class="float-right btn btn-primary" style="margin-right: 5px;">
                   <i class="fas fa-download"></i> Generate PDF

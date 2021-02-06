@@ -9,7 +9,7 @@ use Mail;
 class UpdateOrderStatus extends Component
 {
 
-    public $transactionId;
+    public $transactionId, $transactionStatus;
 
     public function render()
     {
@@ -21,7 +21,7 @@ class UpdateOrderStatus extends Component
 
         $affected = DB::table('transactions')
                     ->where('id', $this->transactionId)
-                    ->update(['status' => "deliver"]);
+                    ->update(['status' => $this->transactionStatus === "processing" ? 'deliver' : 'done']);
 
         $data['data'] = DB::table('transactions')
                     ->join('users', 'users.id', '=', 'transactions.customerId')
@@ -37,7 +37,9 @@ class UpdateOrderStatus extends Component
 
         session()->flash('message', 'status updated');
 
-        Mail::send(new \App\Mail\SendInquiry('deliver', $email));
+        if($this ->transactionStatus === 'processing'){
+            Mail::send(new \App\Mail\SendInquiry('deliver', $email));
+        }
 
         return redirect()->to('/orders/viewallOrders/transactions');
 

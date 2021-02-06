@@ -152,6 +152,18 @@ class CustomerController extends Controller
         return view('pages.admin.customer.view-all-active-orders', $data);
     }
 
+    public function deliverTransaction(){
+
+        $data['transactions'] = DB::table('transactions')
+                    ->join('products', 'products.id', '=', 'transactions.productId')
+                    ->join('users', 'users.id', '=', 'transactions.customerId')
+                    ->where('transactions.status', 'deliver')
+                    ->select('transactions.*', 'users.first_name', 'products.title')
+                    ->paginate(10);
+
+        return view('pages.admin.customer.view-all-active-orders', $data);
+    }
+
     public function viewAllreservations(){
 
         return view('pages.admin.customer.view-all-reservations');
