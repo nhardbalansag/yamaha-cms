@@ -288,8 +288,8 @@ ul.social li{
 /*FOOTER*/
 
 .footer{
-	border-top: 1px solid rgba(0,0,0,.05);
-	color: rgba(0,0,0,.5);
+	background-color:rgba(0,0,0,.4),
+    color:'white'
 }
 .footer .heading{
 	color: #000;
@@ -324,7 +324,13 @@ ul.social li{
           	<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
           		<tr>
           			<td class="logo" style="text-align: center;">
-			            <h1><a href="#">{{ env('APP_NAME') }}</a></h1>
+			            <h2>
+                            Yamaha Megavia Motors Co.inc. <br>
+                            #674 Padre Herrera St. Tondo, Manila
+                        </h2>
+                        <h2>Phone number: 09214408767</h2>
+                        <h2>Email address: yamahamegavia@gmail.com</h2>
+                        <h2>Facebok page: <a href="https://www.facebook.com/Yamaha-Megavia-105158801438012" target="_blank">{{ env('APP_NAME') }}</a></h2>
 			          </td>
           		</tr>
           	</table>
@@ -335,13 +341,26 @@ ul.social li{
             <table>
             	<tr>
             		<td>
-            			<div class="text" style="padding: 0 2.5em; text-align: center;">
-            				<h2>Good day.</h2>
-                            <h3>The Document you sent is already approved.</h3>
-            				<p><a href="{{ env('APP_URL') }}/my-account/credential/documents/set-up" class="btn btn-primary">Check Account</a></p>
+            			<div class="bg_white text"  style="padding: 0 2.5em; text-align: justify;">
+            				<h2>Good day!</h2>
+                            <h3>
+                                We have received your applications and all of the documents that you have submitted.
+                                This message serves as confirmation that your documents are approved.  To process your application, we highly encouraged you to go to our Branch store. And please bring a hard copy of your documents. <br>
+                            </h3>
+                            <h3 class="my-4">If you have any questions, please don’t hesitate to contact the office.</h3>
+                            <h3> Thank you.</h3>
             			</div>
             		</td>
             	</tr>
+                <tr>
+                    <td>
+                        <div class="bg_white text"  style="padding: 0 2.5em; text-align: justify;">
+                            <h3>Sincerely,</h3>
+                            <h3>{{ env('APP_NAME') }}</h3>
+                            <p><a href="{{ env('APP_URL') }}/my-account/credential/documents/set-up" class="btn btn-primary">Check Account</a></p>
+                        </div>
+                    </td>
+                </tr>
             </table>
           </td>
 	      </tr><!-- end tr -->
@@ -352,42 +371,8 @@ ul.social li{
           <td valign="middle" class="bg_light footer email-section">
             <table>
             	<tr>
-                <td valign="top" width="33.333%" style="padding-top: 20px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                    <tr>
-                      <td style="text-align: left; padding-right: 10px;">
-                        <h3 class="heading">Copyright</h3>
-                      	<p>© Powered By | Capstone Project 2020-2021</p>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-                <td valign="top" width="33.333%" style="padding-top: 20px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                    <tr>
-                      <td style="text-align: left; padding-left: 5px; padding-right: 5px;">
-                      	<h3 class="heading">Contact Info</h3>
-                      	<ul>
-                            <li><span class="text">capstone contact information</span></li>
-                            <li><span class="text">09214408767</span></a></li>
-                        </ul>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-                <td valign="top" width="33.333%" style="padding-top: 20px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                    <tr>
-                      <td style="text-align: left; padding-left: 10px;">
-                      	<h3 class="heading">Useful Links</h3>
-                      	<ul>
-                            <li><a href="https://www.facebook.com/Yamaha-Megavia-105158801438012">Facebook Page</a></li>
-                        </ul>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
+                    @include('pages.web-app.home.components.footer')
+                </tr>
             </table>
           </td>
         </tr><!-- end: tr -->
