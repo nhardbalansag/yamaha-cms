@@ -4,6 +4,9 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
+use Mail;
+
 
 class Kernel extends ConsoleKernel
 {
@@ -24,7 +27,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+
+        $email = [
+            "first_name" =>  "bernard",
+            "information" => "hello",
+            "email" =>   "nhardbalansag@gmail.com"
+        ];
+        $schedule->command(Mail::send(new \App\Mail\SendInquiry('complete', $email)))->everyMinute()->runInBackground();
+
     }
 
     /**
