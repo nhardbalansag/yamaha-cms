@@ -90,13 +90,8 @@ Route::middleware('auth')->group(function(){
         //reservations
         Route::get('/reservations',  [CustomerController::class, 'viewAllreservations']);
 
-
         //generate pdf
         Route::get('/orders/viewallOrders/transactions/invoice-pdf/{id}',  [CustomerController::class, 'createPdf']);
-
-
-        //notification
-        Route::get('/sendNotificationEmail/{id}',  [NotificationController::class, 'sendOrderStatusDeliver']);
 
     });
 });
@@ -104,3 +99,5 @@ Route::middleware('auth')->group(function(){
     Route::get('/account/verify/{email}', [Account::class, 'verify'])->name('verification');
 
 
+//test email
+Route::get('/test',  [NotificationController::class, 'sendOrderStatusDeliver']);
