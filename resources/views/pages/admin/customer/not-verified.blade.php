@@ -33,8 +33,8 @@
         <div class="col-md-2 text-truncate">
             {{$value->first_name}}
         </div>
-        <div class="col-md-2 {{ $value->verified == 1 ? 'text-success' : 'text-danger' }}">
-            <p class="p-1 text-white capitalize rounded {{ $value->verified == 1 ? 'badge-success' : 'badge-warning' }} ">
+        <div class="col-md-2 ">
+            <p class="p-1 {{ $value->verified == 1 ? 'text-success' : 'text-danger' }} ">
                 {{$value->verified == 1 ? 'verified' : 'not verified'}}
             </p>
         </div>

@@ -63,10 +63,6 @@ class Account extends Controller
         return view('pages.client.pages.payment', $data);
     }
 
-    public function reservation(){
-        return view('pages.client.pages.reservation');
-    }
-
     public function verify($email){
 
         $column = ['email'=> $email];
@@ -188,6 +184,7 @@ class Account extends Controller
        }
 
     }
+
 }
 
 
