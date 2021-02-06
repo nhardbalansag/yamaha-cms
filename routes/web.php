@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/my-account', [Account::class, 'index'])->name('my account');
         Route::get('/my-account/loan/application', [Account::class, 'loanApplication']);
         Route::get('/my-account/order/{product_id}/payment/{customer_id}', [Account::class, 'payment']);
+        Route::get('/my-account/order/{product_id}/payment/{customer_id}', [Account::class, 'payment']);
 
         //PAYMENT
         Route::get('/my-account/checkout/{user_id}/{product_id}/{amount}', [Account::class, 'checkoutDetails']);
@@ -49,7 +50,6 @@ Route::middleware('auth')->group(function(){
 
         //Documents
         Route::get('/my-account/credential/documents/set-up', [DocumentController::class, 'index']);
-        Route::get('/my-account/credential/documents/resubmit/{id}',  [DocumentController::class, 'resubmit']);
     });
 });
 
