@@ -1,9 +1,9 @@
 <div class="d-flex justify-content-center align-items-center">
-   <div class="col-md-12 row">
-       <div class="col-md-8">
+   <div class="col-md-12 row align-items-center">
+       <div class="col-md-5">
             <img  src="{{ asset('slides-resource/Book service now!.png') }}" alt="design">
        </div>
-       <div class="col-md-4">
+       <div class="col-md-7">
             @if (session()->has('message'))
                 <div class="container capitalize alert alert-success">
                     {{ session('message') }}
