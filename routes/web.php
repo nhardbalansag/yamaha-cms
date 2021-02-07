@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function(){
 
         //Documents
         Route::get('/my-account/credential/documents/set-up', [DocumentController::class, 'index']);
+        Route::get('/my-account/credential/documents/resubmit/{id}', [DocumentController::class, 'resubmit']);
     });
 });
 

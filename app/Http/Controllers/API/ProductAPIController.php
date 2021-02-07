@@ -16,16 +16,15 @@ class ProductAPIController extends Controller
 
     public $secret = "capstoneProject2020-2021";
 
-
     public function searchProducts($search){
 
-        $data = DB::select('SELECT *
-                            FROM products
-                            WHERE status = "publish" AND title LIKE "%' . $search . '%" ' );
+        $data = DB::table('products')
+                ->orWhere('title', 'like', '%' . $search . '%')
+                ->where('status', 'publish')
+                ->paginate(10);
 
         return response()->json($data , 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
-
 
     public function getOrder(Request $request, $limit){
 
@@ -35,21 +34,13 @@ class ProductAPIController extends Controller
 
         if(!$validator->fails()){
 
-            $response = DB::select('SELECT *, transactions.status as transactionStatus
-                                    FROM transactions, users, products
-                                    WHERE
-                                        (users.id = transactions.customerId AND products.id = transactions.productId)
-                                        AND transactions.status = '. '"' .$request->orderstatus .'"' . ' AND users.id = ' . Auth::user()->id . ' LIMIT ' . $limit);
-
-            $count = DB::select('SELECT COUNT(*) as transactionCount
-                                    FROM transactions, users, products
-                                    WHERE
-                                        (users.id = transactions.customerId AND products.id = transactions.productId)
-                                        AND transactions.status = '. '"' .$request->orderstatus .'"' . ' AND users.id = ' . Auth::user()->id);
-            $response = array(
-                "transactionData" => $response,
-                "transactionCount" => $count
-            );
+            $response = DB::table('transactions')
+                        ->join('users', 'users.id', '=', 'transactions.customerId')
+                        ->join('products', 'products.id', '=', 'transactions.productId')
+                        ->select('products.*', 'transactions.id as transactionId', 'transactions.status as transactionStatus', 'transactions.created_at as transactionCreated')
+                        ->where('transactions.status', $request->orderstatus)
+                        ->where('users.id', Auth::user()->id)
+                        ->paginate($limit);
 
             $statusCode = 200;
 
@@ -65,8 +56,7 @@ class ProductAPIController extends Controller
 
     public function index($limit){
             $statusCode = 200;
-            $data = Product::where('status', 'publish')
-                            ->paginate($limit);
+            $data = Product::where('status', 'publish')->paginate($limit);
 
         return response()->json( $data  , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
@@ -75,32 +65,23 @@ class ProductAPIController extends Controller
 
         $statusCode = 200;
         $product = Product::where('id', $request->id)->get();
-        $specification = DB::select('SELECT
-                                            product_specifications.title as title,
-                                            product_specifications.id as id,
-                                            product_specifications.description as description
 
-                                            FROM product_specifications, products
-                                            WHERE (product_specifications.status = "publish") AND (product_specifications.product_id = ' .  $request->id . ')
-                                            GROUP BY
-                                            product_specifications.title,
-                                            product_specifications.description,
-                                            product_specifications.id');
+        $specification = DB::table('product_specifications')
+                        ->where('product_id', $request->id)
+                        ->where('status', "publish")
+                        ->get();
 
-        $inquiries = DB::select('SELECT COUNT(id) as inquiries
-                                    FROM inquiries
-                                    WHERE productId = ?', [$request->id]);
+        $inquiries = DB::table('inquiries')->where('productId', $request->id)->count();
 
-        $inquiriesCount = DB::select('SELECT COUNT(id) as inquiriesCount
-                                        FROM inquiries');
+        $inquiriesCount = DB::table('inquiries')->count();
 
-        $totalpercentage = $inquiriesCount > 0 ? ($inquiries[0]->inquiries / $inquiriesCount[0]->inquiriesCount) * 100 : 0;
+        $totalpercentage = $inquiriesCount > 0 ? ($inquiries / $inquiriesCount) * 100 : 0;
 
         $reponse = array(
             "data" =>  array(
                 "product" => $product,
                 "specification" => $specification,
-                "inquiriesCount" => $inquiries[0]->inquiries,
+                "inquiriesCount" => $inquiries,
                 "Percentage" => round($totalpercentage)
             )
         );

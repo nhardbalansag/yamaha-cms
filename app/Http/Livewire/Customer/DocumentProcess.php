@@ -16,7 +16,7 @@ class DocumentProcess extends Component
     public $photo_path, $document_id, $percent;
 
     public $data = [
-        'photo_path' => 'required|image|max:1024',
+        'photo_path' => 'required|image',
         'document_id' => 'required|numeric'
     ];
 

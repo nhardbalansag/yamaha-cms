@@ -69,7 +69,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="mx-auto col-12 col-md-3">
+                <div class="mx-auto my-5 col-12 col-md-3">
                     <button type="submit" class="w-full btn btn-dark">Submit Document</button>
                 </div>
             </div>
