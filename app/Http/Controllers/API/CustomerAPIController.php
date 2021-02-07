@@ -20,7 +20,7 @@ class CustomerAPIController extends Controller
     protected $emailType = "inquiry";
 
     public function confirmVerification(Request $request){
-        
+
         $validator = Validator::make($request->all(), [
             'verification' => ['required', 'numeric']
         ]);
@@ -53,37 +53,27 @@ class CustomerAPIController extends Controller
     public function confirmEmail(Request $request){
         $emailType = "verification";
 
-        $validator = Validator::make($request->all(), [
-            'email' => ['required', 'email']
-        ]);
+        $verification = rand(0, 10000);
 
-        if(!$validator->fails()){
-            $verification = rand(0, 10000);
+        $data = [
+            'verificationCode' =>  $verification,
+            'customerId' =>  Auth::user()->id
+        ];
 
-            $data = [
-                'verificationCode' =>  $verification,
-                'customerId' =>  Auth::user()->id
-            ];
+        $email = [
+            "first_name" => Auth::user()->first_name,
+            "last_name" =>  Auth::user()->last_name,
+            "middle_name" =>  Auth::user()->middle_name,
+            "verification" =>  $verification,
+            "email" =>   Auth::user()->email
+        ];
 
-            $email = [
-                "first_name" => Auth::user()->first_name,
-                "last_name" =>  Auth::user()->last_name,
-                "middle_name" =>  Auth::user()->middle_name,
-                "verification" =>  $verification,
-                "email" =>   Auth::user()->email
-            ];
-
-            if(AccountVerification::create($data)){
-                Mail::send(new \App\Mail\SendInquiry($emailType, $email));
-                $response = false;
-                $statusCode = 200;
-            }else{
-                $response = true;
-                $statusCode = 200;
-            }
-
-        }else{
+        if(AccountVerification::create($data)){
+            Mail::send(new \App\Mail\SendInquiry($emailType, $email));
             $response = false;
+            $statusCode = 200;
+        }else{
+            $response = true;
             $statusCode = 200;
         }
 
@@ -92,7 +82,7 @@ class CustomerAPIController extends Controller
 
 
     public function getCount(Request $request){
-     
+
         $account_info = DB::select('SELECT *
                         FROM users
                         WHERE id = ' . Auth::user()->id);
@@ -218,7 +208,7 @@ class CustomerAPIController extends Controller
                 $token = $userData->createToken('authToken')->accessToken;
 
                 if($password && $enteredEmail === $DBemail){
-                    
+
                     $response = array_merge(
                         array("information" => $data),
                             array(
@@ -300,7 +290,7 @@ class CustomerAPIController extends Controller
         );
 
         $errors = $validator->errors();
-   
+
         if(!$validator->fails()){
             Inquiry::create($data);
             $response = true;
