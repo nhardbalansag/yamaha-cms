@@ -47,4 +47,13 @@ class DocumentsController extends Controller
         return  response()->json($response, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
 
     }
+
+    public function customerSubmittedDocs(){
+
+        $data   = DB::table('customers_documents')
+                ->where('customer_id', Auth::user()->id)
+                ->get();
+
+        return  response()->json($data, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+    }
 }
