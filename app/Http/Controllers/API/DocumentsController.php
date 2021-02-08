@@ -58,4 +58,23 @@ class DocumentsController extends Controller
 
         return  response()->json($data, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
+
+    public function resubmitdocument(Request $request){
+
+        $photo = $request->file('file')->store('photos');
+
+        $data['validId']    = DB::table('customers_documents')
+                            ->where('id', $request->docId)
+                            ->where('customer_id', Auth::user()->id)
+                            ->update(
+                                [
+                                    'status' => 'pending',
+                                    'photo_path' => $photo
+                                ]
+                            );
+
+        $response = "Document uploaded successfully";
+
+        return  response()->json($response, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+    }
 }
