@@ -51,7 +51,9 @@ class DocumentsController extends Controller
     public function customerSubmittedDocs(){
 
         $data   = DB::table('customers_documents')
-                ->where('customer_id', Auth::user()->id)
+                ->join('document_categories', 'document_categories.id', '=', 'customers_documents.document_id')
+                ->select('customers_documents.*', 'document_categories.title', 'document_categories.id as documentCategoryId')
+                ->where('customers_documents.customer_id', Auth::user()->id)
                 ->get();
 
         return  response()->json($data, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
