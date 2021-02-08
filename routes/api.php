@@ -50,5 +50,6 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('/send-document', [DocumentsController::class, 'sendDocument']);
     Route::get('/search/product/{search}', [ProductAPIController::class, 'searchProducts']);
     Route::get('/viewAllDocuments/customer/submitted/all', [DocumentsController::class, 'customerSubmittedDocs']);
+    Route::get('/customer/resubmit/document', [DocumentsController::class, 'resubmitdocument']);
 });
 
