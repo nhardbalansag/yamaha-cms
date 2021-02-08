@@ -168,6 +168,7 @@ class CustomerAPIController extends Controller
 
        if(!$validator->fails()){
             User::create($data);
+
             $customerInformation = User::where('email', $request->email)->first();
 
             $token = $customerInformation->createToken('authToken')->accessToken;

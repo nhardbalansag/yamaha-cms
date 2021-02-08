@@ -50,11 +50,13 @@ class DocumentsController extends Controller
 
     public function customerSubmittedDocs(){
 
+        $docsCount = DB::table('document_categories')->count();
+
         $data   = DB::table('customers_documents')
                 ->join('document_categories', 'document_categories.id', '=', 'customers_documents.document_id')
                 ->select('customers_documents.*', 'document_categories.title', 'document_categories.id as documentCategoryId')
                 ->where('customers_documents.customer_id', Auth::user()->id)
-                ->get();
+                ->paginate($docsCount);
 
         return  response()->json($data, 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
