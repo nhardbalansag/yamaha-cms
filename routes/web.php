@@ -65,10 +65,13 @@ Route::middleware('auth')->group(function(){
         Route::get('/product/pending',  [ProductController::class, 'pendingProduct'])->name('pending products');
         Route::get('/product/publish',  [ProductController::class, 'publishProduct'])->name('publish products');
         Route::get('/product/view/{id}', [ProductController::class, 'viewOne'])->name('view one product');
+        Route::get('/product/amortization/add', [ProductController::class, 'addamortization']);
 
         Route::get('/product/createCategory',  [ProductCategoryController::class, 'index'])->name('product category');
 
         Route::get('/product/specificationCategory/create',  [Specification::class, 'index'])->name('specification category');
+        Route::get('/product/product/edit/{id}',  [ProductController::class, 'editProduct']);
+        Route::get('/edit/product/specifications/{id}',  [ProductController::class, 'editSpecifications']);
 
         //CUSTOMER
         Route::get('/customer-all',  [CustomerController::class, 'index']);

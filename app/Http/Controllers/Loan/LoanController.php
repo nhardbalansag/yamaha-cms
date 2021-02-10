@@ -34,26 +34,6 @@ class LoanController extends Controller
             abort(404);
         }
 
-        // $docsCategoryCouunt  = DB::table('document_categories')
-        //                     ->where('status', 'publish')
-        //                     ->count();
-
-        // if($count === $docsCategoryCouunt){
-
-        //     $data = DB::table('users')
-        //         ->where('id', $id)
-        //         ->first();
-
-        //     $email = [
-        //         "first_name" =>  $data->first_name,
-        //         "information" => $data,
-        //         "email" =>   $data->email
-        //     ];
-
-        //     Mail::send(new \App\Mail\SendInquiry('verifiedDocument', $email));
-
-        // }
-
         $data['documents'] = DB::table('customers_documents')
                             ->join('document_categories', 'customers_documents.document_id', 'document_categories.id')
                             ->select('customers_documents.*', 'document_categories.title as document_title')

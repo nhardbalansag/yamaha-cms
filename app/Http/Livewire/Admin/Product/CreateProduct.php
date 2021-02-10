@@ -6,10 +6,6 @@ use Livewire\Component;
 use App\Models\Admin\Products\Product;
 use Livewire\WithFileUploads;
 use App\Models\Admin\Products\ProductCategory;
-use App\Models\Admin\Products\ColorType;
-use App\Models\Admin\Products\Specification;
-use Illuminate\Support\Facades\DB;
-
 class CreateProduct extends Component
 {
     use WithFileUploads;

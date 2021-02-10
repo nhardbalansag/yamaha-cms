@@ -9,6 +9,6 @@ use Illuminate\Support\Facades\DB;
 class NotificationController extends Controller
 {
     public function sendOrderStatusDeliver(){
-        return view('Mail.Document.complete');
+        return view('Mail.Inquiry.index');
     }
 }

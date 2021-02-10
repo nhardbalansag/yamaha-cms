@@ -40,8 +40,13 @@ class ProductController extends Controller
         }
 
         $data['product_specifications'] = DB::table('product_specifications')
-                            ->where('product_id', $data['product']->id)
-                            ->get();
+                                        ->where('product_id', $data['product']->id)
+                                        ->get();
+
+        $data['amortization'] = DB::table('amortizations')
+                                        ->join('products', 'products.id', '=', 'amortizations.productId')
+                                        ->select('amortizations.*', 'products.id as ProductId')
+                                        ->get();
 
         if(!$data['product_specifications']){
             abort(404);
@@ -76,5 +81,30 @@ class ProductController extends Controller
         return view('livewire.admin.product.view-all-product', $data);
     }
 
+    public function editProduct($productID){
+
+        $data['product'] = DB::table('products')->where('id', $productID)->first();
+
+        if(!$data['product']){
+            abort(404);
+        }
+
+        $data['product'] = DB::table('products')
+                            ->where('id', $productID)
+                            ->first();
+
+        return view('pages.admin.products.view-one.edit-product', $data);
+    }
+
+    public function editSpecifications($Id){
+
+        $data['specifications'] = DB::table('product_specifications')->where('id', $Id)->first();
+
+        if(!$data['specifications']){
+            abort(404);
+        }
+
+        return view('pages.admin.products.view-one.edit-specification', $data);
+    }
 
 }
