@@ -10,6 +10,8 @@ use App\Models\Admin\Products\Product;
 use App\Models\Users\Transaction;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use App\Models\Users\ServiceReservation;
 
 class ProductAPIController extends Controller
 {
@@ -87,5 +89,40 @@ class ProductAPIController extends Controller
         );
 
         return response()->json($reponse , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+    }
+
+    public function reserveDate(Request $request){
+        $now = Carbon::now('UTC');
+
+        $personalReservationCount = DB::table('service_reservations')
+                            ->where('reservationDate', $request->reservedDate)
+                            ->where('customerId', Auth::user()->id)
+                            ->count();
+
+        $allReservationCount = DB::table('service_reservations')
+                            ->where('reservationDate', $request->reservedDate)
+                            ->count();
+
+        $userReservationData = DB::table('service_reservations')
+                            ->where('reservationDate', $request->reservedDate)
+                            ->where('customerId', Auth::user()->id)
+                            ->first();
+
+        if($now > $request->reservedDate || $request->reservedDate === $now ||  $userReservationData !== null || $personalReservationCount > 0 || $allReservationCount >= 5){
+            $response = "Selected date is not available";
+        }else{
+
+            $formData = [
+                'customerId' => Auth::user()->id,
+                'status' => "ongoing",
+                'reservationDate' => $request->reservedDate
+            ];
+
+            ServiceReservation::create($formData);
+
+            $response = "You have placed reservation successfully.";
+        }
+
+        return response()->json($response , 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 }
