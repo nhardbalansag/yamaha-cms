@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $tittle = array('motorcycle', 'parts');
-        $description = array('motorcycle description', 'services description', 'parts description');
+        $description = array('motorcycle description', 'parts description');
         $documents = array(
             '1 MONTH LATEST PAYSLIP (For employed Applicants)',
             '1 Valid ID (drivers license/SSS/Company ID)',
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for($index = 0; $index < 3; $index++){
+        for($index = 0; $index < 2; $index++){
             DB::table('specification_categories')->insert([
                 'title' =>  $tittle[$index],
                 'description' =>  $description[$index],
