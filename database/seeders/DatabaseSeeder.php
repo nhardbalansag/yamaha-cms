@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for($index = 0; $index < 3; $index++){
+        for($index = 0; $index < 2; $index++){
             DB::table('specification_categories')->insert([
                 'title' =>  $tittle[$index],
                 'description' =>  $description[$index],
