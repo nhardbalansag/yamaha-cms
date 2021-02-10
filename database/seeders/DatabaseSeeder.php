@@ -16,9 +16,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $tittle = array('motorcycle', 'services', 'parts');
+        $tittle = array('motorcycle', 'parts');
         $description = array('motorcycle description', 'services description', 'parts description');
-        $documents = array('billing statement', 'proof of billing', 'company id', 'any valid id');
+        $documents = array(
+            '1 MONTH LATEST PAYSLIP (For employed Applicants)',
+            '1 Valid ID (drivers license/SSS/Company ID)',
+            'Another 1 Valid ID (drivers license/SSS/Company ID)',
+            'BUSINESS PERMIT (FOR BUSINESS) - BANK STATEMENT OR SAVINGS ACCOUNT',
+            'Latest Proof of Billing',
+            '1pc 2x2 Picture',
+            'Another 1pc 2x2 Picture'
+        );
 
         for($index = 0; $index < 3; $index++){
             DB::table('product_categories')->insert([
@@ -57,7 +65,7 @@ class DatabaseSeeder extends Seeder
             'postal' => '1226',
             'role' => 'admin',
             'verified' => true,
-            'email' => 'admin@gmail.com',
+            'email' => 'admin@email.com',
             'password' => Hash::make('helloworld'),
         ]);
         DB::table('teams')->insert([
