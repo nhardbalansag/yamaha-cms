@@ -53,6 +53,6 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('/customer/resubmit/document', [DocumentsController::class, 'resubmitdocument']);
     Route::post('/customer/service/reserve/date', [ProductAPIController::class, 'reserveDate']);
     Route::get('/customer/service/reservation-list', [ProductAPIController::class, 'getReservationsList']);
-    Route::get('/customer/payment/parts/checkout', [ProductAPIController::class, 'checkout']);
+    Route::post('/customer/payment/parts/checkout', [ProductAPIController::class, 'checkout']);
 });
 
