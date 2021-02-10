@@ -12,12 +12,6 @@ class ProductEdit extends Component
 
     public $photo_path, $title, $description, $status, $update_count, $price, $product_category_id, $specification_id, $colors_type_id, $number_available, $DBproduct_id;
 
-    public $data = [
-        'price' => 'numeric|min:1',
-        'number_available' => 'numeric',
-        'product_category_id' => 'numeric'
-    ];
-
     public function render()
     {
         $data['productData'] = DB::table('products')->where('id', $this->DBproduct_id)->first();
@@ -30,9 +24,7 @@ class ProductEdit extends Component
         $formData = [
             'title' => $this->title,
             'description' => $this->description,
-            'status' => $this->status,
             'price' => $this->price,
-            'number_available' => $this->number_available
         ];
 
         $affected = DB::table('products')
@@ -40,9 +32,7 @@ class ProductEdit extends Component
                 ->update([
                     'title' => $this->title,
                     'description' => $this->description,
-                    'status' => $this->status,
-                    'price' => $this->price,
-                    'number_available' => $this->number_available
+                    'price' => $this->price
                     ]);
 
 
