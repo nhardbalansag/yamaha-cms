@@ -52,5 +52,6 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('/viewAllDocuments/customer/submitted/all', [DocumentsController::class, 'customerSubmittedDocs']);
     Route::post('/customer/resubmit/document', [DocumentsController::class, 'resubmitdocument']);
     Route::post('/customer/service/reserve/date', [ProductAPIController::class, 'reserveDate']);
+    Route::get('/customer/service/reservation-list', [ProductAPIController::class, 'getReservationsList']);
 });
 
