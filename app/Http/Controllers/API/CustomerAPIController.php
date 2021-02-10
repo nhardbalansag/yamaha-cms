@@ -300,7 +300,7 @@ class CustomerAPIController extends Controller
 
             $productData['allusersData'] =  $data;
             $productData['product'] = Product::where('id', $request->productId)->first();
-            $productData['amortization'] = DB::table('amortizations')->where('productId', $this->productId)->get();
+            $productData['amortization'] = DB::table('amortizations')->where('productId', $request->productId)->get();
             $productData['specification'] = DB::select('
                 SELECT product_specifications.title as title, product_specifications.description as description
                 FROM product_specifications, products
