@@ -125,4 +125,15 @@ class ProductAPIController extends Controller
 
         return response()->json($response , 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
+
+
+    public function getReservationsList(){
+
+        $data = DB::table('service_reservations')
+                            ->where('customerId', Auth::user()->id)
+                            ->paginate();
+
+
+        return response()->json($data , 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+    }
 }
