@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'Another 1pc 2x2 Picture'
         );
 
-        for($index = 0; $index < 3; $index++){
+        for($index = 0; $index < 2; $index++){
             DB::table('product_categories')->insert([
                 'title' =>  $tittle[$index],
                 'description' =>  $description[$index],
