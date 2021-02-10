@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Users\AccountVerification;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Users\Transaction;
 use Mail;
 use App\Models\Admin\Products\Product;
 
@@ -440,6 +441,52 @@ class CustomerAPIController extends Controller
             $statusCode = 200;
         }
         return response()->json($response , $statusCode, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+    }
+
+    public function checkout(Request $request){
+
+        $data = array(
+            'customerId' => Auth::user()->id,
+            'productId' => $request->product_id,
+            'purchaseAmount' => $request->amount,
+            'status' => "processing"
+        );
+
+        if(Transaction::create($data)){
+
+            $productInformation = DB::table('products')
+                                ->where('id',  $request->product_id)
+                                ->first();
+
+            if($productInformation->number_available == 0){
+
+                $affected = DB::table('products')
+                        ->where('id',  $request->product_id)
+                        ->update(['status' => "pending"]);
+
+            }else{
+
+                $InventoryTotal = ($productInformation->number_available - 1);
+
+                $affected = DB::table('products')
+                                ->where('id',  $request->product_id)
+                                ->update(['number_available' => $InventoryTotal]);
+
+                if($InventoryTotal == 0 ){
+                    $affected = DB::table('products')
+                                ->where('id',  $request->product_id)
+                                ->update(['status' => "pending"]);
+                }
+            }
+
+            $response = "Your order has been successfully placed";
+
+        }else{
+
+            $response = "Failed to place order, please send us a copy or proof of your transaction";
+
+        }
+        return response()->json($response , 200, [], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 }
 
