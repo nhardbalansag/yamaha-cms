@@ -21,12 +21,6 @@ class ProductEdit extends Component
 
     public function updateProduct(){
 
-        $formData = [
-            'title' => $this->title,
-            'description' => $this->description,
-            'price' => $this->price,
-        ];
-
         $affected = DB::table('products')
                 ->where('id', $this->DBproduct_id)
                 ->update([

@@ -35,7 +35,7 @@
 
                                 </span>
                                 <span class="text-uppercase">
-                                    {{($category->title == 'motorcycle') ? 'apply' : ($category->title == 'services' ? 'reserve' : ($category->title == 'parts' ? 'order' : 'apply'))  }}
+                                    {{$category->title == 'parts' ? 'order' : '' }}
                                 </span>
                             </a>
                         </div>
