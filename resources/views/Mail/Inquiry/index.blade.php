@@ -300,8 +300,8 @@ ul.social li{
             	<tr>
             		<td style="padding: 0 2.5em; text-align: left;">
             			<div class="text">
-            				<h2> Good day! {{ $productInfo['allusersData']['first_name'] }}, Thank you for your inquiry regarding our product. To answer your question, here are the following information about our products:</h2>
-            				<h3>Amazing deals, updates, interesting news right in your inbox</h3>
+            				<h5> Good day! {{ $productInfo['allusersData']['first_name'] }}, Thank you for your inquiry regarding our product. To answer your question, here are the following information about our products:</h5>
+            				<h5>Amazing deals, updates, interesting news right in your inbox</h5>
             			</div>
             		</td>
             	</tr>
