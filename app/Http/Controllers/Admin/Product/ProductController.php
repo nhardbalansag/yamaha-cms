@@ -40,11 +40,12 @@ class ProductController extends Controller
         }
 
         $data['product_specifications'] = DB::table('product_specifications')
-                                        ->where('product_id', $data['product']->id)
+                                        ->where('product_id', $id)
                                         ->get();
 
         $data['amortization'] = DB::table('amortizations')
                                         ->join('products', 'products.id', '=', 'amortizations.productId')
+                                        ->where('amortizations.productId', $id)
                                         ->select('amortizations.*', 'products.id as ProductId')
                                         ->get();
 
