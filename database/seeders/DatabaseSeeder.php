@@ -24,8 +24,6 @@ class DatabaseSeeder extends Seeder
             'Another 1 Valid ID (drivers license/SSS/Company ID)',
             'BUSINESS PERMIT (FOR BUSINESS) - BANK STATEMENT OR SAVINGS ACCOUNT',
             'Latest Proof of Billing',
-            '1pc 2x2 Picture',
-            'Another 1pc 2x2 Picture'
         );
 
         for($index = 0; $index < 2; $index++){
