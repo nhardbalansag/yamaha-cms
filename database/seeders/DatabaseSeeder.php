@@ -21,9 +21,8 @@ class DatabaseSeeder extends Seeder
         $documents = array(
             '1 MONTH LATEST PAYSLIP (For employed Applicants)',
             '1 Valid ID (drivers license/SSS/Company ID)',
-            'Another 1 Valid ID (drivers license/SSS/Company ID)',
             'BUSINESS PERMIT (FOR BUSINESS) - BANK STATEMENT OR SAVINGS ACCOUNT',
-            'Latest Proof of Billing',
+            'Latest Proof of Billing'
         );
 
         for($index = 0; $index < 2; $index++){
