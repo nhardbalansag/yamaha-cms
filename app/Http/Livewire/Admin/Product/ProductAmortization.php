@@ -26,6 +26,7 @@ class ProductAmortization extends Component
 
         $monthDb = DB::table('amortizations')
                     ->where('month', $this->months)
+                    ->where('productId', $this->product_id)
                     ->count();
 
         if($monthDb <= 0){
