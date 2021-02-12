@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>yamaha | web app</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
         <script src="https://kit.fontawesome.com/9002f92f37.js" crossorigin="anonymous"></script>
 <!-- CSS only -->
