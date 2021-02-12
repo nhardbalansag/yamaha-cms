@@ -44,7 +44,26 @@
             {{-- end contents --}}
         </div>
 
-       <!-- Load Facebook SDK for JavaScript -->
+        {{-- <div id="fb-root"></div>
+        <script>
+            window.fbAsyncInit = function() {
+            FB.init({
+                xfbml            : true,
+                version          : 'v9.0'
+            });
+            };
+
+            (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script> --}}
+
+
+        <!-- Load Facebook SDK for JavaScript -->
         <div id="fb-root"></div>
         <script>
         window.fbAsyncInit = function() {
@@ -67,6 +86,26 @@
         attribution="setup_tool"
         page_id="102756981856339">
         </div>
+
+        <!-- Your Chat Plugin code -->
+        <div class="fb-customerchat"
+            attribution=setup_tool
+            page_id="105158801438012"
+            theme_color="#20cef5"
+            logged_in_greeting="Hi! How can we help you"
+            logged_out_greeting="Thank you for Inquiring with us">
+        </div>
+         <footer class="py-5 bg-gray-800 ">
+            @include('pages.web-app.home.components.footer')
+        </footer>
+         @livewireScripts
+         <script src= "{{mix('js/app.js')}}"></script>
+        <!-- jQuery and JS bundle w/ Popper.js -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="ufOIooEq"></script>
         <!-- facebook messgenge -->
 
 
