@@ -1,34 +1,47 @@
 <style>
     @media only screen and (min-width: 600px) {
     #mybar {
-    background-color: #1b3295;
+    background-color: #0E4D92;
+  },
+
+  #brandSleep {
+    color: white;
   }
+
+}
+
+@media only screen and (max-width: 600px) {
+  #brandSleep {
+    color: black;
+  }
+
 }
 
 #firstslide{
-    background-image: url("/slides-resource/banner3.png");
-    background-position: center;
+    background-image: url("/slides-resource/50-OFF-choose-day-Mobile-category--Banner-11th-Feb-2019.jpg");
+    background-position: right;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
 }
 
 #secondslide{
-    background-image: url("/slides-resource/Untitled-1.png");
-    background-position: center;
+    background-image: url("/slides-resource/Nightsuits-Banner-901-by-519-27th-Sep-2016-848x477.jpg");
+    background-position: right;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
 }
 #thirdslide{
-    background-image: url("/slides-resource/banner2.png");
-    background-position: center;
+    background-image: url("/slides-resource/sleepwear_shorts_cat_mob_07_04.jpg");
+    background-position: right;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
 }
 </style>
 <section id="mybar" class = "py-4 shadow">
   <nav class="container navbar navbar-expand-lg navbar-dark">
     <a class="text-lg text-white text-decoration-none" href="/">
-        <img class="w-40" src="{{ asset('slides-resource/Yamaha-logo.png') }}" alt="">
+        {{-- <img class="w-40" src="{{ asset('slides-resource/Yamaha-logo.png') }}" alt=""> --}}
+        <h3 class=" font-weight-bold" id="brandSleep">SLEEPWEAR</h3>
     </a>
     <div class="ml-8 collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="mr-auto navbar-nav ">
@@ -87,45 +100,37 @@
   </nav>
 </section>
 
-<div id="carouselExampleSlidesOnly" class="hidden carousel slide md:block" data-ride="carousel">
+<div id="carouselExampleSlidesOnly" class="container hidden pr-2 mt-2 carousel slide md:block" data-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active" id="firstslide">
+    <div class="pr-2 carousel-item active" style="background-color: #008ECC;" id="firstslide">
       <div class="container py-5 " >
-        <h1 class="text-white capitalize display-4">megavia</h1>
+        <h1 class="text-white capitalize font-weight-bold display-4">SleepWear</h1>
         <p class="text-white lead">
-            Life without a motorcycle is just life.
-            Live to Ride, Ride to Live.
-            Maintenance is as much art as it is science.
+            “No day is so bad it can’t be fixed with a nap.” <br> — Carrie Snow, American Stand-Up Comic
         </p>
       </div>
     </div>
-    <div class="carousel-item" id="secondslide">
+    <div class="carousel-item" style="background-color: #008ECC;" id="secondslide">
       <div class="container py-5">
-        <h1 class="text-white capitalize display-4">motorcycles</h1>
+        <h1 class="text-white capitalize font-weight-bold display-4">SleepWear</h1>
         <p class="text-white lead">
-            Life without a motorcycle is just life.
-            Live to Ride, Ride to Live.
-            Maintenance is as much art as it is science.
+            I love sleep. My life has the tendency to fall <br> apart when I’m awake, you know?” — Ernest Hemingway, American Author
         </p>
       </div>
     </div>
-    <div class="carousel-item bg-dark" id="thirdslide">
+    <div class="carousel-item " style="background-color: #008ECC;" id="thirdslide">
       <div class="container py-5">
-        <h1 class="text-white capitalize display-4">parts</h1>
+        <h1 class="text-white capitalize font-weight-bold display-4">SleepWear</h1>
         <p class="text-white lead">
-            Life without a motorcycle is just life.
-            Live to Ride, Ride to Live.
-            Maintenance is as much art as it is science.
+            Happiness is waking up, looking at the clock and <br> finding that you still have two hours left to sleep.” <br> — Charles M. Schulz, American Cartoonist
         </p>
       </div>
     </div>
-     <div class="carousel-item" id="secondslide">
+     <div class="carousel-item" style="background-color: #008ECC;" id="secondslide">
       <div class="container py-5">
-        <h1 class="text-white capitalize display-4">mantainance and services</h1>
+        <h1 class="text-white capitalize font-weight-bold display-4">SleepWear</h1>
         <p class="text-white lead">
-            Life without a motorcycle is just life.
-            Live to Ride, Ride to Live.
-            Maintenance is as much art as it is science.
+            A good laugh and a long sleep are <br> the best cures in the doctor's book.
         </p>
       </div>
     </div>

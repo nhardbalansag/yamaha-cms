@@ -63,7 +63,7 @@
                 {{$account_info->contact_number}}
             </p>
             <hr>
-            <div class="pb-4">
+            {{-- <div class="pb-4">
                 <strong><i class="mr-1 fas fa-file-alt"></i>Loan Credentials</strong>
             </div>
             <div class="text-center row col-12">
@@ -73,8 +73,8 @@
                 <div class="col-6">
                     <p>Action</p>
                 </div>
-            </div>
-            <div class="text-center col-12 row">
+            </div> --}}
+            {{-- <div class="text-center col-12 row">
                 <div class="col-6">
                     <p class="px-2 text-white text-capitalize btn btn-sm rounded-pill  {{ $approval_result >= 100 ? "bg-success" : "bg-danger" }}">
                         {{$approval_result >= 100 ? "verified" : "not verified"}}
@@ -83,7 +83,7 @@
                 <div class="col-6">
                     <a href="/my-account/credential/documents/set-up">set up credentials for loan</a>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

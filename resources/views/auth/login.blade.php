@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <img class="w-40" src="{{ asset('slides-resource/Yamaha-logo.png') }}" alt="">
+            {{-- <img class="w-40" src="{{ asset('slides-resource/Yamaha-logo.png') }}" alt=""> --}}
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

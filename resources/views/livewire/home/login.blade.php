@@ -2,7 +2,6 @@
     <div class="flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
         <div class="max-w-md ">
             <div>
-                <img class="w-40 " src="{{ asset('slides-resource/Yamaha-logo.png') }}" alt="">
             <h2 class="mt-6 text-3xl text-gray-900">
                 Sign in to your account
             </h2>

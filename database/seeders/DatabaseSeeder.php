@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $tittle = array('motorcycle', 'parts');
-        $description = array('motorcycle description', 'parts description');
+        $tittle = array('parts');
+        $description = array('parts description');
         $documents = array(
             '1 MONTH LATEST PAYSLIP (For employed Applicants)',
             '1 Valid ID (drivers license/SSS/Company ID)',
@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             'Latest Proof of Billing'
         );
 
-        for($index = 0; $index < 2; $index++){
+        for($index = 0; $index < 1; $index++){
             DB::table('product_categories')->insert([
                 'title' =>  $tittle[$index],
                 'description' =>  $description[$index],
@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for($index = 0; $index < 2; $index++){
+        for($index = 0; $index < 1; $index++){
             DB::table('specification_categories')->insert([
                 'title' =>  $tittle[$index],
                 'description' =>  $description[$index],

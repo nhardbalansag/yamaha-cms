@@ -55,11 +55,11 @@
           <a  @auth href="/my-account" @endauth class="my-2" href="/customer/login">
             <span class="h6 text-dark">Order</span>
           </a>
-          <a class="my-2" @auth href="/my-account"  @endauth href="/customer/login">
+          {{-- <a class="my-2" @auth href="/my-account"  @endauth href="/customer/login">
             <span class="h6 text-dark">Reserve</span>
-          </a>
+          </a> --}}
         </div>
-        <div class="modal-header d-flex flex-column justify-content-left align-items-left">
+        {{-- <div class="modal-header d-flex flex-column justify-content-left align-items-left">
           <a class="my-2" data-disable="true" data-value="My Buying" data-header="My Buying" href="#">
             <span class="h6 text-dark font-weight-bold">Explore</span>
           </a>
@@ -69,7 +69,7 @@
            <a href="/my-account" class="my-2" >
             <span class="h6 text-dark">Service</span>
           </a>
-        </div>
+        </div> --}}
         <div class="modal-header d-flex flex-column justify-content-left align-items-left">
           @auth
             @if(Auth::user()->role === 'admin')
