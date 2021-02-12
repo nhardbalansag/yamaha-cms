@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="flex items-center flex-shrink-0">
                     <a href="{{ route('dashboard') }}">
-                        <img class="w-40" src="{{ asset('slides-resource/Yamaha-logo.png') }}" alt="">
+                        {{-- <img class="w-40" src="{{ asset('slides-resource/Yamaha-logo.png') }}" alt=""> --}}
+                        <h3 class="text-white font-weight-bold" id="brandSleep">SLEEPWEAR</h3>
                     </a>
                 </div>
 
